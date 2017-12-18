@@ -1,3 +1,8 @@
+#NavBar {
+    margin-left:   300px !important;
+    background: #d19b3d !important;
+}
+
 .nav-side-menu {
     overflow: auto;
     font-family: verdana;
