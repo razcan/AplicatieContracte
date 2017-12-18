@@ -11,6 +11,7 @@ import * as $ from 'jquery';
 })
 export class AppComponent implements OnInit {
   title = 'app';
+  
   toggle(){
     $("#wrapper").toggleClass("active");
     }
