@@ -2,8 +2,8 @@
   <div class="page-content">
     <div class="container-fluid">
       <div class="row">
-        <div class="col-md-5">
-          <div class="panel panel-danger">
+        <div class="col-md-8">
+          <div class="panel panel-success">
             <div class="panel-heading">
               New Invoice
             </div>
@@ -12,7 +12,7 @@
 
 
                 <div class="row">
-                  <div class="col-7">
+                  <div class="col-3">
                     <label for="sel1">Partener</label>
                     <select class="form-control" id="sel1">
                       <option>Partener 1</option>
@@ -21,68 +21,48 @@
                     </select>
                   </div>
 
-                  <div class="col-1"></div>
-                  <div class="col-3">
-                    <label for="Nr">Numar</label>
+                
+                  <div class="col-2">
+                    <label for="Nr">Serie</label>
                     <input type="text" class="form-control" placeholder="Numar" id="Nr">
                   </div>
-                </div>
 
+                  <div class="col-2">
+                      <label for="DataFactura">Data Factura</label>
+                      <div class="form-group">
+                        <div class="input-group">
+                          <input type="text" class="form-control" [minDate]="minDate" [maxDate]="maxDate" #dp="bsDatepicker" bsDatepicker [(bsValue)]="bsValue1">
+                          <div class="input-group-btn">
+                            <button class="btn btn-default" (click)="dp.show() ">
+                              <span class="glyphicon glyphicon-calendar"></span>
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+               
+                    <div class="col-1"></div>
+                      <div class="col-2">
+                          <label for="DataFactura">Data Scadenta</label>
+                          <div class="form-group">
+                            <div class="input-group">
+                              <input type="text" class="form-control" [minDate]="minDate" [maxDate]="maxDate" #dp2="bsDatepicker" bsDatepicker [(bsValue)]="bsValue2">
+                              <div class="input-group-btn">
+                                <button class="btn btn-default" (click)="dp2.show() ">
+                                  <span class="glyphicon glyphicon-calendar"></span>
+                                </button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                    
+                </div>
                 <br>
-
-
                 <div class="row">
-
-                  <div class="col-3">
-                    <label for="DataFactura">Data Factura</label>
-                    <div class="form-group">
-                      <div class="input-group">
-                        <input type="text" class="form-control" [minDate]="minDate" [maxDate]="maxDate" #dp="bsDatepicker" bsDatepicker [(bsValue)]="bsValue1">
-                        <div class="input-group-btn">
-                          <button class="btn btn-default" (click)="dp.show() ">
-                            <span class="glyphicon glyphicon-calendar"></span>
-                          </button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="col-1"></div>
-
-                  <div class="col-3">
-                    <label for="Nr">Nr Zile Scandete</label>
-                    <input type="text" class="form-control" placeholder="Numar" id="Nr">
-                  </div>
-
-
-                  <div class="col-1"></div>
-                  <div class="col-3">
-                    <label for="DataFactura">Data Scadenta</label>
-                    <div class="form-group">
-                      <div class="input-group">
-                        <input type="text" class="form-control" [minDate]="minDate" [maxDate]="maxDate" #dp2="bsDatepicker" bsDatepicker [(bsValue)]="bsValue2">
-                        <div class="input-group-btn">
-                          <button class="btn btn-default" (click)="dp2.show() ">
-                            <span class="glyphicon glyphicon-calendar"></span>
-                          </button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
                 </div>
 
                 <div class="row">
-                  <div class="col-3">
-                    <label for="sel1">Valuta</label>
-                    <select class="form-control" id="sel1">
-                      <option>RON</option>
-                      <option>EUR</option>
-                      <option>USD</option>
-                      <option>CHF</option>
-                    </select>
-                  </div>
-                  <div class="col-1"></div>
+
                   <div class="col-3">
                     <label for="sel1">Centru Cost</label>
                     <select class="form-control" id="sel1">
@@ -92,8 +72,8 @@
                       <option>Dep. Contabilitate</option>
                     </select>
                   </div>
-                  <div class="col-1"></div>
-                  <div class="col-3">
+                  
+                  <div class="col-2">
                     <label for="sel1">Gestiune</label>
                     <select class="form-control" id="sel1">
                       <option>Consumabile</option>
@@ -101,49 +81,102 @@
                       <option>Papetarie</option>
                     </select>
                   </div>
+
+                  <div class="col-2">
+                      <label for="Nr">Stare</label>
+                      <input type="text" class="form-control" placeholder="Draft" id="Nr" disabled>
+                    </div>
+                    <div class="col-1"></div>
+                    <div class="col-2">
+                      <label for="Nr">Ataseaza Fisier</label>
+                      <br>
+                      <label class="btn btn-default btn-file">
+                        Browse
+                        <input type="file" style="display: none;">
+                      </label>
+                    </div>
                 </div>
                 <br>
                 <div class="row">
-                  <div class="col-3">
-                    <label for="Nr">Stare</label>
-                    <input type="text" class="form-control" placeholder="Draft" id="Nr" disabled>
-                  </div>
-                  <div class="col-1"></div>
-                  <div class="col-3">
-                      <label for="sel1">Template</label>
-                      <select class="form-control" id="sel1">
-                        <option>Format A4</option>
-                        <option>Format A5</option>
-                        <option>Engleza</option>
-                      </select>
-                    </div>
-                    <div class="col-1"></div>
-                  <div class="col-3">
-                      <label for="Nr">Stare</label>
-                      <br>
-                      <label class="btn btn-default btn-file">
-                          Browse <input type="file" style="display: none;">
-                      </label>
-                    </div>
 
-                    
                 </div>
-                
+                <br>
+                <div class="row">
+                  <div class="col-12">
+                    <label for="Nr">Note Header</label>
+                    <textarea class="form-control" rows="1" id="comment"></textarea>
+                  </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-12">
+                <div class="card">
+                    <div class="card-block">
+                        Cod UM Descriere	Cantitate	Pret Unitar	Cota TVA	Total		+TVA
+                    </div>
+                  </div>
+                  </div>
+                  </div>
+
+
 
               </form>
             </div>
           </div>
         </div>
-        <div class="col-md-5">
+
+
+
+
+        <div class="col-md-2">
           <div class="panel panel-success">
             <div class="panel-heading">
               Document Preview
             </div>
             <div class="panel-body">
-              content body
+                <div class="row">
+                <div class="col-6">
+                    <label for="Nr">Zile Scadenta</label>
+                    <input type="text" class="form-control" placeholder="Numar" id="Nr">
+                  </div>
+                  </div>
+                  <div class="row">
+                  <div class="col-6">
+                      <label for="sel1">Moneda</label>
+                      <select class="form-control" id="sel1">
+                        <option>RON</option>
+                        <option>EUR</option>
+                        <option>USD</option>
+                        <option>CHF</option>
+                      </select>
+                    </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6">
+                            <label for="sel1">Template</label>
+                            <select class="form-control" id="sel1">
+                              <option>Format A4</option>
+                              <option>Format A5</option>
+                              <option>Engleza</option>
+                            </select>
+                          </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-10">
+                            <label for="sel1">Cont Bancar</label>
+                            <select class="form-control" id="sel1">
+                              <option>RO69CBIT234203402380</option>
+                              <option>RO69CBIT234203402380</option>
+                              <option>RO69CBIT234203402380</option>
+                            </select>
+                          </div>
+                    </div>
+                   
             </div>
           </div>
         </div>
+
+
       </div>
     </div>
   </div>
