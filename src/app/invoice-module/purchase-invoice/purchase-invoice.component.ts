@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { BsDatepickerConfig } from 'ngx-bootstrap/datepicker';
+import { OnInit,ViewChild,AfterViewInit,ElementRef,OnDestroy,OnChanges,ChangeDetectionStrategy,Input } from '@angular/core';
+
 
 
 @Component({
@@ -7,7 +9,7 @@ import { BsDatepickerConfig } from 'ngx-bootstrap/datepicker';
   templateUrl: './purchase-invoice.component.html',
   styleUrls: ['./purchase-invoice.component.css']
 })
-export class PurchaseInvoiceComponent implements OnInit {
+export class PurchaseInvoiceComponent implements OnInit,AfterViewInit {
   // colorTheme = 'theme-dark-blue';
   // minDate = new Date(2017, 5, 10);
   // maxDate = new Date(2018, 9, 15);
@@ -32,17 +34,30 @@ export class PurchaseInvoiceComponent implements OnInit {
 Left;
 Right;
   itemObjectsLeft: any[] = [
-    { id: 1, name: 'Windstorm', tip: 'Text' },
-    { id: 2, name: 'Bombasto', tip: 'Text'  },
-    { id: 3, name: 'Magneta', tip: 'Text'  }
+    { id: 1, name: 'Suprafata', tip: 'Text', value: 'Text' },
+    { id: 2, name: 'Agent', tip: 'Text', value: 'Text'   },
+    { id: 3, name: 'DataEfectivaPlata', tip: 'Date', value: 'Date'  },
+    { id: 3, name: 'ValoareEfectivaPlata', tip: 'Numeric', value: 'Numeric'  }
   ];
  
   itemObjectsRight: any[] = [
-    { id: 4, name: 'Tornado', tip: 'Text'  },
-    { id: 5, name: 'Mr. O', tip: 'Text'  },
-    { id: 6, name: 'Tomato', tip: 'Text' }
+   
   ];
 
+  // myFunction() {
+  //   var node = document.createElement("LI");
+  //   var textnode = document.createTextNode("Water");
+  //   node.appendChild(textnode);
+  //   document.getElementById("myList").appendChild(node);
+  //   var x = document.createElement("INPUT");
+  //   x.setAttribute("type", "text");
+  //   document.getElementById("myList").appendChild(x);
+  // }
+  @ViewChild('someInput') someInput: ElementRef;
+
+  ngAfterViewInit() {
+    this.someInput.nativeElement.value = "Anchovies! 🍕🍕";
+  }
 
   ngOnInit() {
     this.bsConfig = Object.assign({}, { containerClass: this.colorTheme });

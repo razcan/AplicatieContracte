@@ -1,6 +1,6 @@
 <div id="page-content-wrapper">
   <div class="page-content">
-    
+
     <div class="container-fluid">
       <div class="row">
         <div class="col-md-8">
@@ -140,13 +140,27 @@
           </div>
         </div>
        
-        <ul>
-            <li *ngFor="let items of itemObjectsRight"> 
-              {{ items.name }}
-              {{ items.id }}
-              {{ items.tip }}
-            </li>
-           </ul>
+        <table class="table">
+          <thead>
+            <th>Nume</th>
+            <th>ID</th>
+            <th>Tip</th>
+            <th>Valoare</th>
+          </thead>
+          <tbody>
+            <tr *ngFor="let items of itemObjectsRight"> 
+
+              <td>{{ items.name }}</td>
+              <td>{{ items.id }}</td>
+              <td>{{ items.tip }}</td>
+              <td><input type="text" [(ngModel)]="items.value"></td>
+            </tr>
+          </tbody>
+          </table>    
+          
+       
+          <input #someInput placeholder="Nu merge!">
+
 
                 </div>
                 <br>
