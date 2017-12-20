@@ -52,3 +52,12 @@ input [type="file"] {
     font-weight: 200;
     overflow:auto;
 }
+#DragRezult {
+    height:120px;
+    width:420px;
+    border:1px solid #ccc;
+    font-family: verdana;
+    font-size: 8px;
+    font-weight: 100;
+    overflow:auto;
+}

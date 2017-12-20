@@ -32,7 +32,7 @@
                       <label for="DataFactura">Data Factura</label>
                       <div class="form-group">
                         <div class="input-group">
-                          <input type="text" class="form-control" [minDate]="minDate" [maxDate]="maxDate" #dp="bsDatepicker" bsDatepicker [(bsValue)]="bsValue1">
+                          <input type="text" class="form-control" #dp="bsDatepicker" bsDatepicker [(bsValue)]="bsValue1">
                           <div class="input-group-btn">
                             <button class="btn btn-default" (click)="dp.show() ">
                               <span class="glyphicon glyphicon-calendar"></span>
@@ -47,7 +47,7 @@
                           <label for="DataFactura">Data Scadenta</label>
                           <div class="form-group">
                             <div class="input-group">
-                              <input type="text" class="form-control" [minDate]="minDate" [maxDate]="maxDate" #dp2="bsDatepicker" bsDatepicker [(bsValue)]="bsValue2">
+                              <input type="text" class="form-control"  #dp2="bsDatepicker" bsDatepicker [(bsValue)]="bsValue2">
                               <div class="input-group-btn">
                                 <button class="btn btn-default" (click)="dp2.show() ">
                                   <span class="glyphicon glyphicon-calendar"></span>
@@ -140,10 +140,12 @@
           </div>
         </div>
        
+        <div class="col-5">
+            <div class="card" id="DragRezult">
+                <div class="card-block" >
         <table class="table">
           <thead>
             <th>Nume</th>
-            <th>ID</th>
             <th>Tip</th>
             <th>Valoare</th>
           </thead>
@@ -151,15 +153,21 @@
             <tr *ngFor="let items of itemObjectsRight"> 
 
               <td>{{ items.name }}</td>
-              <td>{{ items.id }}</td>
               <td>{{ items.tip }}</td>
-              <td><input type="text" [(ngModel)]="items.value"></td>
+              <td>
+                <!-- trebuie sa fie variabila in functie de tip data cu ngif in functie de tip-->
+                <input type="text"> 
+               
+              </td>
             </tr>
           </tbody>
-          </table>    
+          </table> 
+        </div>
+      </div>
+    </div>   
           
-       
-          <input #someInput placeholder="Nu merge!">
+        
+          <!-- <input #someInput placeholder="Nu merge!"> -->
 
 
                 </div>
