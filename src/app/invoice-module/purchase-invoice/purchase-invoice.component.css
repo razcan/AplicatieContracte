@@ -1,6 +1,6 @@
 .container-fluid
 {
-    margin-left: 300px;
+    padding-left: 310px;
 }
 
 .form-control {
@@ -41,4 +41,14 @@ input [type="file"] {
 
 .card-block {
     font-size: 16px;
+}
+
+#Drag {
+    height:80px;
+    width:220px;
+    border:1px solid #ccc;
+    font-family: verdana;
+    font-size: 12px;
+    font-weight: 200;
+    overflow:auto;
 }

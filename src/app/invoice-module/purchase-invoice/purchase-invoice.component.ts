@@ -29,17 +29,18 @@ export class PurchaseInvoiceComponent implements OnInit {
   //   this._bsValue2 = v2;
   // }
   colorTheme = 'theme-green';
-
+Left;
+Right;
   itemObjectsLeft: any[] = [
-    { id: 1, name: 'Windstorm' },
-    { id: 2, name: 'Bombasto' },
-    { id: 3, name: 'Magneta' }
+    { id: 1, name: 'Windstorm', tip: 'Text' },
+    { id: 2, name: 'Bombasto', tip: 'Text'  },
+    { id: 3, name: 'Magneta', tip: 'Text'  }
   ];
  
   itemObjectsRight: any[] = [
-    { id: 4, name: 'Tornado' },
-    { id: 5, name: 'Mr. O' },
-    { id: 6, name: 'Tomato' }
+    { id: 4, name: 'Tornado', tip: 'Text'  },
+    { id: 5, name: 'Mr. O', tip: 'Text'  },
+    { id: 6, name: 'Tomato', tip: 'Text' }
   ];
 
 
