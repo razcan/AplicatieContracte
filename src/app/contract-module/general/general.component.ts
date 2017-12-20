@@ -3,15 +3,11 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { NgModule }      from '@angular/core';
 import { EditorModule } from 'primeng/primeng';
 import { ButtonModule } from 'primeng/primeng';
-declare var Quill: any;
-import Quill from 'quill/core';
+import { ViewChild, ElementRef } from '@angular/core';
+import * as Quill from 'quill';
+import {QuillModule} from 'ngx-quill';
+// declare var Quill: any;
 
-import Toolbar from 'quill/modules/toolbar';
-import Snow from 'quill/themes/snow';
-
-import Bold from 'quill/formats/bold';
-import Italic from 'quill/formats/italic';
-import Header from 'quill/formats/header';
 
 @Component({
   selector: 'app-general',
@@ -26,9 +22,15 @@ export class GeneralComponent implements OnInit {
     this.source = $event.source;
   }
 
+  @ViewChild('container') containerEl: ElementRef;
+
+    private editor: Quill.Quill;
+
+    ngAfterViewInit() {
+    }
+
   constructor() { }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
 }

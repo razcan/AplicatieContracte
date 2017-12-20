@@ -1,6 +1,23 @@
 
-<div class="Editor" >
+
+
+<div id="container" class="container" >
   <p-editor [(ngModel)]="text" (onTextChange)="onTextChange($event)" [style]="{'height':'320px'}"></p-editor>
   {{ text }}
 </div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 
+<div class="container">
+<label  >
+  <span>Description 1 </span>
+<quill-editor [(ngModel)]="text" [style]="{'height': '300px'}"
+      ></quill-editor>
+
+</label>
+{{ text }}
+</div>
