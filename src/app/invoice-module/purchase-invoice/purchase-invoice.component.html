@@ -156,8 +156,28 @@
               <td>{{ items.tip }}</td>
               <td>
                 <!-- trebuie sa fie variabila in functie de tip data cu ngif in functie de tip-->
-                <input type="text"> 
-               
+              
+            
+                <div *ngIf="items.tip==1; then thenTemplateName; else elseTemplateName">
+                </div>
+                
+                <ng-template #thenTemplateName>
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="exampleInputEmail1">
+                      </div>
+                </ng-template>
+                
+                <ng-template #elseTemplateName>
+                    <div class="input-group">
+                        <input type="text" class="form-control"  #dp3="bsDatepicker" bsDatepicker [(bsValue)]="bsValue3">
+                        <div class="input-group-btn">
+                          <button class="btn btn-default" (click)="dp3.show() ">
+                            <span class="glyphicon glyphicon-calendar"></span>
+                          </button>
+                        </div>
+                      </div>
+                </ng-template>
+
               </td>
             </tr>
           </tbody>

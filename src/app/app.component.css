@@ -1,8 +1,14 @@
 #NavBar {
-    margin-left:   300px !important;
-    background: #d19b3d !important;
+    margin-left:   302px !important;
+    font-family: verdana !important;
+    font-size: 16px !important;
+    background-color: #dff0d8 !important;
+    
 }
 
+#page-content-wrapper {
+  margin-left:   300px !important;
+}
 .nav-side-menu {
     overflow: auto;
     font-family: verdana;

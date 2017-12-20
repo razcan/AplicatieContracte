@@ -1,7 +1,7 @@
 <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 
 <div class="nav-side-menu">
-    <div class="brand">SHB Logo</div>
+    <div class="brand">SHB</div>
     <i class="fa fa-bars fa-2x toggle-btn" data-toggle="collapse" data-target="#menu-content"></i>
   
         <div class="menu-list">
@@ -14,55 +14,60 @@
                 </li>
 
                 <li  data-toggle="collapse" data-target="#products" class="collapsed">
-                  <a href="#"><i class="fa fa-gift fa-lg"></i> UI Elements <span class="arrow"></span></a>
+                  <a href="#"><i class="fa fa-gift fa-lg"></i> Modul Contracte <span class="arrow"></span></a>
                 </li>
                 <ul class="sub-menu collapse" id="products">
-                    <li class="active"><a href="#">CSS3 Animation</a></li>
-                    <li><a href="#">General</a></li>
-                    <li><a href="#">Buttons</a></li>
-                  
+                    <li><a routerLink="list">Lista Contracte</a></li>
+                    <li><a href="#">Acte Aditionale</a></li>
                 </ul>
-
-
                 <li data-toggle="collapse" data-target="#service" class="collapsed">
-                  <a href="#"><i class="fa fa-globe fa-lg"></i> Services <span class="arrow"></span></a>
+                  <a href="#"><i class="fa fa-globe fa-lg"></i> Modul Facturi <span class="arrow"></span></a>
                 </li>  
                 <ul class="sub-menu collapse" id="service">
-                  <li>New Service 1</li>
-                  <li class="active"><a href="#">CSS3 Animation</a></li>
-                  <li>New Service 2</li>
-                  <li>New Service 3</li>
+                  <li><a routerLink="invoice-module/list/purchase-invoice">Facturi de Aprovizionare</a></li>
+                  <li>Facturi de Vanzare</li>
+                  <li>Avize</li>
                 </ul>
-
-
                 <li data-toggle="collapse" data-target="#new" class="collapsed">
-                  <a href="#"><i class="fa fa-car fa-lg"></i> New <span class="arrow"></span></a>
+                  <a href="#"><i class="fa glyphicon-euro fa-lg"></i> Modul Financiar <span class="arrow"></span></a>
                 </li>
                 <ul class="sub-menu collapse" id="new">
-                  <li>New New 1</li>
-                  <li>New New 2</li>
-                  <li>New New 3</li>
+                  <li>Incasari</li>
+                  <li>Plati</li>
                 </ul>
-
-
+                <li data-toggle="collapse" data-target="#stock" class="collapsed">
+                    <a href="#"><i class="fa fa-anchor fa-lg"></i> Modul Stocuri <span class="arrow"></span></a>
+                  </li>
+                  <ul class="sub-menu collapse" id="stock">
+                    <li>Intrari</li>
+                    <li>Iesiri</li>
+                  </ul>
                  <li>
                   <a href="#">
-                  <i class="fa fa-user fa-lg"></i> Profile
+                  <i class="fa fa-user fa-lg"></i> Nomenclatoare
                   </a>
                   </li>
 
                  <li>
                   <a href="#">
-                  <i class="fa fa-users fa-lg"></i> Users
+                  <i class="fa fa-users fa-lg"></i> Configrari
                   </a>
                 </li>
             </ul>
      </div>
 </div>
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light" id="NavBar">
-    <a class="navbar-brand" href="#">Navbar</a>
+<nav class="navbar navbar-expand-lg navbar-light bg-light"  id="NavBar" aria-label="breadcrumb" role="navigation">
+  
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="#">Home</a></li>
+        <li class="breadcrumb-item"><a href="#">Library</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Data</li>
+      </ol>
+  
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-  </nav>
+</nav>
+
+<router-outlet></router-outlet>

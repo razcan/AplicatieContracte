@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { BsDatepickerConfig } from 'ngx-bootstrap/datepicker';
-import { OnInit,ViewChild,AfterViewInit,ElementRef,OnDestroy,OnChanges,ChangeDetectionStrategy,Input } from '@angular/core';
-
+import { OnInit,ViewChild,AfterViewInit,ElementRef,Renderer2,OnDestroy,OnChanges,ChangeDetectionStrategy,Input } from '@angular/core';
+import { BootstrapSwitchModule } from 'angular2-bootstrap-switch';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 @Component({
@@ -11,38 +12,26 @@ import { OnInit,ViewChild,AfterViewInit,ElementRef,OnDestroy,OnChanges,ChangeDet
 })
 export class PurchaseInvoiceComponent implements OnInit,AfterViewInit {
   // colorTheme = 'theme-dark-blue';
-  // minDate = new Date(2017, 5, 10);
-  // maxDate = new Date(2018, 9, 15);
-  // _bsValue1: Date;
-  // _bsValue2: Date;
-  // constructor() { }
-  // get bsValue1(): Date {
-  //   return this._bsValue1;
-  // }
-  // set bsValue1(v1: Date) {
-  //   console.log(v1);
-  //   this._bsValue1 = v1;
-  // }
-  // get bsValue2(): Date {
-  //   return this._bsValue2;
-  // }
-  // set bsValue2(v2: Date) {
-  //   console.log(v2);
-  //   this._bsValue2 = v2;
-  // }
+  constructor(private renderer: Renderer2, private el: ElementRef) {}
   colorTheme = 'theme-green';
+
 Left;
 Right;
   itemObjectsLeft: any[] = [
-    { id: 1, name: 'Suprafata', tip: 'Text', value: 'Text' },
-    { id: 2, name: 'Agent', tip: 'Text', value: 'Text'   },
-    { id: 3, name: 'DataEfectivaPlata', tip: 'Date', value: 'Date'  },
-    { id: 3, name: 'ValoareEfectivaPlata', tip: 'Numeric', value: 'Numeric'  }
+    { id: 1, name: 'Suprafata', tip: '1', value: 'Text' },
+    { id: 2, name: 'Agent', tip: '1', value: 'Text'   },
+    { id: 3, name: 'DataEfectivaPlata', tip: '2', value: 'Date'  },
+    { id: 4, name: 'ValoareEfectivaPlata', tip: '3', value: 'Numeric'  }
   ];
  
-  itemObjectsRight: any[] = [
-   
-  ];
+  itemObjectsRight: any[] = [];
+
+  TextType : false;
+  DateType: false;
+  NumericType: false ;
+  DataRezult: false;
+
+
 
   // myFunction() {
   //   var node = document.createElement("LI");
@@ -56,11 +45,17 @@ Right;
   @ViewChild('someInput') someInput: ElementRef;
 
   ngAfterViewInit() {
-    this.someInput.nativeElement.value = "Anchovies! 🍕🍕";
+    // this.someInput.nativeElement.value = "Anchovies! 🍕🍕";
+    const div = this.renderer.createElement('div');
+    const text = this.renderer.createText('Hello sasjasljdlkjaslkdjasljdlaksjdlkajlkdjalksjdlkasjlkdjalkjdlaskjdlkasjdslakjdkljaskljlkjsajdk world!');
+    this.renderer.appendChild(div, text);
+    this.renderer.appendChild(this.el.nativeElement, div);
   }
 
   ngOnInit() {
     this.bsConfig = Object.assign({}, { containerClass: this.colorTheme });
+
+
   }
 
   bsConfig: Partial<BsDatepickerConfig>;

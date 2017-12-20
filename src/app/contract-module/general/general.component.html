@@ -1,3 +1,6 @@
-<p>
-  general works!
-</p>
+
+<div class="Editor" >
+  <p-editor [(ngModel)]="text" (onTextChange)="onTextChange($event)" [style]="{'height':'320px'}"></p-editor>
+  {{ text }}
+</div>
+
