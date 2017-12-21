@@ -56,7 +56,7 @@
                             </div>
                           </div>
                         </div>
-                    
+
                 </div>
                 <br>
                 <div class="row">
@@ -139,44 +139,37 @@
             </div>
           </div>
         </div>
-       
-        <div class="col-5">
+       <button (click)="Afiseaza()">Editeaza Date</button>
+
+        <div class="col-5" *ngIf="IsShow">
             <div class="card" id="DragRezult">
                 <div class="card-block" >
-        <table class="table">
+        <table class="table" >
           <thead>
             <th>Nume</th>
             <th>Tip</th>
             <th>Valoare</th>
           </thead>
           <tbody>
-            <tr *ngFor="let items of itemObjectsRight"> 
+            <tr *ngFor="let items of itemObjectsRight; index as i"> 
 
               <td>{{ items.name }}</td>
               <td>{{ items.tip }}</td>
-              <td>
-                <!-- trebuie sa fie variabila in functie de tip data cu ngif in functie de tip-->
-              
-            
+              <td> 
+
                 <div *ngIf="items.tip==1; then thenTemplateName; else elseTemplateName">
                 </div>
                 
                 <ng-template #thenTemplateName>
                     <div class="form-group">
-                        <input type="text" class="form-control" id="exampleInputEmail1">
+                        <input type="text" [(ngModel)]="TextProprietate[i]" class="form-control" name="TextProprietate{{i}}" id="TextProprietate{{i}}">
                       </div>
                 </ng-template>
                 
                 <ng-template #elseTemplateName>
-                    <div class="input-group">
-                        <input type="text" class="form-control"  #dp3="bsDatepicker" bsDatepicker [(bsValue)]="bsValue3">
-                        <div class="input-group-btn">
-                          <button class="btn btn-default" (click)="dp3.show() ">
-                            <span class="glyphicon glyphicon-calendar"></span>
-                          </button>
-                        </div>
-                      </div>
+                    <p-calendar [(ngModel)]="DataProprieate[i]" name="date{{i}}" id="DataProprieate{{i}}" placeholder={{i}}></p-calendar>
                 </ng-template>
+
 
               </td>
             </tr>
@@ -184,13 +177,8 @@
           </table> 
         </div>
       </div>
-    </div>   
-          
-        
-          <!-- <input #someInput placeholder="Nu merge!"> -->
-
-
-                </div>
+    </div>       
+            </div>
                 <br>
                 <div class="row">
                   <div class="col-12">
@@ -209,7 +197,7 @@
                   </div>
                   </div>
 
-
+                  
 
               </form>
             </div>

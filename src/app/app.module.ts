@@ -13,6 +13,7 @@ import { BootstrapSwitchModule } from 'angular2-bootstrap-switch';
 import {EditorModule} from 'primeng/primeng';
 import {SharedModule} from "primeng/components/common/shared";
 import {QuillModule} from 'ngx-quill';
+import {CalendarModule} from 'primeng/primeng';
 
 import * as $ from 'jquery';
 import 'rxjs/add/observable/of';
@@ -86,6 +87,7 @@ export const appRoutes: Routes = [
     EditorModule,
     SharedModule,
     QuillModule,
+    CalendarModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
