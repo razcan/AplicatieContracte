@@ -1,17 +1,92 @@
 
-
-
-<!-- <div id="container" class="container" >
-  <p-editor [(ngModel)]="text" (onTextChange)="onTextChange($event)" [style]="{'height':'320px'}"></p-editor>
-  {{ text }}
-</div> -->
-
 <div class="container">
-<label  >
-  <span>Editeaza contract</span>
-<quill-editor [(ngModel)]="text" [style]="{'height': '600px'}"
-      ></quill-editor>
+    <div class="row">
+      
+      <div class="col-3">
+          
+              <label for="sel1">Selecteaza Template</label>
+              <select class="form-control" id="sel1">
+                <option>Template Ctr. Vanzare</option>
+                <option>Template Ctr. Achizitie</option>
+                <option>Template Ctr. Blank</option>
+              </select>
+      </div>     
 
-</label>
-{{ text }}
-</div>
+      <div class="col-6"></div>
+          
+            
+  
+      <div class="col-3" id="Fisier">
+          <label for="Nr">Ataseaza Fisier</label>
+          <br>
+          <label class="btn btn-success btn-file">
+            Browse
+            <input type="file" style="display: none;">
+          </label>
+        </div>
+
+
+      </div>
+      <br>
+      <div class="row">
+      <div class="col-8">
+          <label  >
+              <span>Editeaza contract</span>
+            <quill-editor [(ngModel)]="text" [style]="{'height': '600px'}"
+                  ></quill-editor>
+            
+            </label>
+            {{ text }}
+           
+      </div>
+      <div class="col-3">
+        <br>
+          <table class="table table-bordered">
+              <thead>
+                <tr>
+                  <th>Nume Fisier</th>
+                  <th>Data Adaugare</th>
+                  <th>User</th>
+                  <th>Actiune</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><a href="">Doc123.doc</a></td>
+                  <td>2017.04.08</td>
+                  <td>mihaela</td>
+                  <td><button type="button" class="btn btn-danger">Sterge</button></td>
+                </tr>
+                <tr>
+                    <td><a href="">Doc dada 34.doc</a></td>
+                    <td>2017.02.12</td>
+                    <td>ioana</td>
+                    <td><button type="button" class="btn btn-danger">Sterge</button></td>
+                </tr>
+                <tr>
+                    <td><a href="">Doc tes 342.doc</a></td>
+                  <td>2017.02.12</td>
+                  <td>vasile</td>
+                  <td><button type="button" class="btn btn-danger">Sterge</button></td>
+                </tr>
+              </tbody>
+            </table>
+      </div>
+
+      </div>
+      <br>
+      <div class="row">
+      <div class="col-4">
+        <button>Salveaza</button>
+        <button>Salveaza ca Template</button>
+    
+      </div>
+    </div>
+    <div class="row">
+        <div class="col-4">
+            <button>Exporta Word</button>
+            <button>Exporta PDF</button>
+          </div>
+          </div>
+  </div>
+

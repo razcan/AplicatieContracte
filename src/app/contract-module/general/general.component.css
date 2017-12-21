@@ -1,9 +1,9 @@
-.container{
-    padding-left: 300px !important;
-    height: 320px;
-    width: 900px !important;
-}
+
 body {
     padding: 2em;
     font-family: Arial, Helvetica, sans-serif;
+  }
+
+  #Fisier{
+      text-align: left !important;
   }
