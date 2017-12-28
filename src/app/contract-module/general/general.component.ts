@@ -26,9 +26,8 @@ export class GeneralComponent {
   constructor(private http: Http) {}
 
 SalveazaTemplate(){
-  alert(this.text);
   this.http.post('http://localhost:3000/saveTemplate', {text: this.text}).subscribe((res) => {
-    const result = res.json();
+    // const result = res.json();
   });
 }
 

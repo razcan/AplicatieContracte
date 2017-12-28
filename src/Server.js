@@ -8,11 +8,9 @@ const connection = mysql.createConnection({
   password : 'root',
   database : 'hello'
 });
-
 connection.connect();
 
 const app = express()
-
 // app.use(bodyParser.json());
 app.use(cors())
 app.use(bodyParser.json({limit: "50mb"}));
@@ -20,7 +18,6 @@ app.use(bodyParser.urlencoded({limit: "50mb", extended: true, parameterLimit:500
 
 
 app.get('/users', (req, res) => {
-
   res.send([{name: "gigi 1"}])
 })
 
