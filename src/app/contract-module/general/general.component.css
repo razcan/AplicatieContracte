@@ -7,3 +7,7 @@ body {
   #Fisier{
       text-align: left !important;
   }
+
+  .container {
+      margin-left: 300px !important;
+  }
