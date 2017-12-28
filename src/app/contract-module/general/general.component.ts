@@ -9,6 +9,7 @@ import {QuillModule} from 'ngx-quill';
 import {FileUploadModule} from 'primeng/primeng';
 import { Http, HttpModule } from '@angular/http';
 import { HttpParams, HttpClient } from '@angular/common/http';
+import 'rxjs/add/operator/map';
 // declare var Quill: any;
 
 
@@ -17,6 +18,7 @@ import { HttpParams, HttpClient } from '@angular/common/http';
   templateUrl: './general.component.html',
   styleUrls: ['./general.component.css']
 })
+
 export class GeneralComponent {
 
   public text: string;

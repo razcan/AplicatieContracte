@@ -4,6 +4,7 @@ import { RouterModule, Routes, Router } from '@angular/router';
 import {FormControl} from '@angular/forms';
 import {HttpModule} from '@angular/http';
 import { OnInit } from '@angular/core/src/metadata/lifecycle_hooks';
+
 // import $ = require('jquery')
 // import * as $ from 'jquery';
 

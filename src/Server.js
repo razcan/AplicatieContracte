@@ -13,8 +13,11 @@ connection.connect();
 
 const app = express()
 
-app.use(bodyParser.json());
+// app.use(bodyParser.json());
 app.use(cors())
+app.use(bodyParser.json({limit: "50mb"}));
+app.use(bodyParser.urlencoded({limit: "50mb", extended: true, parameterLimit:50000}));
+
 
 app.get('/users', (req, res) => {
 
@@ -33,7 +36,7 @@ var data = new Date();
 
   //create file
 fs = require('fs');
-fs.writeFile("/Users/razvan/angular/NewProject/AplicatieContracte/src/app/contract-module/documents/HtmlTemplateContract/template1.html", " ", function (err) {
+fs.writeFile("/Users/razvan/angular/NewProject/AplicatieContracte/src/app/contract-module/documents/HtmlTemplateContract/template1.html", "", function (err) {
     if (err) 
         return console.log(err);
    // console.log("A fost creat fisierul la data"+data);
@@ -49,7 +52,8 @@ fs.writeFile("/Users/razvan/angular/NewProject/AplicatieContracte/src/app/contra
   
 //adauga ceva in fisier
   var fs1 = require('fs');  
-  fs1.appendFile("/Users/razvan/angular/NewProject/AplicatieContracte/src/app/contract-module/documents/HtmlTemplateContract/template1.html", templateHtml.text , (err) => {
+  var continut = templateHtml.text;
+  fs1.appendFile("/Users/razvan/angular/NewProject/AplicatieContracte/src/app/contract-module/documents/HtmlTemplateContract/template1.html", continut , (err) => {
       if (err) throw err;
       // res.send("Adaugat ceva in fisier")
       console.log('The "data to append" was appended to file!');
