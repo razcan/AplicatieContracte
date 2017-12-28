@@ -33,30 +33,30 @@ var data = new Date();
 
   //create file
 fs = require('fs');
-fs.writeFile("/Users/razvan/angular/NewProject/AplicatieContracte/src/app/contract-module/documents/HtmlTemplateContract/test999.txt", "A fost creat ", function (err) {
+fs.writeFile("/Users/razvan/angular/NewProject/AplicatieContracte/src/app/contract-module/documents/HtmlTemplateContract/template1.html", " ", function (err) {
     if (err) 
         return console.log(err);
-    console.log("A fost creat fisierul la data"+data);
+   // console.log("A fost creat fisierul la data"+data);
     // res.send("A fost creat fisierul");
 });
   
   // verifica existenta unui fisier
   var fs2= require('fs');
-  fs2.exists("/Users/razvan/angular/NewProject/AplicatieContracte/src/app/contract-module/documents/HtmlTemplateContract/test999.txt", (exists) => {
+  fs2.exists("/Users/razvan/angular/NewProject/AplicatieContracte/src/app/contract-module/documents/HtmlTemplateContract/template1.html", (exists) => {
     console.log(exists ? "it's there" : "is not there!");
     res.send(exists ? "it's there" : "is not there!");
   });
   
 //adauga ceva in fisier
   var fs1 = require('fs');  
-  fs1.appendFile("/Users/razvan/angular/NewProject/AplicatieContracte/src/app/contract-module/documents/HtmlTemplateContract/test999.txt", templateHtml.text , (err) => {
+  fs1.appendFile("/Users/razvan/angular/NewProject/AplicatieContracte/src/app/contract-module/documents/HtmlTemplateContract/template1.html", templateHtml.text , (err) => {
       if (err) throw err;
       // res.send("Adaugat ceva in fisier")
       console.log('The "data to append" was appended to file!');
   });
   //citeste continut fisier
   var fs4 = require('fs');
-      fs4.readFile("/Users/razvan/angular/NewProject/AplicatieContracte/src/app/contract-module/documents/HtmlTemplateContract/test999.txt", function (err, data) {
+      fs4.readFile("/Users/razvan/angular/NewProject/AplicatieContracte/src/app/contract-module/documents/HtmlTemplateContract/template1.html", function (err, data) {
         
         if (err) {
       return console.error(err);
