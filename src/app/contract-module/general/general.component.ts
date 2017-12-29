@@ -31,11 +31,12 @@ export class GeneralComponent {
 
   public text: string;
   public source;
+  TemplateName;
   display: boolean = false;
   constructor(private http: Http) {}
 
 SalveazaTemplate(){
-  this.http.post('http://localhost:3000/saveTemplate', {text: this.text}).subscribe((res) => {
+  this.http.post('http://localhost:3001/saveTemplate', {text: this.text, TemplateName: this.TemplateName}).subscribe((res) => {
     // const result = res.json();
   });
 }

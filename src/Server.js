@@ -11,60 +11,82 @@ const connection = mysql.createConnection({
 connection.connect();
 
 const app = express()
-// app.use(bodyParser.json());
 app.use(cors())
 app.use(bodyParser.json({limit: "50mb"}));
 app.use(bodyParser.urlencoded({limit: "50mb", extended: true, parameterLimit:50000}));
 
 
-app.get('/users', (req, res) => {
-  res.send([{name: "gigi 1"}])
+
+app.get('/listTemplate', (req, res) => {
+  var fs22 = require("fs"),
+  path = require("path");
+  
+  var p = "/Users/razvan/angular/NewProject/AplicatieContracte/src/app/contract-module/documents/HtmlTemplateContract/"
+  var rezultat =[];
+fs22.readdir(p, function (err, files) {
+    if (err) {
+        throw err;
+    }
+
+    files.map(function (file) {
+        return path.join(p, file);
+    }).filter(function (file) {
+        return fs22.statSync(file).isFile();
+    }).forEach(function (file) {
+        console.log(file.substring(107,200));
+        rezultat.push(file.substring(107,200));
+        //
+       
+       // res.send(file.substring(107,200));
+    });
+    return res.json(rezultat);
+});
+
 })
-
-
 
 //salveaza template
 
 app.post('/saveTemplate', (req, res) => {
   let templateHtml = req.body;
-  console.log(templateHtml);
+  console.log(templateHtml.text);
+  console.log(templateHtml.TemplateName);
 
 var data = new Date();
-
+var filename = "/Users/razvan/angular/NewProject/AplicatieContracte/src/app/contract-module/documents/HtmlTemplateContract/"+templateHtml.TemplateName+".html"
   //create file
 fs = require('fs');
-fs.writeFile("/Users/razvan/angular/NewProject/AplicatieContracte/src/app/contract-module/documents/HtmlTemplateContract/template1.html", "", function (err) {
+fs.writeFile(filename, "", function (err) {
     if (err) 
         return console.log(err);
    // console.log("A fost creat fisierul la data"+data);
     // res.send("A fost creat fisierul");
 });
   
-  // verifica existenta unui fisier
-  var fs2= require('fs');
-  fs2.exists("/Users/razvan/angular/NewProject/AplicatieContracte/src/app/contract-module/documents/HtmlTemplateContract/template1.html", (exists) => {
-    console.log(exists ? "it's there" : "is not there!");
-    res.send(exists ? "it's there" : "is not there!");
-  });
+//   // verifica existenta unui fisier
+//   var fs2= require('fs');
+//   fs2.exists("/Users/razvan/angular/NewProject/AplicatieContracte/src/app/contract-module/documents/HtmlTemplateContract/template1.html", (exists) => {
+//     console.log(exists ? "it's there" : "is not there!");
+//     res.send(exists ? "it's there" : "is not there!");
+//   });
   
 //adauga ceva in fisier
   var fs1 = require('fs');  
   var continut = templateHtml.text;
-  fs1.appendFile("/Users/razvan/angular/NewProject/AplicatieContracte/src/app/contract-module/documents/HtmlTemplateContract/template1.html", continut , (err) => {
+  fs1.appendFile(filename, continut , (err) => {
       if (err) throw err;
       // res.send("Adaugat ceva in fisier")
-      console.log('The "data to append" was appended to file!');
+      //console.log('The "data to append" was appended to file!');
   });
-  //citeste continut fisier
-  var fs4 = require('fs');
-      fs4.readFile("/Users/razvan/angular/NewProject/AplicatieContracte/src/app/contract-module/documents/HtmlTemplateContract/template1.html", function (err, data) {
+//   //citeste continut fisier
+//   var fs4 = require('fs');
+//       fs4.readFile("/Users/razvan/angular/NewProject/AplicatieContracte/src/app/contract-module/documents/HtmlTemplateContract/template1.html", function (err, data) {
         
-        if (err) {
-      return console.error(err);
-   }
-   console.log("Asynchronous read: " + data.toString());
+//         if (err) {
+//       return console.error(err);
+//    }
+//    console.log("Asynchronous read: " + data.toString());
 
-});
+// });
 
 //sterge fisier
 // var fs5 = require("fs");
@@ -165,4 +187,4 @@ fs.writeFile("/Users/razvan/angular/NewProject/AplicatieContracte/src/app/contra
 //     })
 
 
-app.listen(3000, () => console.log('Example app listening on port 3000!'))
+app.listen(3001, () => console.log('Example app listening on port 3001!'))

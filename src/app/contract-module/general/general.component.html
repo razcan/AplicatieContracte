@@ -78,7 +78,7 @@
       <div class="row">
       <div class="col-4">
         <!-- <button>Salveaza</button> -->
-        <button (click)="SalveazaTemplate()">Salveaza ca Template</button>
+        <!-- <button (click)="SalveazaTemplate()">Salveaza ca Template</button> -->
         
     
       </div>
@@ -88,11 +88,13 @@
             <button>Exporta Word</button>
             <button>Exporta PDF</button>
 
-            <p-dialog header="Title" [(visible)]="display">
-                Content
+            <p-dialog header="Salveaza template" [(visible)]="display">
+                Denumire Template <input type="text" name="fname" [(ngModel)]="TemplateName">
+                <button (click)="SalveazaTemplate()">Salveaza</button>
+
             </p-dialog>
             
-            <button type="text" (click)="showDialog()" pButton icon="fa-external-link-square" label="Show">Modal</button>
+            <button type="text" (click)="showDialog()" pButton label="Salveaza template"></button>
             
           </div>
           </div>
