@@ -15,6 +15,7 @@ import {SharedModule} from "primeng/components/common/shared";
 import {QuillModule} from 'ngx-quill';
 import {CalendarModule} from 'primeng/primeng';
 import {FileUploadModule} from 'primeng/primeng';
+import {DialogModule} from 'primeng/primeng';
 
 import * as $ from 'jquery';
 import 'rxjs/add/observable/of';
@@ -91,6 +92,7 @@ export const appRoutes: Routes = [
     QuillModule,
     CalendarModule,
     FileUploadModule,
+    DialogModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

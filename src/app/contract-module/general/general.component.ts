@@ -7,9 +7,17 @@ import { ViewChild, ElementRef } from '@angular/core';
 import * as Quill from 'quill';
 import {QuillModule} from 'ngx-quill';
 import {FileUploadModule} from 'primeng/primeng';
+import {DialogModule} from 'primeng/primeng';
 import { Http, HttpModule } from '@angular/http';
 import { HttpParams, HttpClient } from '@angular/common/http';
 import 'rxjs/add/operator/map';
+import {platformBrowserDynamic }    from '@angular/platform-browser-dynamic';
+import {InputTextModule,DataTableModule} from 'primeng/primeng';
+import {CommonModule} from '@angular/common'
+
+@NgModule({
+  imports:      [InputTextModule,DataTableModule,ButtonModule,DialogModule]
+})
 // declare var Quill: any;
 
 
@@ -23,6 +31,7 @@ export class GeneralComponent {
 
   public text: string;
   public source;
+  display: boolean = false;
   constructor(private http: Http) {}
 
 SalveazaTemplate(){
@@ -31,6 +40,10 @@ SalveazaTemplate(){
   });
 }
 
+
+showDialog() {
+        this.display = true;
+}
 
   public onTextChange($event): void {
     this.source = $event.source;

@@ -79,6 +79,7 @@
       <div class="col-4">
         <!-- <button>Salveaza</button> -->
         <button (click)="SalveazaTemplate()">Salveaza ca Template</button>
+        
     
       </div>
     </div>
@@ -86,6 +87,13 @@
         <div class="col-4">
             <button>Exporta Word</button>
             <button>Exporta PDF</button>
+
+            <p-dialog header="Title" [(visible)]="display">
+                Content
+            </p-dialog>
+            
+            <button type="text" (click)="showDialog()" pButton icon="fa-external-link-square" label="Show">Modal</button>
+            
           </div>
           </div>
   </div>
