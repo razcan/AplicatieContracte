@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { NgModule }      from '@angular/core';
 import { EditorModule } from 'primeng/primeng';
@@ -25,9 +25,9 @@ import {CommonModule} from '@angular/common'
   styleUrls: ['./general.component.css']
 })
 
-export class GeneralComponent implements OnInit {
+export class GeneralComponent implements  AfterViewInit  {
 
-  public text: string;
+  public text: any;
   public source;
   TemplateName;
   TemplateSelectat;
@@ -36,37 +36,35 @@ export class GeneralComponent implements OnInit {
   display: boolean = false;
   constructor(private http: Http) {}
   
-  HEROES = [
-    {id: 1, name:'Superman'},
-    {id: 2, name:'Batman'},
-    {id: 5, name:'BatGirl'},
-    {id: 3, name:'Robin'},
-    {id: 4, name:'Flash'}
-];
-
 RezultatFinal = [];
-  ngOnInit(): void {
+ContinutTemplate = [];
+ngAfterViewInit() {
 
-//     this.http.get('http://localhost:3001/listTemplate').subscribe((res) => {
-//     const rezultat = res.json();
-//     console.log(rezultat);
-//     console.log(this.HEROES);
-//     this.RezultatFinal=this.rezultat;
+    this.http.get('http://localhost:3001/listTemplate').subscribe((res) => {
+    const rezultat = res.json();
+    this.RezultatFinal=this.rezultat;
 
-//   }
-// );
+  }
+);
 }
 
 AfiseazaTemplate(){
   this.http.get('http://localhost:3001/listTemplate').subscribe((res) => {
     this.rezultat = res.json();
-    console.log(this.rezultat);
-    console.log(this.HEROES);
     this.RezultatFinal=this.rezultat;
   }
 );
 }
 
+IncarcaTemplate(){
+  this.http.get('http://localhost:3001/loadTemplate').subscribe((res) => {
+    this.rezultat = res.json();
+    this.ContinutTemplate=this.rezultat;
+    this.text = this.ContinutTemplate ;
+    console.log(this.ContinutTemplate);
+  }
+);
+}
 
 SalveazaTemplate(){
   this.http.post('http://localhost:3001/saveTemplate', {text: this.text, TemplateName: this.TemplateName}).subscribe((res) => {
@@ -86,8 +84,6 @@ showDialog() {
   @ViewChild('container') containerEl: ElementRef;
 
     private editor: Quill.Quill;
-
-    ngAfterViewInit() {
-    }
+    
 
 }
