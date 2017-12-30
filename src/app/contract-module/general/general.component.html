@@ -4,15 +4,16 @@
       
       <div class="col-3">
           
-              <label for="sel1">Incarca Template</label>
-             <ul *ngFor="let hero of HEROES">{{hero.name}}</ul>
-              <select  class="form-control" id="sel1">
-                <option *ngFor="let hero of HEROES"> 1 </option>
+              <label for="sel1">Incarca Template {{RezultatFinal}}</label>
+             <button (click)="AfiseazaTemplate()">Afiseaza</button>
+              <ul>
+                  <li *ngFor="let item of HEROES; let i = index">
+                    ({{i + 1 }}) {{ item.name }}
+                  </li>
+                </ul>
 
-          
-                    <!-- <option *ngFor="#obj of objArray" [value]="obj.value">{{obj.name}}</option> -->
-             
-
+              <select class="form-control" id="sel1">
+                <option *ngFor="let item of RezultatFinal; let i = index">{{i+1}} {{RezultatFinal}} </option>
               </select>
       </div>     
 
