@@ -49,6 +49,9 @@ ngAfterViewInit() {
 }
 
 AfiseazaTemplate(){
+
+  
+
   this.http.get('http://localhost:3001/listTemplate').subscribe((res) => {
     this.rezultat = res.json();
     this.RezultatFinal=this.rezultat;

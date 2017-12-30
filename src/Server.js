@@ -45,10 +45,13 @@ app.get('/listTemplate', (req, res) => {
 
 })
 
-app.get('/loadTemplate', (req,res) => {
+app.get('/loadTemplate/:nume', (req,res) => {
     //   //citeste continut fisier
+
+   // res.send('loadTemplate' + req.params.nume);   
+    var fisier="/Users/razvan/angular/NewProject/AplicatieContracte/src/app/contract-module/documents/HtmlTemplateContract/"+req.params.nume+".html";
     var fs4 = require('fs');
-        fs4.readFile("/Users/razvan/angular/NewProject/AplicatieContracte/src/app/contract-module/documents/HtmlTemplateContract/cacatel.html", function (err, data) {
+        fs4.readFile(fisier, function (err, data) {
 
           if (err) {
         return console.error(err);
