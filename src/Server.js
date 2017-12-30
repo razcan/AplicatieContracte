@@ -33,16 +33,14 @@ fs22.readdir(p, function (err, files) {
     }).filter(function (file) {
         return fs22.statSync(file).isFile();
     }).forEach(function (file) {
-        console.log(file.substring(107,200));
-
         var withoutFolder = (file.substring(107,200));
         var withoutExt = withoutFolder.substr(0,withoutFolder.length - 5);
         rezultat.push(withoutExt);
-        //
-       
-       // res.send(file.substring(107,200));
+        
     });
+    console.log(rezultat);
     return res.json(rezultat);
+    
 });
 
 })

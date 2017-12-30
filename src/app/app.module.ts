@@ -16,6 +16,7 @@ import {QuillModule} from 'ngx-quill';
 import {CalendarModule} from 'primeng/primeng';
 import {FileUploadModule} from 'primeng/primeng';
 import {DialogModule} from 'primeng/primeng';
+import {CommonModule} from '@angular/common'
 
 import * as $ from 'jquery';
 import 'rxjs/add/observable/of';
@@ -78,6 +79,7 @@ export const appRoutes: Routes = [
     BrowserModule,
     FormsModule,
     HttpModule,
+    CommonModule,
     BrowserAnimationsModule,
     RouterModule.forRoot(appRoutes),
     ButtonsModule.forRoot(),

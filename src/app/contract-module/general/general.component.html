@@ -5,10 +5,14 @@
       <div class="col-3">
           
               <label for="sel1">Incarca Template</label>
-              <select class="form-control" id="sel1">
-                <option>Template Ctr. Vanzare</option>
-                <option>Template Ctr. Achizitie</option>
-                <option>Template Ctr. Blank</option>
+             <ul *ngFor="let hero of HEROES">{{hero.name}}</ul>
+              <select  class="form-control" id="sel1">
+                <option *ngFor="let hero of HEROES"> 1 </option>
+
+          
+                    <!-- <option *ngFor="#obj of objArray" [value]="obj.value">{{obj.name}}</option> -->
+             
+
               </select>
       </div>     
 
@@ -99,4 +103,7 @@
           </div>
           </div>
   </div>
+
+
+
 
