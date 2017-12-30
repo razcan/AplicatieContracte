@@ -3,7 +3,7 @@
 
     <div class="col-3">
       <button (click)="AfiseazaTemplate()">Afiseaza Templateuri Existente</button>
-      <select class="form-control" id="sel1">
+      <select class="form-control" [(ngModel)]="numeTemplateSelectat">
         <option *ngFor="let item of RezultatFinal; let i = index"> {{RezultatFinal[i]}} </option>
       </select>
       <button (click)="IncarcaTemplate()">Incarca Template</button>
@@ -11,7 +11,7 @@
     <div class="col-6"></div>
 
     <div class="col-3" id="Fisier">
-      <label for="Nr">Ataseaza Fisier</label>
+      <label for="Nr">Ataseaza Fisier {{numeTemplateSelectat}}</label>
       <br>
       <label class="btn btn-success btn-file">
         Browse

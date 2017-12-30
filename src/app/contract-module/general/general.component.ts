@@ -33,6 +33,7 @@ export class GeneralComponent implements  AfterViewInit  {
   TemplateSelectat;
   ReturnTemplateName;
   rezultat;
+  numeTemplateSelectat;
   display: boolean = false;
   constructor(private http: Http) {}
   
@@ -49,9 +50,6 @@ ngAfterViewInit() {
 }
 
 AfiseazaTemplate(){
-
-  
-
   this.http.get('http://localhost:3001/listTemplate').subscribe((res) => {
     this.rezultat = res.json();
     this.RezultatFinal=this.rezultat;
@@ -60,7 +58,7 @@ AfiseazaTemplate(){
 }
 
 IncarcaTemplate(){
-  this.http.get('http://localhost:3001/loadTemplate').subscribe((res) => {
+  this.http.get('http://localhost:3001/loadTemplate/'+this.numeTemplateSelectat).subscribe((res) => {
     this.rezultat = res.json();
     this.ContinutTemplate=this.rezultat;
     this.text = this.ContinutTemplate ;
