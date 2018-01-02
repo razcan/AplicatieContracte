@@ -1,6 +1,8 @@
-const express = require('express')
-const bodyParser = require('body-parser')
-const cors = require('cors')
+const express = require('express');
+var multer  =   require('multer');
+const bodyParser = require('body-parser');
+const cors = require('cors');
+var path = require('path');
 const mysql = require('mysql');
 const connection = mysql.createConnection({
   host: 'localhost',
@@ -15,7 +17,32 @@ app.use(cors())
 app.use(bodyParser.json({ limit: "50mb" }));
 app.use(bodyParser.urlencoded({ limit: "50mb", extended: true, parameterLimit: 50000 }));
 
+// upload fisiere
+// specify the folder
+app.use(express.static(path.join(__dirname, 'uploads')));
+// headers and content type
+app.use(function (req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
 
+var storage = multer.diskStorage({
+  // destination
+  destination: function (req, file, cb) {
+    cb(null, './uploads/')
+  },
+  filename: function (req, file, cb) {
+    cb(null, file.originalname);
+  }
+});
+var upload = multer({ storage: storage });
+
+app.post("/upload", upload.array("uploads[]", 12), function (req, res) {
+  console.log('files', req.files);
+  res.send(req.files);
+});
+// upload fisiere
 
 app.get('/listTemplate', (req, res) => {
   var fs22 = require("fs"),

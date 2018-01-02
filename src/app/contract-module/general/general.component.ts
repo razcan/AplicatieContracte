@@ -34,7 +34,6 @@ export class GeneralComponent implements  AfterViewInit  {
   ReturnTemplateName;
   rezultat;
   numeTemplateSelectat;
-  display: boolean = false;
   constructor(private http: Http) {}
   
 RezultatFinal = [];
@@ -66,6 +65,30 @@ IncarcaTemplate(){
   }
 );
 }
+filesToUpload: Array<File> = [];
+
+upload() {
+  const formData: any = new FormData();
+  const files: Array<File> = this.filesToUpload;
+  console.log(files);
+
+  for(let i =0; i < files.length; i++){
+      formData.append("uploads[]", files[i], files[i]['name']);
+  }
+  console.log('form data variable :   '+ formData.toString());
+  // formData.append("uploads[]", files[0], files[0]['name']);
+  // this.address.documents = files.toString();
+
+      this.http.post('http://localhost:3001/upload', formData)
+      .map(files => files.json())
+      .subscribe(files => console.log('files', files))
+}
+
+fileChangeEvent(fileInput: any) {
+  this.filesToUpload = <Array<File>>fileInput.target.files;
+  //this.product.photo = fileInput.target.files[0]['name'];
+}
+
 
 SalveazaTemplate(){
   
@@ -73,6 +96,7 @@ SalveazaTemplate(){
     // const result = res.json();
   });
 }
+
 
 display: boolean = false;
 

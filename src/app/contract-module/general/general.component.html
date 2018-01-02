@@ -2,7 +2,7 @@
 <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
 
 
-<div class="container" id="toolbar-container">
+<div class="container">
   <div class="row">
 
     <div class="col-3">
@@ -38,6 +38,13 @@
 
     </div>
     <div class="col-3">
+     
+        <input id="cin" name="cin" type="file" (change)="fileChangeEvent($event)" placeholder="Upload a file..." multiple/>
+        
+        <button type="button" class="btn btn-success btn-s" (click)="upload()">
+            <i class="glyphicon glyphicon-open-file"></i>&nbsp;Upload
+        </button>
+
       <br>
       <table class="table table-bordered">
         <thead>
