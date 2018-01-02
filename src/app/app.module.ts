@@ -22,7 +22,7 @@ import * as $ from 'jquery';
 import 'rxjs/add/observable/of';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/switchMap';
-
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 import { ContractModuleComponent } from './contract-module/contract-module.component';
 import { GeneralComponent } from './contract-module/general/general.component';
@@ -88,6 +88,7 @@ export const appRoutes: Routes = [
     AlertModule.forRoot(),
     SortableModule.forRoot(),
     BootstrapSwitchModule.forRoot(),
+    NgbModule.forRoot(),
     BrowserAnimationsModule,
     EditorModule,
     SharedModule,

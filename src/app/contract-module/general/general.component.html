@@ -1,4 +1,8 @@
-<div class="container">
+<link href='https://fonts.googleapis.com/css?family=Alegreya' rel='stylesheet'>
+<link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
+
+
+<div class="container" id="toolbar-container">
   <div class="row">
 
     <div class="col-3">
@@ -11,7 +15,7 @@
     <div class="col-6"></div>
 
     <div class="col-3" id="Fisier">
-      <label for="Nr">Ataseaza Fisier {{numeTemplateSelectat}}</label>
+      <label for="Nr">Ataseaza Fisier</label>
       <br>
       <label class="btn btn-success btn-file">
         Browse
@@ -22,14 +26,15 @@
 
   </div>
   <br>
-  <div class="row">
+  <div class="row" id="toolbar-container">
     <div class="col-8">
       <label>
-        <span>Editeaza contract</span>
-        <quill-editor [(ngModel)]="text" [style]="{'height': '600px'}"></quill-editor>
+        <span> </span>
+        <quill-editor id="editor-container" [(ngModel)]="text" [style]="{'height': '600px'}" placeholder="Editare contract ..."
+        ></quill-editor>
 
       </label>
-      {{ text }}
+      <!-- {{ text }} -->
 
     </div>
     <div class="col-3">
@@ -93,7 +98,7 @@
       <button>Exporta Word</button>
       <button>Exporta PDF</button>
 
-      <p-dialog header="Salveaza template" [(visible)]="display">
+      <p-dialog header="Salveaza template" [(visible)]="display" modal="modal">
         Denumire Template
         <input type="text" name="fname" [(ngModel)]="TemplateName">
         <button (click)="SalveazaTemplate()">Salveaza</button>
@@ -105,3 +110,5 @@
     </div>
   </div>
 </div>
+
+

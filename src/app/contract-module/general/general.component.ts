@@ -68,14 +68,16 @@ IncarcaTemplate(){
 }
 
 SalveazaTemplate(){
+  
   this.http.post('http://localhost:3001/saveTemplate', {text: this.text, TemplateName: this.TemplateName}).subscribe((res) => {
     // const result = res.json();
   });
 }
 
+display: boolean = false;
 
 showDialog() {
-        this.display = true;
+    this.display = true;
 }
 
   public onTextChange($event): void {
