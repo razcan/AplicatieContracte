@@ -58,6 +58,16 @@
               <button type="button" class="btn btn-danger" (click)="StergeFisier(files)">
                   <span class="glyphicon glyphicon-remove"></span> Sterge
                 </button>
+
+                <p-dialog header="Sterge Fisier" [(visible)]="display2" modal="modal">
+                    Doriti Stergerea fisierului ?
+                  
+                    <button (click)="StergeFisier2(files)">Da</button>
+                    <button>Nu</button>
+            
+                  </p-dialog>
+            
+                  <button type="text" (click)="showDialog2()" pButton label="Sterge"></button>
               
             </td>
           </tr>

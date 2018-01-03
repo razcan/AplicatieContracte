@@ -26,7 +26,9 @@ import {CommonModule} from '@angular/common'
 })
 
 export class GeneralComponent implements  AfterViewInit  {
-
+  
+  display: boolean = false;
+  display2: boolean = false;
   public text: any;
   public source;
   TemplateName;
@@ -57,6 +59,16 @@ StergeFisier(FisierDeSters){
   window.open(filerequest,"_parent");
   window.close();
 }
+
+StergeFisier2(FisierDeSters){
+  var DoarDenumirefisier=(FisierDeSters.substring(64, 200));
+  var filerequest = 'http://localhost:3001/StergeFisier'+'/'+DoarDenumirefisier;
+  
+  this.http.get(filerequest)
+  .subscribe(data => alert('Fisierul a fost sters.'));
+
+}
+
 
 DownloadFisier(FisierSelectat){
   var DoarDenumirefisier=(FisierSelectat.substring(64, 200));
@@ -125,10 +137,13 @@ SalveazaTemplate(){
 }
 
 
-display: boolean = false;
+
 
 showDialog() {
     this.display = true;
+}
+showDialog2() {
+  this.display2 = true;
 }
 
   public onTextChange($event): void {

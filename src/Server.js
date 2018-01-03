@@ -21,7 +21,8 @@ app.use(bodyParser.urlencoded({ limit: "50mb", extended: true, parameterLimit: 5
 app.get('/StergeFisier/:file', (req, res) => {
   var fs = require('fs');
   var filePath = '/Users/razvan/angular/NewProject/AplicatieContracte/src/uploads/'+req.params.file;
-  console.log(filePath); 
+  console.log('A fost sters documentul: '+filePath); 
+  res.send(req.filePath);
   fs.unlinkSync(filePath);
 });
 // sterge fisier
