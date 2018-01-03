@@ -63,10 +63,9 @@ StergeFisier(FisierDeSters){
 StergeFisier2(FisierDeSters){
   var DoarDenumirefisier=(FisierDeSters.substring(64, 200));
   var filerequest = 'http://localhost:3001/StergeFisier'+'/'+DoarDenumirefisier;
+  this.http.get(filerequest).subscribe();
+  this.display2 = false;
   
-  this.http.get(filerequest)
-  .subscribe(data => alert('Fisierul a fost sters.'));
-
 }
 
 
