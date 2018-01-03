@@ -50,12 +50,20 @@ ngOnInit(){
 ngAfterViewInit() {
 }
 
+StergeFisier(FisierDeSters){
+  //alert('http://localhost:3001/StergeFisier/'+FisierDeSters);
+  var DoarDenumirefisier=(FisierDeSters.substring(64, 200));
+  var filerequest = 'http://localhost:3001/StergeFisier'+'/'+DoarDenumirefisier;
+  window.open(filerequest,"_parent");
+  window.close();
+}
+
 DownloadFisier(FisierSelectat){
   var DoarDenumirefisier=(FisierSelectat.substring(64, 200));
  // alert('http://localhost:3001/downloadFileAttached'+'/'+DoarDenumirefisier);
   // this.http.get('http://localhost:3001/downloadFileAttached'+'/'+DoarDenumirefisier)
-var filerequest = 'http://localhost:3001/downloadFileAttached'+'/'+DoarDenumirefisier;
-window.open(filerequest);
+var filerequest = 'http://localhost:3001/downloadFileAttached/'+DoarDenumirefisier;
+window.open(filerequest,"_parent");
 
 }
 

@@ -51,11 +51,13 @@
           <tr *ngFor="let files of FilesListResult; let i = index"> 
               
             <td >
-              <a href="" (click)="DownloadFisier(files)" 
-              >{{FilesListResult[i]}} </a>
+              <button id="buttonDownload" (click)="DownloadFisier(files)">{{FilesListResult[i]}}</button>
             </td>
             <td>
-              <button type="button" class="btn btn-danger">Sterge</button>
+              
+              <button type="button" class="btn btn-danger" (click)="StergeFisier(files)">
+                  <span class="glyphicon glyphicon-remove"></span> Sterge
+                </button>
               
             </td>
           </tr>
@@ -64,9 +66,6 @@
       </table>
      
       <button (click)="AfiseazaListaFisiere()">Incarca</button>
-      <a href="">
-      Download
-      </a>
     </div>
 
   </div>

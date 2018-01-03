@@ -17,6 +17,16 @@ app.use(cors())
 app.use(bodyParser.json({ limit: "50mb" }));
 app.use(bodyParser.urlencoded({ limit: "50mb", extended: true, parameterLimit: 50000 }));
 
+// sterge fisier
+app.get('/StergeFisier/:file', (req, res) => {
+  var fs = require('fs');
+  var filePath = '/Users/razvan/angular/NewProject/AplicatieContracte/src/uploads/'+req.params.file;
+  console.log(filePath); 
+  fs.unlinkSync(filePath);
+});
+// sterge fisier
+
+
 // upload fisiere
 // specify the folder
 app.use(express.static(path.join(__dirname, 'uploads')));

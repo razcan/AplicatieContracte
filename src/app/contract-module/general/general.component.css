@@ -11,3 +11,14 @@ body {
   .container {
       margin-left: 300px !important;
   }
+
+  #buttonDownload {
+    background-color: Transparent;
+    background-repeat:no-repeat;
+    border: none;
+    cursor:pointer;
+    overflow: hidden;
+    outline:none;
+    color: blue !important;
+
+}
