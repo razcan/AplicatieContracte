@@ -72,6 +72,16 @@ app.get('/listTemplate', (req, res) => {
 
 })
 
+// download file from server
+app.get('/downloadFileAttached/:file', function(req, res){
+  var file ='uploads/'+req.params.file;
+  console.log('Ai downloadat fisierul: '+file);
+  res.download(file); // Set disposition and send it.
+
+});
+
+// download file from server
+
 app.get('/loadTemplate/:nume', (req,res) => {
     //   //citeste continut fisier
 
@@ -88,6 +98,35 @@ app.get('/loadTemplate/:nume', (req,res) => {
   });
 })
 
+// incarca lista fisiere atasate contract
+
+  app.get('/loadAttachments', (req, res) => {
+    var fs29 = require("fs"),
+      path = require("path");
+  
+    var p = "/Users/razvan/angular/NewProject/AplicatieContracte/src/uploads/"
+    var FileList = [];
+    fs29.readdir(p, function (err, files) {
+      if (err) {
+        throw err;
+      }
+  
+      files.map(function (file) {
+        return path.join(p, file);
+      }).filter(function (file) {
+        return fs29.statSync(file).isFile();
+      }).forEach(function (file) {
+        // var withoutFolder = (file.substring(64, 200));
+        // FileList.push(withoutFolder);
+        FileList.push(file);
+  
+      });
+      console.log(FileList);
+      return res.json(FileList);
+  
+    });
+  
+  })
 //salveaza template
 
 app.post('/saveTemplate', (req, res) => {
@@ -146,9 +185,6 @@ app.post('/saveTemplate', (req, res) => {
 })
 
 
-// app.get('/cvc/:id', (req, res) => {
-//   res.send({name: "gigi", id: req.params.id})
-// })
 
 // app.get('/cv/:ID', (req, res) => {
 // var user_id = req.param('ID');

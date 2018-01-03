@@ -33,17 +33,36 @@ export class GeneralComponent implements  AfterViewInit  {
   TemplateSelectat;
   ReturnTemplateName;
   rezultat;
+  FilesList;
   numeTemplateSelectat;
+  FisierSelectat;
   constructor(private http: Http) {}
   
 RezultatFinal = [];
 ContinutTemplate = [];
+public FilesListResult =[];
+public ListaFisiere = [];
+
+
+ngOnInit(){
+}
+
 ngAfterViewInit() {
+}
 
-    this.http.get('http://localhost:3001/listTemplate').subscribe((res) => {
-    const rezultat = res.json();
-    this.RezultatFinal=this.rezultat;
+DownloadFisier(FisierSelectat){
+  var DoarDenumirefisier=(FisierSelectat.substring(64, 200));
+ // alert('http://localhost:3001/downloadFileAttached'+'/'+DoarDenumirefisier);
+  // this.http.get('http://localhost:3001/downloadFileAttached'+'/'+DoarDenumirefisier)
+var filerequest = 'http://localhost:3001/downloadFileAttached'+'/'+DoarDenumirefisier;
+window.open(filerequest);
 
+}
+
+AfiseazaListaFisiere(){
+  this.http.get('http://localhost:3001/loadAttachments').subscribe((res) => {
+    const FilesList = res.json();
+    this.FilesListResult=FilesList;
   }
 );
 }

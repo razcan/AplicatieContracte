@@ -14,15 +14,6 @@
     </div>
     <div class="col-6"></div>
 
-    <div class="col-3" id="Fisier">
-      <label for="Nr">Ataseaza Fisier</label>
-      <br>
-      <label class="btn btn-success btn-file">
-        Browse
-        <input type="file" style="display: none;">
-      </label>
-    </div>
-
 
   </div>
   <br>
@@ -39,55 +30,43 @@
     </div>
     <div class="col-3">
      
-        <input id="cin" name="cin" type="file" (change)="fileChangeEvent($event)" placeholder="Upload a file..." multiple/>
-        
+        <label class="btn btn-success btn-file">
+            Adauga Fisiere
+            <input id="cin" style="display: none;" name="cin" type="file" (change)="fileChangeEvent($event)" placeholder="Upload a file..." multiple/>
+            
+          </label>
         <button type="button" class="btn btn-success btn-s" (click)="upload()">
-            <i class="glyphicon glyphicon-open-file"></i>&nbsp;Upload
+            <i class="glyphicon glyphicon-open-file"></i>&nbsp;Incarca Fisiere
         </button>
-
+<br>
       <br>
       <table class="table table-bordered">
         <thead>
           <tr>
             <th>Nume Fisier</th>
-            <th>Data Adaugare</th>
-            <th>User</th>
-            <th>Actiune</th>
+            <th>Actiune </th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>
-              <a href="">Doc123.doc</a>
+          <tr *ngFor="let files of FilesListResult; let i = index"> 
+              
+            <td >
+              <a href="" (click)="DownloadFisier(files)" 
+              >{{FilesListResult[i]}} </a>
             </td>
-            <td>2017.04.08</td>
-            <td>mihaela</td>
-            <td>
-              <button type="button" class="btn btn-danger">Sterge</button>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <a href="">Doc dada 34.doc</a>
-            </td>
-            <td>2017.02.12</td>
-            <td>ioana</td>
             <td>
               <button type="button" class="btn btn-danger">Sterge</button>
+              
             </td>
           </tr>
-          <tr>
-            <td>
-              <a href="">Doc tes 342.doc</a>
-            </td>
-            <td>2017.02.12</td>
-            <td>vasile</td>
-            <td>
-              <button type="button" class="btn btn-danger">Sterge</button>
-            </td>
-          </tr>
+     
         </tbody>
       </table>
+     
+      <button (click)="AfiseazaListaFisiere()">Incarca</button>
+      <a href="">
+      Download
+      </a>
     </div>
 
   </div>
@@ -102,6 +81,7 @@
   </div>
   <div class="row">
     <div class="col-4">
+      <button>Salveaza Doc</button>
       <button>Exporta Word</button>
       <button>Exporta PDF</button>
 
