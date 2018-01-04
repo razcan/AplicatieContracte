@@ -7,7 +7,7 @@
 
     <div class="col-3">
       <button (click)="AfiseazaTemplate()">Afiseaza Templateuri Existente</button>
-      <select class="form-control" [(ngModel)]="numeTemplateSelectat">
+      <select class="form-control" [(ngModel)]="numeTemplateSelectat" *ngIf="RezultatFinal">
         <option *ngFor="let item of RezultatFinal; let i = index"> {{RezultatFinal[i]}} </option>
       </select>
       <button (click)="IncarcaTemplate()">Incarca Template</button>
@@ -48,35 +48,27 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let files of FilesListResult; let i = index"> 
+          <!-- <tr *ngFor="let files of FilesListResult; let i = index">  -->
+              <tr *ngFor="let file of filesListResultObservable | async ;  let i = index"> 
               
             <td>
-              <button id="buttonDownload" (click)="DownloadFisier(files)">{{FilesListResult[i]}}</button>
+             
+              
+              <button id="buttonDownload" (click)="DownloadFisier(file.FileName)">{{file.FileName}}</button>
             </td>
             <td>
               
-              <button type="button" class="btn btn-danger" (click)="StergeFisier2(files)">
+              <button type="button" class="btn btn-danger" (click)="StergeFisier2(file.FileName)">
                   <span class="glyphicon glyphicon-remove"></span> Sterge
                 </button>
 
-                <!-- <p-dialog header="Sterge Fisier" [(visible)]="display2" modal="modal">
-                    Doriti Stergerea fisierului {{FilesListResult[i]}}?
-                  
-                    <button (click)="StergeFisier2(files)">  <span class="glyphicon glyphicon-remove"></span> Da</button>
-                    <button>Nu</button>
-                    <div></div>
-            
-                  </p-dialog>
-            
-                  <button type="text" (click)="showDialog2()" pButton label="Sterge"></button> -->
+              
               
             </td>
           </tr>
      
         </tbody>
       </table>
-     
-      <button (click)="AfiseazaListaFisiere()">Incarca</button>
     </div>
 
   </div>

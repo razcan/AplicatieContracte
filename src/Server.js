@@ -127,9 +127,14 @@ app.get('/loadTemplate/:nume', (req,res) => {
       }).filter(function (file) {
         return fs29.statSync(file).isFile();
       }).forEach(function (file) {
-        // var withoutFolder = (file.substring(64, 200));
+        var withoutFolder = (file.substring(64, 200));
         // FileList.push(withoutFolder);
-        FileList.push(file);
+        const stats = fs29.statSync(file)
+        const fileSizeInBytes = stats.size
+        //Convert the file size to megabytes (optional)
+        const fileSizeInMegabytes = (fileSizeInBytes / 1000000.0).toFixed(2);
+
+        FileList.push({FileName: withoutFolder,FilePath: file, FileSize: fileSizeInMegabytes+'Mb'});
   
       });
       console.log(FileList);
