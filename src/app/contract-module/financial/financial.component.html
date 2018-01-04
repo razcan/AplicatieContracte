@@ -1,3 +1,425 @@
-<p>
-  financial works!
-</p>
+
+<section id=main>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-12">
+            <ul class="nav nav-pills">
+                <li role="presentation" >
+                        <a routerLink="/list/general"> General</a>
+                </li>
+                <li role="presentation" class="active">
+                        <a routerLink="/list/contract-financial"> Financiar</a>
+                </li>
+                <li role="presentation">
+                        <a routerLink="/list/contract-documents">Documente</a>
+                </li>
+                <li role="presentation">
+                        <a routerLink="/list/contract-tasks">Task</a>
+                </li>
+                <li role="presentation">
+                        <a routerLink="/list/contract-history">Istoric</a>
+                </li>
+                <li role="presentation">
+                        <a routerLink="/list/contract-alerts"> Alerte</a>
+                </li>
+            </ul>
+  
+          <div class="tab-content" id="nav-tabContent">
+            <div class="tab-pane fade show active" id="nav-profile-tab" role="tabpanel" aria-labelledby="nav-home-tab">
+  
+              <div class="container-fluid">
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="card">
+                      <div class="card-body">
+                        <h4 class="card-title main-color-bg"></h4>
+  
+                        <p class="card-text">OBIECTELE CONTRACTULUI</p>
+  
+  
+                        <div class="col-md-4">
+                          <div class="card">
+                            <div class="card-body">
+                              <div class="row">
+                                <div class="col-md-8">
+                                  <label for="exampleFormControlSelect1">Obiect Contract</label>
+                                  <select class="form-control" id="exampleFormControlSelect1">
+                                    <option selected>Choose...</option>
+                                    <option>Chirie (Birouri)</option>
+                                    <option>Chirie (Spatiu Depozitare)</option>
+                                  </select>
+                                </div>
+                              </div>
+                              <br>
+                              <div class="row">
+                                <div class="col-md-4">
+                                  <label for="exampleFormControlInput1">Valoare</label>
+                                  <div class="form-group">
+                                    <input type="text" class="form-control" id="exampleFormControlInput1">
+                                  </div>
+                                </div>
+                                <div class="col-md-4">
+                                  <label for="exampleFormControlSelect1">Valuta</label>
+                                  <select class="form-control" id="exampleFormControlSelect1">
+                                    <option selected>Choose...</option>
+                                    <option>EUR</option>
+                                    <option>USD</option>
+                                  </select>
+                                </div>
+                                <div class="col-md-4">
+                                  <label for="exampleFormControlSelect1">Cota TVA</label>
+                                  <select class="form-control" id="exampleFormControlSelect1">
+                                    <option selected>Choose...</option>
+                                    <option>19</option>
+                                    <option>9</option>
+                                  </select>
+                                </div>
+                              </div>
+  
+                              <div class="row">
+                                <div class="col-md-3">
+                                  <label for="exampleFormControlSelect1">Interval Facturare</label>
+                                  <select class="form-control" id="exampleFormControlSelect1">
+                                    <option selected>Choose...</option>
+                                    <option>Lunar</option>
+                                    <option>Trimestrial</option>
+                                    <option>Anual</option>
+                                  </select>
+                                </div>
+                                <div class="col-md-3">
+                                  <label for="exampleFormControlSelect1">Frecventa Factura</label>
+                                  <select class="form-control" id="exampleFormControlSelect1">
+                                    <option selected>Choose...</option>
+                                    <option>1</option>
+                                    <option>3</option>
+                                    <option>12</option>
+                                  </select>
+                                </div>
+                                <div class="col-md-3">
+                                  <div class="form-group" data-toggle="tooltip" data-placement="top" title="Data primei facturi">
+                                    <label>Zi Facturare</label>
+                                    <div class="form-group">
+                                      <div class="form-group">
+                                        <div class="input-group">
+                                          <input type="text" class="form-control" bsDatepicker #dp="bsDatepicker" [bsConfig]="bsConfig">
+  
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="col-md-3">
+                                  <label for="exampleFormControlInput1">Zile Scadenta</label>
+                                  <div class="form-group">
+                                    <input type="text" class="form-control" id="exampleFormControlInput1">
+                                  </div>
+                                </div>
+                              </div>
+                              <br>
+  
+                              <div class="row">
+                                <div class="col-md-8">
+                                  <label>Proprietati Specifice Obiect Contract</label>
+                                </div>
+                              </div>
+  
+                              <!-- <div>
+                          <table class="table">
+                            <thead>
+                              <tr>
+                                <th scope="col">Obiect Contract</th>
+                                <th scope="col">Valoare</th>
+                                <th scope="col">Valuta</th>
+                                <th scope="col">Cota TVA</th>
+                                <th scope="col">Interval Facturare</th>
+                                <th scope="col">Frecventa Facturare</th>
+                                <th scope="col">Zi Facturare</th>
+                                <th scope="col">Zile de Scadenta</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <th scope="row">
+                                  <select class="form-control" id="exampleFormControlSelect1">
+                                    <option selected>Choose...</option>
+                                    <option>...</option>
+                                  </select>
+                                </th>
+                                <td>
+                                  <div class="form-group">
+                                    <input type="text" class="form-control" id="exampleFormControlInput1">
+                                  </div>
+                                </td>
+                                <td>
+                                  <select class="form-control" id="exampleFormControlSelect1">
+                                    <option selected>Choose...</option>
+                                    <option>...</option>
+                                  </select>
+                                </td>
+                                <td>
+                                  <select class="form-control" id="exampleFormControlSelect1">
+                                    <option selected>Choose...</option>
+                                    <option>...</option>
+                                  </select>
+                                </td>
+                                <td>
+                                  <select class="form-control" id="exampleFormControlSelect1">
+                                    <option selected>Choose...</option>
+                                    <option>...</option>
+                                  </select>
+                                </td>
+                                <td>
+                                  <select class="form-control" id="exampleFormControlSelect1">
+                                    <option selected>Choose...</option>
+                                    <option>...</option>
+                                  </select>
+                                </td>
+                                <td>
+                                  <div class="form-group">
+                                    <div class="form-group">
+                                      <div class="input-group">
+                                        <input type="text" class="form-control" bsDatepicker #dp="bsDatepicker" [bsConfig]="bsConfig">
+                                        <div class="input-group-btn">
+                                          <button class="btn btn-success">Open</button>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="form-group">
+                                    <input type="text" class="form-control" id="exampleFormControlInput1">
+                                  </div>
+                                </td>
+                                <td></td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div> -->
+                              <br>
+                              <br>
+                              <br>
+                              <br>
+                              <br>
+                              <br>
+                              <br>
+                              <br>
+                              <button type="button" class="btn btn-success">Adauga Obiect Creat</button>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-md-8">
+                          <div class="card">
+                            <div class="card-body">
+                              <div class="scrollable">
+                                <table class="table table-striped">
+                                  <thead>
+                                    <tr>
+                                      <th scope="col">Obiect Contract</th>
+                                      <th scope="col">Valoare w/o VAT</th>
+                                      <!-- <th scope="col">Valoare incl. VAT</th> -->
+                                      <th scope="col">Cota TVA</th>
+                                      <th scope="col">Valuta Ctr.</th>
+                                      <!-- <th scope="col">Curs valutar</th> -->
+                                      <th scope="col">Interval Facturare</th>
+                                      <th scope="col">Frecventa Facturare</th>
+                                      <th scope="col">Zi facturare</th>
+                                      <th scope="col">Nr. Zile scadenta</th>
+                                      <!-- <th scope="col">%penalitati/zi</th> -->
+                                      <th scope="col"></th>
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                    <tr>
+                                      <th scope="row">Chirie (Birouri)</th>
+                                      <td>777</td>
+                                      <!-- <td>Otto</td> -->
+                                      <td>19</td>
+                                      <td>EUR</td>
+                                      <!-- <td>@mdo</td> -->
+                                      <td>Lunar</td>
+                                      <td>1</td>
+                                      <td>10</td>
+                                      <td>30</td>
+                                      <!-- <td>@mdo</td> -->
+                                      <td>
+                                        <button type="button" class="btn btn-warning">Edit</button>
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <th scope="row">2</th>
+                                      <td>Jacob</td>
+                                      <!-- <td>Thornton</td> -->
+                                      <td>@fat</td>
+                                      <td>@fat</td>
+                                      <!-- <td>@fat</td> -->
+                                      <td>@fat</td>
+                                      <td>@fat</td>
+                                      <td>@fat</td>
+                                      <td>@fat</td>
+                                      <!-- <td>@fat</td> -->
+                                      <td>
+                                        <button type="button" class="btn btn-warning">Edit</button>
+                                      </td>
+                                    </tr>
+  
+                                  </tbody>
+                                </table>
+                              </div>
+                              <br>
+                              <br>
+                              <br>
+                              <br>
+                              <br>
+                              <br>
+                              <br>
+                              <br>
+                              <br>
+                              <br>
+                              <br>
+                              <br>
+                              <br>
+                              <br>
+                              <br>
+                            </div>
+                          </div>
+                        </div>
+  
+  
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- un alt card - pt partea de mijloc a ecranului -->
+                <!-- <div class="row">
+                  <div class="col-md-12">
+                    <div class="card">
+                      <div class="card-body">
+                        <h4 class="card-title main color-bg"></h4>
+                        <br>
+                
+                      </div>
+                    </div>
+                  </div>
+                </div> -->
+  
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="card">
+                      <div class="card-body">
+                        <h4 class="card-title main-color-bg"></h4>
+  
+                        <p class="card-text">SCADENTAR</p>
+                        <button type="button" class="btn btn-success">Genereaza scadentar</button>
+                        <button type="button" class="btn btn-success">Importa scadentar</button>
+                        <hr>
+                        <div class="scrollable">
+                          <table class="table table-striped table-fixed">
+                            <thead>
+                              <tr>
+                                <th scope="col">Data Factura</th>
+                                <th scope="col">Obiect Contract</th>
+                                <th scope="col">Start Data</th>
+                                <th scope="col">Final Data</th>
+                                <th scope="col">Cantitate</th>
+                                <th scope="col">Pret Unitar</th>
+                                <th scope="col">Valoare w/o VAT</th>
+                                <th scope="col">Valoare incl. VAT</th>
+                                <th scope="col">Factura emisa/primita</th>
+                                <th scope="col">Incasata/Platita</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <th scope="row">1</th>
+                                <td>Mark</td>
+                                <td>Otto</td>
+                                <td>@mdo</td>
+                                <td>@mdo</td>
+                                <td>@mdo</td>
+                                <td>@mdo</td>
+                                <td>@mdo</td>
+                                <td>@mdo</td>
+                                <td>@mdo</td>
+  
+                              </tr>
+                              <tr>
+                                <th scope="row">2</th>
+                                <td>Jacob</td>
+                                <td>Thornton</td>
+                                <td>@fat</td>
+                                <td>@fat</td>
+                                <td>@fat</td>
+                                <td>@fat</td>
+                                <td>@fat</td>
+                                <td>@fat</td>
+                                <td>@fat</td>
+  
+                              </tr>
+                              <tr>
+                                <th scope="row">3</th>
+                                <td>Larry</td>
+                                <td>the Bird</td>
+                                <td>@twitter</td>
+                                <td>@twitter</td>
+                                <td>@twitter</td>
+                                <td>@twitter</td>
+                                <td>@twitter</td>
+                                <td>@twitter</td>
+                                <td>@twitter</td>
+  
+                              </tr>
+                              <tr>
+                                <th scope="row">3</th>
+                                <td>Larry</td>
+                                <td>the Bird</td>
+                                <td>@twitter</td>
+                                <td>@twitter</td>
+                                <td>@twitter</td>
+                                <td>@twitter</td>
+                                <td>@twitter</td>
+                                <td>@twitter</td>
+                                <td>@twitter</td>
+  
+                              </tr>
+                              <tr>
+                                <th scope="row">3</th>
+                                <td>Larry</td>
+                                <td>the Bird</td>
+                                <td>@twitter</td>
+                                <td>@twitter</td>
+                                <td>@twitter</td>
+                                <td>@twitter</td>
+                                <td>@twitter</td>
+                                <td>@twitter</td>
+                                <td>@twitter</td>
+  
+                              </tr>
+                              <tr>
+                                <th scope="row">3</th>
+                                <td>Larry</td>
+                                <td>the Bird</td>
+                                <td>@twitter</td>
+                                <td>@twitter</td>
+                                <td>@twitter</td>
+                                <td>@twitter</td>
+                                <td>@twitter</td>
+                                <td>@twitter</td>
+                                <td>@twitter</td>
+  
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                        <br>
+                        <button type="button" class="btn btn-success">Adauga</button>
+                        <button type="button" class="btn btn-warning">Sterge</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>

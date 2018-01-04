@@ -16,7 +16,45 @@ import {QuillModule} from 'ngx-quill';
 import {CalendarModule} from 'primeng/primeng';
 import {FileUploadModule} from 'primeng/primeng';
 import {DialogModule} from 'primeng/primeng';
-import {CommonModule} from '@angular/common'
+import {CommonModule} from '@angular/common';
+import {DataTableModule} from 'primeng/primeng';
+import {SliderModule} from 'primeng/primeng';
+import {DropdownModule} from 'primeng/primeng';
+import {
+  MatAutocompleteModule,
+  MatButtonModule,
+  MatButtonToggleModule,
+  MatCardModule,
+  MatCheckboxModule,
+  MatChipsModule,
+  MatDatepickerModule,
+  MatDialogModule,
+  MatExpansionModule,
+  MatGridListModule,
+  MatIconModule,
+  MatInputModule,
+  MatListModule,
+  MatMenuModule,
+  MatNativeDateModule,
+  MatPaginatorModule,
+  MatProgressBarModule,
+  MatProgressSpinnerModule,
+  MatRadioModule,
+  MatRippleModule,
+  MatSelectModule,
+  MatSidenavModule,
+  MatSliderModule,
+  MatSlideToggleModule,
+  MatSnackBarModule,
+  MatSortModule,
+  MatTableModule,
+  MatTabsModule,
+  MatToolbarModule,
+  MatTooltipModule,
+  MatStepperModule,
+} from '@angular/material';
+import {CdkTableModule} from '@angular/cdk/table';
+
 
 import * as $ from 'jquery';
 import 'rxjs/add/observable/of';
@@ -25,6 +63,7 @@ import 'rxjs/add/operator/switchMap';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {PanelMenuModule,MenuItem,TabViewModule} from 'primeng/primeng';
 import {SidebarModule} from 'primeng/primeng';
+import {MultiSelectModule} from 'primeng/primeng'
 
 import { ContractModuleComponent } from './contract-module/contract-module.component';
 import { GeneralComponent } from './contract-module/general/general.component';
@@ -52,10 +91,7 @@ export const appRoutes: Routes = [
   { path: 'list/contract-alerts',         component: AlertsComponent },
 
   { path: 'invoice-module/list/purchase-invoice',         component: PurchaseInvoiceComponent },
-  { path: 'list/contract-alerts',         component: StatisticComponent },
-  { path: 'list/contract-alerts',         component: StatisticComponent },
-  { path: 'list/contract-alerts',         component: StatisticComponent },
-  { path: 'list/contract-alerts',         component: StatisticComponent },
+  { path: 'list/contract-statistic',         component: StatisticComponent },
   ]
 
 
@@ -101,6 +137,41 @@ export const appRoutes: Routes = [
     PanelMenuModule,
     TabViewModule,
     SidebarModule,
+    DataTableModule,
+    SliderModule,
+    DropdownModule,
+    MultiSelectModule,
+    MatAutocompleteModule,
+  MatButtonModule,
+  MatButtonToggleModule,
+  MatCardModule,
+  MatCheckboxModule,
+  MatChipsModule,
+  MatDatepickerModule,
+  MatDialogModule,
+  MatExpansionModule,
+  MatGridListModule,
+  MatIconModule,
+  MatInputModule,
+  MatListModule,
+  MatMenuModule,
+  MatNativeDateModule,
+  MatPaginatorModule,
+  MatProgressBarModule,
+  MatProgressSpinnerModule,
+  MatRadioModule,
+  MatRippleModule,
+  MatSelectModule,
+  MatSidenavModule,
+  MatSliderModule,
+  MatSlideToggleModule,
+  MatSnackBarModule,
+  MatSortModule,
+  MatTableModule,
+  MatTabsModule,
+  MatToolbarModule,
+  MatTooltipModule,
+  MatStepperModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

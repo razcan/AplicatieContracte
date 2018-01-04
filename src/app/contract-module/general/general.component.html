@@ -1,106 +1,405 @@
-<link href='https://fonts.googleapis.com/css?family=Alegreya' rel='stylesheet'>
-<link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 
 
-<div class="container">
-  <div class="row">
+<!-- Add Contract General Page -->
 
-    <div class="col-3">
-      <button (click)="AfiseazaTemplate()">Afiseaza Templateuri Existente</button>
-      <select class="form-control" [(ngModel)]="numeTemplateSelectat" *ngIf="RezultatFinal">
-        <option *ngFor="let item of RezultatFinal; let i = index"> {{RezultatFinal[i]}} </option>
-      </select>
-      <button (click)="IncarcaTemplate()">Incarca Template</button>
+<section id="main">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+
+          <ul class="nav nav-pills">
+              <li role="presentation" class="active">
+                      <a routerLink="/list/general"> General</a>
+              </li>
+              <li role="presentation">
+                      <a routerLink="/list/contract-financial"> Financiar</a>
+              </li>
+              <li role="presentation">
+                      <a routerLink="/list/contract-documents">Documente</a>
+              </li>
+              <li role="presentation">
+                      <a routerLink="/list/contract-tasks">Task</a>
+              </li>
+              <li role="presentation">
+                      <a routerLink="/list/contract-history">Istoric</a>
+              </li>
+              <li role="presentation">
+                      <a routerLink="/list/contract-alerts"> Alerte</a>
+              </li>
+          </ul>
+        <div class="tab-content" id="nav-tabContent">
+          <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+
+            <!-- General Info Tab -->
+            <div class="container-fluid">
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="card">
+                    <div class="card-body">
+                      <h4 class="card-title main-color-bg"></h4>
+                    
+                      <p class="card-text">Informatii Generale</p>
+                      <hr>
+                      <div class="row">
+                        <div class="col-md-3">
+                          <label for="exampleFormControlSelect1">Partner Name</label>
+                        </div>
+                        <div class="col-md-3">
+                          <select class="form-control" id="exampleFormControlSelect1">
+                            <option selected>Choose...</option>
+                            <option>...</option>
+                          </select>
+                        </div>
+                      </div>
+                     <br>
+                      <div class="row">
+                        <div class="col-md-3">
+                          <label for="exampleFormControlSelect1">Tip Contract</label>
+                        </div>
+                        <div class="col-md-3">
+                          <select class="form-control" id="exampleFormControlSelect1">
+                            <option selected>Choose...</option>
+                            <option>...</option>
+                          </select>
+                        </div>
+                      </div>
+                      <br>
+
+                      <div class="row">
+
+                        <div class="col-md-3">
+                          <label for="exampleFormControlInput1">Contract No.</label>
+                        </div>
+                        <div class="form-group col-md-3">
+                          <input type="text" class="form-control" id="exampleFormControlInput1">
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-3">
+                          <label for="exampleFormControlInput1">Contract Code</label>
+                        </div>
+                        <div class="form-group col-md-3">
+
+                          <input type="text" class="form-control" id="exampleFormControlInput1">
+                        </div>
+                      </div>
+                      <!-- </div> -->
+
+                      <div class="row">
+                        <div class="col-md-3">
+                          <label>Signing Date</label>
+                        </div>
+                        <!-- <div class="form-group col-md-4">
+                          <input type="text" class="form-control" [minDate]="minDate" [maxDate]="maxDate" #dp="bsDatepicker" bsDatepicker [(bsValue)]="bsValue">
+                        </div> -->
+                        <div class="col-md-3 form-group">
+                            <div class="form-group">
+                              <div class="input-group">
+                                <input type="text" class="form-control" bsDatepicker #dp="bsDatepicker" [bsConfig]="bsConfig">
+                                <div class="input-group-btn">
+                                  <button class="btn btn-success">Open</button>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-3">
+                          <div class="form-group">
+                            <label>Start Date</label>                                                     
+                            <div class="form-group">
+                                <div class="form-group">
+                                  <div class="input-group">
+                                    <input type="text" class="form-control" bsDatepicker #dp="bsDatepicker" [bsConfig]="bsConfig">
+                                    <div class="input-group-btn">
+                                      <button class="btn btn-success">Open</button>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                          </div>
+                        </div>
+                        <div class="col-md-3">
+                          <div class="form-group">
+                            <label>End Date</label>
+                            <div class="form-group">
+                                <div class="form-group">
+                                  <div class="input-group">
+                                    <input type="text" class="form-control" bsDatepicker #dp="bsDatepicker" [bsConfig]="bsConfig">
+                                    <div class="input-group-btn">
+                                      <button class="btn btn-success">Open</button>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                          </div>
+                        </div>
+                      </div>
+                      <!-- <div class="col-md-3">
+                            <div class="form-group">
+                              <label for="exampleFormControlTextarea1">Contract Status</label>
+                              <textarea class="form-control" id="exampleFormControlTextarea1" rows="1"></textarea>
+                            </div>
+                          </div> -->
+                      <div class="row">
+                        <div class="col-md-4">
+                          <div class="form-group">
+                            <label for="exampleFormControlInput1">Contract Parinte</label>
+                            <input type="text" class="form-control" id="exampleFormControlInput1">
+                          </div>
+                        </div>
+                        <div class="col-md-4">
+                          <div class="form-group">
+                            <label for="exampleFormControlInput1">Versiune</label>
+                            <input type="text" class="form-control" id="exampleFormControlInput1">
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-4">
+                          <fieldset disabled>
+                            <div class="form-group">
+                              <label for="disabledTextInput">Stare Contract</label>
+                              <input type="text" class="form-control" id="disabledTextInput" placeholder="Disabled input">
+                            </div>
+                          </fieldset>
+                        </div>
+                        <div class="col-md-4">
+                          <!-- <div class="form-group">
+                              <label for="exampleFormControlTextarea1">Status Contract</label>
+                              <textarea class="form-control" id="exampleFormControlTextarea1" rows="1"></textarea>
+                            </div> -->
+                          <label for="exampleFormControlSelect1">Status Contract</label>
+
+                          <select class="form-control" id="exampleFormControlSelect1">
+                            <option selected>Choose...</option>
+                            <option>...</option>
+                          </select>
+
+
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="container-fluid">
+                          <div class="form-group">
+                            <label for="exampleFormControlInput1">Denumire/Descriere Contract</label>
+                            <input type="text" class="form-control" id="exampleFormControlInput1">
+                          </div>
+                        </div>
+                      </div>
+                      <br>
+                      <p class="card-text">Corespondenta/Notificari</p>
+                      <hr>
+                      <div class="row">
+                          <div class="col-md-4">
+                            <div class="form-group">
+                              <label for="exampleFormControlInput1">Adresa</label>
+                              <input type="text" class="form-control" id="exampleFormControlInput1">
+                            </div>
+                          </div>
+                          <div class="col-md-4">
+                            <div class="form-group">
+                              <label for="exampleFormControlInput1">Tel/Fax</label>
+                              <input type="text" class="form-control" id="exampleFormControlInput1">
+                            </div>
+                          </div>
+                        </div>
+                              <div class="row">
+                                  <div class="col-md-4">
+                                    <div class="form-group">
+                                      <label for="inputEmail4">Email</label>
+                                      <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
+                                    </div>
+                                  </div>
+                                 
+                               
+                                      <div class="col-md-4">
+                                        <div class="form-group">
+                                          <label for="exampleFormControlInput1">In atentia</label>
+                                          <input type="text" class="form-control" id="exampleFormControlInput1">
+                                        </div>
+                                      </div>
+                                      
+                                    </div>
+                                    <hr>
+                                    <button type="button" class="btn btn-success">Modifica</button>
+                                    <button type="button" class="btn btn-warning">Adauga Act Aditional</button>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="card">
+                    <div class="card-body">
+                      <h4 class="card-title main-color-bg"></h4>
+                     
+                      <p class="card-text">Proprietati Standard Contract</p>
+                      <hr>
+                      <div class="row">
+                        <div class="col-md-3">
+                          <label for="exampleFormControlSelect1">Categorie Contract</label>
+                        </div>
+                        <div class="col-md-3">
+                          <select class="form-control" id="exampleFormControlSelect1">
+                            <option selected>Choose...</option>
+                            <option>...</option>
+                          </select>
+                        </div>
+
+                      </div>
+                      <br>
+                      <div class="row">
+                        <div class="col-md-3">
+                          <label for="exampleFormControlSelect1">Departament Resp.</label>
+                        </div>
+                        <div class="col-md-3">
+                          <select class="form-control" id="exampleFormControlSelect1">
+                            <option selected>Choose...</option>
+                            <option>...</option>
+                          </select>
+                        </div>
+
+                      </div>
+                      <br>
+                      <div class="row">
+                        <div class="col-md-3">
+                          <label for="exampleFormControlSelect1">Persoana Responsabila</label>
+                        </div>
+                        <div class="col-md-3">
+                          <select class="form-control" id="exampleFormControlSelect1">
+                            <option selected>Choose...</option>
+                            <option>...</option>
+                          </select>
+                        </div>
+
+                      </div>
+                      <br>
+                      <div class="row">
+                        <div class="col-md-3">
+                          <label for="exampleFormControlSelect1">Tip Cheltuiala</label>
+                        </div>
+                        <div class="col-md-3">
+                          <select class="form-control" id="exampleFormControlSelect1">
+                            <option selected>Choose...</option>
+                            <option>...</option>
+                          </select>
+                        </div>
+
+                      </div>
+
+                      <br>
+                      <div class="row">
+                        <div class="col-md-4">
+                          <div class="form-group">
+                            <label for="exampleFormControlSelect1">Centru de Cost</label>
+                            <!-- <div class="col-md-3"> -->
+                            <select class="form-control" id="exampleFormControlSelect1">
+                              <option selected>Choose...</option>
+                              <option>...</option>
+                            </select>
+                            <!-- </div> -->
+
+                          </div>
+                        </div>
+                        <div class="col-md-4">
+                          <div class="form-group">
+                            <label for="exampleFormControlSelect1">Linie Cash Flow</label>
+                            <select class="form-control" id="exampleFormControlSelect1">
+                              <option selected>Choose...</option>
+                              <option>...</option>
+                            </select>
+
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-3">
+                          <label for="exampleFormControlTextarea1">Prelungire automata</label>
+                        </div>
+                        <!-- <div class="form-group col-md-4">
+                          <textarea class="form-control" id="exampleFormControlTextarea1" rows="1"></textarea>
+                        </div> -->
+                        <label class="custom-control custom-checkbox">
+                          <input type="checkbox" class="custom-control-input">
+                          <span class="custom-control-indicator"></span>
+                          <span class="custom-control-description">DA</span>
+                        </label>
+                        <label class="custom-control custom-checkbox">
+                          <input type="checkbox" class="custom-control-input">
+                          <span class="custom-control-indicator"></span>
+                          <span class="custom-control-description">NU</span>
+                        </label>
+                      </div>
+                      <br>
+                      <div class="row">
+                        <div class="col-md-4">
+                          <label for="exampleFormControlTextarea1" id="exampleFormControlInput1">Zile Notificare Prelungire</label>
+                        </div>
+                        <div class="form-group col-md-4">
+                          <input type="text" class="form-control" id="exampleFormControlInput1">
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-4">
+                          <label>Data Notificare Prelungire</label>
+                        </div>
+                        <div class="form-group col-md-4">
+                          <div class="form-group">
+                            <input type="text" class="form-control" [minDate]="minDate" [maxDate]="maxDate" #dp="bsDatepicker" bsDatepicker [(bsValue)]="bsValue">
+                          </div>
+                        </div>
+                      </div>
+                      <br>
+                      <p class="card-text">Proprietati Specifice Contract</p>
+                      <hr>
+
+                      <!-- <div class="row">
+                        <div class="container-fluid">
+                          <div class="form-group">
+                            <label for="exampleFormControlTextarea1">Obiecte Contract</label>
+                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="4"></textarea>
+                          </div>
+                        </div>
+                      </div> -->
+                      <br>
+                      <br>
+                      <br>
+                      <br>
+                      <br>
+                      <br>
+                      <br>
+                      <br>
+                      <br>
+                      <br>
+                      <br>
+                      <br>
+                      <div class="row">
+                        <div class="col-md-12">
+                          <div class="container-fluid">
+                            <div class="form-group Note">
+                              <label for="exampleFormControlTextarea1">Note</label>
+                              <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                            </div>
+                          </div>
+                        </div>
+                        </div>
+                    </div>
+                  </div>
+                </div>
+
+
+              </div>
+
+
+
+
+         
+
+
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="col-6"></div>
-
-
   </div>
-  <br>
-  <div class="row" id="toolbar-container">
-    <div class="col-8">
-      <label>
-        <span> </span>
-        <quill-editor id="editor-container" [(ngModel)]="text" [style]="{'height': '600px'}" placeholder="Editare contract ..."
-        ></quill-editor>
-
-      </label>
-      <!-- {{ text }} -->
-
-    </div>
-    <div class="col-3">
-     
-        <label class="btn btn-success btn-file">
-            Adauga Fisiere
-            <input id="cin" style="display: none;" name="cin" type="file" (change)="fileChangeEvent($event)" placeholder="Upload a file..." multiple/>
-            
-          </label>
-        <button type="button" class="btn btn-success btn-s" (click)="upload()">
-            <i class="glyphicon glyphicon-open-file"></i>&nbsp;Incarca Fisiere
-        </button>
-<br>
-      <br>
-      <table class="table table-bordered">
-        <thead>
-          <tr>
-            <th>Fisiere Atasate</th>
-            <th>Dimensiune</th>
-            <th>Actiune </th>
-          </tr>
-        </thead>
-        <tbody>
-              <tr *ngFor="let file of filesListResultObservable | async ;  let i = index"> 
-              
-            <td>
-              <button id="buttonDownload" (click)="DownloadFisier(file.FileName)">{{file.FileName}}</button>
-            </td>
-            <td>
-                {{file.FileSize}}
-               
-            </td>
-            <td>
-             
-              
-              <button type="button" class="btn btn-danger" (click)="StergeFisier2(file.FileName)">
-                  <span class="glyphicon glyphicon-remove"></span> Sterge
-                </button>
-
-              
-              
-            </td>
-          </tr>
-     
-        </tbody>
-      </table>
-    </div>
-
-  </div>
-  <br>
-  <div class="row">
-    <div class="col-4">
-      <!-- <button>Salveaza</button> -->
-      <!-- <button (click)="SalveazaTemplate()">Salveaza ca Template</button> -->
-
-
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-4">
-      <button>Salveaza Doc</button>
-      <button>Exporta Word</button>
-      <button>Exporta PDF</button>
-
-      <p-dialog header="Salveaza template" [(visible)]="display" modal="modal">
-        Denumire Template
-        <input type="text" name="fname" [(ngModel)]="TemplateName">
-        <button (click)="SalveazaTemplate()">Salveaza</button>
-
-      </p-dialog>
-
-      <button type="text" (click)="showDialog()" pButton label="Salveaza template"></button>
-
-    </div>
-  </div>
-</div>
-
-
+</section>

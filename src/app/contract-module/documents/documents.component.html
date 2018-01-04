@@ -1,3 +1,129 @@
-<p>
-  documents works!
-</p>
+<link href='https://fonts.googleapis.com/css?family=Alegreya' rel='stylesheet'>
+<link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
+
+<div class="container"> 
+    <ul class="nav nav-pills">
+        <li role="presentation" >
+                <a routerLink="/list/general"> General</a>
+        </li>
+        <li role="presentation">
+                <a routerLink="/list/contract-financial"> Financiar</a>
+        </li>
+        <li role="presentation" class="active">
+                <a routerLink="/list/contract-documents">Documente</a>
+        </li>
+        <li role="presentation">
+                <a routerLink="/list/contract-tasks">Task</a>
+        </li>
+        <li role="presentation">
+                <a routerLink="/list/contract-history">Istoric</a>
+        </li>
+        <li role="presentation">
+                <a routerLink="/list/contract-alerts"> Alerte</a>
+        </li>
+    </ul>
+</div>
+<br>
+<br>
+<div class="container">
+  <div class="row">
+
+    <div class="col-3">
+      <button (click)="AfiseazaTemplate()">Afiseaza Templateuri Existente</button>
+      <select class="form-control" [(ngModel)]="numeTemplateSelectat" *ngIf="RezultatFinal">
+        <option *ngFor="let item of RezultatFinal; let i = index"> {{RezultatFinal[i]}} </option>
+      </select>
+      <button (click)="IncarcaTemplate()">Incarca Template</button>
+    </div>
+    <div class="col-6"></div>
+
+
+  </div>
+  <br>
+  <div class="row" id="toolbar-container">
+    <div class="col-8">
+      <label>
+        <span> </span>
+        <quill-editor id="editor-container" [(ngModel)]="text" [style]="{'height': '600px'}" placeholder="Editare contract ..."
+        ></quill-editor>
+
+      </label>
+      <!-- {{ text }} -->
+
+    </div>
+    <div class="col-3">
+     
+        <label class="btn btn-success btn-file">
+            Adauga Fisiere
+            <input id="cin" style="display: none;" name="cin" type="file" (change)="fileChangeEvent($event)" placeholder="Upload a file..." multiple/>
+            
+          </label>
+        <button type="button" class="btn btn-success btn-s" (click)="upload()">
+            <i class="glyphicon glyphicon-open-file"></i>&nbsp;Incarca Fisiere
+        </button>
+<br>
+      <br>
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>Fisiere Atasate</th>
+            <th>Dimensiune</th>
+            <th>Actiune </th>
+          </tr>
+        </thead>
+        <tbody>
+              <tr *ngFor="let file of filesListResultObservable | async ;  let i = index"> 
+              
+            <td>
+              <button id="buttonDownload" (click)="DownloadFisier(file.FileName)">{{file.FileName}}</button>
+            </td>
+            <td>
+                {{file.FileSize}}
+               
+            </td>
+            <td>
+             
+              
+              <button type="button" class="btn btn-danger" (click)="StergeFisier2(file.FileName)">
+                  <span class="glyphicon glyphicon-remove"></span> Sterge
+                </button>
+
+              
+              
+            </td>
+          </tr>
+     
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+  <br>
+  <div class="row">
+    <div class="col-4">
+      <!-- <button>Salveaza</button> -->
+      <!-- <button (click)="SalveazaTemplate()">Salveaza ca Template</button> -->
+
+
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-4">
+      <button>Salveaza Doc</button>
+      <button>Exporta Word</button>
+      <button>Exporta PDF</button>
+
+      <p-dialog header="Salveaza template" [(visible)]="display" modal="modal">
+        Denumire Template
+        <input type="text" name="fname" [(ngModel)]="TemplateName">
+        <button (click)="SalveazaTemplate()">Salveaza</button>
+
+      </p-dialog>
+
+      <button type="text" (click)="showDialog()" pButton label="Salveaza template"></button>
+
+    </div>
+  </div>
+</div>
+
+
