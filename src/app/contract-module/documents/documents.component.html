@@ -22,8 +22,10 @@
                 <a routerLink="/list/contract-alerts"> Alerte</a>
         </li>
     </ul>
+
+
 </div>
-<br>
+
 <br>
 <div class="container">
   <div class="row">
@@ -114,7 +116,7 @@
       <button>Exporta PDF</button>
 
       <p-dialog header="Salveaza template" [(visible)]="display" modal="modal">
-        Denumire Template
+        Denumire Template {{test}}
         <input type="text" name="fname" [(ngModel)]="TemplateName">
         <button (click)="SalveazaTemplate()">Salveaza</button>
 

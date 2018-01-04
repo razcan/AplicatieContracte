@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import {ViewChild, ElementRef, AfterViewInit, NgModule } from '@angular/core';
-import { RouterModule, Routes, Router } from '@angular/router';
+import { Router, ActivatedRoute, NavigationEnd, Params, PRIMARY_OUTLET } from "@angular/router";
 import {FormControl} from '@angular/forms';
 import {HttpModule} from '@angular/http';
 import { OnInit } from '@angular/core/src/metadata/lifecycle_hooks';
@@ -17,6 +17,13 @@ export class AppComponent implements OnInit {
   title = 'app';
   items: MenuItem[];
   visibleSidebar1;
+
+  constructor( private activatedRoute: ActivatedRoute,
+    private router: Router) {
+      router.events.subscribe();
+     console.log(router.url);  // to print only path eg:"/login"
+   
+}
 
   toggle(){
     $("#wrapper").toggleClass("active");

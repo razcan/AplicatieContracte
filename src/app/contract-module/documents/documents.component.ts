@@ -1,5 +1,6 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute, NavigationEnd, Params, PRIMARY_OUTLET } from "@angular/router";
+import "rxjs/add/operator/filter";
 import { NgModule }      from '@angular/core';
 import { EditorModule } from 'primeng/primeng';
 import { ButtonModule } from 'primeng/primeng';
@@ -15,6 +16,10 @@ import {platformBrowserDynamic }    from '@angular/platform-browser-dynamic';
 import {InputTextModule,DataTableModule} from 'primeng/primeng';
 import {CommonModule} from '@angular/common'
 import { Observable } from 'rxjs/Observable';
+import {BreadcrumbModule,MenuItem} from 'primeng/primeng';
+
+
+
 
 @Component({
   selector: 'app-documents',
@@ -34,7 +39,15 @@ export class DocumentsComponent implements  AfterViewInit {
   FilesList;
   numeTemplateSelectat;
   FisierSelectat;
-  constructor(private http: Http) {}
+  path: any;
+
+
+  constructor(private http: Http, private activatedRoute: ActivatedRoute,
+    private router: Router) {
+      router.events.subscribe();
+     console.log(router.url);  // to print only path eg:"/login"
+   
+}
   
 RezultatFinal = false;
 ContinutTemplate = [];

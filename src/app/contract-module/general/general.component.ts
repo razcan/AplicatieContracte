@@ -27,5 +27,12 @@ import { Observable } from 'rxjs/Observable';
 })
 
 export class GeneralComponent   {
-  
+  breadcrumb;
+
+  constructor( private activatedRoute: ActivatedRoute,
+    private router: Router) {
+      router.events.subscribe();
+     this.breadcrumb=router.url;
+   
+}
 }
