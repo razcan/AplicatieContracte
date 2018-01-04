@@ -43,20 +43,23 @@
       <table class="table table-bordered">
         <thead>
           <tr>
-            <th>Nume Fisier</th>
+            <th>Fisiere Atasate</th>
+            <th>Dimensiune</th>
             <th>Actiune </th>
           </tr>
         </thead>
         <tbody>
-          <!-- <tr *ngFor="let files of FilesListResult; let i = index">  -->
               <tr *ngFor="let file of filesListResultObservable | async ;  let i = index"> 
               
             <td>
-             
-              
               <button id="buttonDownload" (click)="DownloadFisier(file.FileName)">{{file.FileName}}</button>
             </td>
             <td>
+                {{file.FileSize}}
+               
+            </td>
+            <td>
+             
               
               <button type="button" class="btn btn-danger" (click)="StergeFisier2(file.FileName)">
                   <span class="glyphicon glyphicon-remove"></span> Sterge

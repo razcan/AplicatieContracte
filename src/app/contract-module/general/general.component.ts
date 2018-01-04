@@ -56,13 +56,13 @@ ngOnInit(){
 ngAfterViewInit() {
 }
 
-StergeFisier(FisierDeSters){
-  //alert('http://localhost:3001/StergeFisier/'+FisierDeSters);
-  var DoarDenumirefisier=(FisierDeSters.substring(64, 200));
-  var filerequest = 'http://localhost:3001/StergeFisier'+'/'+DoarDenumirefisier;
-  window.open(filerequest,"_parent");
-  window.close();
-}
+// StergeFisier(FisierDeSters){
+//   //alert('http://localhost:3001/StergeFisier/'+FisierDeSters);
+//   var DoarDenumirefisier=(FisierDeSters.substring(64, 200));
+//   var filerequest = 'http://localhost:3001/StergeFisier'+'/'+DoarDenumirefisier;
+//   window.open(filerequest,"_parent");
+//   window.close();
+// }
 
 StergeFisier2(FisierDeSters){
   //var DoarDenumirefisier=(FisierDeSters.substring(64, 200));
