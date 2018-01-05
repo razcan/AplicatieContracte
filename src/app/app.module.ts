@@ -20,6 +20,13 @@ import {CommonModule} from '@angular/common';
 import {DataTableModule} from 'primeng/primeng';
 import {SliderModule} from 'primeng/primeng';
 import {DropdownModule} from 'primeng/primeng';
+import {PanelModule} from 'primeng/primeng';
+import {InputTextModule} from 'primeng/primeng';
+import {ButtonModule} from 'primeng/primeng';
+import {InputSwitchModule} from 'primeng/primeng';
+import {SelectButtonModule} from 'primeng/primeng';
+import {SpinnerModule} from 'primeng/primeng';
+
 import {
   MatAutocompleteModule,
   MatButtonModule,
@@ -142,6 +149,12 @@ export const appRoutes: Routes = [
     DropdownModule,
     MultiSelectModule,
     MatAutocompleteModule,
+    PanelModule,
+    InputTextModule,
+    ButtonModule,
+    InputSwitchModule,
+    SelectButtonModule,
+    SpinnerModule,
   MatButtonModule,
   MatButtonToggleModule,
   MatCardModule,
