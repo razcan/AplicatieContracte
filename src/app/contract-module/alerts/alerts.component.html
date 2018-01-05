@@ -62,24 +62,73 @@
                                                         <p-inputSwitch onLabel="Da" offLabel="Nu" [(ngModel)]="checked"></p-inputSwitch>
                                         </div> 
                         </div>
-                        <div class="ui-g">
-                                        <div class="ui-g-1">Date</div>        
-                                        <div class="ui-g-12 ui-md-6 ui-lg-3">
-                                                        <p-calendar [showIcon]="true"></p-calendar> <span style="margin-left:35px"></span>
-                                        </div> 
-                        </div>
-                        <div class="ui-g">
-                                        <div class="ui-g-1">Scheduale Interval</div>        
-                                        <div class="ui-g-12 ui-md-6 ui-lg-3">
-                                                        <p-selectButton [options]="SchType" [(ngModel)]="selectedSchType"></p-selectButton>
-                                        </div> 
-                        </div>
-                        <div class="ui-g">
-                                        <div class="ui-g-1">Days</div>        
-                                        <div class="ui-g-12 ui-md-6 ui-lg-3">
-                                                        <p-spinner size="30" [(ngModel)]="nrDays"></p-spinner>
-                                        </div> 
-                        </div>
+
+                        <div *ngIf="checked; then thenTemplateName; else elseTemplateName">
+                                </div>
+                                
+                                <ng-template #elseTemplateName>
+                                                <div class="ui-g">
+                                                                <div class="ui-g-1">Date</div>        
+                                                                <div class="ui-g-12 ui-md-6 ui-lg-3">
+                                                                                <p-calendar [showIcon]="true"></p-calendar> <span style="margin-left:35px"></span>
+                                                                </div> 
+                                                </div>                  
+                                </ng-template>
+                                
+                                <ng-template #thenTemplateName >
+                                                <div class="ui-g">
+                                                                <div class="ui-g-1">Scheduale Interval</div>        
+                                                                <div class="ui-g-12 ui-md-6 ui-lg-3">
+                                                                                <p-selectButton [options]="SchType" [(ngModel)]="selectedSchType"></p-selectButton>
+                                                                                
+                                                                </div> 
+                                                </div>
+                                                <div *ngIf="selectedSchType=='a'; then a">
+                                                        </div>
+                                                <div *ngIf="selectedSchType=='b'; then b">
+                                                        </div>
+                                                <div *ngIf="selectedSchType=='c'; then c">
+                                                        </div>
+                                                
+                                                <ng-template #a>
+                                                <div class="ui-g">
+                                                                <div class="ui-g-1">Days</div>        
+                                                                <div class="ui-g-12 ui-md-6 ui-lg-3">
+                                                                                <p-spinner size="30" [(ngModel)]="nrDays"></p-spinner>
+                                                                </div> 
+                                                </div>
+                                                </ng-template>
+                                                <ng-template #b>
+                                                <div class="ui-g" >
+                                                                <div class="ui-g-1">Days of Week</div>
+                                                                <div class="ui-g-12 ui-md-6 ui-lg-3">
+                                                                                <p-checkbox name="group1" value="Mon" label="Mon" [(ngModel)]="SelectedWeekDays" inputId="Mon"></p-checkbox>
+                                                                                <p-checkbox name="group1" value="Tue" label="Tue" [(ngModel)]="SelectedWeekDays" inputId="Tue"></p-checkbox>
+                                                                                <p-checkbox name="group1" value="Wed" label="Wed" [(ngModel)]="SelectedWeekDays" inputId="Wed"></p-checkbox>
+                                                                                <p-checkbox name="group1" value="Thu" label="Thu" [(ngModel)]="SelectedWeekDays" inputId="Thu"></p-checkbox>
+                                                                                <p-checkbox name="group1" value="Fri" label="Fri" [(ngModel)]="SelectedWeekDays" inputId="Fri"></p-checkbox>
+                                                                                <p-checkbox name="group1" value="Sat" label="Sat" [(ngModel)]="SelectedWeekDays" inputId="Sat"></p-checkbox>
+                                                                                <p-checkbox name="group1" value="Sun" label="Sun" [(ngModel)]="SelectedWeekDays" inputId="Sun"></p-checkbox>
+                                                                </div>
+                                                            </div>
+                                                </ng-template>
+                                                <ng-template #c>
+                                                <div class="ui-g">
+                                                                <div class="ui-g-1">Day</div>        
+                                                                <div class="ui-g-12 ui-md-6 ui-lg-3">
+                                                                                <p-spinner size="30" [(ngModel)]="nrDaysMonth"></p-spinner>
+                                                                </div> 
+                                                                <div class="ui-g-1">Of every month</div>   
+                                                                <div class="ui-g-12 ui-md-6 ui-lg-3">
+                                                                                <p-spinner size="30" [(ngModel)]="nrMonths"></p-spinner>
+                                                                </div> 
+                                                </div>
+                                        </ng-template>
+                                                               
+                                </ng-template>
+
+                                
+           
                         
                        
                         <div class="ui-g">

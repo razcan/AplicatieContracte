@@ -8,10 +8,13 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class AlertsComponent implements OnInit {
 alerts;
-checked;
+checked: boolean = false;
 selectedSchType;
 SchType;
 nrDays;
+SelectedWeekDays;
+nrDaysMonth;
+nrMonths;
 
   constructor() { 
     this.alerts = [
@@ -20,9 +23,9 @@ nrDays;
       {name: 'Notificare Modificare contract'}
   ];
   this.SchType =[
-    {label : 'Daily', value: '1'},
-    {label : 'Weekly', value: '2'},
-    {label : 'Monthly', value: '3'}
+    {label : 'Daily', value: 'a'},
+    {label : 'Weekly', value: 'b'},
+    {label : 'Monthly', value: 'c'}
   ]
   }
 

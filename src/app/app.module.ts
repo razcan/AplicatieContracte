@@ -26,6 +26,8 @@ import {ButtonModule} from 'primeng/primeng';
 import {InputSwitchModule} from 'primeng/primeng';
 import {SelectButtonModule} from 'primeng/primeng';
 import {SpinnerModule} from 'primeng/primeng';
+import {CheckboxModule} from 'primeng/primeng';
+
 
 import {
   MatAutocompleteModule,
@@ -155,6 +157,7 @@ export const appRoutes: Routes = [
     InputSwitchModule,
     SelectButtonModule,
     SpinnerModule,
+    CheckboxModule,
   MatButtonModule,
   MatButtonToggleModule,
   MatCardModule,
