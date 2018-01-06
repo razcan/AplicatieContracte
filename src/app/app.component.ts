@@ -5,6 +5,8 @@ import {FormControl} from '@angular/forms';
 import {HttpModule} from '@angular/http';
 import { OnInit } from '@angular/core/src/metadata/lifecycle_hooks';
 import {PanelMenuModule,MenuItem,TabViewModule} from 'primeng/primeng';
+import { BreadCrumbService } from './bread-crumb.service';
+
 // import $ = require('jquery')
 // import * as $ from 'jquery';
 

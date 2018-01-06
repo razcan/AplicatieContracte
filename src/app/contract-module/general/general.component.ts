@@ -15,7 +15,7 @@ import {platformBrowserDynamic }    from '@angular/platform-browser-dynamic';
 import {InputTextModule,DataTableModule} from 'primeng/primeng';
 import {CommonModule} from '@angular/common'
 import { Observable } from 'rxjs/Observable';
-
+import { BreadCrumbService } from './../../bread-crumb.service';
 
 // declare var Quill: any;
 
