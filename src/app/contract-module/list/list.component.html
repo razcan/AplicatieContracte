@@ -12,12 +12,12 @@
     <!-- Position Column -->
     <ng-container matColumnDef="PartnerName">
       <mat-header-cell *matHeaderCellDef mat-sort-header> Partner </mat-header-cell>
-    <mat-cell *matCellDef="let element"><a style="color:rgb(0, 0, 0);" routerLink="/list/general" > {{element.PartnerName}} </a> </mat-cell> 
+    <mat-cell *matCellDef="let element"><a style="color:rgb(0, 0, 0);" routerLink="/list/contract-general" > {{element.PartnerName}} </a> </mat-cell> 
     </ng-container>
 
     <ng-container matColumnDef="NrContract">
       <mat-header-cell *matHeaderCellDef mat-sort-header> Nr. </mat-header-cell>
-    <mat-cell *matCellDef="let element"> <a style="color:rgb(0, 0, 0);" routerLink="/list/general">{{element.NrContract}} </a></mat-cell> 
+    <mat-cell *matCellDef="let element"> <a style="color:rgb(0, 0, 0);" routerLink="/list/contract-general">{{element.NrContract}} </a></mat-cell> 
     </ng-container>
 
     <!-- Name Column -->

@@ -27,7 +27,8 @@ import {InputSwitchModule} from 'primeng/primeng';
 import {SelectButtonModule} from 'primeng/primeng';
 import {SpinnerModule} from 'primeng/primeng';
 import {CheckboxModule} from 'primeng/primeng';
-
+import {BreadcrumbModule} from 'primeng/primeng';
+import {BreadcrumbsModule} from "ng2-breadcrumbs";
 
 import {
   MatAutocompleteModule,
@@ -91,16 +92,17 @@ import { PurchaseInvoiceComponent } from './invoice-module/purchase-invoice/purc
 
 
 export const appRoutes: Routes = [
-  { path: 'list', component: ListComponent},
-  { path: 'list/general',      component: GeneralComponent },
-  { path: 'list/contract-financial',      component: FinancialComponent  },
-  { path: 'list/contract-documents',      component: DocumentsComponent },
-  { path: 'list/contract-tasks',          component: TasksComponent },
-  { path: 'list/contract-history',        component: HistoryComponent  },
-  { path: 'list/contract-alerts',         component: AlertsComponent },
+  { path: '', redirectTo: 'home', pathMatch: 'full'},
+  { path: 'list', component: ListComponent, data: {breadcrumb: 'Contracte'} },
+  { path: 'list/contract-general',      component: GeneralComponent, data: {breadcrumb: 'Contracte/General'}  },
+  { path: 'list/contract-financial',      component: FinancialComponent,data: {breadcrumb: 'Contracte/Financiar'}    },
+  { path: 'list/contract-documents',      component: DocumentsComponent,data: {breadcrumb: 'Contracte/Documente'}   },
+  { path: 'list/contract-tasks',          component: TasksComponent,data: {breadcrumb: 'Contracte/Task'}   },
+  { path: 'list/contract-history',        component: HistoryComponent,data: {breadcrumb: 'Contracte/Istoric'}    },
+  { path: 'list/contract-alerts',         component: AlertsComponent,data: {breadcrumb: 'Contracte/Alerte'}   },
 
-  { path: 'invoice-module/list/purchase-invoice',         component: PurchaseInvoiceComponent },
-  { path: 'list/contract-statistic',         component: StatisticComponent },
+  { path: 'invoice-module/list/purchase-invoice',component: PurchaseInvoiceComponent },
+  { path: 'list/contract-statistic',component: StatisticComponent },
   ]
 
 
@@ -158,6 +160,8 @@ export const appRoutes: Routes = [
     SelectButtonModule,
     SpinnerModule,
     CheckboxModule,
+    BreadcrumbsModule,
+    BreadcrumbModule,
   MatButtonModule,
   MatButtonToggleModule,
   MatCardModule,

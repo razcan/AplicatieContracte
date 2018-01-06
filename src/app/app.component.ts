@@ -20,6 +20,7 @@ export class AppComponent implements OnInit {
   items: MenuItem[];
   visibleSidebar1;
 
+
   constructor( private activatedRoute: ActivatedRoute,
     private router: Router) {
       router.events.subscribe();
