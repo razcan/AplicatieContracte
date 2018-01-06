@@ -1,70 +1,62 @@
 <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 
-
-<div class="nav-side-menu">
-    <div class="brand">SHB</div>
-    <i class="fa fa-bars fa-2x toggle-btn" data-toggle="collapse" data-target="#menu-content"></i>
-  
-        <div class="menu-list">
-  
-            <ul id="menu-content" class="menu-content collapse out">
-                <li>
-                  <a href="#">
-                  <i class="fa fa-dashboard fa-lg"></i> Dashboard
-                  </a>
-                </li>
-
-                <li  data-toggle="collapse" data-target="#products" class="collapsed">
-                  <a href="#"><i class="fa fa-gift fa-lg"></i> Modul Contracte <span class="arrow"></span></a>
-                </li>
-                <ul class="sub-menu collapse" id="products">
-                    <li><a routerLink="list">Lista Contracte</a></li>
-                    <li><a href="#">Acte Aditionale</a></li>
-                </ul>
-                <li data-toggle="collapse" data-target="#service" class="collapsed">
-                  <a href="#"><i class="fa fa-globe fa-lg"></i> Modul Facturi <span class="arrow"></span></a>
-                </li>  
-                <ul class="sub-menu collapse" id="service">
-                  <li><a routerLink="invoice-module/list/purchase-invoice">Facturi de Aprovizionare</a></li>
-                  <li>Facturi de Vanzare</li>
-                  <li>Avize</li>
-                </ul>
-                <li data-toggle="collapse" data-target="#new" class="collapsed">
-                  <a href="#"><i class="fa glyphicon-euro fa-lg"></i> Modul Financiar <span class="arrow"></span></a>
-                </li>
-                <ul class="sub-menu collapse" id="new">
-                  <li>Incasari</li>
-                  <li>Plati</li>
-                </ul>
-                <li data-toggle="collapse" data-target="#stock" class="collapsed">
-                    <a href="#"><i class="fa fa-anchor fa-lg"></i> Modul Stocuri <span class="arrow"></span></a>
-                  </li>
-                  <ul class="sub-menu collapse" id="stock">
-                    <li>Intrari</li>
-                    <li>Iesiri</li>
-                  </ul>
-                 <li>
-                  <a href="#">
-                  <i class="fa fa-user fa-lg"></i> Nomenclatoare
-                  </a>
-                  </li>
-
-                 <li>
-                  <a href="#">
-                  <i class="fa fa-users fa-lg"></i> Configrari
-                  </a>
-                </li>
-            </ul>
-     </div>
-</div>
-
-<nav class="navbar navbar-expand-lg navbar-light bg-light"  id="NavBar" aria-label="breadcrumb" role="navigation">
-  
-
-  
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-</nav>
+<div class="container-fluid">
+    <div class="row d-flex d-md-block flex-nowrap wrapper">
+        <div class="col-md-2 float-left col-1 pl-0 pr-0 collapse width show" id="sidebar">
+                <div class="list-group border-0 card text-center text-md-left">
+                <a href="#menu1" class="list-group-item d-inline-block collapsed" data-toggle="collapse" data-parent="#sidebar" aria-expanded="false"><i class="fa fa-dashboard"></i> <span class="d-none d-md-inline">Item 1</span> </a>
+                <div class="collapse" id="menu1">
+                    <a href="#menu1sub1" class="list-group-item" data-toggle="collapse" aria-expanded="false">Subitem 1 </a>
+                    <div class="collapse" id="menu1sub1">
+                        <a href="#" class="list-group-item" data-parent="#menu1sub1">Subitem 1 a</a>
+                        <a href="#" class="list-group-item" data-parent="#menu1sub1">Subitem 2 b</a>
+                        <a href="#menu1sub1sub1" class="list-group-item" data-toggle="collapse" aria-expanded="false">Subitem 3 c </a>
+                        <div class="collapse" id="menu1sub1sub1">
+                            <a href="#" class="list-group-item" data-parent="#menu1sub1sub1">Subitem 3 c.1</a>
+                            <a href="#" class="list-group-item" data-parent="#menu1sub1sub1">Subitem 3 c.2</a>
+                        </div>
+                        <a href="#" class="list-group-item" data-parent="#menu1sub1">Subitem 4 d</a>
+                        <a href="#menu1sub1sub2" class="list-group-item" data-toggle="collapse" aria-expanded="false">Subitem 5 e </a>
+                        <div class="collapse" id="menu1sub1sub2">
+                            <a href="#" class="list-group-item" data-parent="#menu1sub1sub2">Subitem 5 e.1</a>
+                            <a href="#" class="list-group-item" data-parent="#menu1sub1sub2">Subitem 5 e.2</a>
+                        </div>
+                    </div>
+                    <a href="#" class="list-group-item" data-parent="#menu1">Subitem 2</a>
+                    <a href="#" class="list-group-item" data-parent="#menu1">Subitem 3</a>
+                </div>
+                <a href="#" class="list-group-item d-inline-block collapsed" data-parent="#sidebar"><i class="fa fa-film"></i> <span class="d-none d-md-inline">Item 2</span></a>
+                <a href="#menu3" class="list-group-item d-inline-block collapsed" data-toggle="collapse" data-parent="#sidebar" aria-expanded="false"><i class="fa fa-book"></i> <span class="d-none d-md-inline">Item 3 </span></a>
+                <div class="collapse" id="menu3">
+                    <a href="#" class="list-group-item" data-parent="#menu3">3.1</a>
+                    <a href="#menu3sub2" class="list-group-item" data-toggle="collapse" aria-expanded="false">3.2 </a>
+                    <div class="collapse" id="menu3sub2">
+                        <a href="#" class="list-group-item" data-parent="#menu3sub2">3.2 a</a>
+                        <a href="#" class="list-group-item" data-parent="#menu3sub2">3.2 b</a>
+                        <a href="#" class="list-group-item" data-parent="#menu3sub2">3.2 c</a>
+                    </div>
+                    <a href="#" class="list-group-item" data-parent="#menu3">3.3</a>
+                </div>
+                <a href="#" class="list-group-item d-inline-block collapsed" data-parent="#sidebar"><i class="fa fa-heart"></i> <span class="d-none d-md-inline">Item 4</span></a>
+                <a href="#" class="list-group-item d-inline-block collapsed" data-parent="#sidebar"><i class="fa fa-list"></i> <span class="d-none d-md-inline">Item 5</span></a>
+                <a href="#" class="list-group-item d-inline-block collapsed" data-parent="#sidebar"><i class="fa fa-clock-o"></i> <span class="d-none d-md-inline">Link</span></a>
+                <a href="#" class="list-group-item d-inline-block collapsed" data-parent="#sidebar"><i class="fa fa-th"></i> <span class="d-none d-md-inline">Link</span></a>
+                <a href="#" class="list-group-item d-inline-block collapsed" data-parent="#sidebar"><i class="fa fa-gear"></i> <span class="d-none d-md-inline">Link</span></a>
+                <a href="#" class="list-group-item d-inline-block collapsed" data-parent="#sidebar"><i class="fa fa-calendar"></i> <span class="d-none d-md-inline">Link</span></a>
+                <a href="#" class="list-group-item d-inline-block collapsed" data-parent="#sidebar"><i class="fa fa-envelope"></i> <span class="d-none d-md-inline">Link</span></a>
+                <a href="#" class="list-group-item d-inline-block collapsed" data-parent="#sidebar"><i class="fa fa-bar-chart-o"></i> <span class="d-none d-md-inline">Link</span></a>
+                <a href="#" class="list-group-item d-inline-block collapsed" data-parent="#sidebar"><i class="fa fa-star"></i> <span class="d-none d-md-inline">Link</span></a>
+            </div>
+        </div>
+        <main class="col-md-10 float-left col px-5 pl-md-2 pt-2 main">
+            <a href="#" data-target="#sidebar" data-toggle="collapse"><i class="fa fa-navicon fa-2x py-2 p-1"></i></a>
+            
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item active">Home</li>
+              </ol>
+             
 
 <router-outlet></router-outlet>
+        </main>
+    </div>
+</div>
