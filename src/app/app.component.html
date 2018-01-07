@@ -1,9 +1,23 @@
 <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+<!--      
+<div class="container-fluid">
+        <div class="row" > 
+                <div class="col-md-2 full-width-image" > 
+                
+                        <img src="/assets/logo.png" alt="Logo" id= "RR">
+                        <breadcrumb [allowBootstrap]="true" id="bread"></breadcrumb> 
+                </div>
+        </div>
+</div>         -->
 
 <div class="container-fluid">
     <div class="row d-flex d-md-block flex-nowrap wrapper">
         <div class="col-md-2 float-left col-1 pl-0 pr-0 collapse width show" id="sidebar">
+                
                 <div class="list-group border-0 card text-center text-md-left">
+                   
+                   
+
                 <a routerLink="/" class="list-group-item d-inline-block collapsed" ><i class="fa fa-dashboard"></i> <span class="d-none d-md-inline">Home</span></a>
                 <a href="#menu1" class="list-group-item d-inline-block collapsed" data-toggle="collapse" data-parent="#sidebar" aria-expanded="false"><i class="fa fa-dashboard"></i> <span class="d-none d-md-inline">Modul Contracte</span> </a>
                 <div class="collapse" id="menu1">
@@ -30,17 +44,17 @@
             </div>
         </div>
 
-        <main class="col-md-10 float-left col px-5 pl-md-2 pt-2 main">
+        <main class="col main align-self-end  no-gutters" id="bread">
+                <ol class="breadcrumb ">
+                    <a data-target="#sidebar" data-toggle="collapse"><i class="fa fa-navicon fa-2x"></i></a>
+                </ol>     
+                    <!-- <breadcrumb [allowBootstr ap]="true"></breadcrumb> -->
+            <router-outlet></router-outlet>
+            </main>
         
-            
-            <ol class="breadcrumb">
-                <a data-target="#sidebar" data-toggle="collapse"><i class="fa fa-navicon fa-2x py-2 p-1"></i></a>
-            </ol>
-        
-                <!-- <breadcrumb [allowBootstrap]="true"></breadcrumb> -->
-        <router-outlet></router-outlet>
-        </main>
+       
         
     </div>
+
    
 </div>

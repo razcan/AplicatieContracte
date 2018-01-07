@@ -3,6 +3,28 @@
   background-color: aqua !important;
   width: 100% !important;
 } */
+
+.no-gutters {
+  margin-right: 0;
+  margin-left: 0;
+  padding-right: 0;
+  padding-left: 0;
+}
+
+
+.full-width-image {
+  width: 100vw;
+  position: relative;
+  left: 50%;  
+  margin-left: -50vw;
+  background: #addceb;
+}
+
+.full-width-image img {
+  width: 10%;
+}
+
+
 #sidebar {
   overflow: hidden;
   z-index: 3;
