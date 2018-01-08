@@ -14,6 +14,7 @@
                 <th scope="col">CUI</th>
                 <th scope="col">Nr. Reg. Com.</th>
                 <th scope="col">LegalForm</th>
+                <th scope="col">Actiune</th>
               </tr>
             </thead>
             <tbody>
@@ -25,6 +26,9 @@
                 <td><a routerLink="/nomenclature/partners/partners-details"> {{partners.ComercialRegistration}} </a></td>
                 <td><a routerLink="/nomenclature/partners/partners-details"> {{partners.FiscalRegistration}} </a></td>
                 <td><a routerLink="/nomenclature/partners/partners-details"> {{partners.LegalForm}} </a></td>
+                <td>
+                    <button type="button" class="btn btn-danger">Sterge</button>
+                </td>
               </tr>
             </tbody>
           </table>
