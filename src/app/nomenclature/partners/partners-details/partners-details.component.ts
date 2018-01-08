@@ -33,8 +33,10 @@ export class PartnersDetailsComponent implements OnInit {
   Phone : string;
   Email : string;
   WEB : string;
+  Id;
+  results;
 
-  constructor(private http: Http) { }
+  constructor(private http: Http, private route: ActivatedRoute) { }
 
   PartnerSave() {
     this.http.post('http://localhost:3001/SavePartner', {
@@ -52,6 +54,15 @@ export class PartnersDetailsComponent implements OnInit {
   }
 
   ngOnInit() {
+
+    const IdRuta = this.route.snapshot.params['PartnerCode'];
+    this.PartnerCode = IdRuta;
+    this.http.get('http://localhost:3001/LoadPartner/' + this.PartnerCode).subscribe((res) => {
+      const results = res.json();
+      this.results = results;
+      console.log(results);
+    }
+  );
   }
 
 }

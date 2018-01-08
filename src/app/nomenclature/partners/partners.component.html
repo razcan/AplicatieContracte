@@ -21,18 +21,22 @@
               <tr *ngFor="let partners of PartnerList | async ;  let i = index">
                 
                 <td><a routerLink="/nomenclature/partners/partners-details"> {{partners.PartnerName}} </a></td>
-                <td><a routerLink="/nomenclature/partners/partners-details"> {{partners.PartnerCode}} </a></td>
+                <td><a routerLink="/nomenclature/partners/partners-details"> {{partners.PartnerCode}}  
+               
+                </a></td>
                 <td><a routerLink="/nomenclature/partners/partners-details"> {{partners.PartnerType}} </a></td>
                 <td><a routerLink="/nomenclature/partners/partners-details"> {{partners.ComercialRegistration}} </a></td>
                 <td><a routerLink="/nomenclature/partners/partners-details"> {{partners.FiscalRegistration}} </a></td>
                 <td><a routerLink="/nomenclature/partners/partners-details"> {{partners.LegalForm}} </a></td>
                 <td>
                     <button type="button" class="btn btn-danger">Sterge</button>
+                    <button type="button" class="btn btn-danger" (click)="onSelect(partners.PartnerCode)">Afiseaza</button>
                 </td>
               </tr>
             </tbody>
           </table>
 
+          
 <!--             
               <div class="example-header">
                 <mat-form-field>

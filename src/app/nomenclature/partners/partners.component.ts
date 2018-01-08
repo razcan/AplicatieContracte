@@ -1,4 +1,4 @@
-import { Component, Input, Output, AfterViewInit, ElementRef, EventEmitter, OnChanges, OnInit,ViewChild } from '@angular/core';
+import { Component, Input, Output, AfterViewInit, ElementRef, EventEmitter, OnChanges, OnInit,ViewChild, NgModule } from '@angular/core';
 import { MatTableDataSource,MatSort} from '@angular/material';
 import { MatCard } from '@angular/material';
 import { PageEvent} from '@angular/material';
@@ -16,12 +16,10 @@ export class PartnersComponent  implements  AfterViewInit {
 
   public PartnerList : Observable<any>  ;
 
-constructor (private http: Http) {}
+constructor (private http: Http,private router: Router) {}
   
 ngOnInit() {
-  this.PartnerList =this.http.get('http://localhost:3001/LoadPartner').map(it => it.json());
-  console.log(this.PartnerList);
-    
+  this.PartnerList =this.http.get('http://localhost:3001/LoadPartner').map(it => it.json());    
   }
 
   @ViewChild(MatSort) sort: MatSort;
@@ -54,11 +52,12 @@ ngOnInit() {
     this.pageSizeOptions = setPageSizeOptionsInput.split(',').map(str => +str);
   }
 
-  
+  onSelect(PartnerCode) {
+    this.router.navigate(['nomenclature/partners/partners-details/',PartnerCode]);
+   }
+
 
 }
-
-
 
 
 export interface Element {
