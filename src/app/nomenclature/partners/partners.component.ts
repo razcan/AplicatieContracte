@@ -5,6 +5,7 @@ import { PageEvent} from '@angular/material';
 import { RouterModule, Routes, Router } from '@angular/router';
 import { Http, HttpModule } from '@angular/http';
 import { HttpParams, HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'app-partners',
@@ -12,16 +13,14 @@ import { HttpParams, HttpClient } from '@angular/common/http';
   styleUrls: ['./partners.component.css']
 })
 export class PartnersComponent  implements  AfterViewInit {
-  PartnerList;
+
+  public PartnerList : Observable<any>  ;
 
 constructor (private http: Http) {}
   
 ngOnInit() {
-    this.http.get('http://localhost:3001/LoadPartner').subscribe((res) => {
-      const PartnerList = res.json();
-      const PartnerId =PartnerList.PartnerId;
-      console.log(PartnerId);
-    })
+  this.PartnerList =this.http.get('http://localhost:3001/LoadPartner').map(it => it.json());
+  console.log(this.PartnerList);
     
   }
 

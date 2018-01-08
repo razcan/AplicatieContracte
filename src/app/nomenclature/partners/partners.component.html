@@ -3,8 +3,33 @@
       Lista Parteneri
     </div>
     <div class="card-body">
-  
-            
+
+        <table class="table table-striped">
+            <thead>
+              <tr>
+                
+                <th scope="col">Nume Partener</th>
+                <th scope="col">Cod Partener</th>
+                <th scope="col">Tip Partener</th>
+                <th scope="col">CUI</th>
+                <th scope="col">Nr. Reg. Com.</th>
+                <th scope="col">LegalForm</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let partners of PartnerList | async ;  let i = index">
+                
+                <td><a routerLink="/nomenclature/partners/partners-details"> {{partners.PartnerName}} </a></td>
+                <td><a routerLink="/nomenclature/partners/partners-details"> {{partners.PartnerCode}} </a></td>
+                <td><a routerLink="/nomenclature/partners/partners-details"> {{partners.PartnerType}} </a></td>
+                <td><a routerLink="/nomenclature/partners/partners-details"> {{partners.ComercialRegistration}} </a></td>
+                <td><a routerLink="/nomenclature/partners/partners-details"> {{partners.FiscalRegistration}} </a></td>
+                <td><a routerLink="/nomenclature/partners/partners-details"> {{partners.LegalForm}} </a></td>
+              </tr>
+            </tbody>
+          </table>
+
+<!--             
               <div class="example-header">
                 <mat-form-field>
                   <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
@@ -13,10 +38,10 @@
             
               <mat-table #table [dataSource]="dataSource" matSort>
             
-                <!-- Position Column -->
+            
                 <ng-container matColumnDef="PartnerStatus">
                   <mat-header-cell *matHeaderCellDef mat-sort-header> PartnerStatus </mat-header-cell>
-                <mat-cell *matCellDef="let element"><a style="color:rgb(0, 0, 0);" routerLink="/nomenclature/partners/partners-details" > {{element.PartnerStatus}} </a> </mat-cell> 
+                <mat-cell *matCellDef="let element"><a style="color:rgb(0, 0, 0);" routerLink="/nomenclature/partners/partners-details" > {{PartnerList.PartnerStatus}} </a> </mat-cell> 
                 </ng-container>
             
                 <ng-container matColumnDef="PartnerName">
@@ -24,19 +49,19 @@
                 <mat-cell *matCellDef="let element"> <a style="color:rgb(0, 0, 0);" routerLink="/nomenclature/partners/partners-details">{{element.PartnerName}} </a></mat-cell> 
                 </ng-container>
             
-                <!-- Name Column -->
+         
                 <ng-container matColumnDef="PartnerCode">
                   <mat-header-cell *matHeaderCellDef mat-sort-header> PartnerCode </mat-header-cell>
                   <mat-cell *matCellDef="let element"> {{element.PartnerCode}} </mat-cell>
                 </ng-container>
             
-                <!-- Weight Column -->
+           
                 <ng-container matColumnDef="PartnerType">
                   <mat-header-cell *matHeaderCellDef mat-sort-header> PartnerType </mat-header-cell>
                   <mat-cell *matCellDef="let element"> {{element.PartnerType}} </mat-cell>
                 </ng-container>
             
-                <!-- Symbol Column -->
+    
                 
                 <ng-container matColumnDef="FiscalRegistration">
                   <mat-header-cell *matHeaderCellDef mat-sort-header> FiscalRegistration </mat-header-cell>
@@ -63,6 +88,9 @@
                             [pageSizeOptions]="pageSizeOptions"
                             (page)="pageEvent = $event">
               </mat-paginator>
-            
-            </div>
+             -->
+</div>
       
+<!-- <ul *ngFor="let partners of PartnerList | async ;  let i = index">
+    {{partners.PartnerId}}
+  </ul>  -->
