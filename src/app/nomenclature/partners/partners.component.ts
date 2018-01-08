@@ -3,13 +3,27 @@ import { MatTableDataSource,MatSort} from '@angular/material';
 import { MatCard } from '@angular/material';
 import { PageEvent} from '@angular/material';
 import { RouterModule, Routes, Router } from '@angular/router';
+import { Http, HttpModule } from '@angular/http';
+import { HttpParams, HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-partners',
   templateUrl: './partners.component.html',
   styleUrls: ['./partners.component.css']
 })
-export class PartnersComponent  {
+export class PartnersComponent  implements  AfterViewInit {
+  PartnerList;
+
+constructor (private http: Http) {}
+  
+ngOnInit() {
+    this.http.get('http://localhost:3001/LoadPartner').subscribe((res) => {
+      const PartnerList = res.json();
+      const PartnerId =PartnerList.PartnerId;
+      console.log(PartnerId);
+    })
+    
+  }
 
   @ViewChild(MatSort) sort: MatSort;
 
@@ -21,6 +35,7 @@ export class PartnersComponent  {
     filterValue = filterValue.toLowerCase(); // MatTableDataSource defaults to lowercase matches
     this.dataSource.filter = filterValue;
   }
+  
   // tslint:disable-next-line:use-life-cycle-interface
   ngAfterViewInit() {
     this.dataSource.sort = this.sort;

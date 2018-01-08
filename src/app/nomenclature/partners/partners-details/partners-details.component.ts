@@ -34,7 +34,22 @@ export class PartnersDetailsComponent implements OnInit {
   Email : string;
   WEB : string;
 
-  constructor() { }
+  constructor(private http: Http) { }
+
+  PartnerSave() {
+    this.http.post('http://localhost:3001/SavePartner', {
+    PartnerStatus: this.PartnerStatus , 
+    PartnerName: this.PartnerName, PartnerCode: this.PartnerCode, PartnerInternalCode: this.PartnerInternalCode,
+    PartnerType: this.PartnerType, ShortPartnerName: this.ShortPartnerName,
+    ComercialRegistration: this.ComercialRegistration, FiscalRegistration: this.FiscalRegistration, PartnerAddress: this.PartnerAddress,
+    LegalForm: this.LegalForm, Notes: this.Notes, VATPayer: this.VATPayer,
+    BankAccount: this.BankAccount, Delegate: this.Delegate, Agent: this.Agent,
+    BaseCurrency: this.BaseCurrency, Phone: this.Phone, Email: this.Email, WEB: this.WEB,
+  }).subscribe((res) => {
+    const result = res.json();
+    console.log(result);
+  });
+  }
 
   ngOnInit() {
   }
