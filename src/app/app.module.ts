@@ -89,6 +89,7 @@ import { SalesListComponent } from './invoice-module/sales-list/sales-list.compo
 import { PurchaseListComponent } from './invoice-module/purchase-list/purchase-list.component';
 import { SalesInvoiceComponent } from './invoice-module/sales-invoice/sales-invoice.component';
 import { PurchaseInvoiceComponent } from './invoice-module/purchase-invoice/purchase-invoice.component';
+import { NomenclatureComponent } from './nomenclature/nomenclature.component';
 
 
 export const appRoutes: Routes = [
@@ -123,6 +124,7 @@ export const appRoutes: Routes = [
     PurchaseListComponent,
     SalesInvoiceComponent,
     PurchaseInvoiceComponent,
+    NomenclatureComponent,
   ],
   imports: [
     BrowserModule,
