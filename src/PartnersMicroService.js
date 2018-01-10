@@ -87,4 +87,28 @@ app.post('/SavePartner', (req, res) => {
         console.log(query.sql);
         });
 
+
+    app.get('/DeletePartner/:PartnerId', (req, res) => {
+        var partner_id = req.param('PartnerId');
+        
+        var mysql = require('mysql');
+        var con = mysql.createConnection({
+            host: "localhost",
+            user: "root",
+            password: "root",
+            database: "SHB"
+        });
+
+        con.connect(function(err) {
+            if (err) throw err;
+            con.query('delete FROM Partner where PartnerId=?',partner_id, function (err, row, fields) {
+            if (err) throw err;
+            console.log(row);	
+            return res.json(row);
+            res.send(row);
+
+        })
+    });
+    })
+
 app.listen(3001, () => console.log('Example app listening on port 3001!'))

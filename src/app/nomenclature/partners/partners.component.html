@@ -20,17 +20,16 @@
             <tbody>
               <tr *ngFor="let partners of PartnerList | async ;  let i = index">
                 
-                <td><a routerLink="/nomenclature/partners/partners-details"> {{partners.PartnerName}} </a></td>
-                <td><a routerLink="/nomenclature/partners/partners-details"> {{partners.PartnerCode}}  
-               
-                </a></td>
-                <td><a routerLink="/nomenclature/partners/partners-details"> {{partners.PartnerType}} </a></td>
-                <td><a routerLink="/nomenclature/partners/partners-details"> {{partners.ComercialRegistration}} </a></td>
-                <td><a routerLink="/nomenclature/partners/partners-details"> {{partners.FiscalRegistration}} </a></td>
-                <td><a routerLink="/nomenclature/partners/partners-details"> {{partners.LegalForm}} </a></td>
+           
+               <td><button type="button" class="buttonTransparent" (click)="PartnerEdit(partners.PartnerId)">{{partners.PartnerName}} </button></td>
+               <td><button type="button" class="buttonTransparent" (click)="PartnerEdit(partners.PartnerId)">{{partners.PartnerCode}} </button></td>
+               <td><button type="button" class="buttonTransparent" (click)="PartnerEdit(partners.PartnerId)">{{partners.PartnerType}} </button></td>
+               <td><button type="button" class="buttonTransparent" (click)="PartnerEdit(partners.PartnerId)">{{partners.ComercialRegistration}} </button></td>
+               <td><button type="button" class="buttonTransparent" (click)="PartnerEdit(partners.PartnerId)">{{partners.FiscalRegistration}} </button></td>
+               <td><button type="button" class="buttonTransparent" (click)="PartnerEdit(partners.PartnerId)">{{partners.LegalForm}} </button></td>
                 <td>
-                    <button type="button" class="btn btn-danger">Sterge</button>
-                    <button type="button" class="btn btn-danger" (click)="PartnerEdit(partners.PartnerId)">Editeaza {{partners.PartnerId}}</button>
+                    <button type="button" class="btn btn-danger"><span class="glyphicon glyphicon-remove"></span></button>
+                    <!-- glyphicon glyphicon-remove -->
                 </td>
               </tr>
             </tbody>

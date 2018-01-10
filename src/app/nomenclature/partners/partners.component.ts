@@ -26,6 +26,14 @@ PartnerEdit(PartnerId) {
   this.router.navigate(['nomenclature/partners/partners-details/'+PartnerId])
 }
 
+PartnerDelete(PartnerId) {
+  this.http.post('http://localhost:3001/DeletePartner/' +PartnerId, {
+}).subscribe((res) => {
+  const result = res.json();
+  //console.log(result);
+});
+
+
 }
 
 //   @ViewChild(MatSort) sort: MatSort;
