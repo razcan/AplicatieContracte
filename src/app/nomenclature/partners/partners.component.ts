@@ -22,6 +22,10 @@ ngOnInit() {
   this.PartnerList =this.http.get('http://localhost:3001/LoadPartners').map(it => it.json());    
   }
 
+PartnerEdit(PartnerId) {
+  this.router.navigate(['nomenclature/partners/partners-details/'+PartnerId])
+}
+
 }
 
 //   @ViewChild(MatSort) sort: MatSort;

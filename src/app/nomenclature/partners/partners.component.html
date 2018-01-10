@@ -30,12 +30,13 @@
                 <td><a routerLink="/nomenclature/partners/partners-details"> {{partners.LegalForm}} </a></td>
                 <td>
                     <button type="button" class="btn btn-danger">Sterge</button>
-                    <button type="button" class="btn btn-danger" routerLink="/nomenclature/partners/partners-details">Afiseaza</button>
+                    <button type="button" class="btn btn-danger" (click)="PartnerEdit(partners.PartnerId)">Editeaza {{partners.PartnerId}}</button>
                 </td>
               </tr>
             </tbody>
           </table>
 
+          <button type="button" class="btn btn-success" routerLink="/nomenclature/partners/partners-details">Adauga</button>
           
 <!--             
               <div class="example-header">
