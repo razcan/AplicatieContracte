@@ -90,6 +90,8 @@ import { PurchaseListComponent } from './invoice-module/purchase-list/purchase-l
 import { SalesInvoiceComponent } from './invoice-module/sales-invoice/sales-invoice.component';
 import { PurchaseInvoiceComponent } from './invoice-module/purchase-invoice/purchase-invoice.component';
 import { NomenclatureComponent } from './nomenclature/nomenclature.component';
+import { PartnersDetailsComponent } from './nomenclature/partners/partners-details/partners-details.component';
+import { PartnersComponent } from './nomenclature/partners/partners.component';
 
 
 export const appRoutes: Routes = [
@@ -101,7 +103,9 @@ export const appRoutes: Routes = [
   { path: 'list/contract-tasks',          component: TasksComponent,data: {breadcrumb: 'Contracte/Task'}   },
   { path: 'list/contract-history',        component: HistoryComponent,data: {breadcrumb: 'Contracte/Istoric'}    },
   { path: 'list/contract-alerts',         component: AlertsComponent,data: {breadcrumb: 'Contracte/Alerte'}   },
-
+  { path: 'nomenclature',         component: NomenclatureComponent,data: {breadcrumb: 'Nomenclatoare'}   },
+  { path: 'nomenclature/partners',         component: PartnersComponent,data: {breadcrumb: 'Nomenclatoare/Parteneri'}   },
+  { path: 'nomenclature/partners/details',         component: PartnersDetailsComponent,data: {breadcrumb: 'Nomenclatoare/Parteneri/Detalii'}   },
   { path: 'invoice-module/list/purchase-invoice',component: PurchaseInvoiceComponent },
   { path: 'list/contract-statistic',component: StatisticComponent },
   ]
@@ -125,6 +129,9 @@ export const appRoutes: Routes = [
     SalesInvoiceComponent,
     PurchaseInvoiceComponent,
     NomenclatureComponent,
+    PartnersDetailsComponent,
+    PartnersComponent,
+
   ],
   imports: [
     BrowserModule,

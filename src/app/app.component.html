@@ -26,8 +26,9 @@
                     <a   class="list-group-item" data-parent="#menu1">Acte Aditionale</a>
                    
                 </div>
-                <a   class="list-group-item d-inline-block collapsed" data-parent="#sidebar"><i class="fa fa-film"></i> <span class="d-none d-md-inline">Blank</span></a>
-                <a href="#menu3" class="list-group-item d-inline-block collapsed" data-toggle="collapse" data-parent="#sidebar" aria-expanded="false"><i class="fa fa-book"></i> <span class="d-none d-md-inline">Modul Facturare </span></a>
+                
+                <a href="#menu3" class="list-group-item d-inline-block collapsed" data-toggle="collapse" data-parent="#sidebar" aria-expanded="false">
+                    <i class="fa fa-book"></i> <span class="d-none d-md-inline">Modul Facturare </span></a>
                 <div class="collapse" id="menu3">
                     <a   class="list-group-item" data-parent="#menu3" routerLink="/invoice-module/list/purchase-invoice">Factura de Aprovizionare</a>
     
@@ -39,7 +40,15 @@
                     </div>
                     <a   class="list-group-item" data-parent="#menu3">3.3</a>
                 </div>
-                <a   class="list-group-item d-inline-block collapsed" data-parent="#sidebar"><i class="fa fa-heart"></i> <span class="d-none d-md-inline">Item 4</span></a>
+                <a href="#menu4"  class="list-group-item d-inline-block collapsed" data-toggle="collapse" data-parent="#sidebar" aria-expanded="false">
+                    <i class="fa fa-heart"></i> 
+                    <span class="d-none d-md-inline">Nomenclatoare</span></a>
+                    <div class="collapse" id="menu4">
+                            <a   class="list-group-item" data-parent="#menu4" routerLink="/nomenclature/partners">Parteneri</a>
+                            <a   class="list-group-item" data-parent="#menu4" routerLink="/invoice-module/list/purchase-invoice">Obiecte de Contract</a>
+                            
+                        </div>
+
                 <a   class="list-group-item d-inline-block collapsed" data-parent="#sidebar"><i class="fa fa-list"></i> <span class="d-none d-md-inline">Item 5</span></a>
             </div>
         </div>
