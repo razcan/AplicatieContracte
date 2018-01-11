@@ -1,4 +1,4 @@
-<div class="card">
+<!-- <div class="card">
     <div class="card-header">
       Lista Parteneri
     </div>
@@ -28,7 +28,7 @@
                <td><button type="button" class="buttonTransparent" (click)="PartnerEdit(partners.PartnerId)">{{partners.FiscalRegistration}} </button></td>
                <td><button type="button" class="buttonTransparent" (click)="PartnerEdit(partners.PartnerId)">{{partners.LegalForm}} </button></td>
                 <td>
-                    <!-- <button type="button" (click)="PartnerDelete(partners.PartnerId)" class="btn btn-danger"><span class="glyphicon glyphicon-remove"></span></button> -->
+                   
         
                     <button type="text" (click)="onClick($event, partners)" class="btn btn-danger" label="Sterge"><span class="glyphicon glyphicon-remove"></span></button>
                 </td>
@@ -36,24 +36,26 @@
             </tbody>
           </table>
 
-          <button type="button" class="btn btn-success" routerLink="/nomenclature/partners/partners-details">Adauga</button>
-    
-          <p-dialog header="Stergere Partener" [(visible)]="display" modal="modal">
-              Doriti Stergerea partenerului {{PartnerNameForDelete}}?
-              <button (click)="PartnerDelete(PartenerIdForDelete)">Da</button>
-              <button (click)="DoNotshowDialog()">Nu</button>
-          </p-dialog>
+         
       
- 
+ -->
+
+ <div class="card">
+    <div class="card-body">
+
 <div class="ui-widget-header" style="padding:4px 10px;border-bottom: 0 none">
     <i class="fa fa-search" style="margin:4px 4px 0 0"></i>
     <input #gb type="text" pInputText size="50" placeholder="Global Filter">
-</div>
+</div> 
           <div class="content-section implementation">
-              <p-dataTable [value]="PartnersListResult" [rows]="20" [paginator]="true" [pageLinks]="3" [rowsPerPageOptions]="[20,40,50]" [sortField]="sortF" [sortOrder]="sortO" (onSort)="changeSort($event)" [globalFilter]="gb" #dt>
+              <p-dataTable [value]="PartnersListResult" [rows]="15" [paginator]="true" 
+              [pageLinks]="3" [rowsPerPageOptions]="[15,30,45]" [sortOrder]="sortO" (onSort)="changeSort($event)" 
+              [globalFilter]="gb" #dt
+              selectionMode="single" [(selection)]="PartnersListResult.PartnerId" (onRowSelect)="onRowSelect($event)"
+              (onRowUnselect)="onRowUnselect($event)" dataKey="PartnerId">
                   <p-header>List of Partners</p-header>
-                  <p-column field="PartnerName" header="PartnerName" [sortable]="true"></p-column>
-             
+              
+              <p-column field="PartnerName" header="PartnerName" [sortable]="true"></p-column>             
               <p-column field="PartnerCode" header="PartnerCode" [sortable]="true"></p-column>
               <p-column field="PartnerType" header="PartnerType" [sortable]="true"></p-column>
               <p-column field="ComercialRegistration" header="ComercialRegistration" [sortable]="true"></p-column>
@@ -62,3 +64,13 @@
                  
               </p-dataTable>
           </div>
+          <button type="button" class="btn btn-success" routerLink="/nomenclature/partners/partners-details">Adauga</button>
+    
+          <p-dialog header="Stergere Partener" [(visible)]="display" modal="modal">
+              Doriti Stergerea partenerului {{PartnerNameForDelete}}?
+              <button (click)="PartnerDelete(PartenerIdForDelete)">Da</button>
+              <button (click)="DoNotshowDialog()">Nu</button>
+          </p-dialog>
+  </div>
+</div>
+          
