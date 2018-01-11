@@ -92,23 +92,25 @@ app.post('/SavePartner', (req, res) => {
         var partner_id = req.param('PartnerId');
         
         var mysql = require('mysql');
-        var con = mysql.createConnection({
+        var conDelete = mysql.createConnection({
             host: "localhost",
             user: "root",
             password: "root",
             database: "SHB"
         });
 
-        con.connect(function(err) {
-            if (err)  return Observable.throw(err);
-            con.query('delete FROM Partner where PartnerId=?',partner_id, function (err, row, fields) {
+        conDelete.connect(function(err) {
+            if (err) throw err ;
+            conDelete.query('delete FROM Partner where PartnerId=?',partner_id, function (err, row, fields) {
             if (err) return Observable.throw(err);
            // console.log(row);	
             return res.json(row);
             res.send(row);
 
         })
+        //conDelete.destroy();
     });
     })
+    
 
 app.listen(3001, () => console.log('Example app listening on port 3001!'))

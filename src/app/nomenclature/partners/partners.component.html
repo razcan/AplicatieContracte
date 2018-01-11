@@ -29,8 +29,8 @@
                <td><button type="button" class="buttonTransparent" (click)="PartnerEdit(partners.PartnerId)">{{partners.LegalForm}} </button></td>
                 <td>
                     <!-- <button type="button" (click)="PartnerDelete(partners.PartnerId)" class="btn btn-danger"><span class="glyphicon glyphicon-remove"></span></button> -->
-                    <button type="text" (click)="showDialog()" pButton label="Sterge">{{partners.PartnerId}}</button>
-                    <button (click)="onClick($event, partners)">Sterge</button>
+        
+                    <button type="text" (click)="onClick($event, partners)" class="btn btn-danger" label="Sterge"><span class="glyphicon glyphicon-remove"></span></button>
                 </td>
               </tr>
             </tbody>
@@ -44,71 +44,21 @@
               <button (click)="DoNotshowDialog()">Nu</button>
           </p-dialog>
       
-      
-            
-      
-<!--             
-              <div class="example-header">
-                <mat-form-field>
-                  <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
-                </mat-form-field>
-              </div>
-            
-              <mat-table #table [dataSource]="dataSource" matSort>
-            
-            
-                <ng-container matColumnDef="PartnerStatus">
-                  <mat-header-cell *matHeaderCellDef mat-sort-header> PartnerStatus </mat-header-cell>
-                <mat-cell *matCellDef="let element"><a style="color:rgb(0, 0, 0);" routerLink="/nomenclature/partners/partners-details" > {{PartnerList.PartnerStatus}} </a> </mat-cell> 
-                </ng-container>
-            
-                <ng-container matColumnDef="PartnerName">
-                  <mat-header-cell *matHeaderCellDef mat-sort-header> PartnerName </mat-header-cell>
-                <mat-cell *matCellDef="let element"> <a style="color:rgb(0, 0, 0);" routerLink="/nomenclature/partners/partners-details">{{element.PartnerName}} </a></mat-cell> 
-                </ng-container>
-            
-         
-                <ng-container matColumnDef="PartnerCode">
-                  <mat-header-cell *matHeaderCellDef mat-sort-header> PartnerCode </mat-header-cell>
-                  <mat-cell *matCellDef="let element"> {{element.PartnerCode}} </mat-cell>
-                </ng-container>
-            
-           
-                <ng-container matColumnDef="PartnerType">
-                  <mat-header-cell *matHeaderCellDef mat-sort-header> PartnerType </mat-header-cell>
-                  <mat-cell *matCellDef="let element"> {{element.PartnerType}} </mat-cell>
-                </ng-container>
-            
-    
-                
-                <ng-container matColumnDef="FiscalRegistration">
-                  <mat-header-cell *matHeaderCellDef mat-sort-header> FiscalRegistration </mat-header-cell>
-                  <mat-cell *matCellDef="let element"> {{element.FiscalRegistration}}  </mat-cell>
-                </ng-container>
-             
-                <ng-container matColumnDef="PartnerAddress">
-                  <mat-header-cell *matHeaderCellDef mat-sort-header>  PartnerAddress </mat-header-cell>
-                  <mat-cell *matCellDef="let element"> {{element.PartnerAddress}}  </mat-cell>
-                </ng-container>
-            
-                 
-                <ng-container matColumnDef="LegalForm">
-                  <mat-header-cell *matHeaderCellDef mat-sort-header> LegalForm </mat-header-cell>
-                  <mat-cell *matCellDef="let element"> {{element.LegalForm}}  </mat-cell>
-                </ng-container>
-            
-                <mat-header-row *matHeaderRowDef="displayedColumns" ></mat-header-row>
-                <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
-              </mat-table>
-            
-              <mat-paginator [length]="length"
-                            [pageSize]="pageSize"
-                            [pageSizeOptions]="pageSizeOptions"
-                            (page)="pageEvent = $event">
-              </mat-paginator>
-             -->
+ 
+<div class="ui-widget-header" style="padding:4px 10px;border-bottom: 0 none">
+    <i class="fa fa-search" style="margin:4px 4px 0 0"></i>
+    <input #gb type="text" pInputText size="50" placeholder="Global Filter">
 </div>
-      
-<!-- <ul *ngFor="let partners of PartnerList | async ;  let i = index">
-    {{partners.PartnerId}}
-  </ul>  -->
+          <div class="content-section implementation">
+              <p-dataTable [value]="PartnersListResult" [rows]="20" [paginator]="true" [pageLinks]="3" [rowsPerPageOptions]="[20,40,50]" [sortField]="sortF" [sortOrder]="sortO" (onSort)="changeSort($event)" [globalFilter]="gb" #dt>
+                  <p-header>List of Partners</p-header>
+                  <p-column field="PartnerName" header="PartnerName" [sortable]="true"></p-column>
+             
+              <p-column field="PartnerCode" header="PartnerCode" [sortable]="true"></p-column>
+              <p-column field="PartnerType" header="PartnerType" [sortable]="true"></p-column>
+              <p-column field="ComercialRegistration" header="ComercialRegistration" [sortable]="true"></p-column>
+              <p-column field="FiscalRegistration" header="FiscalRegistration" [sortable]="true"></p-column>
+              <p-column field="LegalForm" header="LegalForm" [sortable]="true"></p-column>
+                 
+              </p-dataTable>
+          </div>

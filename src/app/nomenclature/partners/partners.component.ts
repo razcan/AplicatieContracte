@@ -9,6 +9,8 @@ import { Observable } from 'rxjs/Observable';
 import {DialogModule} from 'primeng/primeng';
 import { ActivatedRoute, NavigationEnd, Params, PRIMARY_OUTLET } from "@angular/router";
 import "rxjs/add/operator/filter";
+import {DataTableModule,SharedModule} from 'primeng/primeng';
+import {Injectable} from '@angular/core';
 
 @Component({
   selector: 'app-partners',
@@ -19,28 +21,55 @@ export class PartnersComponent   {
 
 display: boolean = false;
 
+refresh(): void {
+  window.location.reload();
+}
 
+// pentru incarcarea datelor partenerului in modal
 DoNotshowDialog() {
   this.display = false;
 }
 
 PartenerIdForDelete ;
 PartnerNameForDelete : string ='' ;
+
 onClick(event, partners){
   this.display = true;
   this.PartenerIdForDelete = partners.PartnerId;
   this.PartnerNameForDelete = partners.PartnerName;
-  console.log(partners.PartnerId); 
-  console.log(partners.PartnerName); 
+ 
 }
+// pentru incarcarea datelor partenerului in modal
 
 public PartnerList : Observable<any>  ;
-
+public PartnersListResult =[];
 constructor (private http: Http,private router: Router) {}
   
+
 ngOnInit() {
   this.PartnerList =this.http.get('http://localhost:3001/LoadPartners').map(it => it.json());    
+  console.log(this.PartnerList);
+
+  this.http.get('http://localhost:3001/LoadPartners').subscribe((res) => {
+    const FilesList = res.json();
+    this.PartnersListResult=FilesList;
   }
+);
+
+  // this.http.get('http://localhost:3001/LoadPartners')
+  //               .toPromise()
+  //               .then(res => this.Car= res.json().data)
+  //               .then(data => { return data; });
+
+}
+
+changeSort(event) {
+  if (!event.order) {
+    this.sortF = 'year';
+  } else {
+    this.sortF = event.field;
+  }
+}
 
 PartnerEdit(PartnerId) {
   this.router.navigate(['nomenclature/partners/partners-details/'+PartnerId])
@@ -50,6 +79,7 @@ PartnerDelete(PartnerId) {
   this.http.post('http://localhost:3001/DeletePartner/' +PartnerId, {
 }).subscribe((res) => {
   const result = res.json();
+  window.location.reload(true);
   //console.log(result);
 });
 
