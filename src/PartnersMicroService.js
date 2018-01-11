@@ -24,7 +24,7 @@ app.get('/LoadPartners', (req, res) => {
                                 if (err) throw err;
                                 con.query("SELECT * FROM Partner order by PartnerId DESC ", function (err, row, fields) {
                                 if (err) throw err;
-                                console.log(row);	
+                            //    console.log(row);	
                                 return res.json(row);
                                 res.send(row);
 
@@ -49,7 +49,7 @@ app.get('/LoadPartner/:PartnerId', (req, res) => {
         if (err) throw err;
         con.query('SELECT * FROM Partner where PartnerId=?',partner_id, function (err, row, fields) {
         if (err) throw err;
-        console.log(row);	
+     //   console.log(row);	
         return res.json(row);
         res.send(row);
 
@@ -60,7 +60,7 @@ app.get('/LoadPartner/:PartnerId', (req, res) => {
 app.post('/SavePartner', (req, res) => {
 
     let content = req.body;
-    console.log(content);
+   // console.log(content);
     var mysql = require('mysql');
 
     var con = mysql.createConnection({
@@ -84,11 +84,11 @@ app.post('/SavePartner', (req, res) => {
     var query = con.query('INSERT INTO Partner SET ?', post, function (error, results, fields) {
         if (error) throw error;
         });
-        console.log(query.sql);
+        //console.log(query.sql);
         });
 
 
-    app.get('/DeletePartner/:PartnerId', (req, res) => {
+    app.post('/DeletePartner/:PartnerId', (req, res) => {
         var partner_id = req.param('PartnerId');
         
         var mysql = require('mysql');
@@ -100,10 +100,10 @@ app.post('/SavePartner', (req, res) => {
         });
 
         con.connect(function(err) {
-            if (err) throw err;
+            if (err)  return Observable.throw(err);
             con.query('delete FROM Partner where PartnerId=?',partner_id, function (err, row, fields) {
-            if (err) throw err;
-            console.log(row);	
+            if (err) return Observable.throw(err);
+           // console.log(row);	
             return res.json(row);
             res.send(row);
 

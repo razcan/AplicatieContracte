@@ -28,15 +28,25 @@
                <td><button type="button" class="buttonTransparent" (click)="PartnerEdit(partners.PartnerId)">{{partners.FiscalRegistration}} </button></td>
                <td><button type="button" class="buttonTransparent" (click)="PartnerEdit(partners.PartnerId)">{{partners.LegalForm}} </button></td>
                 <td>
-                    <button type="button" class="btn btn-danger"><span class="glyphicon glyphicon-remove"></span></button>
-                    <!-- glyphicon glyphicon-remove -->
+                    <!-- <button type="button" (click)="PartnerDelete(partners.PartnerId)" class="btn btn-danger"><span class="glyphicon glyphicon-remove"></span></button> -->
+                    <button type="text" (click)="showDialog()" pButton label="Sterge">{{partners.PartnerId}}</button>
+                    <button (click)="onClick($event, partners)">Sterge</button>
                 </td>
               </tr>
             </tbody>
           </table>
 
           <button type="button" class="btn btn-success" routerLink="/nomenclature/partners/partners-details">Adauga</button>
-          
+    
+          <p-dialog header="Stergere Partener" [(visible)]="display" modal="modal">
+              Doriti Stergerea partenerului {{PartnerNameForDelete}}?
+              <button (click)="PartnerDelete(PartenerIdForDelete)">Da</button>
+              <button (click)="DoNotshowDialog()">Nu</button>
+          </p-dialog>
+      
+      
+            
+      
 <!--             
               <div class="example-header">
                 <mat-form-field>

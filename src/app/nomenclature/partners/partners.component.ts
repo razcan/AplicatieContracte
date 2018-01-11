@@ -6,6 +6,9 @@ import { RouterModule, Routes, Router } from '@angular/router';
 import { Http, HttpModule } from '@angular/http';
 import { HttpParams, HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
+import {DialogModule} from 'primeng/primeng';
+import { ActivatedRoute, NavigationEnd, Params, PRIMARY_OUTLET } from "@angular/router";
+import "rxjs/add/operator/filter";
 
 @Component({
   selector: 'app-partners',
@@ -13,6 +16,23 @@ import { Observable } from 'rxjs/Observable';
   styleUrls: ['./partners.component.css']
 })
 export class PartnersComponent   {
+
+display: boolean = false;
+
+
+DoNotshowDialog() {
+  this.display = false;
+}
+
+PartenerIdForDelete ;
+PartnerNameForDelete : string ='' ;
+onClick(event, partners){
+  this.display = true;
+  this.PartenerIdForDelete = partners.PartnerId;
+  this.PartnerNameForDelete = partners.PartnerName;
+  console.log(partners.PartnerId); 
+  console.log(partners.PartnerName); 
+}
 
 public PartnerList : Observable<any>  ;
 
@@ -34,6 +54,7 @@ PartnerDelete(PartnerId) {
 });
 
 
+}
 }
 
 //   @ViewChild(MatSort) sort: MatSort;
