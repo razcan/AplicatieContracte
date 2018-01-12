@@ -8,13 +8,16 @@
       <div class="row"><div class="col-sm">Status Partener</div>    
       <div class="col-sm">
           <select class="form-control" id="PartnerStatus" [(ngModel)]="PartnerStatus">
+              <option selected="selected">{{PartnerStatus}} </option>
+              <option disabled>---</option>
               <option>Activ</option>
               <option>Inactiv</option>
             </select>
       </div>
       <div class="col-sm">Platitor TVA</div><div class="col-sm">
           <select class="form-control" id="VATPayer" [(ngModel)]="VATPayer">
-              <option>...</option>
+              <option selected="selected">{{VATPayer}} </option>
+              <option disabled>---</option>
               <option>Da</option>
               <option>Nu</option>
             </select>
@@ -64,7 +67,8 @@
       
       <div class="row"><div class="col-sm">Tip Partener</div><div class="col-sm">
           <select class="form-control" id="PartnerType" [(ngModel)]="PartnerType">
-              <option>...</option>
+              <option selected="selected">{{PartnerType}} </option>
+              <option disabled>---</option>
               <option>Client</option>
               <option>Furnizor</option>
               <option>Bifunctional</option>
@@ -72,7 +76,8 @@
       </div>
       <div class="col-sm">Moneda de baza</div><div class="col-sm">
           <select class="form-control" id="BaseCurrency" [(ngModel)]="BaseCurrency">
-              <option>...</option>
+              <option selected="selected">{{BaseCurrency}} </option>
+              <option disabled>---</option>
               <option>RON</option>
               <option>EUR</option>
               <option>USD</option>
@@ -127,7 +132,8 @@
       
       <div class="row"><div class="col-sm">Forma Legala</div><div class="col-sm">
           <select class="form-control" id="LegalForm" [(ngModel)]="LegalForm">
-              <option>...</option>
+              <option selected="selected">{{LegalForm}} </option>
+              <option disabled>---</option>
               <option>SRL</option>
               <option>SA</option>
               <option>SC</option>
