@@ -70,7 +70,7 @@ app.post('/SavePartner', (req, res) => {
       database: "SHB"
     });
     
-    var post  = {
+    var post  = {  
     PartnerStatus: `${content.PartnerStatus}`, PartnerName: `${content.PartnerName}`, PartnerCode: `${content.PartnerCode}`,
     PartnerInternalCode: `${content.PartnerInternalCode}`,PartnerType: `${content.PartnerType}`,
     ShortPartnerName: `${content.ShortPartnerName}`, ComercialRegistration: `${content.ComercialRegistration}`, 
@@ -80,12 +80,22 @@ app.post('/SavePartner', (req, res) => {
     Delegate: `${content.Delegate}`, Agent: `${content.Agent}`, BaseCurrency: `${content.BaseCurrency}`,
     Phone: `${content.Phone}`, Email: `${content.Email}`, WEB: `${content.WEB}`};
     
-    
+    // PartnerId: `${content.PartnerId}`,
+    if (`${content.PartnerId}`>0) {
+        // console.log('trebuie Update');
+        var query = con.query('UPDATE Partner SET ? where PartnerId= ?',[post,`${content.PartnerId}`], function (error, results, fields) {
+            if (error) throw error;
+            });
+       
+    } 
+    else {
+        //console.log('trebuie Insert');
     var query = con.query('INSERT INTO Partner SET ?', post, function (error, results, fields) {
         if (error) throw error;
         });
+    }
         //console.log(query.sql);
-        });
+    });
 
 
     app.post('/DeletePartner/:PartnerId', (req, res) => {

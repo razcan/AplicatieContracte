@@ -41,6 +41,7 @@ export class PartnersDetailsComponent implements OnInit {
 
   PartnerSave() {
     this.http.post('http://localhost:3001/SavePartner', {
+    PartnerId: this.PartnerId,  
     PartnerStatus: this.PartnerStatus , 
     PartnerName: this.PartnerName, PartnerCode: this.PartnerCode, PartnerInternalCode: this.PartnerInternalCode,
     PartnerType: this.PartnerType, ShortPartnerName: this.ShortPartnerName,

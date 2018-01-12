@@ -21,3 +21,17 @@
     max-height: 700px;
   }
   
+
+  .buttonTransparent {
+    background-color: Transparent;
+    background-repeat:no-repeat;
+    border: none;
+    overflow: hidden;
+    outline:none;
+    border: none !important;
+    text-decoration: none;
+    color: blue;
+}
+.buttonTransparent:focus {
+  border: none;
+}
