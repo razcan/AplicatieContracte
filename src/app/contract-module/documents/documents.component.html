@@ -25,8 +25,6 @@
   </ul>
 
 
-
-
 <br>
 
   <div class="row">
@@ -56,14 +54,25 @@
     </div>
     <div class="col-3">
      
-        <label class="btn btn-success btn-file">
+        <!-- <label class="btn btn-success btn-file">
             Adauga Fisiere
             <input id="cin" style="display: none;" name="cin" type="file" (change)="fileChangeEvent($event)" placeholder="Upload a file..." multiple/>
             
           </label>
         <button type="button" class="btn btn-success btn-s" (click)="upload()">
             <i class="glyphicon glyphicon-open-file"></i>&nbsp;Incarca Fisiere
-        </button>
+        </button> -->
+        <p-fileUpload mode="basic"  customUpload="true" (uploadHandler)="myUploader($event)"></p-fileUpload>
+        <h3 class="first">Drag and Drop Files</h3>
+    <p-fileUpload   [showUploadButton]="false" [auto]="false" url="./upload.php" (onUpload)="onUpload($event)" 
+            multiple="multiple"  maxFileSize="1000000"> 
+            <ng-template pTemplate="content">
+                <ul >
+                    <li *ngFor="let file of uploadedFiles">{{file.name}} - {{file.size}} bytes</li>
+                </ul>
+            </ng-template>    
+  </p-fileUpload>
+  
 <br>
       <br>
       <table class="table table-bordered">
@@ -125,8 +134,15 @@
 
       <button type="text" (click)="showDialog()" pButton label="Salveaza template"></button>
 
+
+
     </div>
-  </div>
+</div>
+
+
+
+
+  
 
 
 

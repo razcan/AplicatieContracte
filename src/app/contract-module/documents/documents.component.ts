@@ -17,9 +17,10 @@ import {InputTextModule,DataTableModule} from 'primeng/primeng';
 import {CommonModule} from '@angular/common'
 import { Observable } from 'rxjs/Observable';
 import {BreadcrumbModule,MenuItem} from 'primeng/primeng';
-
-
-
+import {ConfirmationService} from "primeng/components/common/api";
+import { Message } from 'primeng/primeng';
+import { DomSanitizer } from '@angular/platform-browser';
+import { FileUpload } from 'primeng/primeng';
 
 @Component({
   selector: 'app-documents',
@@ -45,7 +46,7 @@ export class DocumentsComponent implements  AfterViewInit {
   constructor(private http: Http, private activatedRoute: ActivatedRoute,
     private router: Router) {
       router.events.subscribe();
-     console.log(router.url);  // to print only path eg:"/login"
+    // console.log(router.url);  // to print only path of breacrumb
    
 }
   
@@ -78,6 +79,7 @@ StergeFisier2(FisierDeSters){
   console.log(filerequest);
   this.http.get(filerequest).subscribe();
   this.display2 = false;
+  window.location.reload(true);
   
 }
 
@@ -166,6 +168,54 @@ showDialog2() {
 
     private editor: Quill.Quill;
     
+//de aici incepe v2 de upload cu primeng
+msgs: Message[];
+    
+uploadedFiles: any[] = [];
+
+onUpload(event) {
+  for(let file of event.files) {
+      this.uploadedFiles.push(file);
+  }
+  
+}
+
+myUploader(event) {
+  console.log(event.files); 
+  const formData: any = new FormData();
+  const files: Array<File> = event.files;
+
+  for(let i =0; i < files.length; i++){
+    formData.append("uploads[]", files[i], files[i]['name']);
+}
+  console.log(files); 
+  this.http.post('http://localhost:3001/upload', formData)
+  .map(files => files.json())
+  .subscribe()
+  //this.router.navigate(['/list/contract-documents']); 
+  window.location.reload(true)
+}
+
+
+    onUpload2(event) {
+        for(let file of event.files) {
+            this.uploadedFiles.push(file);
+        }
+        
+        this.msgs = [];
+        this.msgs.push({severity: 'info', summary: 'Success', detail: 'File Uploaded'});
+    }
+    
+    onBasicUpload(event) {        
+        this.msgs = [];
+        this.msgs.push({severity: 'info', summary: 'Success', detail: 'File Uploaded with Basic Mode'});
+    }
+    
+    onBasicUploadAuto(event) {        
+        this.msgs = [];
+        this.msgs.push({severity: 'info', summary: 'Success', detail: 'File Uploaded with Auto Mode'});
+    }
+
 
 
 }

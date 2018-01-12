@@ -55,7 +55,7 @@
               (onRowUnselect)="onRowUnselect($event)" dataKey="PartnerId">
                   <p-header>List of Partners
                       <div class="ui-helper-clearfix">
-                          <button type="button" pButton icon="fa-file-o" iconPos="left" label="All Data" (click)="dt.exportCSV()" style="float:left"></button>
+                          <button type="button" pButton icon="fa-file-o" iconPos="left" label="Export" (click)="dt.exportCSV()" style="float:left"></button>
           
                       </div>
                   </p-header>
@@ -66,12 +66,10 @@
               <p-column field="ComercialRegistration" header="ComercialRegistration" [sortable]="true"></p-column>
               <p-column field="FiscalRegistration" header="FiscalRegistration" [sortable]="true"></p-column>
               <p-column field="LegalForm" header="LegalForm" [sortable]="true"></p-column>
-              <p-column header="Action">
-                  <button (click)="onClick($event, partners)">Sterge</button>
-              </p-column>
                  
               </p-dataTable>
           </div>
+          <br>
           <button type="button" class="btn btn-success" routerLink="/nomenclature/partners/partners-details">Adauga</button>
     
           <p-dialog header="Stergere Partener" [(visible)]="display" modal="modal">

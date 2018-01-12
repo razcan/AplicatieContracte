@@ -19,3 +19,8 @@ body {
     color: blue !important;
 
 }
+
+/* ui-button ui-widget ui-state-default ui-corner-all */
+.ui-fileupload-buttonbar button:nth-child(2){
+    display:none;
+  }
