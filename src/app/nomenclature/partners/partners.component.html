@@ -61,6 +61,9 @@
               <p-column field="ComercialRegistration" header="ComercialRegistration" [sortable]="true"></p-column>
               <p-column field="FiscalRegistration" header="FiscalRegistration" [sortable]="true"></p-column>
               <p-column field="LegalForm" header="LegalForm" [sortable]="true"></p-column>
+              <p-column header="Action">
+                  <button (click)="onClick($event, partners)">Sterge</button>
+              </p-column>
                  
               </p-dataTable>
           </div>

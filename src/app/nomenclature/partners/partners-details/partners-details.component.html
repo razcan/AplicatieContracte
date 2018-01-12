@@ -147,8 +147,16 @@
       <div class="w-100"></div>
       <br>
       <button type="button" class="btn btn-success" (click)="PartnerSave()">Salveaza</button>
+      <button type="text" (click)="onClick($event, partners)" class="btn btn-danger" label="Sterge">Sterge</button>
+               
       <button type="button" class="btn btn-primary" routerLink="/nomenclature/partners">Lista</button>
-                   
+         
+      <p-dialog header="Stergere Partener" [(visible)]="display" modal="modal">
+            Doriti Stergerea partenerului {{PartnerName}}?
+            <button (click)="PartnerDelete(PartenerIdForDelete)">Da</button>
+            <button (click)="DoNotshowDialog()">Nu</button>
+        </p-dialog>
+
     </div>
   </div>
 

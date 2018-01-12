@@ -37,7 +37,7 @@ export class PartnersDetailsComponent implements OnInit {
   results = [];
   
 
-  constructor(private http: Http, private route: ActivatedRoute) { }
+  constructor(private http: Http, private route: ActivatedRoute,private router:Router) { }
 
   PartnerSave() {
     this.http.post('http://localhost:3001/SavePartner', {
@@ -55,6 +55,35 @@ export class PartnersDetailsComponent implements OnInit {
     //console.log(result);
   });
   }
+
+
+display: boolean = false;
+// pentru incarcarea datelor partenerului in modal
+DoNotshowDialog() {
+  this.display = false;
+}
+
+PartenerIdForDelete ;
+PartnerNameForDelete : string ='' ;
+
+onClick(event, partners){
+  this.display = true;
+  this.PartenerIdForDelete = this.PartnerId;
+  this.PartnerNameForDelete = this.PartnerName;
+ 
+}
+// pentru incarcarea datelor partenerului in modal
+
+// sterge partener
+PartnerDelete(PartenerIdForDelete) {
+  this.http.post('http://localhost:3001/DeletePartner/' + PartenerIdForDelete, {
+}).subscribe((res) => {
+  const result = res.json();
+  //window.location.reload(true);
+  this.router.navigate(['/nomenclature/partners']); 
+});
+}
+// sterge partener
 
   ngOnInit() {
 
