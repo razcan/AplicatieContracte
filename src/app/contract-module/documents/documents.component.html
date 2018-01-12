@@ -64,7 +64,7 @@
         </button> -->
         <p-fileUpload mode="basic"  customUpload="true" (uploadHandler)="myUploader($event)"></p-fileUpload>
         <h3 class="first">Drag and Drop Files</h3>
-    <p-fileUpload   [showUploadButton]="false" [auto]="false" url="./upload.php" (onUpload)="onUpload($event)" 
+    <p-fileUpload   [auto]="false" customUpload="true" (uploadHandler)="myUploader($event)" 
             multiple="multiple"  maxFileSize="1000000"> 
             <ng-template pTemplate="content">
                 <ul >
