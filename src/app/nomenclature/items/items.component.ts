@@ -16,17 +16,26 @@ export class ItemsComponent implements OnInit {
 
   ItemName;
   IsValid = [];
-
+  IsStockable = [];
+  ItemMeasuringUnit =[];
+  ItemPrice;
+  ItemCurrency = [];
+  VatCode =[];
 
   constructor(private fb: FormBuilder) {}
 
   ngOnInit() {
       this.userform = this.fb.group({
           'ItemName': new FormControl('', Validators.required),
-          'ItemCode': new FormControl('', Validators.required),         
+          'ItemCode': new FormControl(''),         
           'ItemDescription': new FormControl(''),
-          'ItemType': new FormControl('', Validators.required),
-          'IsValid': new FormControl('', Validators.required)
+          'ItemType': new FormControl(''),
+          'IsValid': new FormControl('', Validators.required),
+          'IsStockable': new FormControl('', Validators.required),
+          'ItemMeasuringUnit': new FormControl('', Validators.required),
+          'ItemPrice': new FormControl('') ,
+          'ItemCurrency': new FormControl('') ,
+          'VatCode': new FormControl(''),           
       });
 
       this.ItemType = [];
@@ -37,16 +46,33 @@ export class ItemsComponent implements OnInit {
       this.IsValid = [];
       this.IsValid.push({label:'Da', value:'Da'});
       this.IsValid.push({label:'Nu', value:'Nu'});
-
+      this.IsStockable = [];
+      this.IsStockable.push({label:'Da', value:'Da'});
+      this.IsStockable.push({label:'Nu', value:'Nu'});
+      this.ItemMeasuringUnit = [];
+      this.ItemMeasuringUnit.push({label:'Bucata', value:'Bucata'});
+      this.ItemMeasuringUnit.push({label:'KG', value:'KG'});
+      this.ItemMeasuringUnit.push({label:'M', value:'M'});
+      this.ItemMeasuringUnit.push({label:'Fara', value:'Fara'});
+      this.ItemCurrency = [];
+      this.ItemCurrency.push({label:'Ron', value:'Ron'});
+      this.ItemCurrency.push({label:'Eur', value:'Eur'});
+      this.ItemCurrency.push({label:'Usd', value:'Usd'});
+      this.VatCode = [];
+      this.VatCode.push({label:'TVA19', value:'Ron'});
+      this.VatCode.push({label:'TVA5', value:'Eur'});
+      this.VatCode.push({label:'TVA0', value:'Usd'});
+      this.VatCode.push({label:'TI19', value:'Ron'});
+      this.VatCode.push({label:'TI5', value:'Eur'});
   }
 
   onSubmit(value: string) {
       this.submitted = true;
       this.msgs = [];
-      this.msgs.push({severity:'info', summary:'Success', detail:'Form Submitted'});
+      //this.msgs.push({severity:'info', summary:'Success'});
   }
 
-  get diagnostic() { return JSON.stringify(this.userform.value); }
+   get diagnostic() { return JSON.stringify(this.userform.value); }
 }
 
 // ItemId, ItemName, ItemCode, ItemDescription,ItemType,IsValid,IsStockable,

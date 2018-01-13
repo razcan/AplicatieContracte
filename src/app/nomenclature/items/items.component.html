@@ -68,14 +68,73 @@
                 <div class="ui-grid-col-3">
                     <div class="ui-g" style="width:250px;margin-bottom:10px">
                         <div class="ui-g-12"><p-radioButton formControlName="IsValid" name="group2" value="Da" label="Da"  inputId="preopt1"></p-radioButton></div>
-                        <div class="ui-g-12"><p-radioButton formControlName="IsValid" name="group2" value="Nu" label="Nu"  inputId="preopt2"></p-radioButton></div>
-                      
-                      </div>
-                  
+                        <div class="ui-g-12"><p-radioButton formControlName="IsValid" name="group2" value="Nu" label="Nu"  inputId="preopt2"></p-radioButton></div>                    
+                      </div>                  
                 </div>
                 <div class="ui-grid-col-4"></div>
             </div>
-            
+            <div class="ui-grid-row">
+                <div class="ui-grid-col-2">
+                    Stocabil *:
+                </div>
+                <div class="ui-grid-col-3">
+                    <div class="ui-g" style="width:250px;margin-bottom:10px">
+                        <div class="ui-g-12"><p-radioButton formControlName="IsStockable" name="group3" value="Da" label="Da"  inputId="preopt3"></p-radioButton></div>
+                        <div class="ui-g-12"><p-radioButton formControlName="IsStockable" name="group3" value="Nu" label="Nu"  inputId="preopt4"></p-radioButton></div>                    
+                      </div>                  
+                </div>
+                <div class="ui-grid-col-4"></div>
+            </div>
+            <div class="ui-grid-row">
+                <div class="ui-grid-col-2">
+                    UM *:
+                </div>
+                <div class="ui-grid-col-2">
+                    <p-dropdown [options]="ItemMeasuringUnit" formControlName="ItemMeasuringUnit" [autoWidth]="false"></p-dropdown>
+                </div>
+                <div class="ui-grid-col-4">
+                    <div class="ui-message ui-messages-error ui-corner-all" *ngIf="!userform.controls['ItemMeasuringUnit'].valid&&userform.controls['ItemMeasuringUnit'].dirty">
+                        <i class="fa fa-close"></i>
+                        Campul Unitate de masura este obligatoriu
+                    </div>
+                </div>
+            </div>
+            <div class="ui-grid-row">
+                <div class="ui-grid-col-2">
+                    Pret :
+                </div>
+                <div class="ui-grid-col-2">
+                    <input pInputText type="text" formControlName="ItemPrice" />
+                </div>
+            </div>
+            <div class="ui-grid-row">
+                <div class="ui-grid-col-2">
+                    UM *:
+                </div>
+                <div class="ui-grid-col-2">
+                    <p-dropdown [options]="ItemCurrency" formControlName="ItemCurrency" [autoWidth]="false"></p-dropdown>
+                </div>
+                <div class="ui-grid-col-4">
+                    <div class="ui-message ui-messages-error ui-corner-all" *ngIf="!userform.controls['ItemCurrency'].valid&&userform.controls['ItemCurrency'].dirty">
+                        <i class="fa fa-close"></i>
+                        Campul Valuta este obligatoriu
+                    </div>
+                </div>
+            </div>
+            <div class="ui-grid-row">
+                <div class="ui-grid-col-2">
+                    Cota TVA *:
+                </div>
+                <div class="ui-grid-col-2">
+                    <p-dropdown [options]="VatCode" formControlName="VatCode" [autoWidth]="false"></p-dropdown>
+                </div>
+                <div class="ui-grid-col-4">
+                    <div class="ui-message ui-messages-error ui-corner-all" *ngIf="!userform.controls['VatCode'].valid&&userform.controls['VatCode'].dirty">
+                        <i class="fa fa-close"></i>
+                        Campul Cota TVA este obligatoriu
+                    </div>
+                </div>
+            </div>
             <div class="ui-grid-row">
                 <div class="ui-grid-col-2"></div>
                 <div class="ui-grid-col-1">
