@@ -1,6 +1,6 @@
 <div class="card">
     <div class="card-header">
-      Detalii Partener
+      Detalii Articol
     </div>
     <div class="card-body">
       
@@ -13,11 +13,11 @@
                 <div class="ui-grid-col-2">
                     Denumire *: {{ItemName}}
                 </div>
-                <div class="ui-grid-col-6">
-                    <input pInputText type="text" formControlName="denumire" placeholder="Required" [(ngModel)]="ItemName"/>
+                <div class="ui-grid-col-2">
+                    <input pInputText type="text" formControlName="ItemName"  pTooltip="Denumire Articol" [(ngModel)]="ItemName"/>
                 </div>
-                <div class="ui-grid-col-4">
-                    <div class="ui-message ui-messages-error ui-corner-all" *ngIf="!userform.controls['denumire'].valid&&userform.controls['denumire'].dirty">
+                <div class="ui-grid-col-2">
+                    <div class="ui-message ui-messages-error ui-corner-all" *ngIf="!userform.controls['ItemName'].valid&&userform.controls['ItemName'].dirty">
                         <i class="fa fa-close"></i>
                         Denumire Articol este obligatoriu
                     </div>
@@ -25,60 +25,61 @@
             </div>
             <div class="ui-grid-row">
                 <div class="ui-grid-col-2">
-                    Last Name *:
+                    Cod *:
                 </div>
-                <div class="ui-grid-col-6">
-                    <input pInputText type="text" formControlName="lastname" placeholder="Required"/>
+                <div class="ui-grid-col-2">
+                    <input pInputText type="text" formControlName="ItemCode" />
                 </div>
-                <div class="ui-grid-col-4">
-                    <div class="ui-message ui-messages-error ui-corner-all" *ngIf="!userform.controls['lastname'].valid&&userform.controls['lastname'].dirty">
+                <div class="ui-grid-col-2">
+                    <div class="ui-message ui-messages-error ui-corner-all" *ngIf="!userform.controls['ItemCode'].valid&&userform.controls['ItemCode'].dirty">
                         <i class="fa fa-close"></i>
-                        Lastname is required
+                        Cod Articol este obligatoriu
                     </div>
                 </div>
             </div>
+            
             <div class="ui-grid-row">
                 <div class="ui-grid-col-2">
-                    Password *:
+                    Descriere:
                 </div>
-                <div class="ui-grid-col-6">
-                    <input pInputText type="password" formControlName="password" placeholder="Required - Min(6)"/>
-                </div>
-                <div class="ui-grid-col-4">
-                    <div class="ui-message ui-messages-error ui-corner-all" *ngIf="!userform.controls['password'].valid&&userform.controls['password'].dirty">
-                        <i class="fa fa-close"></i>
-                        <span *ngIf="userform.controls['password'].errors['required']">Password is required</span>
-                        <span *ngIf="userform.controls['password'].errors['minlength']">Must be longer than 6 characters</span>
-                    </div>
-                </div>
-            </div>
-            <div class="ui-grid-row">
-                <div class="ui-grid-col-2">
-                    Description:
-                </div>
-                <div class="ui-grid-col-6">
-                    <textarea pInputTextarea type="text" formControlName="description"></textarea>
+                <div class="ui-grid-col-3">
+                    <textarea pInputTextarea type="text" formControlName="ItemDescription"></textarea>
                 </div>
                 <div class="ui-grid-col-4"></div>
             </div>
             <div class="ui-grid-row">
                 <div class="ui-grid-col-2">
-                    Gender *:
+                    Tip *:
                 </div>
-                <div class="ui-grid-col-6">
-                    <p-dropdown [options]="genders" formControlName="gender" [autoWidth]="false"></p-dropdown>
+                <div class="ui-grid-col-2">
+                    <p-dropdown [options]="ItemType" formControlName="ItemType" [autoWidth]="false"></p-dropdown>
                 </div>
                 <div class="ui-grid-col-4">
-                    <div class="ui-message ui-messages-error ui-corner-all" *ngIf="!userform.controls['gender'].valid&&userform.controls['gender'].dirty">
+                    <div class="ui-message ui-messages-error ui-corner-all" *ngIf="!userform.controls['ItemType'].valid&&userform.controls['ItemType'].dirty">
                         <i class="fa fa-close"></i>
-                        Gender is required
+                        Campul Tip este obligatoriu
                     </div>
                 </div>
             </div>
             <div class="ui-grid-row">
+                <div class="ui-grid-col-2">
+                    Activ *:
+                </div>
+                <div class="ui-grid-col-3">
+                    <div class="ui-g" style="width:250px;margin-bottom:10px">
+                        <div class="ui-g-12"><p-radioButton formControlName="IsValid" name="group2" value="Da" label="Da"  inputId="preopt1"></p-radioButton></div>
+                        <div class="ui-g-12"><p-radioButton formControlName="IsValid" name="group2" value="Nu" label="Nu"  inputId="preopt2"></p-radioButton></div>
+                      
+                      </div>
+                  
+                </div>
+                <div class="ui-grid-col-4"></div>
+            </div>
+            
+            <div class="ui-grid-row">
                 <div class="ui-grid-col-2"></div>
-                <div class="ui-grid-col-6">
-                    <button pButton type="submit" label="Submit" [disabled]="!userform.valid"></button>
+                <div class="ui-grid-col-1">
+                    <button pButton type="submit" label="Salveaza" [disabled]="!userform.valid"></button>
                 </div>
                 <div class="ui-grid-col-4"></div>
             </div>
