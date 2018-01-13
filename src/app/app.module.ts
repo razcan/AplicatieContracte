@@ -7,12 +7,13 @@ import { RouterModule, Routes, Router } from '@angular/router';
 import { AppComponent } from './app.component';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { FormsModule, ReactiveFormsModule, FormControl } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ButtonsModule,BsDropdownModule,BsDatepickerModule,AlertModule,SortableModule } from 'ngx-bootstrap';
 import { BootstrapSwitchModule } from 'angular2-bootstrap-switch';
 import {QuillModule} from 'ngx-quill';
 import {CommonModule} from '@angular/common';
 import {BreadcrumbsModule} from "ng2-breadcrumbs";
+import {Validators,FormControl,FormGroup,FormBuilder} from '@angular/forms';
 
 
 
@@ -143,6 +144,7 @@ import { PurchaseInvoiceComponent } from './invoice-module/purchase-invoice/purc
 import { NomenclatureComponent } from './nomenclature/nomenclature.component';
 import { PartnersDetailsComponent } from './nomenclature/partners/partners-details/partners-details.component';
 import { PartnersComponent } from './nomenclature/partners/partners.component';
+import { ItemsComponent } from './nomenclature/items/items.component';
 
 
 export const appRoutes: Routes = [
@@ -156,6 +158,7 @@ export const appRoutes: Routes = [
   { path: 'list/contract-alerts',         component: AlertsComponent,data: {breadcrumb: 'Contracte/Alerte'}   },
   { path: 'nomenclature',         component: NomenclatureComponent,data: {breadcrumb: 'Nomenclatoare'}   },
   { path: 'nomenclature/partners',         component: PartnersComponent,data: {breadcrumb: 'Nomenclatoare/Parteneri'}   },
+  { path: 'nomenclature/items',         component: ItemsComponent,data: {breadcrumb: 'Nomenclatoare/Parteneri'}   },
   { path: 'nomenclature/partners/partners-details',         component: PartnersDetailsComponent,data: {breadcrumb: 'Nomenclatoare/Parteneri/Detalii'}   },
   { path: 'nomenclature/partners/partners-details/:PartnerId',         component: PartnersDetailsComponent,data: {breadcrumb: 'Nomenclatoare/Parteneri/Detalii'}   },
   { path: 'invoice-module/list/purchase-invoice',component: PurchaseInvoiceComponent },
@@ -183,6 +186,7 @@ export const appRoutes: Routes = [
     NomenclatureComponent,
     PartnersDetailsComponent,
     PartnersComponent,
+    ItemsComponent,
 
   ],
   imports: [
