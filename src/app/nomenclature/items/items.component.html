@@ -69,7 +69,8 @@
                     <div class="ui-g" style="width:250px;margin-bottom:10px">
                         <div class="ui-g-12"><p-radioButton formControlName="IsValid" name="group2" value="Da" label="Da"  inputId="preopt1"></p-radioButton></div>
                         <div class="ui-g-12"><p-radioButton formControlName="IsValid" name="group2" value="Nu" label="Nu"  inputId="preopt2"></p-radioButton></div>                    
-                      </div>                  
+                      </div>      
+                      <hr>            
                 </div>
                 <div class="ui-grid-col-4"></div>
             </div>
@@ -109,7 +110,7 @@
             </div>
             <div class="ui-grid-row">
                 <div class="ui-grid-col-2">
-                    UM *:
+                    Moneda *:
                 </div>
                 <div class="ui-grid-col-2">
                     <p-dropdown [options]="ItemCurrency" formControlName="ItemCurrency" [autoWidth]="false"></p-dropdown>
@@ -136,6 +137,25 @@
                 </div>
             </div>
             <div class="ui-grid-row">
+                <div class="ui-grid-col-2">
+                    Cod de bare :
+                </div>
+                <div class="ui-grid-col-2">
+                    <input pInputText type="text" formControlName="BarCode" />
+                </div>
+            </div>
+            <div class="ui-grid-row">
+                <div class="ui-grid-col-2">
+                    Ierarhie :
+                </div>
+                <div class="ui-grid-col-2">
+                          
+                <p-tree  [value]="data"  selectionMode="single" [(selection)]="SelectedFiles" ></p-tree>
+                </div>
+                <button (click)="Verifica(SelectedFiles)">Verifica</button>
+            </div>
+            
+            <div class="ui-grid-row">
                 <div class="ui-grid-col-2"></div>
                 <div class="ui-grid-col-1">
                     <button pButton type="submit" label="Salveaza" [disabled]="!userform.valid"></button>
@@ -145,7 +165,7 @@
             <div style="text-align:center;margin-top:20px" *ngIf="submitted">
                 Form Submitted
                 <br>
-                {{diagnostic}}
+                {{diagnostic}} {{SelectedFiles.label}}
             </div>
         </div>
 </form>

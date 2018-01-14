@@ -79,9 +79,9 @@ import {TieredMenuModule} from 'primeng/primeng';
 import {ToggleButtonModule} from 'primeng/primeng';
 import {ToolbarModule} from 'primeng/primeng';
 import {TooltipModule} from 'primeng/primeng';
-import {TreeModule} from 'primeng/primeng';
 import {TreeTableModule} from 'primeng/primeng';
-
+import {TreeModule} from 'primeng/primeng';
+import {TreeNode} from 'primeng/primeng';
 
 import {
   MatAutocompleteModule,
