@@ -36,6 +36,7 @@ export class ItemsComponent implements OnInit {
   ItemIerarchy;
   data =[];
   SelectedFile;
+  employeeDob;
 
   constructor(private fb: FormBuilder) {}
   
@@ -101,7 +102,7 @@ export class ItemsComponent implements OnInit {
   
       this.userform = this.fb.group({
           'ItemName': new FormControl('', Validators.required),
-          'ItemCode': new FormControl(''),         
+          'ItemCode': new FormControl('', Validators.compose([Validators.required, Validators.minLength(4)])),         
           'ItemDescription': new FormControl(''),
           'ItemType': new FormControl(''),
           'IsValid': new FormControl(''),
