@@ -36,7 +36,7 @@ export class ItemsComponent implements OnInit {
   ItemIerarchy;
   data =[];
   SelectedFile;
-  
+
   constructor(private fb: FormBuilder) {}
   
 
@@ -44,8 +44,13 @@ export class ItemsComponent implements OnInit {
 
 
   this.data =    [
-          {
-              "label": "Documents",
+    {
+              "label": "Fara",
+              "data": "Documents Folder",
+              "expandedIcon": "fa-folder-open",
+              "collapsedIcon": "fa-folder",   },   
+    {
+              "label": "Servicii",
               "data": "Documents Folder",
               "expandedIcon": "fa-folder-open",
               "collapsedIcon": "fa-folder",
@@ -54,28 +59,28 @@ export class ItemsComponent implements OnInit {
                       "data": "Work Folder",
                       "expandedIcon": "fa-folder-open",
                       "collapsedIcon": "fa-folder",
-                      "children": [{"label": "Expenses.doc", "icon": "fa-file-word-o", "data": "Expenses Document"}, {"label": "Resume.doc", "icon": "fa-file-word-o", "data": "Resume Document"}]
+                      "children": [{"label": "Expenses", "icon": "fa-file-word-o", "data": "Expenses Document"}, {"label": "Resume", "icon": "fa-file-word-o", "data": "Resume Document"}]
                   },
                   {
                       "label": "Home",
                       "data": "Home Folder",
                       "expandedIcon": "fa-folder-open",
                       "collapsedIcon": "fa-folder",
-                      "children": [{"label": "Invoices.txt", "icon": "fa-file-word-o", "data": "Invoices for this month"}]
+                      "children": [{"label": "Invoices", "icon": "fa-file-word-o", "data": "Invoices for this month"}]
                   }]
           },
           {
-              "label": "Pictures",
+              "label": "Marfa",
               "data": "Pictures Folder",
               "expandedIcon": "fa-folder-open",
               "collapsedIcon": "fa-folder",
               "children": [
-                  {"label": "barcelona.jpg", "icon": "fa-file-image-o", "data": "Barcelona Photo"},
-                  {"label": "logo.jpg", "icon": "fa-file-image-o", "data": "PrimeFaces Logo"},
-                  {"label": "primeui.png", "icon": "fa-file-image-o", "data": "PrimeUI Logo"}]
+                  {"label": "barcelona", "icon": "fa-file-image-o", "data": "Barcelona Photo"},
+                  {"label": "logo", "icon": "fa-file-image-o", "data": "PrimeFaces Logo"},
+                  {"label": "primeui", "icon": "fa-file-image-o", "data": "PrimeUI Logo"}]
           },
           {
-              "label": "Movies",
+              "label": "Materie Prima",
               "data": "Movies Folder",
               "expandedIcon": "fa-folder-open",
               "collapsedIcon": "fa-folder",

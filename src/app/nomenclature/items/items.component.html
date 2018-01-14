@@ -11,7 +11,7 @@
         <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid" style="margin: 10px 0px">
             <div class="ui-grid-row">
                 <div class="ui-grid-col-2">
-                    Denumire *: {{ItemName}}
+                    Denumire *:
                 </div>
                 <div class="ui-grid-col-2">
                     <input pInputText type="text" formControlName="ItemName"  pTooltip="Denumire Articol" [(ngModel)]="ItemName"/>
@@ -152,7 +152,7 @@
                           
                 <p-tree  [value]="data"  selectionMode="single" [(selection)]="SelectedFiles" ></p-tree>
                 </div>
-                <button (click)="Verifica(SelectedFiles)">Verifica</button>
+                
             </div>
             
             <div class="ui-grid-row">
