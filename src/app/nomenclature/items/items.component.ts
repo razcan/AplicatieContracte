@@ -2,6 +2,8 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import {Validators,FormControl,FormGroup,FormBuilder} from '@angular/forms';
 import { ViewEncapsulation } from '@angular/core';
 import {Message,MenuItem,TreeNode, Tree} from 'primeng/primeng';
+import { HostListener } from '@angular/core';
+
 @Component({
   selector: 'app-items',
   templateUrl: './items.component.html',
@@ -9,6 +11,18 @@ import {Message,MenuItem,TreeNode, Tree} from 'primeng/primeng';
   encapsulation: ViewEncapsulation.None
 })
 export class ItemsComponent implements OnInit {
+key;
+
+  @HostListener('document:keypress', ['$event'])
+  handleKeyboardEvent(event: KeyboardEvent) { 
+    this.key = event.key;
+    if (this.key == 'a') {
+    console.log(this.key);
+    }
+    if (!(event.which == 115 && event.ctrlKey) && !(event.which == 19)) return true;
+    alert("Ctrl-S pressed");
+  }
+
   msgs1: Message[];
 
     @ViewChild('expandingTree')
@@ -155,6 +169,10 @@ export class ItemsComponent implements OnInit {
 
    get diagnostic() { return JSON.stringify(this.userform.value); }
 
+   KeyPress(e) {
+    var evtobj = window.event? event : e
+    if (evtobj.keyCode == 90 && evtobj.ctrlKey) alert("Ctrl+z");
+}
    
 }
 
