@@ -1,0 +1,269 @@
+<div id="page-content-wrapper">
+  <div class="page-content">
+
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-8">
+          <div class="panel panel-success">
+            <div class="panel-heading">
+              New Invoice
+            </div>
+            <div class="panel-body">
+              <form>
+
+
+                <div class="row">
+                  <div class="col-3">
+                    <label for="sel1">Partener</label>
+                    <select class="form-control" id="sel1">
+                      <option>Partener 1</option>
+                      <option>Partener 2</option>
+                      <option>Partener 3</option>
+                    </select>
+                  </div>
+
+                
+                  <div class="col-2">
+                    <label for="Nr">Serie</label>
+                    <input type="text" class="form-control" placeholder="Numar" id="Nr">
+                  </div>
+
+                  <div class="col-2">
+                      <label for="DataFactura">Data Factura</label>
+                      <div class="form-group">
+                        <div class="input-group">
+                          <input type="text" class="form-control" #dp="bsDatepicker" bsDatepicker [(bsValue)]="bsValue1">
+                          <div class="input-group-btn">
+                            <button class="btn btn-default" (click)="dp.show() ">
+                              <span class="glyphicon glyphicon-calendar"></span>
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+               
+                    <div class="col-1"></div>
+                      <div class="col-2">
+                          <label for="DataFactura">Data Scadenta</label>
+                          <div class="form-group">
+                            <div class="input-group">
+                              <input type="text" class="form-control"  #dp2="bsDatepicker" bsDatepicker [(bsValue)]="bsValue2">
+                              <div class="input-group-btn">
+                                <button class="btn btn-default" (click)="dp2.show() ">
+                                  <span class="glyphicon glyphicon-calendar"></span>
+                                </button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+                </div>
+                <br>
+                <div class="row">
+                </div>
+
+                <div class="row">
+
+                  <div class="col-3">
+                    <label for="sel1">Centru Cost</label>
+                    <select class="form-control" id="sel1">
+                      <option>Dep. Tehnic</option>
+                      <option>Dep. Financiar</option>
+                      <option>Dep. IT</option>
+                      <option>Dep. Contabilitate</option>
+                    </select>
+                  </div>
+                  
+                  <div class="col-2">
+                    <label for="sel1">Gestiune</label>
+                    <select class="form-control" id="sel1">
+                      <option>Consumabile</option>
+                      <option>Carburanti</option>
+                      <option>Papetarie</option>
+                    </select>
+                  </div>
+
+                  <div class="col-2">
+                      <label for="Nr">Stare</label>
+                      <input type="text" class="form-control" placeholder="Draft" id="Nr" disabled>
+                    </div>
+                    <div class="col-1"></div>
+                    <div class="col-2">
+                      <label for="Nr">Ataseaza Fisier</label>
+                      <br>
+                      <label class="btn btn-default btn-file">
+                        Browse
+                        <input type="file" style="display: none;">
+                      </label>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+
+              
+          
+                    <div class="col-3" >
+                        <div class="card" id="Drag">
+                            <div class="card-block">
+              <bs-sortable
+                [(ngModel)]="itemObjectsLeft"
+                name ="Left"
+                fieldName="name"
+                itemClass="sortable-item"
+                itemActiveClass="sortable-item-active"
+                placeholderItem="Drag here"
+                placeholderClass="sortable-item"
+                wrapperClass="sortable-wrapper"
+              ></bs-sortable>
+              
+              <!-- <preclass="code-preview">{{ itemObjectsLeft | json }}</pre> -->
+            </div>
+          
+          </div>
+        </div>
+       
+                <div class="col-3">
+                    <div class="card" id="Drag">
+                        <div class="card-block" >
+              <bs-sortable
+                [(ngModel)]="itemObjectsRight"
+                name ="Right"
+                fieldName="name"
+                itemClass="sortable-item"
+                itemActiveClass="sortable-item-active"
+                placeholderItem="Drag here"
+                placeholderClass="sortable-item"
+                wrapperClass="sortable-wrapper"
+              ></bs-sortable>
+              <!-- <pre class="code-preview">{{ itemObjectsRight | json }}</pre> -->
+            </div>
+          </div>
+        </div>
+       <button (click)="Afiseaza()">Editeaza Date</button>
+
+        <div class="col-5" *ngIf="IsShow">
+            <div class="card" id="DragRezult">
+                <div class="card-block" >
+        <table class="table" >
+          <thead>
+            <th>Nume</th>
+            <th>Tip</th>
+            <th>Valoare</th>
+          </thead>
+          <tbody>
+            <tr *ngFor="let items of itemObjectsRight; index as i"> 
+
+              <td>{{ items.name }}</td>
+              <td>{{ items.tip }}</td>
+              <td> 
+
+                <!-- {{TextProprietate[0]}} {{TextProprietate[1]}} {{TextProprietate[2]}} {{TextProprietate[3]}} 
+                 {{DataProprieate[0]}} {{DataProprieate[1]}} {{DataProprieate[2]}} {{DataProprieate[3]}}  -->
+
+                <div *ngIf="items.tip==1; then thenTemplateName; else elseTemplateName">
+                </div>
+                
+                <ng-template #thenTemplateName>
+                    <div class="form-group">
+                        <input type="text" [(ngModel)]="TextProprietate[i]" class="form-control" name="TextProprietate{{i}}" id="TextProprietate{{i}}">
+                      </div>
+                </ng-template>
+                
+                <ng-template #elseTemplateName>
+                    <p-calendar [(ngModel)]="DataProprieate[i]" name="date{{i}}" id="DataProprieate{{i}}" placeholder={{i}}></p-calendar>
+                </ng-template>
+
+
+              </td>
+            </tr>
+          </tbody>
+          </table> 
+        </div>
+      </div>
+    </div>       
+            </div>
+                <br>
+                <div class="row">
+                  <div class="col-12">
+                    <label for="Nr">Note Header</label>
+                    <textarea class="form-control" rows="1" id="comment"></textarea>
+                  </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-12">
+                <div class="card">
+                    <div class="card-block">
+                        Cod UM Descriere	Cantitate	Pret Unitar	Cota TVA	Total		+TVA
+                    </div>
+                  </div>
+                  </div>
+                  </div>
+
+                  
+
+              </form>
+            </div>
+          </div>
+        </div>
+
+
+
+
+  
+
+
+
+        <div class="col-md-2">
+          <div class="panel panel-success">
+            <div class="panel-heading">
+              Document Preview
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                <div class="col-6">
+                    <label for="Nr">Zile Scadenta</label>
+                    <input type="text" class="form-control" placeholder="Numar" id="Nr">
+                  </div>
+                  </div>
+                  <div class="row">
+                  <div class="col-6">
+                      <label for="sel1">Moneda</label>
+                      <select class="form-control" id="sel1">
+                        <option>RON</option>
+                        <option>EUR</option>
+                        <option>USD</option>
+                        <option>CHF</option>
+                      </select>
+                    </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6">
+                            <label for="sel1">Template</label>
+                            <select class="form-control" id="sel1">
+                              <option>Format A4</option>
+                              <option>Format A5</option>
+                              <option>Engleza</option>
+                            </select>
+                          </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-10">
+                            <label for="sel1">Cont Bancar</label>
+                            <select class="form-control" id="sel1">
+                              <option>RO69CBIT234203402380</option>
+                              <option>RO69CBIT234203402380</option>
+                              <option>RO69CBIT234203402380</option>
+                            </select>
+                          </div>
+                    </div>
+                   
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,187 @@
+
+<div class="card">
+    <div class="card-header">
+      Detalii Partener
+    </div>
+    <div class="card-body">
+        
+      <div class="row"><div class="col-sm">Status Partener</div>    
+      <div class="col-sm">
+          <select class="form-control" id="PartnerStatus" [(ngModel)]="PartnerStatus">
+              <option selected="selected">{{PartnerStatus}} </option>
+              <option disabled>---</option>
+              <option>Activ</option>
+              <option>Inactiv</option>
+            </select>
+      </div>
+      <div class="col-sm">Platitor TVA</div><div class="col-sm">
+          <select class="form-control" id="VATPayer" [(ngModel)]="VATPayer">
+              <option selected="selected">{{VATPayer}} </option>
+              <option disabled>---</option>
+              <option>Da</option>
+              <option>Nu</option>
+            </select>
+      </div>
+      <div class="col-sm-2"></div>
+    
+    </div>  
+
+      <div class="w-100"></div>
+      <br>
+
+      <div class="row"><div class="col-sm">Nume Partener</div><div class="col-sm">
+          <!-- <label for="PartnerName">Nume Partener</label> -->
+          <input class="form-control" type="text" placeholder="Nume Partener" id="PartnerName" [(ngModel)]="PartnerName">
+          
+        </div>
+      <div class="col-sm">Cont Bancar</div><div class="col-sm">
+          <input class="form-control" type="text" placeholder="Cont Bancar" id="BankAccount" [(ngModel)]="BankAccount">
+      </div>
+      <div class="col-sm-2"></div></div>  
+
+      <div class="w-100"></div>
+      <br>
+
+      <div class="row"><div class="col-sm">Cod Partener</div><div class="col-sm">
+          <input class="form-control" type="text" placeholder="Cod Partener" id="PartnerCode" [(ngModel)]="PartnerCode">
+      </div>
+      <div class="col-sm">Delegat</div><div class="col-sm">
+          <input class="form-control" type="text" placeholder="Delegat" id="Delegate" [(ngModel)]="Delegate">
+      </div>
+      <div class="col-sm-2"></div></div>  
+
+
+      <div class="w-100"></div>
+      <br>
+
+      <div class="row"><div class="col-sm">Cod Intern Partener</div><div class="col-sm">
+          <input class="form-control" type="text" placeholder="Cod Intern Partener" id="PartnerInternalCode" [(ngModel)]="PartnerInternalCode">
+      </div>
+      <div class="col-sm">Agent</div><div class="col-sm">
+          <input class="form-control" type="text" placeholder="Agent" id="Agent" [(ngModel)]="Agent">
+      </div>
+      <div class="col-sm-2"></div></div>  
+
+      <div class="w-100"></div>
+      <br>
+      
+      <div class="row"><div class="col-sm">Tip Partener</div><div class="col-sm">
+          <select class="form-control" id="PartnerType" [(ngModel)]="PartnerType">
+              <option selected="selected">{{PartnerType}} </option>
+              <option disabled>---</option>
+              <option>Client</option>
+              <option>Furnizor</option>
+              <option>Bifunctional</option>
+            </select>
+      </div>
+      <div class="col-sm">Moneda de baza</div><div class="col-sm">
+          <select class="form-control" id="BaseCurrency" [(ngModel)]="BaseCurrency">
+              <option selected="selected">{{BaseCurrency}} </option>
+              <option disabled>---</option>
+              <option>RON</option>
+              <option>EUR</option>
+              <option>USD</option>
+            </select>
+      </div>
+      <div class="col-sm-2"></div></div>  
+
+      <div class="w-100"></div>
+      <br>
+
+      <div class="row"><div class="col-sm">Denumire scurta Partener</div><div class="col-sm">
+          <input class="form-control" type="text" id="ShortPartnerName" [(ngModel)]="ShortPartnerName" placeholder="Denumire scurta Partener">
+      </div>
+      <div class="col-sm">Telefon</div><div class="col-sm">
+          <input type="email" class="form-control" id="Phone"  [(ngModel)]="Phone" placeholder="Telefon">
+      </div>
+      <div class="col-sm-2"></div></div>  
+
+      <div class="w-100"></div>
+      <br>
+
+      <div class="row"><div class="col-sm">CUI</div><div class="col-sm">
+          <input class="form-control" type="text" placeholder="Cod Fiscal" id="ComercialRegistration" [(ngModel)]="ComercialRegistration">
+      </div>
+      <div class="col-sm">Email Partener</div><div class="col-sm">
+          <input type="email" class="form-control" id="Email" [(ngModel)]="Email" placeholder="name@example.com">
+      </div>
+      <div class="col-sm-2"></div></div>  
+
+      <div class="w-100"></div>
+      <br>
+
+      <div class="row"><div class="col-sm">Nr. Reg. Com.</div><div class="col-sm">
+          <input class="form-control" type="text" id="FiscalRegistration" [(ngModel)]="FiscalRegistration" placeholder="J">
+      </div>
+      <div class="col-sm">Adresa WEB</div><div class="col-sm">
+          <input type="email" class="form-control" id="WEB" [(ngModel)]="WEB" placeholder="www">
+      </div>
+      <div class="col-sm-2"></div></div>  
+
+      <div class="w-100"></div>
+      <br>
+
+      <div class="row"><div class="col-sm">Adresa</div><div class="col-sm">
+          <input class="form-control" type="text" id="PartnerAddress" [(ngModel)]="PartnerAddress" placeholder="Adresa">
+      </div>
+     
+      <div class="col-sm-7"></div></div>  
+
+      <div class="w-100"></div>
+      <br>
+      
+      <div class="row"><div class="col-sm">Forma Legala</div><div class="col-sm">
+          <select class="form-control" id="LegalForm" [(ngModel)]="LegalForm">
+              <option selected="selected">{{LegalForm}} </option>
+              <option disabled>---</option>
+              <option>SRL</option>
+              <option>SA</option>
+              <option>SC</option>
+            </select>
+      </div>
+      <div class="col-sm-7"></div></div>  
+
+      <div class="w-100"></div>
+      <br>
+
+      <div class="row"><div class="col-sm">Note</div><div class="col-sm">
+          <textarea class="form-control" rows="4" id="Notes" [(ngModel)]="Notes" placeholder="Note"></textarea>
+      </div>
+      <div class="col-sm-7"></div></div>  
+
+
+      <div class="w-100"></div>
+      <br>
+      <button type="button" class="btn btn-success" (click)="PartnerSave()">Salveaza</button>
+      <button type="text" (click)="onClick($event, partners)" class="btn btn-danger" label="Sterge">Sterge</button>
+               
+      <button type="button" class="btn btn-primary" routerLink="/nomenclature/partners">Lista</button>
+         
+      <p-dialog header="Stergere Partener" [(visible)]="display" modal="modal">
+            Doriti Stergerea partenerului {{PartnerName}}?
+            <button (click)="PartnerDelete(PartenerIdForDelete)">Da</button>
+            <button (click)="DoNotshowDialog()">Nu</button>
+        </p-dialog>
+
+    </div>
+  </div>
+
+  <!-- PartnerStatus {{PartnerStatus}}
+  PartnerName {{PartnerName}}
+  PartnerCode {{PartnerCode}}
+  PartnerInternalCode {{PartnerInternalCode}}
+  PartnerType {{PartnerType}}
+  ShortPartnerName {{ShortPartnerName}}
+  ComercialRegistration {{ComercialRegistration}}
+  FiscalRegistration  {{FiscalRegistration}}
+  PartnerAddress  {{PartnerAddress}}
+  LegalForm {{LegalForm}}
+  Notes {{Notes}}
+  VATPayer {{VATPayer}}
+  BankAccount {{BankAccount}}
+  Delegate  {{Delegate}}
+  Agent  {{Agent}}
+  BaseCurrency {{BaseCurrency}}
+  Phone {{Phone}}
+  Email {{Email}}
+  WEB {{WEB}} -->

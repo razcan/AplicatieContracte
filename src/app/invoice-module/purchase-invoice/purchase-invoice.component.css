@@ -1,0 +1,59 @@
+
+.form-control {
+    height: 35px !important;
+    font-family: verdana;
+    font-size: 12px;
+    font-weight: 200;
+    
+}
+button {
+    background-color: rgb(236, 232, 232);
+    border: 1px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+
+label{
+    font-size: 12px;
+}
+
+input [type="file"] {
+    display: none;
+}
+
+.btn-file {
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    background: rgb(236, 232, 232);
+    height: 35px !important;
+}
+
+#Textarea1{
+    width: 100%; 
+}
+
+.card-block {
+    font-size: 16px;
+}
+
+#Drag {
+    height:120px;
+    width:220px;
+    border:1px solid #ccc;
+    font-family: verdana;
+    font-size: 4px;
+    font-weight: 100;
+    overflow:auto;
+}
+#DragRezult {
+    height:320px;
+    width:880px;
+    border:1px solid #ccc;
+    font-family: verdana;
+    font-size: 4px;
+    font-weight: 100;
+    overflow:auto;
+}

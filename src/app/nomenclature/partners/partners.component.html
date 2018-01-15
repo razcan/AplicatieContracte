@@ -1,0 +1,82 @@
+<!-- <div class="card">
+    <div class="card-header">
+      Lista Parteneri
+    </div>
+    <div class="card-body">
+
+        <table class="table table-striped">
+            <thead>
+              <tr>
+                
+                <th scope="col">Nume Partener</th>
+                <th scope="col">Cod Partener</th>
+                <th scope="col">Tip Partener</th>
+                <th scope="col">CUI</th>
+                <th scope="col">Nr. Reg. Com.</th>
+                <th scope="col">LegalForm</th>
+                <th scope="col">Actiune</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let partners of PartnerList | async ;  let i = index">
+                
+           
+               <td><button type="button" class="buttonTransparent" (click)="PartnerEdit(partners.PartnerId)">{{partners.PartnerName}} </button></td>
+               <td><button type="button" class="buttonTransparent" (click)="PartnerEdit(partners.PartnerId)">{{partners.PartnerCode}} </button></td>
+               <td><button type="button" class="buttonTransparent" (click)="PartnerEdit(partners.PartnerId)">{{partners.PartnerType}} </button></td>
+               <td><button type="button" class="buttonTransparent" (click)="PartnerEdit(partners.PartnerId)">{{partners.ComercialRegistration}} </button></td>
+               <td><button type="button" class="buttonTransparent" (click)="PartnerEdit(partners.PartnerId)">{{partners.FiscalRegistration}} </button></td>
+               <td><button type="button" class="buttonTransparent" (click)="PartnerEdit(partners.PartnerId)">{{partners.LegalForm}} </button></td>
+                <td>
+                   
+        
+                    <button type="text" (click)="onClick($event, partners)" class="btn btn-danger" label="Sterge"><span class="glyphicon glyphicon-remove"></span></button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+         
+      
+ -->
+
+ <div class="card">
+    <div class="card-body">
+
+<div class="ui-widget-header" style="padding:4px 10px;border-bottom: 0 none">
+    <i class="fa fa-search" style="margin:4px 4px 0 0"></i>
+    <input #gb type="text" pInputText size="50" placeholder="Global Filter">
+</div> 
+          <div class="content-section implementation">
+              <p-dataTable [value]="PartnersListResult" [rows]="15" [paginator]="true" 
+              [pageLinks]="3" [rowsPerPageOptions]="[15,30,45]" [sortOrder]="sortO" (onSort)="changeSort($event)" 
+              [globalFilter]="gb" #dt exportFilename="PartnersList"
+              selectionMode="single" [(selection)]="PartnersListResult.PartnerId" (onRowSelect)="onRowSelect($event)"
+              (onRowUnselect)="onRowUnselect($event)" dataKey="PartnerId">
+                  <p-header>List of Partners
+                      <div class="ui-helper-clearfix">
+                          <button type="button" pButton icon="fa-file-o" iconPos="left" label="Export" (click)="dt.exportCSV()" style="float:left"></button>
+          
+                      </div>
+                  </p-header>
+              
+              <p-column field="PartnerName" header="PartnerName" [sortable]="true"></p-column>             
+              <p-column field="PartnerCode" header="PartnerCode" [sortable]="true"></p-column>
+              <p-column field="PartnerType" header="PartnerType" [sortable]="true"></p-column>
+              <p-column field="ComercialRegistration" header="ComercialRegistration" [sortable]="true"></p-column>
+              <p-column field="FiscalRegistration" header="FiscalRegistration" [sortable]="true"></p-column>
+              <p-column field="LegalForm" header="LegalForm" [sortable]="true"></p-column>
+                 
+              </p-dataTable>
+          </div>
+          <br>
+          <button type="button" class="btn btn-success" routerLink="/nomenclature/partners/partners-details">Adauga</button>
+    
+          <p-dialog header="Stergere Partener" [(visible)]="display" modal="modal">
+              Doriti Stergerea partenerului {{PartnerNameForDelete}}?
+              <button (click)="PartnerDelete(PartenerIdForDelete)">Da</button>
+              <button (click)="DoNotshowDialog()">Nu</button>
+          </p-dialog>
+  </div>
+</div>
+          

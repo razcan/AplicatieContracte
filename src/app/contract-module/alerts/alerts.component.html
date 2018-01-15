@@ -1,0 +1,152 @@
+
+<ul class="nav nav-tabs">
+                <li class="nav-item">
+                                 <a routerLink="/list/contract-general" >General</a>
+                </li>
+
+                <li class="nav-item">
+                                <a routerLink="/list/contract-financial"> Financiar</a>
+                </li>
+                <li class="nav-item">
+                                <a routerLink="/list/contract-documents">Documente</a>
+                </li>
+                <li class="nav-item">
+                                <a routerLink="/list/contract-tasks" >Task</a>
+                </li>
+                <li class="nav-item">
+                                <a routerLink="/list/contract-history" >Istoric</a>
+                </li>
+                <li class="nav-item">
+                                <a routerLink="/list/contract-alerts" class="nav-link active"> Alerte</a>
+                </li>
+              </ul>
+
+    <div class="ui-g">
+      
+        <div class="ui-g-10">
+                <p-panel header="Alerte" id="main">
+                        <div class="ui-g">
+                                        <div class="ui-g-1">Alert Name</div>     
+                                        <div class="ui-g-12 ui-md-6 ui-lg-3">
+                                                        <p-dropdown [options]="alerts" size="60" placeholder="Select an Alert" optionLabel="name"></p-dropdown>
+                                        </div>      
+                                </div>        
+                        <div class="ui-g">
+                                        <div class="ui-g-1">To Email</div>        
+                                        <div class="ui-g-12 ui-md-6 ui-lg-3"><input type="text" size="60" pInputText /></div> 
+                        </div>
+                        <div class="ui-g">
+                                        <div class="ui-g-1">Name Sender</div>     
+                                        <div class="ui-g-12 ui-md-6 ui-lg-3"><input type="text" size="60" pInputText /></div>      
+                                </div>        
+                        <div class="ui-g">
+                                        <div class="ui-g-1">Name Email</div>        
+                                        <div class="ui-g-12 ui-md-6 ui-lg-3"><input type="text" size="60" pInputText /></div> 
+                        </div>
+                        <div class="ui-g">
+                                        <div class="ui-g-1">Reply To</div>        
+                                        <div class="ui-g-12 ui-md-6 ui-lg-3"><input type="text" size="60" pInputText /></div> 
+                        </div>
+                        <div class="ui-g">
+                                        <div class="ui-g-1">BCC</div>     
+                                        <div class="ui-g-12 ui-md-6 ui-lg-3"><input type="text" size="60" pInputText /></div>      
+                                </div>        
+                        <div class="ui-g">
+                                        <div class="ui-g-1">Subject</div>        
+                                        <div class="ui-g-12 ui-md-6 ui-lg-3"><input type="text" size="60" pInputText /></div> 
+                        </div>
+                        <div class="ui-g">
+                                        <div class="ui-g-1">Single Run On</div>        
+                                        <div class="ui-g-12 ui-md-6 ui-lg-3">
+                                                        <p-inputSwitch onLabel="Da" offLabel="Nu" [(ngModel)]="checked"></p-inputSwitch>
+                                        </div> 
+                        </div>
+
+                        <div *ngIf="checked; then thenTemplateName; else elseTemplateName">
+                                </div>
+                                
+                                <ng-template #elseTemplateName>
+                                                <div class="ui-g">
+                                                                <div class="ui-g-1">Date</div>        
+                                                                <div class="ui-g-12 ui-md-6 ui-lg-3">
+                                                                                <p-calendar [showIcon]="true"></p-calendar> <span style="margin-left:35px"></span>
+                                                                </div> 
+                                                </div>                  
+                                </ng-template>
+                                
+                                <ng-template #thenTemplateName >
+                                                <div class="ui-g">
+                                                                <div class="ui-g-1">Scheduale Interval</div>        
+                                                                <div class="ui-g-12 ui-md-6 ui-lg-3">
+                                                                                <p-selectButton [options]="SchType" [(ngModel)]="selectedSchType"></p-selectButton>
+                                                                                
+                                                                </div> 
+                                                </div>
+                                                <div *ngIf="selectedSchType=='a'; then a">
+                                                        </div>
+                                                <div *ngIf="selectedSchType=='b'; then b">
+                                                        </div>
+                                                <div *ngIf="selectedSchType=='c'; then c">
+                                                        </div>
+                                                
+                                                <ng-template #a>
+                                                <div class="ui-g">
+                                                                <div class="ui-g-1">Days</div>        
+                                                                <div class="ui-g-12 ui-md-6 ui-lg-3">
+                                                                                <p-spinner size="30" [(ngModel)]="nrDays"></p-spinner>
+                                                                </div> 
+                                                </div>
+                                                </ng-template>
+                                                <ng-template #b>
+                                                <div class="ui-g" >
+                                                                <div class="ui-g-1">Days of Week</div>
+                                                                <div class="ui-g-12 ui-md-6 ui-lg-3">
+                                                                                <p-checkbox name="group1" value="Mon" label="Mon" [(ngModel)]="SelectedWeekDays" inputId="Mon"></p-checkbox>
+                                                                                <p-checkbox name="group1" value="Tue" label="Tue" [(ngModel)]="SelectedWeekDays" inputId="Tue"></p-checkbox>
+                                                                                <p-checkbox name="group1" value="Wed" label="Wed" [(ngModel)]="SelectedWeekDays" inputId="Wed"></p-checkbox>
+                                                                                <p-checkbox name="group1" value="Thu" label="Thu" [(ngModel)]="SelectedWeekDays" inputId="Thu"></p-checkbox>
+                                                                                <p-checkbox name="group1" value="Fri" label="Fri" [(ngModel)]="SelectedWeekDays" inputId="Fri"></p-checkbox>
+                                                                                <p-checkbox name="group1" value="Sat" label="Sat" [(ngModel)]="SelectedWeekDays" inputId="Sat"></p-checkbox>
+                                                                                <p-checkbox name="group1" value="Sun" label="Sun" [(ngModel)]="SelectedWeekDays" inputId="Sun"></p-checkbox>
+                                                                </div>
+                                                            </div>
+                                                </ng-template>
+                                                <ng-template #c>
+                                                <div class="ui-g">
+                                                                <div class="ui-g-1">Day</div>        
+                                                                <div class="ui-g-12 ui-md-6 ui-lg-3">
+                                                                                <p-spinner size="30" [(ngModel)]="nrDaysMonth"></p-spinner>
+                                                                </div> 
+                                                                <div class="ui-g-1">Of every month</div>   
+                                                                <div class="ui-g-12 ui-md-6 ui-lg-3">
+                                                                                <p-spinner size="30" [(ngModel)]="nrMonths"></p-spinner>
+                                                                </div> 
+                                                </div>
+                                        </ng-template>
+                                                               
+                                </ng-template>
+
+                                
+           
+                        
+                       
+                        <div class="ui-g">
+                                        <div class="ui-g-1">Message</div>        
+                                        <div class="ui-g-10">
+                                                        <quill-editor id="editor-container" [(ngModel)]="text" 
+                                                        [style]="{'height': '200px'}" placeholder="Editare continut alerta ..."></quill-editor>
+                                        </div> 
+                        </div>
+                        
+
+                        <div class="ui-g">
+                        <button pButton type="button" label="Salveaza" class="ui-button-success"></button>
+                        <button pButton type="button" label="Adauga" class="ui-button-success"></button>
+                        </div>
+
+                </p-panel>
+        </div>
+       
+    </div>
+
+   

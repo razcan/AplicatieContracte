@@ -1,0 +1,91 @@
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+<!--      
+<div class="container-fluid">
+        <div class="row" > 
+                <div class="col-md-2 full-width-image" > 
+                
+                        <img src="/assets/logo.png" alt="Logo" id= "RR">
+                        <breadcrumb [allowBootstrap]="true" id="bread"></breadcrumb> 
+                </div>
+        </div>
+</div>         -->
+
+<div class="container-fluid">
+    <div class="row d-flex d-md-block flex-nowrap wrapper">
+        <div class="col-md-2 float-left col-1 pl-0 pr-0 collapse width show" id="sidebar">
+                
+                <div class="list-group border-0 card text-center text-md-left">
+                   
+                   
+
+                <a routerLink="/" class="list-group-item d-inline-block collapsed" ><i class="fa fa-dashboard"></i> <span class="d-none d-md-inline">Home</span></a>
+                <a href="#menu1" class="list-group-item d-inline-block collapsed" data-toggle="collapse" data-parent="#sidebar" 
+                aria-expanded="false"><i class="fa fa-dashboard"></i> <span class="d-none d-md-inline">Modul Contracte</span> </a>
+                <div class="collapse" id="menu1">
+                    
+                    <a   class="list-group-item" data-parent="#menu1" routerLink="/list">Lista Contracte</a>
+                    <a   class="list-group-item" data-parent="#menu1">Acte Aditionale</a>
+                    <a   class="list-group-item" data-parent="#menu1" routerLink="/list">Rapoarte</a>
+                   
+                </div>
+
+                <a href="#menu2" class="list-group-item d-inline-block collapsed" data-toggle="collapse" data-parent="#sidebar" 
+                aria-expanded="false"><i class="fa fa-dashboard"></i> <span class="d-none d-md-inline">Modul Financiar</span> </a>
+                <div class="collapse" id="menu2">
+                    
+                    <a   class="list-group-item" data-parent="#menu2" routerLink="/list">Incasari</a>
+                    <a   class="list-group-item" data-parent="#menu2">Plati</a>
+                    <a   class="list-group-item" data-parent="#menu2" routerLink="/list">Rapoarte</a>
+                   
+                </div>
+                
+                <a href="#menu3" class="list-group-item d-inline-block collapsed" data-toggle="collapse" data-parent="#sidebar" aria-expanded="false">
+                    <i class="fa fa-book"></i> <span class="d-none d-md-inline">Modul Facturare </span></a>
+                <div class="collapse" id="menu3">
+                    <a   class="list-group-item" data-parent="#menu3" routerLink="/invoice-module/list/purchase-invoice">Factura de Aprovizionare</a>
+                    <a   class="list-group-item" data-parent="#menu3" routerLink="/invoice-module/list/purchase-invoice">Factura Proforma de Aprovizionare</a>
+                    <a   class="list-group-item" data-parent="#menu3" routerLink="/invoice-module/list/purchase-invoice">Factura de Vanzare</a>
+                    <a   class="list-group-item" data-parent="#menu3" routerLink="/invoice-module/list/purchase-invoice">Factura Proforma de Vanzare</a>
+    
+                    <a href="#menu3sub2" style="display:none" class="list-group-item" data-toggle="collapse" aria-expanded="false">3.2 </a>
+                    <div class="collapse" id="menu3sub2">
+                        <a   class="list-group-item" data-parent="#menu3sub2">3.2 a</a>
+                        <a   class="list-group-item" data-parent="#menu3sub2">3.2 b</a>
+                        <a   class="list-group-item" data-parent="#menu3sub2">3.2 c</a>
+                    </div>
+                   
+                </div>
+                <a href="#menu4"  class="list-group-item d-inline-block collapsed" data-toggle="collapse" data-parent="#sidebar" aria-expanded="false">
+                    <i class="fa fa-heart"></i> 
+                    <span class="d-none d-md-inline">Nomenclatoare</span></a>
+                    <div class="collapse" id="menu4">
+                            <a   class="list-group-item" data-parent="#menu4" routerLink="/nomenclature/partners">Parteneri</a>
+                            <a   class="list-group-item" data-parent="#menu4" routerLink="/nomenclature/items">Articole</a>
+                            <a   class="list-group-item" data-parent="#menu4" routerLink="/nomenclature/items">Categorii Articole</a>
+                            <a   class="list-group-item" data-parent="#menu4" routerLink="/nomenclature/departments/department-details">Departamente</a>
+                            <a   class="list-group-item" data-parent="#menu4" routerLink="/invoice-module/list/purchase-invoice">Proprietati</a>
+                            <a   class="list-group-item" data-parent="#menu4" routerLink="/invoice-module/list/purchase-invoice">Utilizatori</a>
+                            <a   class="list-group-item" data-parent="#menu4" routerLink="/invoice-module/list/purchase-invoice">Serii Documente</a>
+                            <a   class="list-group-item" data-parent="#menu4" routerLink="/invoice-module/list/purchase-invoice">Valute</a>
+                            <a   class="list-group-item" data-parent="#menu4" routerLink="/invoice-module/list/purchase-invoice">Gestiuni</a>
+                            <a   class="list-group-item" data-parent="#menu4" routerLink="/invoice-module/list/purchase-invoice">Centre de Cost/Profit</a>
+                            <a   class="list-group-item" data-parent="#menu4" routerLink="/invoice-module/list/purchase-invoice">Clasificare Cheltuieli/Venituri</a>
+                            <a   class="list-group-item" data-parent="#menu4" routerLink="/invoice-module/list/purchase-invoice">Clasificare Plati/Incasari</a>
+                            <a   class="list-group-item" data-parent="#menu4" routerLink="/invoice-module/list/purchase-invoice">Sabloane Contracte</a>                        </div>
+            </div>
+        </div>
+
+        <main class="col main align-self-end  no-gutters" id="bread">
+                <ol class="breadcrumb ">
+                    <a data-target="#sidebar" data-toggle="collapse"><i class="fa fa-navicon fa-2x"></i></a>
+                </ol>     
+                    <!-- <breadcrumb [allowBootstr ap]="true"></breadcrumb> -->
+            <router-outlet></router-outlet>
+            </main>
+        
+       
+        
+    </div>
+
+   
+</div>

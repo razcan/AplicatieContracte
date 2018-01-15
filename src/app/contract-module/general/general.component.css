@@ -1,0 +1,29 @@
+
+#exampleFormControlSelect1 {
+    height: 35px;
+    font-size: 14px;
+  }
+  .breadcrumb{
+    background: #d19b3d !important;   
+  }
+  
+  .breadcrumb > .breadcrumb-item {
+    color: black;
+    font-size: 14px;
+  }
+  .card{
+    margin-left: -15px !important;
+    margin-right: -15px;
+  }
+  
+  .Note{
+    margin-left: -15px !important;
+    margin-right: -15px;
+  }
+  
+  
+  .card-text{
+    font-style: italic;
+    font-weight: bold;
+    color: blue;
+  }
