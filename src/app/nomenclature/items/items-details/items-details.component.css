@@ -1,0 +1,12 @@
+.ui-radiobutton-box {
+    width: 1.725em;
+    height: 1.725em;
+    line-height: 1.725em;
+    border-radius: 100%;
+    text-align: center;
+}
+
+.ui-grid label {
+    display: inline-block;
+    margin: 3px 0px 0px 4px;
+}

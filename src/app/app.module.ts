@@ -145,9 +145,11 @@ import { NomenclatureComponent } from './nomenclature/nomenclature.component';
 import { PartnersDetailsComponent } from './nomenclature/partners/partners-details/partners-details.component';
 import { PartnersComponent } from './nomenclature/partners/partners.component';
 import { ItemsComponent } from './nomenclature/items/items.component';
+import { ItemsDetailsComponent } from './nomenclature/items/items-details/items-details.component';
 import { DepartmentsComponent } from './nomenclature/departments/departments.component';
 import { DepartmentDetailsComponent } from './nomenclature/departments/department-details/department-details.component';
 import { GestiuniComponent } from './nomenclature/gestiuni/gestiuni.component';
+
 
 export const appRoutes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full'},
@@ -162,7 +164,9 @@ export const appRoutes: Routes = [
   { path: 'nomenclature/departments',         component: DepartmentsComponent,data: {breadcrumb: 'Nomenclatoare/Departamente'}   },
   { path: 'nomenclature/departments/department-details',         component: DepartmentDetailsComponent,data: {breadcrumb: 'Nomenclatoare/Departamente/Detalii'}   },
   { path: 'nomenclature/partners',         component: PartnersComponent,data: {breadcrumb: 'Nomenclatoare/Parteneri'}   },
-  { path: 'nomenclature/items',         component: ItemsComponent,data: {breadcrumb: 'Nomenclatoare/Parteneri'}   },
+  { path: 'nomenclature/items',         component: ItemsComponent,data: {breadcrumb: 'Nomenclatoare/Articole'}   },
+  { path: 'nomenclature/items/items-details',         component: ItemsDetailsComponent,data: {breadcrumb: 'Nomenclatoare/Articole/Detalii'}   },
+  { path: 'nomenclature/items/items-details/:ItemId',         component: ItemsDetailsComponent,data: {breadcrumb: 'Nomenclatoare/Articole/Detalii'}   },
   { path: 'nomenclature/partners/partners-details',         component: PartnersDetailsComponent,data: {breadcrumb: 'Nomenclatoare/Parteneri/Detalii'}   },
   { path: 'nomenclature/partners/partners-details/:PartnerId',         component: PartnersDetailsComponent,data: {breadcrumb: 'Nomenclatoare/Parteneri/Detalii'}   },
   { path: 'invoice-module/list/purchase-invoice',component: PurchaseInvoiceComponent },
@@ -194,6 +198,7 @@ export const appRoutes: Routes = [
     DepartmentsComponent,
     DepartmentDetailsComponent,
     GestiuniComponent,
+    ItemsDetailsComponent,
 
   ],
   imports: [

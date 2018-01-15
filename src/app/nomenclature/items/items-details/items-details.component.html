@@ -1,0 +1,188 @@
+<div class="card">
+  <div class="card-header">
+    Detalii Articol
+        
+    <!-- <input type="text" class="form-control" id="employee" name="employee" [(ngModel)]="employeeDob" #date="ngModel" required  />
+    <div [hidden]="date.valid || date.pristine">
+      <p>Please enter the date</p>
+  </div> -->
+
+  </div>
+  <div class="card-body">
+    
+<p-growl [value]="msgs" sticky="sticky"></p-growl>
+<div *ngFor="let item of results">
+      <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid" style="margin: 10px 0px">
+          <div class="ui-grid-row">
+              <div class="ui-grid-col-2">
+                  Denumire *: 
+              </div>
+              <div class="ui-grid-col-2">
+                  <input pInputText type="text"  pTooltip="Introuceti denumire articol" [(ngModel)]="ItemName"/>
+              </div>
+              <div class="ui-grid-col-3">
+                  <div class="ui-message ui-messages-error ui-corner-all" 
+                  *ngIf="!ItemName.dirty || !ItemName.touched">
+                      <i class="fa fa-close"></i>
+                      Campul "Denumire" este obligatoriu
+                  </div>
+              </div>
+          </div>
+          <div class="ui-grid-row">
+              <div class="ui-grid-col-2">
+                  Cod *:
+              </div>
+              <div class="ui-grid-col-2">
+                  <input pInputText type="text" [(ngModel)]="ItemCode"/>
+              </div>
+              <div class="ui-grid-col-2">
+                  <div class="ui-message ui-messages-error ui-corner-all" >
+                      <i class="fa fa-close"></i>
+                      Cod Articol este obligatoriu
+                  </div>
+              </div>
+          </div>
+          
+          <div class="ui-grid-row">
+              <div class="ui-grid-col-2">
+                  Descriere:
+              </div>
+              <div class="ui-grid-col-3">
+                  <textarea pInputTextarea type="text" [(ngModel)]="ItemDescription"></textarea>
+              </div>
+              <div class="ui-grid-col-4"></div>
+          </div>
+          <div class="ui-grid-row">
+              <div class="ui-grid-col-2">
+                  Tip *:
+              </div>
+              <div class="ui-grid-col-2">
+                  <select class="form-control" id="ItemType" [(ngModel)]="ItemType">
+                    <option selected="selected">{{ItemType}} </option>
+                    <option disabled>---</option>
+                    <option>Servicii</option>
+                    <option>Marfa</option>
+                    <option>Consumabile</option>
+                  </select>
+              </div>
+              <div class="ui-grid-col-4">
+                  <div class="ui-message ui-messages-error ui-corner-all" *ngIf="!userform.controls['ItemType'].valid&&userform.controls['ItemType'].dirty">
+                      <i class="fa fa-close"></i>
+                      Campul Tip este obligatoriu
+                  </div>
+              </div>
+          </div>
+          
+          <div class="ui-grid-row">
+              <div class="ui-grid-col-2">
+                  Activ *:
+              </div>
+              <div class="ui-grid-col-3">
+                  <div class="ui-g" style="width:250px;margin-bottom:10px">
+                      <div class="ui-g-12"><p-radioButton  name="group2" value="Da" label="Da"  inputId="preopt1"></p-radioButton></div>
+                      <div class="ui-g-12"><p-radioButton  name="group2" value="Nu" label="Nu"  inputId="preopt2"></p-radioButton></div>                    
+                    </div>      
+                    <hr>            
+              </div>
+              <div class="ui-grid-col-4"></div>
+          </div>
+          <div class="ui-grid-row">
+              <div class="ui-grid-col-2">
+                  Stocabil *:
+              </div>
+              <div class="ui-grid-col-3">
+                  <div class="ui-g" style="width:250px;margin-bottom:10px">
+                      <div class="ui-g-12"><p-radioButton  name="group3" value="Da" label="Da"  inputId="preopt3"></p-radioButton></div>
+                      <div class="ui-g-12"><p-radioButton  name="group3" value="Nu" label="Nu"  inputId="preopt4"></p-radioButton></div>                    
+                    </div>                  
+              </div>
+              <div class="ui-grid-col-4"></div>
+          </div>
+          <div class="ui-grid-row">
+              <div class="ui-grid-col-2">
+                  UM *:
+              </div>
+              <div class="ui-grid-col-2">
+                  <p-dropdown [options]="ItemMeasuringUnit" [autoWidth]="false"></p-dropdown>
+              </div>
+              <div class="ui-grid-col-4">
+                  <div class="ui-message ui-messages-error ui-corner-all" *ngIf="!userform.controls['ItemMeasuringUnit'].valid&&userform.controls['ItemMeasuringUnit'].dirty">
+                      <i class="fa fa-close"></i>
+                      Campul Unitate de masura este obligatoriu
+                  </div>
+              </div>
+          </div>
+          <div class="ui-grid-row">
+              <div class="ui-grid-col-2">
+                  Pret :
+              </div>
+              <div class="ui-grid-col-2">
+                  <input pInputText type="text"  [(ngModel)]="ItemPrice"/>
+              </div>
+          </div>
+          <div class="ui-grid-row">
+              <div class="ui-grid-col-2">
+                  Moneda *:
+              </div>
+              <div class="ui-grid-col-2">
+                  <p-dropdown [options]="ItemCurrency"  [autoWidth]="false"></p-dropdown>
+              </div>
+              <div class="ui-grid-col-4">
+                  <div class="ui-message ui-messages-error ui-corner-all" *ngIf="!userform.controls['ItemCurrency'].valid&&userform.controls['ItemCurrency'].dirty">
+                      <i class="fa fa-close"></i>
+                      Campul Valuta este obligatoriu
+                  </div>
+              </div>
+          </div>
+          <div class="ui-grid-row">
+              <div class="ui-grid-col-2">
+                  Cota TVA *:
+              </div>
+              <div class="ui-grid-col-2">
+                  <p-dropdown [options]="VatCode"  [autoWidth]="false" ></p-dropdown>
+   
+              </div>
+              <div class="ui-grid-col-4">
+                  <div class="ui-message ui-messages-error ui-corner-all" *ngIf="!userform.controls['VatCode'].valid&&userform.controls['VatCode'].dirty">
+                      <i class="fa fa-close"></i>
+                      Campul Cota TVA este obligatoriu
+                  </div>
+              </div>
+          </div>
+          <div class="ui-grid-row">
+              <div class="ui-grid-col-2">
+                  Cod de bare :
+              </div>
+              <div class="ui-grid-col-2">
+                  <input pInputText type="text" [(ngModel)]="BarCode" />
+              </div>
+          </div>
+          <div class="ui-grid-row">
+              <div class="ui-grid-col-2">
+                  Categorie :
+              </div>
+              <div class="ui-grid-col-2">
+                        
+              <p-tree  [value]="data"  selectionMode="single" [(selection)]="ItemIerarchy" ></p-tree>
+              </div>
+              
+          </div>
+          
+          <div class="ui-grid-row">
+              <div class="ui-grid-col-2"></div>
+              <div class="ui-grid-col-2">
+                  <button type="button" class="btn btn-success" (click)="ItemSave()">Salveaza</button>
+                  <button type="text" (click)="onClick($event, partners)" class="btn btn-danger" label="Sterge">Sterge</button>
+                  <button type="button" class="btn btn-primary" routerLink="/nomenclature/items">Lista</button>
+                </div>
+              
+          <div class="ui-grid-col-4"></div>
+          </div>
+          <!-- <div style="text-align:center;margin-top:20px" *ngIf="submitted">
+              Form Submitted
+              <br>
+              {{diagnostic}} 
+          </div> -->
+      </div>
+    </div>
+</div>
