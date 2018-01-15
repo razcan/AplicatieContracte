@@ -1,29 +1,38 @@
 
-#exampleFormControlSelect1 {
-    height: 35px;
-    font-size: 14px;
+
+  .nav-item > a {
+    font-size: 15px;
+    
   }
-  .breadcrumb{
-    background: #d19b3d !important;   
+
+  .card {
+    border: 0px;
+  }
+  .card-title {
+    background: #f1f1f1;  
+  }
+
+  .hr {
+    background: #5cb85c;   
+    height: 2px;
   }
   
-  .breadcrumb > .breadcrumb-item {
+
+  .nav-item .active {
+    background: #5cb85c;
+    color: white;
+  
+  }
+
+  .nav-item > a {    
     color: black;
-    font-size: 14px;
   }
-  .card{
-    margin-left: -15px !important;
-    margin-right: -15px;
+
+  .general-page {
+    border-style: solid;
+   border-color: #f1f1f1;
   }
-  
-  .Note{
-    margin-left: -15px !important;
-    margin-right: -15px;
-  }
-  
-  
-  .card-text{
-    font-style: italic;
-    font-weight: bold;
-    color: blue;
+
+  .exampleFormControlInput1 {
+    height: 24.5px;
   }

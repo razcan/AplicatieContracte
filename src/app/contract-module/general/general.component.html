@@ -12,73 +12,76 @@
     <div class="row">
       <div class="col-md-12">
 
-          <ul class="nav nav-tabs">
-              <li class="nav-item">
-                               <a routerLink="/list/contract-general" class="nav-link active" >General</a>
-              </li>
-          
-              <li class="nav-item">
-                              <a routerLink="/list/contract-financial"> Financiar</a>
-              </li>
-              <li class="nav-item">
-                              <a routerLink="/list/contract-documents" >Documente</a>
-              </li>
-              <li class="nav-item">
-                              <a routerLink="/list/contract-tasks" >Task</a>
-              </li>
-              <li class="nav-item">
-                              <a routerLink="/list/contract-history" >Istoric</a>
-              </li>
-              <li class="nav-item">
-                              <a routerLink="/list/contract-alerts" > Alerte</a>
-              </li>
-            </ul>
+        <ul class="nav nav-tabs">
+          <li class="nav-item">
+            <a routerLink="/list/contract-general" class="nav-link active">General</a>
+          </li>
+
+          <li class="nav-item">
+            <a routerLink="/list/contract-financial"> Financiar</a>
+          </li>
+          <li class="nav-item">
+            <a routerLink="/list/contract-documents">Documente</a>
+          </li>
+          <li class="nav-item">
+            <a routerLink="/list/contract-tasks">Task</a>
+          </li>
+          <li class="nav-item">
+            <a routerLink="/list/contract-history">Istoric</a>
+          </li>
+          <li class="nav-item">
+            <a routerLink="/list/contract-alerts"> Alerte</a>
+          </li>
+        </ul>
 
         <div class="tab-content" id="nav-tabContent">
           <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
 
             <!-- General Info Tab -->
-            <div class="container-fluid">
+            <div class="container-fluid general-page">
               <div class="row">
                 <div class="col-md-6">
                   <div class="card">
                     <div class="card-body">
-                      <h4 class="card-title main-color-bg"></h4>
-                    
-                      <p class="card-text">Informatii Generale</p>
-                      <hr>
-                      <div class="row">
+                      <h4 class="card-title">Informatii Generale</h4>
+
+                      <!-- <p class="card-text">Informatii Generale</p> -->
+                      <hr class="hr">
+                      <div class="row formControlSelect">
                         <div class="col-md-3">
-                          <label for="exampleFormControlSelect1">Partner Name</label>
+                          <label for="selectPartnerName">Partner Name</label>
                         </div>
                         <div class="col-md-3">
-                          <select class="form-control" id="exampleFormControlSelect1">
-                            <option selected>Choose...</option>
-                            <option>...</option>
+                          <select class="form-control" id="selectPartnerName">
+                            <option selected>Choose</option>
+                            <option>ABC</option>
+                            <option>VOX</option>
+                            <option>GDX</option>
+                            <option>Vasilica</option>
                           </select>
                         </div>
                       </div>
-                     <br>
+                      <br>
                       <div class="row">
                         <div class="col-md-3">
-                          <label for="exampleFormControlSelect1">Tip Contract</label>
+                          <label for="selectContractType">Tip Contract</label>
                         </div>
                         <div class="col-md-3">
-                          <select class="form-control" id="exampleFormControlSelect1">
-                            <option selected>Choose...</option>
-                            <option>...</option>
+                          <select class="form-control" id="selectContractType">
+                            <option selected>Tip</option>
+                            <option>Achizitii</option>
+                            <option>Vanzari</option>
                           </select>
                         </div>
                       </div>
                       <br>
 
                       <div class="row">
-
                         <div class="col-md-3">
                           <label for="exampleFormControlInput1">Contract No.</label>
                         </div>
                         <div class="form-group col-md-3">
-                          <input type="text" class="form-control" id="exampleFormControlInput1">
+                          <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="12345">
                         </div>
                       </div>
                       <div class="row">
@@ -100,45 +103,45 @@
                           <input type="text" class="form-control" [minDate]="minDate" [maxDate]="maxDate" #dp="bsDatepicker" bsDatepicker [(bsValue)]="bsValue">
                         </div> -->
                         <div class="col-md-3 form-group">
-                            <div class="form-group">
-                              <div class="input-group">
-                                <input type="text" class="form-control" bsDatepicker #dp="bsDatepicker" [bsConfig]="bsConfig">
-                                <div class="input-group-btn">
-                                  <button class="btn btn-success">Open</button>
-                                </div>
+                          <div class="form-group">
+                            <div class="input-group">
+                              <input type="text" class="form-control" bsDatepicker #dp="bsDatepicker" [bsConfig]="bsConfig" placeholder="mm/dd/yy">
+                              <div class="input-group-btn">
+                                <button class="btn btn-success"></button>
                               </div>
                             </div>
                           </div>
+                        </div>
                       </div>
                       <div class="row">
                         <div class="col-md-3">
                           <div class="form-group">
-                            <label>Start Date</label>                                                     
+                            <label>Start Date</label>
                             <div class="form-group">
-                                <div class="form-group">
-                                  <div class="input-group">
-                                    <input type="text" class="form-control" bsDatepicker #dp="bsDatepicker" [bsConfig]="bsConfig">
-                                    <div class="input-group-btn">
-                                      <button class="btn btn-success">Open</button>
-                                    </div>
+                              <div class="form-group">
+                                <div class="input-group">
+                                  <input type="text" class="form-control" bsDatepicker #dp="bsDatepicker" [bsConfig]="bsConfig">
+                                  <div class="input-group-btn">
+                                    <button class="btn btn-success"></button>
                                   </div>
                                 </div>
                               </div>
+                            </div>
                           </div>
                         </div>
                         <div class="col-md-3">
                           <div class="form-group">
                             <label>End Date</label>
                             <div class="form-group">
-                                <div class="form-group">
-                                  <div class="input-group">
-                                    <input type="text" class="form-control" bsDatepicker #dp="bsDatepicker" [bsConfig]="bsConfig">
-                                    <div class="input-group-btn">
-                                      <button class="btn btn-success">Open</button>
-                                    </div>
+                              <div class="form-group">
+                                <div class="input-group">
+                                  <input type="text" class="form-control" bsDatepicker #dp="bsDatepicker" [bsConfig]="bsConfig">
+                                  <div class="input-group-btn">
+                                    <button class="btn btn-success"></button>
                                   </div>
                                 </div>
                               </div>
+                            </div>
                           </div>
                         </div>
                       </div>
@@ -195,52 +198,52 @@
                         </div>
                       </div>
                       <br>
-                      <p class="card-text">Corespondenta/Notificari</p>
-                      <hr>
+                      <h4 class="card-title">Corespondenta/Notificari</h4>
+                      <!-- <p class="card-text">Corespondenta/Notificari</p> -->
+                      <hr class="hr">
                       <div class="row">
-                          <div class="col-md-4">
-                            <div class="form-group">
-                              <label for="exampleFormControlInput1">Adresa</label>
-                              <input type="text" class="form-control" id="exampleFormControlInput1">
-                            </div>
-                          </div>
-                          <div class="col-md-4">
-                            <div class="form-group">
-                              <label for="exampleFormControlInput1">Tel/Fax</label>
-                              <input type="text" class="form-control" id="exampleFormControlInput1">
-                            </div>
+                        <div class="col-md-4">
+                          <div class="form-group">
+                            <label for="exampleFormControlInput1">Adresa</label>
+                            <input type="text" class="form-control" id="exampleFormControlInput1">
                           </div>
                         </div>
-                              <div class="row">
-                                  <div class="col-md-4">
-                                    <div class="form-group">
-                                      <label for="inputEmail4">Email</label>
-                                      <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
-                                    </div>
-                                  </div>
-                                 
-                               
-                                      <div class="col-md-4">
-                                        <div class="form-group">
-                                          <label for="exampleFormControlInput1">In atentia</label>
-                                          <input type="text" class="form-control" id="exampleFormControlInput1">
-                                        </div>
-                                      </div>
-                                      
-                                    </div>
-                                    <hr>
-                                    <button type="button" class="btn btn-success">Modifica</button>
-                                    <button type="button" class="btn btn-warning">Adauga Act Aditional</button>
+                        <div class="col-md-4">
+                          <div class="form-group">
+                            <label for="exampleFormControlInput1">Tel/Fax</label>
+                            <input type="text" class="form-control" id="exampleFormControlInput1">
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-4">
+                          <div class="form-group">
+                            <label for="inputEmail4">Email</label>
+                            <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
+                          </div>
+                        </div>
+
+
+                        <div class="col-md-4">
+                          <div class="form-group">
+                            <label for="exampleFormControlInput1">In atentia</label>
+                            <input type="text" class="form-control" id="exampleFormControlInput1">
+                          </div>
+                        </div>
+
+                      </div>
+
+
                     </div>
                   </div>
                 </div>
                 <div class="col-md-6">
                   <div class="card">
                     <div class="card-body">
-                      <h4 class="card-title main-color-bg"></h4>
-                     
-                      <p class="card-text">Proprietati Standard Contract</p>
-                      <hr>
+
+                      <h4 class="card-title">Proprietati Standard Contract</h4>
+                      <!-- <p class="card-text">Proprietati Standard Contract</p> -->
+                      <hr class="hr">
                       <div class="row">
                         <div class="col-md-3">
                           <label for="exampleFormControlSelect1">Categorie Contract</label>
@@ -320,22 +323,31 @@
                       </div>
                       <div class="row">
                         <div class="col-md-3">
-                          <label for="exampleFormControlTextarea1">Prelungire automata</label>
+                          <label col-form-label >Prelungire automata</label>
                         </div>
                         <!-- <div class="form-group col-md-4">
                           <textarea class="form-control" id="exampleFormControlTextarea1" rows="1"></textarea>
                         </div> -->
-                        <label class="custom-control custom-checkbox">
+                        <!-- <label class="custom-control custom-checkbox">
                           <input type="checkbox" class="custom-control-input">
                           <span class="custom-control-indicator"></span>
                           <span class="custom-control-description">DA</span>
-                        </label>
-                        <label class="custom-control custom-checkbox">
-                          <input type="checkbox" class="custom-control-input">
-                          <span class="custom-control-indicator"></span>
-                          <span class="custom-control-description">NU</span>
-                        </label>
+                        </label> -->
+                        <div class="col-md-4">
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1" checked>
+                            <label class="form-check-label" for="gridRadios1">
+                              DA
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1" checked>
+                            <label class="form-check-label" for="gridRadios1">
+                              NU
+                            </label>
+                        </div>
                       </div>
+                    </div>
                       <br>
                       <div class="row">
                         <div class="col-md-4">
@@ -356,8 +368,9 @@
                         </div>
                       </div>
                       <br>
-                      <p class="card-text">Proprietati Specifice Contract</p>
-                      <hr>
+                      <h4 class="card-title">Proprietati Specifice Contract</h4>
+                      <!-- <p class="card-text">Proprietati Specifice Contract</p> -->
+                      <hr class="hr">
 
                       <!-- <div class="row">
                         <div class="container-fluid">
@@ -388,19 +401,16 @@
                             </div>
                           </div>
                         </div>
-                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
-
-
               </div>
 
-
-
-
-         
-
+              <div class="row">
+                <button type="button" class="btn btn-success">Modifica</button>
+                <button type="button" class="btn btn-warning">Adauga Act Aditional</button>
+              </div>
 
             </div>
           </div>

@@ -1,21 +1,87 @@
 <ul class="nav nav-tabs">
-                <li class="nav-item">
-                                 <a routerLink="/list/contract-general" >General</a>
-                </li>
+  <li class="nav-item">
+                   <a routerLink="/list/contract-general" >General</a>
+  </li>
 
-                <li class="nav-item">
-                                <a routerLink="/list/contract-financial"> Financiar</a>
-                </li>
-                <li class="nav-item">
-                                <a routerLink="/list/contract-documents">Documente</a>
-                </li>
-                <li class="nav-item">
-                                <a routerLink="/list/contract-tasks" class="nav-link active">Task</a>
-                </li>
-                <li class="nav-item">
-                                <a routerLink="/list/contract-history" >Istoric</a>
-                </li>
-                <li class="nav-item">
-                                <a routerLink="/list/contract-alerts"> Alerte</a>
-                </li>
-              </ul>
+  <li class="nav-item">
+                  <a routerLink="/list/contract-financial"> Financiar</a>
+  </li>
+  <li class="nav-item">
+                  <a routerLink="/list/contract-documents">Documente</a>
+  </li>
+  <li class="nav-item">
+                  <a routerLink="/list/contract-tasks" class="nav-link active">Scadentar & Facturi</a>
+  </li>
+  <li class="nav-item">
+                  <a routerLink="/list/contract-history" >Istoric</a>
+  </li>
+  <li class="nav-item">
+                  <a routerLink="/list/contract-alerts"> Alerte</a>
+  </li>
+</ul>
+
+<div class="container-fluid general-page">
+    <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+          <div class="card-body">
+        <div class="scrollable">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th scope="col">Obiect Contract</th>
+                  <th scope="col">Valoare w/o VAT</th>
+             
+                  <th scope="col">Cota TVA</th>
+                  <th scope="col">Valuta Ctr.</th>
+                  
+                  <th scope="col">Interval Facturare</th>
+                  <th scope="col">Frecventa Facturare</th>
+                  <th scope="col">Zi facturare</th>
+                  <th scope="col">Nr. Zile scadenta</th>
+                 
+                  <th scope="col"></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">Chirie (Birouri)</th>
+                  <td>777</td>
+                
+                  <td>19</td>
+                  <td>EUR</td>
+                 
+                  <td>Lunar</td>
+                  <td>1</td>
+                  <td>10</td>
+                  <td>30</td>
+                
+                  <td>
+                    <button type="button" class="btn btn-warning">Edit</button>
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row">2</th>
+                  <td>Jacob</td>
+                
+                  <td>@fat</td>
+                  <td>@fat</td>
+              
+                  <td>@fat</td>
+                  <td>@fat</td>
+                  <td>@fat</td>
+                  <td>@fat</td>
+            
+                  <td>
+                    <button type="button" class="btn btn-warning">Edit</button>
+                  </td>
+                </tr>
+
+              </tbody>
+            </table>
+          </div>
+    </div>
+</div>
+</div>
+</div>
+</div>
