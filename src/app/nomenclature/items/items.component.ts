@@ -13,15 +13,6 @@ import { HostListener } from '@angular/core';
 export class ItemsComponent implements OnInit {
 key;
 
-  @HostListener('document:keypress', ['$event'])
-  handleKeyboardEvent(event: KeyboardEvent) { 
-    this.key = event.key;
-    if (this.key == 'a') {
-    console.log(this.key);
-    }
-    if (!(event.which == 115 && event.ctrlKey) && !(event.which == 19)) return true;
-    alert("Ctrl-S pressed");
-  }
 
   msgs1: Message[];
 
@@ -101,7 +92,7 @@ key;
               "collapsedIcon": "fa-folder",
               "children": [{
                       "label": "Al Pacino",
-                      "data": "Pacino Movies",
+                      "data": "1",
                       "children": [{"label": "Scarface", "icon": "fa-file-video-o", "data": "Scarface Movie"}, {"label": "Serpico", "icon": "fa-file-video-o", "data": "Serpico Movie"}]
                   },
                   {
@@ -118,19 +109,18 @@ key;
           'ItemName': new FormControl('', Validators.required),
           'ItemCode': new FormControl('', Validators.compose([Validators.required, Validators.minLength(4)])),         
           'ItemDescription': new FormControl(''),
-          'ItemType': new FormControl(''),
-          'IsValid': new FormControl(''),
-          'IsStockable': new FormControl(''),
-          'ItemMeasuringUnit': new FormControl(''),
-          'ItemPrice': new FormControl('') ,
-          'ItemCurrency': new FormControl('') ,
-          'VatCode': new FormControl(''),      
-          'BarCode': new FormControl('') ,
-          // 'ItemIerarchy': new FormControl('')       
+          'ItemType': new FormControl('',Validators.required),
+          'IsValid': new FormControl('',Validators.required),
+          'IsStockable': new FormControl('',Validators.required),
+          'ItemMeasuringUnit': new FormControl('',Validators.required),
+          'ItemPrice': new FormControl('',Validators.required) ,
+          'ItemCurrency': new FormControl('',Validators.required) ,
+          'VatCode': new FormControl('',Validators.required),      
+          'BarCode': new FormControl('')   
       });
 
       this.ItemType = [];
-      this.ItemType.push({label:'Selecteaza Tip Articol', value:''});
+      this.ItemType.push({label:'---', value:''});
       this.ItemType.push({label:'Servicii', value:'Servicii'});
       this.ItemType.push({label:'Marfa', value:'Marfa'});
       this.ItemType.push({label:'Consumabile', value:'Consumabile'});
@@ -141,40 +131,43 @@ key;
       this.IsStockable.push({label:'Da', value:'Da'});
       this.IsStockable.push({label:'Nu', value:'Nu'});
       this.ItemMeasuringUnit = [];
+      this.ItemMeasuringUnit.push({label:'---', value:''});
       this.ItemMeasuringUnit.push({label:'Bucata', value:'Bucata'});
       this.ItemMeasuringUnit.push({label:'KG', value:'KG'});
       this.ItemMeasuringUnit.push({label:'M', value:'M'});
       this.ItemMeasuringUnit.push({label:'Fara', value:'Fara'});
       this.ItemCurrency = [];
+      this.ItemCurrency.push({label:'---', value:''});
       this.ItemCurrency.push({label:'Ron', value:'Ron'});
       this.ItemCurrency.push({label:'Eur', value:'Eur'});
       this.ItemCurrency.push({label:'Usd', value:'Usd'});
       this.VatCode = [];
+      this.VatCode.push({label:'---', value:''});
       this.VatCode.push({label:'TVA19', value:'Ron'});
       this.VatCode.push({label:'TVA5', value:'Eur'});
       this.VatCode.push({label:'TVA0', value:'Usd'});
       this.VatCode.push({label:'TI19', value:'Ron'});
       this.VatCode.push({label:'TI5', value:'Eur'});
       this.BarCode = [];
-    
      
   }
 
-  onSubmit(value: string) {
-      this.submitted = true;
-      this.msgs = [];
-      
+  onSubmit() {
+     // this.submitted = true;
+     // this.msgs = [];
+     if (this.userform.value.ItemMeasuringUnit=='') {console.log('Nu e bine!')}
+      console.log(this.userform.value.ItemMeasuringUnit);
+      console.log(this.userform.value.ItemName);
+      console.log(this.userform.value.ItemType);
+      console.log(this.ItemIerarchy.label);
       //this.msgs.push({severity:'info', summary:'Success'});
   }
 
-   get diagnostic() { return JSON.stringify(this.userform.value); }
-
-   KeyPress(e) {
-    var evtobj = window.event? event : e
-    if (evtobj.keyCode == 90 && evtobj.ctrlKey) alert("Ctrl+z");
-}
+//    get diagnostic() { 
+       
+//     return JSON.stringify(this.userform.value); }
    
 }
 
 // ItemId, ItemName, ItemCode, ItemDescription,ItemType,IsValid,IsStockable,
-// ItemMeasuringUnit,ItemPrice,ItemCurrency,VatCode, BarCode, ItemIerarchy, ItemProperty
+// ItemMeasuringUnit,ItemPrice,ItemCurrency,VatCode, BarCode, ItemIerarchy
