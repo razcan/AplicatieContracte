@@ -147,6 +147,7 @@ import { PartnersComponent } from './nomenclature/partners/partners.component';
 import { ItemsComponent } from './nomenclature/items/items.component';
 import { DepartmentsComponent } from './nomenclature/departments/departments.component';
 import { DepartmentDetailsComponent } from './nomenclature/departments/department-details/department-details.component';
+import { GestiuniComponent } from './nomenclature/gestiuni/gestiuni.component';
 
 export const appRoutes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full'},
@@ -192,6 +193,7 @@ export const appRoutes: Routes = [
     ItemsComponent,
     DepartmentsComponent,
     DepartmentDetailsComponent,
+    GestiuniComponent,
 
   ],
   imports: [
