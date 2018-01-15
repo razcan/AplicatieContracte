@@ -145,6 +145,11 @@ import { NomenclatureComponent } from './nomenclature/nomenclature.component';
 import { PartnersDetailsComponent } from './nomenclature/partners/partners-details/partners-details.component';
 import { PartnersComponent } from './nomenclature/partners/partners.component';
 import { ItemsComponent } from './nomenclature/items/items.component';
+<<<<<<< HEAD
+=======
+import { DepartmentsComponent } from './nomenclature/departments/departments.component';
+import { DepartmentDetailsComponent } from './nomenclature/departments/department-details/department-details.component';
+>>>>>>> ba01ebaf1d2cb3a20dd706258718baff13b738b2
 
 
 export const appRoutes: Routes = [
@@ -159,6 +164,11 @@ export const appRoutes: Routes = [
   { path: 'nomenclature',         component: NomenclatureComponent,data: {breadcrumb: 'Nomenclatoare'}   },
   { path: 'nomenclature/partners',         component: PartnersComponent,data: {breadcrumb: 'Nomenclatoare/Parteneri'}   },
   { path: 'nomenclature/items',         component: ItemsComponent,data: {breadcrumb: 'Nomenclatoare/Parteneri'}   },
+<<<<<<< HEAD
+=======
+  { path: 'nomenclature/departments',         component: DepartmentsComponent,data: {breadcrumb: 'Nomenclatoare/Departamente'}   },
+  { path: 'nomenclature/departments/department-details',         component: DepartmentDetailsComponent,data: {breadcrumb: 'Nomenclatoare/Departamente/Detalii'}   },
+>>>>>>> ba01ebaf1d2cb3a20dd706258718baff13b738b2
   { path: 'nomenclature/partners/partners-details',         component: PartnersDetailsComponent,data: {breadcrumb: 'Nomenclatoare/Parteneri/Detalii'}   },
   { path: 'nomenclature/partners/partners-details/:PartnerId',         component: PartnersDetailsComponent,data: {breadcrumb: 'Nomenclatoare/Parteneri/Detalii'}   },
   { path: 'invoice-module/list/purchase-invoice',component: PurchaseInvoiceComponent },
@@ -187,6 +197,11 @@ export const appRoutes: Routes = [
     PartnersDetailsComponent,
     PartnersComponent,
     ItemsComponent,
+<<<<<<< HEAD
+=======
+    DepartmentsComponent,
+    DepartmentDetailsComponent,
+>>>>>>> ba01ebaf1d2cb3a20dd706258718baff13b738b2
 
   ],
   imports: [
