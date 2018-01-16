@@ -10,7 +10,7 @@ import { NgModule }      from '@angular/core';
 import { ElementRef } from '@angular/core';
 import { Http, HttpModule } from '@angular/http';
 import { HttpParams, HttpClient } from '@angular/common/http';
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 @Component({
   selector: 'app-items-details',
@@ -55,6 +55,7 @@ export class ItemsDetailsComponent implements OnInit {
   SelectedFile;
   employeeDob;
   results;
+  BarCodeNew = [];
 
   constructor(private fb: FormBuilder,private http: Http, private route: ActivatedRoute,private router:Router) {}
   ngOnInit() {
@@ -63,8 +64,6 @@ export class ItemsDetailsComponent implements OnInit {
     this.http.get('http://localhost:3001/LoadItems/' + this.ItemId).subscribe((res) => {
       const results = res.json();
       this.results = results;
-
-      var exista=0;
       if (typeof(IdRuta) !== "undefined" && IdRuta){
           this.ItemId=results[0].ItemId;
           this.ItemName=results[0].ItemName;
@@ -77,7 +76,9 @@ export class ItemsDetailsComponent implements OnInit {
           this.ItemPrice=results[0].ItemPrice;
           this.ItemCurrency=results[0].ItemCurrency;
           this.VatCode=results[0].VatCode;
-          this.BarCode=results[0].BarCode;   
+          this.BarCode=results[0].BarCode;  
+          this.BarCodeNew=[]; 
+          this.BarCodeNew.push({label: 'BarCode', value: results[0].BarCode});
         }
       else 
           {         
@@ -195,7 +196,7 @@ export class ItemsDetailsComponent implements OnInit {
       this.VatCode.push({label:'TVA0', value:'Usd'});
       this.VatCode.push({label:'TI19', value:'Ron'});
       this.VatCode.push({label:'TI5', value:'Eur'});
-      this.BarCode = [];
+
      
   }
   ItemId: number;
