@@ -1,23 +1,29 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { NgModule }      from '@angular/core';
+import { NgModule } from '@angular/core';
 import { EditorModule } from 'primeng/primeng';
 import { ButtonModule } from 'primeng/primeng';
 import { ViewChild, ElementRef } from '@angular/core';
 import * as Quill from 'quill';
-import {QuillModule} from 'ngx-quill';
-import {FileUploadModule} from 'primeng/primeng';
-import {DialogModule} from 'primeng/primeng';
+import { QuillModule } from 'ngx-quill';
+import { FileUploadModule } from 'primeng/primeng';
+import { DialogModule } from 'primeng/primeng';
 import { Http, HttpModule } from '@angular/http';
 import { HttpParams, HttpClient } from '@angular/common/http';
 import 'rxjs/add/operator/map';
-import {platformBrowserDynamic }    from '@angular/platform-browser-dynamic';
-import {InputTextModule,DataTableModule} from 'primeng/primeng';
-import {CommonModule} from '@angular/common'
+import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+import { InputTextModule, DataTableModule } from 'primeng/primeng';
+import { CommonModule } from '@angular/common'
 import { Observable } from 'rxjs/Observable';
 import { BreadCrumbService } from './../../bread-crumb.service';
+import { DropdownModule } from 'primeng/primeng';
+import { SelectItem } from 'primeng/primeng';
+import {TooltipModule} from 'primeng/primeng';
+import {CalendarModule} from 'primeng/primeng';
+import {InputTextareaModule} from 'primeng/primeng';
 
 // declare var Quill: any;
+
 
 
 @Component({
@@ -26,13 +32,43 @@ import { BreadCrumbService } from './../../bread-crumb.service';
   styleUrls: ['./general.component.css']
 })
 
-export class GeneralComponent   {
+export class GeneralComponent {
   breadcrumb;
+  partner: SelectItem[];
+  selectedPartner: string;
+  contractType; 
+  contractStatus;
+  
 
-  constructor( private activatedRoute: ActivatedRoute,
+
+  constructor(private activatedRoute: ActivatedRoute,
     private router: Router) {
-      router.events.subscribe();
-     this.breadcrumb=router.url;
-   
-}
+    router.events.subscribe();
+    this.breadcrumb = router.url;
+
+    this.partner = [
+      { label: 'Select Partner', value: null },
+      { label: 'cmd', value: 'BMW' },
+      { label: 'Fiat', value: 'Fiat' },
+      { label: 'Ford', value: 'Ford' },
+      { label: 'Honda', value: 'Honda' },
+      { label: 'Jaguar', value: 'Jaguar' },
+      { label: 'Mercedes', value: 'Mercedes' },
+      { label: 'Renault', value: 'Renault' },
+      { label: 'VW', value: 'VW' },
+      { label: 'Volvo', value: 'Volvo' }
+    ];
+
+    this.contractType = [
+      { name: '---'},
+      { name: 'Sales'},
+      { name: 'Acquisitions'},      
+    ];
+
+    this.contractStatus = [
+      { name: '---'},
+      { name: 'Activ'},
+      { name: 'Closed'},      
+    ];
+  }
 }

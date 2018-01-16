@@ -1,5 +1,5 @@
 
-
+ 
   .nav-item > a {
     font-size: 15px;
     
@@ -35,4 +35,8 @@
 
   .exampleFormControlInput1 {
     height: 24.5px;
+  }
+
+  .hr1 {
+    height: 3px;
   }

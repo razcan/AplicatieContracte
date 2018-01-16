@@ -11,12 +11,12 @@
   <div class="container-fluid">
     <div class="row">
       <div class="col-md-12">
-
+        <div class="row">
+          <div class="col-md-6">
         <ul class="nav nav-tabs">
           <li class="nav-item">
             <a routerLink="/list/contract-general" class="nav-link active">General</a>
           </li>
-
           <li class="nav-item">
             <a routerLink="/list/contract-financial"> Financiar</a>
           </li>
@@ -31,8 +31,22 @@
           </li>
           <li class="nav-item">
             <a routerLink="/list/contract-alerts"> Alerte</a>
-          </li>
+          </li>          
         </ul>
+      </div>
+      <div class="col-md-6">
+          <ul class="nav justify-content-end">
+              <li class="nav-item">
+                  <button type="button" class="btn btn-success">Salveaza</button>
+              </li>
+              <li class="nav-item">
+                  <button type="button" class="btn btn-warning">Renunta</button>
+              </li>
+          </ul>
+      </div>
+
+      </div>
+        
 
         <div class="tab-content" id="nav-tabContent">
           <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
@@ -40,163 +54,144 @@
             <!-- General Info Tab -->
             <div class="container-fluid general-page">
               <div class="row">
+                <div class="col-md-12">
+                    <div class="ui-g">
+                        <div class="ui-g-12 ui-md-1">
+                          <p>
+                            <strong>Contract Parent</strong>
+                          </p>
+                        </div>
+                        <div class="ui-g-12 ui-md-2">
+                    <input type="text"  pTooltip="Contract Parent" [disabled]="true"> 
+                        </div>
+                        <div class="ui-g-12 ui-md-1">
+                            <p>
+                              <strong>Version</strong>
+                            </p>
+                          </div>
+                          <div class="ui-g-12 ui-md-2">
+                      <input type="text" pInputText placeholder="1" pTooltip="Enter Version"> 
+                          </div>
+                    </div>
+                </div>
+              </div>
+              <hr class="hr1">
+              <div class="row">
                 <div class="col-md-6">
                   <div class="card">
-                    <div class="card-body">
+                    <div class="card-body">                     
+        
                       <h4 class="card-title">Informatii Generale</h4>
 
                       <!-- <p class="card-text">Informatii Generale</p> -->
                       <hr class="hr">
-                      <div class="row formControlSelect">
-                        <div class="col-md-3">
-                          <label for="selectPartnerName">Partner Name</label>
+                      <div class="ui-g">
+                        <div class="ui-g-12 ui-md-3">
+                          <p>
+                            <strong>Partner Name</strong>
+                          </p>
                         </div>
-                        <div class="col-md-3">
-                          <select class="form-control" id="selectPartnerName">
-                            <option selected>Choose</option>
-                            <option>ABC</option>
-                            <option>VOX</option>
-                            <option>GDX</option>
-                            <option>Vasilica</option>
-                          </select>
+                        <div class="ui-g-12 ui-md-8">
+                          <p-dropdown [options]="partner" [(ngModel)]="selectedPartner" [style]="{'width':'150px'}" filter="true">
+           
+                          </p-dropdown>
                         </div>
                       </div>
-                      <br>
-                      <div class="row">
-                        <div class="col-md-3">
-                          <label for="selectContractType">Tip Contract</label>
+                      <div class="ui-g">
+                        <div class="ui-g-12 ui-md-3">
+                          <p>
+                            <strong>Contract Type</strong>
+                          </p>
                         </div>
-                        <div class="col-md-3">
-                          <select class="form-control" id="selectContractType">
-                            <option selected>Tip</option>
-                            <option>Achizitii</option>
-                            <option>Vanzari</option>
-                          </select>
+                        <div class="ui-g-12 ui-md-8">
+                          <p-dropdown [options]="contractType" [style]="{'width':'150px'}" optionLabel='name'>
+                          </p-dropdown>
                         </div>
                       </div>
-                      <br>
-
-                      <div class="row">
-                        <div class="col-md-3">
-                          <label for="exampleFormControlInput1">Contract No.</label>
-                        </div>
-                        <div class="form-group col-md-3">
-                          <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="12345">
-                        </div>
-                      </div>
-                      <div class="row">
-                        <div class="col-md-3">
-                          <label for="exampleFormControlInput1">Contract Code</label>
-                        </div>
-                        <div class="form-group col-md-3">
-
-                          <input type="text" class="form-control" id="exampleFormControlInput1">
-                        </div>
-                      </div>
-                      <!-- </div> -->
-
-                      <div class="row">
-                        <div class="col-md-3">
-                          <label>Signing Date</label>
-                        </div>
-                        <!-- <div class="form-group col-md-4">
-                          <input type="text" class="form-control" [minDate]="minDate" [maxDate]="maxDate" #dp="bsDatepicker" bsDatepicker [(bsValue)]="bsValue">
-                        </div> -->
-                        <div class="col-md-3 form-group">
-                          <div class="form-group">
-                            <div class="input-group">
-                              <input type="text" class="form-control" bsDatepicker #dp="bsDatepicker" [bsConfig]="bsConfig" placeholder="mm/dd/yy">
-                              <div class="input-group-btn">
-                                <button class="btn btn-success"></button>
-                              </div>
-                            </div>
+                      <div class="ui-g">
+                          <div class="ui-g-12 ui-md-3">
+                            <p>
+                              <strong>Contract Nmb.</strong>
+                            </p>
                           </div>
-                        </div>
-                      </div>
-                      <div class="row">
-                        <div class="col-md-3">
-                          <div class="form-group">
-                            <label>Start Date</label>
-                            <div class="form-group">
-                              <div class="form-group">
-                                <div class="input-group">
-                                  <input type="text" class="form-control" bsDatepicker #dp="bsDatepicker" [bsConfig]="bsConfig">
-                                  <div class="input-group-btn">
-                                    <button class="btn btn-success"></button>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
+                          <div class="ui-g-12 ui-md-8">
+                      <input type="text" pInputText placeholder="123456" pTooltip="Enter Contract Number"> 
                           </div>
-                        </div>
-                        <div class="col-md-3">
-                          <div class="form-group">
-                            <label>End Date</label>
-                            <div class="form-group">
-                              <div class="form-group">
-                                <div class="input-group">
-                                  <input type="text" class="form-control" bsDatepicker #dp="bsDatepicker" [bsConfig]="bsConfig">
-                                  <div class="input-group-btn">
-                                    <button class="btn btn-success"></button>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
                       </div>
-                      <!-- <div class="col-md-3">
-                            <div class="form-group">
-                              <label for="exampleFormControlTextarea1">Contract Status</label>
-                              <textarea class="form-control" id="exampleFormControlTextarea1" rows="1"></textarea>
-                            </div>
-                          </div> -->
-                      <div class="row">
-                        <div class="col-md-4">
-                          <div class="form-group">
-                            <label for="exampleFormControlInput1">Contract Parinte</label>
-                            <input type="text" class="form-control" id="exampleFormControlInput1">
+                      <div class="ui-g">
+                          <div class="ui-g-12 ui-md-3">
+                            <p>
+                              <strong>Contract Code</strong>
+                            </p>
                           </div>
-                        </div>
-                        <div class="col-md-4">
-                          <div class="form-group">
-                            <label for="exampleFormControlInput1">Versiune</label>
-                            <input type="text" class="form-control" id="exampleFormControlInput1">
+                          <div class="ui-g-12 ui-md-8">
+                      <input type="text" pInputText placeholder="XYZ" pTooltip="Enter Contract Code"> 
                           </div>
-                        </div>
-                      </div>
-                      <div class="row">
-                        <div class="col-md-4">
-                          <fieldset disabled>
-                            <div class="form-group">
-                              <label for="disabledTextInput">Stare Contract</label>
-                              <input type="text" class="form-control" id="disabledTextInput" placeholder="Disabled input">
-                            </div>
-                          </fieldset>
-                        </div>
-                        <div class="col-md-4">
-                          <!-- <div class="form-group">
-                              <label for="exampleFormControlTextarea1">Status Contract</label>
-                              <textarea class="form-control" id="exampleFormControlTextarea1" rows="1"></textarea>
-                            </div> -->
-                          <label for="exampleFormControlSelect1">Status Contract</label>
-
-                          <select class="form-control" id="exampleFormControlSelect1">
-                            <option selected>Choose...</option>
-                            <option>...</option>
-                          </select>
-
-
-                        </div>
-                      </div>
-                      <div class="row">
-                        <div class="container-fluid">
-                          <div class="form-group">
-                            <label for="exampleFormControlInput1">Denumire/Descriere Contract</label>
-                            <input type="text" class="form-control" id="exampleFormControlInput1">
+                      </div>     
+                      <div class="ui-g">
+                          <div class="ui-g-12 ui-md-3">
+                            <p>
+                              <strong>Signing Date</strong>
+                            </p>
                           </div>
+                          <div class="ui-g-12 ui-md-8">                   
+                              <p-calendar [showIcon]="true" pTooltip="Enter Signing Date"></p-calendar> 
+                          </div>
+                      </div>                           
+                    <div class="ui-g">
+                        <div class="ui-g-12 ui-md-3">
+                          <p>
+                            <strong>Start Date</strong>
+                          </p>
                         </div>
-                      </div>
+                        <div class="ui-g-12 ui-md-8">                   
+                            <p-calendar [showIcon]="true" pTooltip="Enter Start Date"></p-calendar> 
+                        </div>
+                    </div>  
+                    <div class="ui-g">
+                        <div class="ui-g-12 ui-md-3">
+                          <p>
+                            <strong>End Date</strong>
+                          </p>
+                        </div>
+                        <div class="ui-g-12 ui-md-8">                   
+                            <p-calendar [showIcon]="true" pTooltip="Enter End Date"></p-calendar> 
+                        </div>
+                    </div>  
+                    <!-- <div class="ui-g">
+                        <div class="ui-g-12 ui-md-6">
+                          <p>
+                            <strong>Contract Parent</strong>
+                          </p>
+                          <input type="text" pInputText placeholder="XYZ" pTooltip="Enter Contract Parent">
+                        </div>
+                    
+                        <div class="ui-g-12 ui-md-6">
+                            <p>
+                              <strong>Version</strong>
+                            </p>
+                            <input type="text" pInputText placeholder="XYZ" pTooltip="Enter Version"> 
+                          </div>
+                    </div> -->
+                    <div class="ui-g">
+                        <div class="ui-g-12 ui-md-3">
+                          <p>
+                            <strong>Contract Status</strong>
+                          </p>
+                        </div>
+                        <div class="ui-g-12 ui-md-8">
+                          <p-dropdown [options]="contractStatus" [style]="{'width':'150px'}" optionLabel='name'>
+                          </p-dropdown>
+                        </div>
+                      </div>  
+                      <div class="ui-g-12">
+                        <p><strong>Contract Description</strong></p>
+                      <textarea [rows]="2" [cols]="90" pInputTextarea autoResize="autoResize">Contract Description</textarea>                   
+                      </div>  
+                      <br><br><br><br><br><br>
+                
+              
+               
                       <br>
                       <h4 class="card-title">Corespondenta/Notificari</h4>
                       <!-- <p class="card-text">Corespondenta/Notificari</p> -->
@@ -222,25 +217,19 @@
                             <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
                           </div>
                         </div>
-
-
                         <div class="col-md-4">
                           <div class="form-group">
                             <label for="exampleFormControlInput1">In atentia</label>
                             <input type="text" class="form-control" id="exampleFormControlInput1">
                           </div>
                         </div>
-
                       </div>
-
-
                     </div>
                   </div>
                 </div>
                 <div class="col-md-6">
                   <div class="card">
                     <div class="card-body">
-
                       <h4 class="card-title">Proprietati Standard Contract</h4>
                       <!-- <p class="card-text">Proprietati Standard Contract</p> -->
                       <hr class="hr">
@@ -254,7 +243,6 @@
                             <option>...</option>
                           </select>
                         </div>
-
                       </div>
                       <br>
                       <div class="row">
@@ -267,7 +255,6 @@
                             <option>...</option>
                           </select>
                         </div>
-
                       </div>
                       <br>
                       <div class="row">
@@ -280,7 +267,6 @@
                             <option>...</option>
                           </select>
                         </div>
-
                       </div>
                       <br>
                       <div class="row">
@@ -293,9 +279,7 @@
                             <option>...</option>
                           </select>
                         </div>
-
                       </div>
-
                       <br>
                       <div class="row">
                         <div class="col-md-4">
@@ -307,7 +291,6 @@
                               <option>...</option>
                             </select>
                             <!-- </div> -->
-
                           </div>
                         </div>
                         <div class="col-md-4">
@@ -317,13 +300,12 @@
                               <option selected>Choose...</option>
                               <option>...</option>
                             </select>
-
                           </div>
                         </div>
                       </div>
                       <div class="row">
                         <div class="col-md-3">
-                          <label col-form-label >Prelungire automata</label>
+                          <label col-form-label>Prelungire automata</label>
                         </div>
                         <!-- <div class="form-group col-md-4">
                           <textarea class="form-control" id="exampleFormControlTextarea1" rows="1"></textarea>
@@ -334,20 +316,20 @@
                           <span class="custom-control-description">DA</span>
                         </label> -->
                         <div class="col-md-4">
-                        <div class="form-check">
+                          <div class="form-check">
                             <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1" checked>
                             <label class="form-check-label" for="gridRadios1">
                               DA
                             </label>
-                        </div>
-                        <div class="form-check">
+                          </div>
+                          <div class="form-check">
                             <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1" checked>
                             <label class="form-check-label" for="gridRadios1">
                               NU
                             </label>
+                          </div>
                         </div>
                       </div>
-                    </div>
                       <br>
                       <div class="row">
                         <div class="col-md-4">
@@ -371,7 +353,6 @@
                       <h4 class="card-title">Proprietati Specifice Contract</h4>
                       <!-- <p class="card-text">Proprietati Specifice Contract</p> -->
                       <hr class="hr">
-
                       <!-- <div class="row">
                         <div class="container-fluid">
                           <div class="form-group">
@@ -406,12 +387,10 @@
                   </div>
                 </div>
               </div>
-
               <div class="row">
                 <button type="button" class="btn btn-success">Modifica</button>
                 <button type="button" class="btn btn-warning">Adauga Act Aditional</button>
               </div>
-
             </div>
           </div>
         </div>
