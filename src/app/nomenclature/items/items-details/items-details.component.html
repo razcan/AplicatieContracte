@@ -66,7 +66,7 @@
                   </select>
               </div>
               <div class="ui-grid-col-4">
-                  <div class="ui-message ui-messages-error ui-corner-all" *ngIf="!userform.controls['ItemType'].valid&&userform.controls['ItemType'].dirty">
+                  <div class="ui-message ui-messages-error ui-corner-all" >
                       <i class="fa fa-close"></i>
                       Campul Tip este obligatoriu
                   </div>
@@ -103,10 +103,17 @@
                   UM *:
               </div>
               <div class="ui-grid-col-2">
-                  <p-dropdown [options]="ItemMeasuringUnit" [autoWidth]="false"></p-dropdown>
-              </div>
+                <select class="form-control" id="ItemType" [(ngModel)]="ItemMeasuringUnit">
+                  <option selected="selected">{{ItemMeasuringUnit}} </option>
+                  <option disabled>---</option>
+                  <option>Buc</option>
+                  <option>M</option>
+                  <option>Kg</option>
+                  <option>Fara</option>
+                </select>
+            </div>
               <div class="ui-grid-col-4">
-                  <div class="ui-message ui-messages-error ui-corner-all" *ngIf="!userform.controls['ItemMeasuringUnit'].valid&&userform.controls['ItemMeasuringUnit'].dirty">
+                  <div class="ui-message ui-messages-error ui-corner-all">
                       <i class="fa fa-close"></i>
                       Campul Unitate de masura este obligatoriu
                   </div>
@@ -128,7 +135,7 @@
                   <p-dropdown [options]="ItemCurrency"  [autoWidth]="false"></p-dropdown>
               </div>
               <div class="ui-grid-col-4">
-                  <div class="ui-message ui-messages-error ui-corner-all" *ngIf="!userform.controls['ItemCurrency'].valid&&userform.controls['ItemCurrency'].dirty">
+                  <div class="ui-message ui-messages-error ui-corner-all" >
                       <i class="fa fa-close"></i>
                       Campul Valuta este obligatoriu
                   </div>
@@ -143,7 +150,7 @@
    
               </div>
               <div class="ui-grid-col-4">
-                  <div class="ui-message ui-messages-error ui-corner-all" *ngIf="!userform.controls['VatCode'].valid&&userform.controls['VatCode'].dirty">
+                  <div class="ui-message ui-messages-error ui-corner-all" >
                       <i class="fa fa-close"></i>
                       Campul Cota TVA este obligatoriu
                   </div>
@@ -155,6 +162,9 @@
               </div>
               <div class="ui-grid-col-2">
                   <input pInputText type="text" [(ngModel)]="BarCode" />
+                 
+                  <p-dropdown [options]="BarCodeNew" [(ngModel)]="BarCode" optionLabel="value"></p-dropdown>
+                
               </div>
           </div>
           <div class="ui-grid-row">
@@ -178,11 +188,7 @@
               
           <div class="ui-grid-col-4"></div>
           </div>
-          <!-- <div style="text-align:center;margin-top:20px" *ngIf="submitted">
-              Form Submitted
-              <br>
-              {{diagnostic}} 
-          </div> -->
+       
       </div>
     </div>
 </div>
