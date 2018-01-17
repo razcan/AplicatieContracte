@@ -1,0 +1,33 @@
+
+.nav-item > a {
+    font-size: 13px;
+    
+  }
+  
+  .card {
+    border: 0px;
+  }
+  .card-title {
+    background: #f1f1f1;  
+  }
+  
+  .hr {
+    background: #5cb85c;   
+    height: 2px;
+  }
+  
+  
+  .nav-item .active {
+    background: #5cb85c;
+    color: white;
+  
+  }
+  
+  .nav-item > a {    
+    color: black;
+  }
+  
+  .general-page {
+    border-style: solid;
+   border-color: #f1f1f1;
+  }

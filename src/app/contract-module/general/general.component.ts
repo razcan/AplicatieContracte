@@ -21,6 +21,7 @@ import { SelectItem } from 'primeng/primeng';
 import {TooltipModule} from 'primeng/primeng';
 import {CalendarModule} from 'primeng/primeng';
 import {InputTextareaModule} from 'primeng/primeng';
+import {InputSwitchModule} from 'primeng/primeng';
 
 // declare var Quill: any;
 
@@ -33,11 +34,41 @@ import {InputTextareaModule} from 'primeng/primeng';
 })
 
 export class GeneralComponent {
+  ContractParent;
+  Version;
   breadcrumb;
   partner: SelectItem[];
-  selectedPartner: string;
-  contractType; 
-  contractStatus;
+  PartnerName: string;
+  ContractType;
+  contract; 
+  ContractNumber;
+  ContractCode;
+  SigningDate;
+  StartDate;
+  EndDate;
+  ContractStatus;
+  statusContract;
+  ContractDescription;
+  CorrespondenceAddress;
+  TelephoneFax;
+  Email;
+  AddressedTo;
+  classContract;
+  ContractCategory;
+  department;
+  ResponsibleDepartment;
+  responsible;
+  ResponsiblePerson;
+  expense_incomeClass;
+  ExpenseandIncomeClass;
+  center;
+  CostCenter;
+  cfLine;
+  CashFlowLine;
+  SelfExtension: boolean = true;
+  ExtensionNotification;
+  ExtensionNotificationDate;
+  Notes;
   
 
 
@@ -59,16 +90,53 @@ export class GeneralComponent {
       { label: 'Volvo', value: 'Volvo' }
     ];
 
-    this.contractType = [
+    this.contract = [
       { name: '---'},
       { name: 'Sales'},
       { name: 'Acquisitions'},      
     ];
 
-    this.contractStatus = [
+    this.statusContract = [
       { name: '---'},
       { name: 'Activ'},
       { name: 'Closed'},      
+    ];
+
+    this.classContract = [
+      { label: 'Select contractClass', value: null },
+      { label: 'Utilities', value: 'Utilities' },
+      { label: 'Services', value: 'Services' },
+      { label: 'Rent', value: 'Rent' },  
+    ];
+
+    this.department = [
+      { label: 'Select Department', value: null },
+      { label: 'Trading', value: 'Trading' },
+      { label: 'Accounting', value: 'Accounting' },      
+    ];
+
+    this.responsible = [
+      { label: 'Select Person', value: null },
+      { label: 'Vasilica', value: 'Vasilica' },
+      { label: 'Vetuta', value: 'Vetuta' },      
+    ];
+
+    this.expense_incomeClass = [
+      { label: 'Select Expense/Income Class', value: null },
+      { label: '706', value: '706' },
+      { label: '606', value: '606' },      
+    ];
+
+    this.center = [
+      { label: 'Select CostCenter', value: null },
+      { label: 'Financial', value: 'Financial' },
+      { label: 'Trading', value: 'Trading' },      
+    ];
+
+    this.cfLine = [
+      { label: 'Select CashFlowLine', value: null },
+      { label: 'Financial', value: 'Financial' },
+      { label: 'Trading', value: 'Trading' },      
     ];
   }
 }

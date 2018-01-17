@@ -8,7 +8,55 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class FinancialComponent implements OnInit {
 
-  constructor() { }
+  currency;
+  selectedCurrency;
+  rateVAT;
+  selectedRateVAT;
+  invoicingInterval;
+  invoicingFrequency;
+  paymentInstrument;
+  ContractObject;
+  Currency;
+  VATRate;
+  ValuewoVAT;
+  ValuewithVAT;
+  InvoicingInterval;
+  InvoicingFrequency;
+  InvoicingDay;
+  DueDays;
+  PayInstrument;
+  PenaltyRate;
+
+  constructor() { 
+    this.currency = [
+      { name: 'Select Currency'},
+      { name: 'EUR'},
+      { name: 'RON'},      
+    ];
+    this.rateVAT = [
+      { name: 'Select VATRate'},
+      { name: '19'},
+      { name: '9'},      
+    ];
+
+    this.invoicingInterval = [
+      { name: '---'},
+      { name: 'Monthly'},
+      { name: 'Quarterly'},      
+    ];
+
+    this.invoicingFrequency = [
+      { name: '---'},
+      { name: '1'},
+      { name: '3'},      
+    ];
+
+    this.paymentInstrument = [
+      { name: 'Select PaymentInstrument'},
+      { name: 'BO'},
+      { name: 'OP'},      
+    ];
+  }
 
   ngOnInit() {
   }
