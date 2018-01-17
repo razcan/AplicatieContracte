@@ -39,6 +39,7 @@ export class ItemsDetailsComponent implements OnInit {
   msgs = [];
 
   description: string;
+  ItemId;
   ItemName;
   ItemCode;
   ItemDescription;
@@ -119,12 +120,34 @@ export class ItemsDetailsComponent implements OnInit {
             this.ItemCode='';
             this.ItemDescription='';
             this.ItemType='';
+            this.ItemTypeNew=[];
+            this.ItemTypeNew.push({label: '---' ,value: '---'})
+            this.ItemTypeNew.push({label: 'Servicii' ,value: 'Servicii' })
+            this.ItemTypeNew.push({label: 'Marfa' ,value: 'Marfa' })
+            this.ItemTypeNew.push({label: 'Consumabile' ,value: 'Consumabile'})
             this.IsValid=false;
             this.IsStockable=false;
             this.ItemMeasuringUnit='';
+            this.ItemMeasuringUnitNew = [];
+            this.ItemMeasuringUnitNew.push({label: '---' ,value: '---'})
+            this.ItemMeasuringUnitNew.push({label:'Bucata', value:'Bucata'});
+            this.ItemMeasuringUnitNew.push({label:'KG', value:'KG'});
+            this.ItemMeasuringUnitNew.push({label:'M', value:'M'});
             this.ItemPrice='';
+            this.ItemCurrencyNew=[];
+            this.ItemCurrencyNew.push({label: '---' ,value: '---'})
+            this.ItemCurrencyNew.push({label: 'RON' ,value: 'RON'})
+            this.ItemCurrencyNew.push({label: 'EUR' ,value: 'EUR'})
+            this.ItemCurrencyNew.push({label: 'USD' ,value: 'USD'})
             this.ItemCurrency='';
             this.VatCode='';
+            this.VatCodeNew=[];
+            this.VatCodeNew.push({label:'---', value:'---'});
+            this.VatCodeNew.push({label:'TVA19', value:'TVA19'});
+            this.VatCodeNew.push({label:'TVA5', value:'TVA5'});
+            this.VatCodeNew.push({label:'TVA0', value:'TVA0'});
+            this.VatCodeNew.push({label:'TI19', value:'TI19'});
+            this.VatCodeNew.push({label:'TI5', value:'TI5'});
             this.BarCode='';
             this.ItemIerarchy='Fara';
           }
@@ -186,7 +209,7 @@ export class ItemsDetailsComponent implements OnInit {
       ]
   }
 
-  ItemId: number;
+ 
   ItemSave() {
     this.http.post('http://localhost:3001/SaveItem', {
     ItemId: this.ItemId,  
@@ -208,5 +231,19 @@ export class ItemsDetailsComponent implements OnInit {
   });
   }
 
+
+  ItemIdForDelete;
+  
+  ItemDelete() {
+   
+    const IdRuta = this.route.snapshot.params['ItemId'];
+    this.ItemIdForDelete = IdRuta;
+    this.http.post('http://localhost:3001/DeleteItem/' + this.ItemIdForDelete, {
+  }).subscribe((res) => {
+    const result = res.json();
+    //window.location.reload(true);
+    this.router.navigate(['/nomenclature/items']); 
+  });
+  }
 
 }
