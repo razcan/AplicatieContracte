@@ -57,10 +57,10 @@
                   Tip *:
               </div>
               <div class="ui-g-6 ui-md-3 ui-lg-1">
-                  <p-dropdown [options]="ItemTypeNew" [(ngModel)]="ItemType" optionLabel="value" [autoWidth]="false" filter="true"></p-dropdown>
+                  <p-dropdown [options]="ItemTypeNew" [(ngModel)]="ItemType" [autoWidth]="false" filter="true"></p-dropdown>
               </div>
               <div class="ui-g-6 ui-md-3 ui-lg-2">
-                  <div class="ui-message ui-messages-error ui-corner-all" >
+                  <div class="ui-message ui-messages-error ui-corner-all"  *ngIf="ItemType?.length == 0">
                       <i class="fa fa-close"></i>
                       Campul Tip este obligatoriu
                   </div>
@@ -95,11 +95,11 @@
                   UM *:
               </div>
               <div class="ui-g-6 ui-md-3 ui-lg-1">
-              <p-dropdown [options]="ItemMeasuringUnitNew" [(ngModel)]="ItemMeasuringUnit" optionLabel="value" [autoWidth]="false" filter="true"></p-dropdown>
-                
+              <p-dropdown [options]="ItemMeasuringUnitNew" [(ngModel)]="ItemMeasuringUnit" [autoWidth]="false" filter="true"></p-dropdown>
             </div>
+           
               <div class="ui-g-6 ui-md-3 ui-lg-2">
-                  <div class="ui-message ui-messages-error ui-corner-all">
+                  <div class="ui-message ui-messages-error ui-corner-all" *ngIf="ItemMeasuringUnit?.length == 0">
                       <i class="fa fa-close"></i>
                       Campul Unitate de masura este obligatoriu
                   </div>
@@ -118,10 +118,11 @@
                   Moneda *:
               </div>
               <div class="ui-g-6 ui-md-3 ui-lg-1">
-                  <p-dropdown [options]="ItemCurrencyNew" [(ngModel)]="ItemCurrency" optionLabel="value" [autoWidth]="false"></p-dropdown>
+                  <p-dropdown [options]="ItemCurrencyNew" [(ngModel)]="ItemCurrency" [autoWidth]="false"></p-dropdown>
               </div>
+              {{ItemCurrency}}
               <div class="ui-g-6 ui-md-3 ui-lg-2">
-                  <div class="ui-message ui-messages-error ui-corner-all" >
+                  <div class="ui-message ui-messages-error ui-corner-all" *ngIf="ItemCurrency?.length == 0">
                       <i class="fa fa-close"></i>
                       Campul Valuta este obligatoriu
                   </div>
@@ -132,11 +133,12 @@
                   Cota TVA *:
               </div>
               <div class="ui-g-6 ui-md-3 ui-lg-1">
-                  <p-dropdown [options]="VatCode"  [autoWidth]="false" ></p-dropdown>
+                  <p-dropdown [options]="VatCodeNew" [(ngModel)]="VatCode" [autoWidth]="false"></p-dropdown>
+             
    
               </div>
               <div class="ui-g-6 ui-md-3 ui-lg-2">
-                  <div class="ui-message ui-messages-error ui-corner-all" >
+                  <div class="ui-message ui-messages-error ui-corner-all" *ngIf="VatCode?.length == 0" >
                       <i class="fa fa-close"></i>
                       Campul Cota TVA este obligatoriu
                   </div>
@@ -155,18 +157,17 @@
               <div class="ui-g-6 ui-md-3 ui-lg-1">
                   Categorie :
               </div>
-              <div class="ui-g-6 ui-md-4 ui-lg-3">
-                        
-              <p-tree  [value]="data"  selectionMode="single" [(selection)]="ItemIerarchy" ></p-tree>
+              <div class="ui-g-6 ui-md-4 ui-lg-3">          
+              <p-tree  [value]="data" selectionMode="single" [(selection)]="ItemIerarchy"  ></p-tree>
               </div>
-              
+             
           </div>
        
       </div>
     </div>
 </div>
-<div class="ui-g" style="margin: 40px 5px">
-    <button type="button" class="btn btn-success" (click)="ItemSave()">Salveaza</button>
-    <button type="text" (click)="onClick($event, partners)" class="btn btn-danger" label="Sterge">Sterge</button>
-    <button type="button" class="btn btn-primary" routerLink="/nomenclature/items">Lista</button>
+<div class="ui-g" style="margin: 20px 5px">
+    <button type="button" style="margin-left: 1px" class="btn btn-success" (click)="ItemSave()">Salveaza</button>
+    <button type="text" style="margin-left: 1px" (click)="onClick($event, partners)" class="btn btn-danger" label="Sterge">Sterge</button>
+    <button type="button" style="margin-left: 1px" class="btn btn-primary" routerLink="/nomenclature/items">Lista</button>
   </div>
