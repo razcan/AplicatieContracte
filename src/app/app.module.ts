@@ -149,6 +149,7 @@ import { ItemsDetailsComponent } from './nomenclature/items/items-details/items-
 import { DepartmentsComponent } from './nomenclature/departments/departments.component';
 import { DepartmentDetailsComponent } from './nomenclature/departments/department-details/department-details.component';
 import { GestiuniComponent } from './nomenclature/gestiuni/gestiuni.component';
+import { PropertiesComponent } from './nomenclature/properties/properties.component';
 
 
 export const appRoutes: Routes = [
@@ -161,6 +162,7 @@ export const appRoutes: Routes = [
   { path: 'list/contract-history',        component: HistoryComponent,data: {breadcrumb: 'Contracte/Istoric'}    },
   { path: 'list/contract-alerts',         component: AlertsComponent,data: {breadcrumb: 'Contracte/Alerte'}   },
   { path: 'nomenclature',         component: NomenclatureComponent,data: {breadcrumb: 'Nomenclatoare'}   },
+  { path: 'nomenclature/properties',         component: PropertiesComponent,data: {breadcrumb: 'Nomenclatoare/Proprietati'}   },
   { path: 'nomenclature/departments',         component: DepartmentsComponent,data: {breadcrumb: 'Nomenclatoare/Departamente'}   },
   { path: 'nomenclature/departments/department-details',         component: DepartmentDetailsComponent,data: {breadcrumb: 'Nomenclatoare/Departamente/Detalii'}   },
   { path: 'nomenclature/partners',         component: PartnersComponent,data: {breadcrumb: 'Nomenclatoare/Parteneri'}   },
@@ -199,6 +201,7 @@ export const appRoutes: Routes = [
     DepartmentDetailsComponent,
     GestiuniComponent,
     ItemsDetailsComponent,
+    PropertiesComponent,
 
   ],
   imports: [
