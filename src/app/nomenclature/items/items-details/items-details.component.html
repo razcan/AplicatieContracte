@@ -9,18 +9,18 @@
 
   </div>
   <div class="card-body">
-    
+      
 <p-growl [value]="msgs" sticky="sticky"></p-growl>
-<div *ngFor="let item of results">
+<div>
       <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid" style="margin: 10px 0px">
-          <div class="ui-grid-row">
-              <div class="ui-grid-col-2">
+          <div class="ui-g">
+              <div class="ui-g-6 ui-md-3 ui-lg-1">
                   Denumire *: 
               </div>
-              <div class="ui-grid-col-2">
+              <div class="ui-g-6 ui-md-3 ui-lg-2">
                   <input pInputText type="text"  pTooltip="Introuceti denumire articol" [(ngModel)]="ItemName"/>
               </div>
-              <div class="ui-grid-col-3">
+              <div class="ui-g-6 ui-md-3 ui-lg-2">
                   <div class="ui-message ui-messages-error ui-corner-all" 
                   *ngIf="ItemName?.length == 0">
                       <i class="fa fa-close"></i>
@@ -28,14 +28,14 @@
                   </div>
               </div>
           </div>
-          <div class="ui-grid-row">
-              <div class="ui-grid-col-2">
+          <div class="ui-g">
+              <div class="ui-g-6 ui-md-3 ui-lg-1">
                   Cod *:
               </div>
-              <div class="ui-grid-col-2">
+              <div class="ui-g-6 ui-md-3 ui-lg-1">
                   <input pInputText type="text" [(ngModel)]="ItemCode"/>
               </div>
-              <div class="ui-grid-col-2">
+              <div class="ui-g-6 ui-md-3 ui-lg-2">
                   <div class="ui-message ui-messages-error ui-corner-all" *ngIf="ItemCode?.length == 0">
                       <i class="fa fa-close"></i>
                       Cod Articol este obligatoriu
@@ -43,152 +43,131 @@
               </div>
           </div>
           
-          <div class="ui-grid-row">
-              <div class="ui-grid-col-2">
+          <div class="ui-g">
+              <div class="ui-g-6 ui-md-3 ui-lg-1">
                   Descriere:
               </div>
-              <div class="ui-grid-col-3">
+              <div class="ui-g-6 ui-md-3 ui-lg-2">
                   <textarea pInputTextarea type="text" [(ngModel)]="ItemDescription"></textarea>
               </div>
-              <div class="ui-grid-col-4"></div>
+              <div class="ui-g-6 ui-md-3 ui-lg-1"></div>
           </div>
-          <div class="ui-grid-row">
-              <div class="ui-grid-col-2">
+          <div class="ui-g">
+              <div class="ui-g-6 ui-md-3 ui-lg-1">
                   Tip *:
               </div>
-              <div class="ui-grid-col-2">
-                  <select class="form-control" id="ItemType" [(ngModel)]="ItemType">
-                    <option selected="selected">{{ItemType}} </option>
-                    <option disabled>---</option>
-                    <option>Servicii</option>
-                    <option>Marfa</option>
-                    <option>Consumabile</option>
-                  </select>
+              <div class="ui-g-6 ui-md-3 ui-lg-1">
+                  <p-dropdown [options]="ItemTypeNew" [(ngModel)]="ItemType" [autoWidth]="false" filter="true"></p-dropdown>
               </div>
-              <div class="ui-grid-col-4">
-                  <div class="ui-message ui-messages-error ui-corner-all" >
+              <div class="ui-g-6 ui-md-3 ui-lg-2">
+                  <div class="ui-message ui-messages-error ui-corner-all"  *ngIf="ItemType?.length == 0">
                       <i class="fa fa-close"></i>
                       Campul Tip este obligatoriu
                   </div>
               </div>
           </div>
           
-          <div class="ui-grid-row">
-              <div class="ui-grid-col-2">
+          <div class="ui-g">
+              <div class="ui-g-6 ui-md-3 ui-lg-1">
                   Activ *:
               </div>
-              <div class="ui-grid-col-3">
-                  <div class="ui-g" style="width:250px;margin-bottom:10px">
-                      <div class="ui-g-12"><p-radioButton  name="group2" value="Da" label="Da"  inputId="preopt1"></p-radioButton></div>
-                      <div class="ui-g-12"><p-radioButton  name="group2" value="Nu" label="Nu"  inputId="preopt2"></p-radioButton></div>                    
-                    </div>      
-                    <hr>            
+              <div class="ui-g-6 ui-md-3 ui-lg-1">
+                  <div class="ui-g">
+                      <p-inputSwitch onLabel="Da" offLabel="Nu" [(ngModel)]="IsValid"></p-inputSwitch>
+                  </div>      
+                     
               </div>
-              <div class="ui-grid-col-4"></div>
+             
           </div>
-          <div class="ui-grid-row">
-              <div class="ui-grid-col-2">
+          <div class="ui-g">
+              <div class="ui-g-6 ui-md-3 ui-lg-1">
                   Stocabil *:
               </div>
-              <div class="ui-grid-col-3">
-                  <div class="ui-g" style="width:250px;margin-bottom:10px">
-                      <div class="ui-g-12"><p-radioButton  name="group3" value="Da" label="Da"  inputId="preopt3"></p-radioButton></div>
-                      <div class="ui-g-12"><p-radioButton  name="group3" value="Nu" label="Nu"  inputId="preopt4"></p-radioButton></div>                    
-                    </div>                  
+              <div class="ui-g-6 ui-md-3 ui-lg-1">
+                  <div class="ui-g">
+                      <p-inputSwitch onLabel="Da" offLabel="Nu" [(ngModel)]="IsStockable"></p-inputSwitch>
+                   </div>                  
               </div>
               <div class="ui-grid-col-4"></div>
           </div>
-          <div class="ui-grid-row">
-              <div class="ui-grid-col-2">
+          <div class="ui-g">
+              <div class="ui-g-6 ui-md-3 ui-lg-1">
                   UM *:
               </div>
-              <div class="ui-grid-col-2">
-                <select class="form-control" id="ItemType" [(ngModel)]="ItemMeasuringUnit">
-                  <option selected="selected">{{ItemMeasuringUnit}} </option>
-                  <option disabled>---</option>
-                  <option>Buc</option>
-                  <option>M</option>
-                  <option>Kg</option>
-                  <option>Fara</option>
-                </select>
+              <div class="ui-g-6 ui-md-3 ui-lg-1">
+              <p-dropdown [options]="ItemMeasuringUnitNew" [(ngModel)]="ItemMeasuringUnit" [autoWidth]="false" filter="true"></p-dropdown>
             </div>
-              <div class="ui-grid-col-4">
-                  <div class="ui-message ui-messages-error ui-corner-all">
+           
+              <div class="ui-g-6 ui-md-3 ui-lg-2">
+                  <div class="ui-message ui-messages-error ui-corner-all" *ngIf="ItemMeasuringUnit?.length == 0">
                       <i class="fa fa-close"></i>
                       Campul Unitate de masura este obligatoriu
                   </div>
               </div>
           </div>
-          <div class="ui-grid-row">
-              <div class="ui-grid-col-2">
+          <div class="ui-g">
+              <div class="ui-g-6 ui-md-3 ui-lg-1">
                   Pret :
               </div>
-              <div class="ui-grid-col-2">
+              <div class="ui-g-6 ui-md-3 ui-lg-1">
                   <input pInputText type="text"  [(ngModel)]="ItemPrice"/>
               </div>
           </div>
-          <div class="ui-grid-row">
-              <div class="ui-grid-col-2">
+          <div class="ui-g">
+              <div class="ui-g-6 ui-md-3 ui-lg-1">
                   Moneda *:
               </div>
-              <div class="ui-grid-col-2">
-                  <p-dropdown [options]="ItemCurrency"  [autoWidth]="false"></p-dropdown>
+              <div class="ui-g-6 ui-md-3 ui-lg-1">
+                  <p-dropdown [options]="ItemCurrencyNew" [(ngModel)]="ItemCurrency" [autoWidth]="false"></p-dropdown>
               </div>
-              <div class="ui-grid-col-4">
-                  <div class="ui-message ui-messages-error ui-corner-all" >
+              {{ItemCurrency}}
+              <div class="ui-g-6 ui-md-3 ui-lg-2">
+                  <div class="ui-message ui-messages-error ui-corner-all" *ngIf="ItemCurrency?.length == 0">
                       <i class="fa fa-close"></i>
                       Campul Valuta este obligatoriu
                   </div>
               </div>
           </div>
-          <div class="ui-grid-row">
-              <div class="ui-grid-col-2">
+          <div class="ui-g">
+              <div class="ui-g-6 ui-md-3 ui-lg-1">
                   Cota TVA *:
               </div>
-              <div class="ui-grid-col-2">
-                  <p-dropdown [options]="VatCode"  [autoWidth]="false" ></p-dropdown>
+              <div class="ui-g-6 ui-md-3 ui-lg-1">
+                  <p-dropdown [options]="VatCodeNew" [(ngModel)]="VatCode" [autoWidth]="false"></p-dropdown>
+             
    
               </div>
-              <div class="ui-grid-col-4">
-                  <div class="ui-message ui-messages-error ui-corner-all" >
+              <div class="ui-g-6 ui-md-3 ui-lg-2">
+                  <div class="ui-message ui-messages-error ui-corner-all" *ngIf="VatCode?.length == 0" >
                       <i class="fa fa-close"></i>
                       Campul Cota TVA este obligatoriu
                   </div>
               </div>
           </div>
-          <div class="ui-grid-row">
-              <div class="ui-grid-col-2">
+          <div class="ui-g">
+              <div class="ui-g-6 ui-md-3 ui-lg-1">
                   Cod de bare :
               </div>
-              <div class="ui-grid-col-2">
+              <div class="ui-g-6 ui-md-3 ui-lg-2">
                   <input pInputText type="text" [(ngModel)]="BarCode" />
-                 
-                  <p-dropdown [options]="BarCodeNew" [(ngModel)]="BarCode" optionLabel="value"></p-dropdown>
-                
+  
               </div>
           </div>
-          <div class="ui-grid-row">
-              <div class="ui-grid-col-2">
+          <div class="ui-g">
+              <div class="ui-g-6 ui-md-3 ui-lg-1">
                   Categorie :
               </div>
-              <div class="ui-grid-col-2">
-                        
-              <p-tree  [value]="data"  selectionMode="single" [(selection)]="ItemIerarchy" ></p-tree>
+              <div class="ui-g-6 ui-md-4 ui-lg-3">          
+              <p-tree  [value]="data" selectionMode="single" [(selection)]="ItemIerarchy"  ></p-tree>
               </div>
-              
-          </div>
-          
-          <div class="ui-grid-row">
-              <div class="ui-grid-col-2"></div>
-              <div class="ui-grid-col-2">
-                  <button type="button" class="btn btn-success" (click)="ItemSave()">Salveaza</button>
-                  <button type="text" (click)="onClick($event, partners)" class="btn btn-danger" label="Sterge">Sterge</button>
-                  <button type="button" class="btn btn-primary" routerLink="/nomenclature/items">Lista</button>
-                </div>
-              
-          <div class="ui-grid-col-4"></div>
+             
           </div>
        
       </div>
     </div>
 </div>
+<div class="ui-g" style="margin: 20px 5px">
+    <button type="button" style="margin-left: 1px" class="btn btn-success" (click)="ItemSave()">Salveaza</button>
+    <button type="text" style="margin-left: 1px" (click)="onClick($event, partners)" class="btn btn-danger" label="Sterge">Sterge</button>
+    <button type="button" style="margin-left: 1px" class="btn btn-primary" routerLink="/nomenclature/items">Lista</button>
+  </div>

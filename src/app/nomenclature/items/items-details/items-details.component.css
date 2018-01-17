@@ -10,3 +10,9 @@
     display: inline-block;
     margin: 3px 0px 0px 4px;
 }
+
+.ui-inputswitch {
+    width: 50px; 
+    font-size:13px;
+   
+}
