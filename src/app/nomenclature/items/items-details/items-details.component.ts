@@ -43,9 +43,8 @@ export class ItemsDetailsComponent implements OnInit {
   ItemCode;
   ItemDescription;
   ItemType ;
-  IsValid;
-  IsStockable ;
-  ItemMeasuringUnit ;
+
+  IsStockable:boolean ;
   ItemPrice;
   ItemCurrency ;
   VatCode ;
@@ -56,6 +55,12 @@ export class ItemsDetailsComponent implements OnInit {
   employeeDob;
   results;
   BarCodeNew = [];
+  IsValid: boolean;
+  ItemMeasuringUnit;
+  ItemMeasuringUnitNew =[];
+  ItemTypeNew= [];
+  ItemCurrencyNew =[];
+  VatCodeNew=[];
 
   constructor(private fb: FormBuilder,private http: Http, private route: ActivatedRoute,private router:Router) {}
   ngOnInit() {
@@ -70,15 +75,33 @@ export class ItemsDetailsComponent implements OnInit {
           this.ItemCode=results[0].ItemCode;
           this.ItemDescription=results[0].ItemDescription;
           this.ItemType=results[0].ItemType;
-          this.IsValid=results[0].IsValid;
-          this.IsStockable=results[0].IsStockable;
-          this.ItemMeasuringUnit=results[0].ItemMeasuringUnit;
+          if (results[0].IsValid =='true') {this.IsValid = true} else {this.IsValid = false}
+          if (results[0].IsStockable =='true') {this.IsStockable = true} else {this.IsStockable = false}
           this.ItemPrice=results[0].ItemPrice;
           this.ItemCurrency=results[0].ItemCurrency;
+          this.ItemCurrencyNew=[];
+          this.ItemCurrencyNew.push({label: results[0].ItemCurrencyNew ,value: results[0].ItemCurrency})
+          this.ItemCurrencyNew.push({label: '---' ,value: '---'})
+          this.ItemCurrencyNew.push({label: 'RON' ,value: 'RON'})
+          this.ItemCurrencyNew.push({label: 'EUR' ,value: 'EUR'})
+          this.ItemCurrencyNew.push({label: 'USD' ,value: 'USD'})
           this.VatCode=results[0].VatCode;
           this.BarCode=results[0].BarCode;  
           this.BarCodeNew=[]; 
-          this.BarCodeNew.push({label: 'BarCode', value: results[0].BarCode});
+          this.BarCodeNew.push({label: results[0].BarCode, value: results[0].BarCode});
+          this.ItemMeasuringUnitNew = [];
+          this.ItemMeasuringUnitNew.push({label: 'ItemMeasuringUnit' ,value: results[0].ItemMeasuringUnit})
+          this.ItemMeasuringUnitNew.push({label: '---' ,value: '---'})
+          this.ItemMeasuringUnitNew.push({label:'Bucata', value:'Bucata'});
+          this.ItemMeasuringUnitNew.push({label:'KG', value:'KG'});
+          this.ItemMeasuringUnitNew.push({label:'M', value:'M'});
+          this.ItemTypeNew=[];
+          this.ItemTypeNew.push({label: 'ItemMeasuringUnit' ,value: results[0].ItemType})
+          this.ItemTypeNew.push({label: '---' ,value: '---'})
+          this.ItemTypeNew.push({label: 'Servicii' ,value: 'Servicii' })
+          this.ItemTypeNew.push({label: 'Marfa' ,value: 'Marfa' })
+          this.ItemTypeNew.push({label: 'Consumabile' ,value: 'Consumabile'})
+
         }
       else 
           {         
@@ -86,9 +109,9 @@ export class ItemsDetailsComponent implements OnInit {
             this.ItemCode='';
             this.ItemDescription='';
             this.ItemType='';
-            this.IsValid='';
-            this.IsStockable='';
-            this.ItemMeasuringUnit='';
+            this.IsValid=false;
+       //     this.IsStockable='';
+        //    this.ItemMeasuringUnit='';
             this.ItemPrice='';
             this.ItemCurrency='';
             this.VatCode='';
@@ -158,7 +181,6 @@ export class ItemsDetailsComponent implements OnInit {
           'ItemCode': new FormControl('', Validators.compose([Validators.required, Validators.minLength(4)])),         
           'ItemDescription': new FormControl(''),
           'ItemType': new FormControl('',Validators.required),
-          'IsValid': new FormControl('',Validators.required),
           'IsStockable': new FormControl('',Validators.required),
           'ItemMeasuringUnit': new FormControl('',Validators.required),
           'ItemPrice': new FormControl('',Validators.required) ,
@@ -167,17 +189,7 @@ export class ItemsDetailsComponent implements OnInit {
           'BarCode': new FormControl('')   
       });
 
-      this.ItemType = [];
-      this.ItemType.push({label:'---', value:''});
-      this.ItemType.push({label:'Servicii', value:'Servicii'});
-      this.ItemType.push({label:'Marfa', value:'Marfa'});
-      this.ItemType.push({label:'Consumabile', value:'Consumabile'});
-      this.IsValid = [];
-      this.IsValid.push({label:'Da', value:'Da'});
-      this.IsValid.push({label:'Nu', value:'Nu'});
-      this.IsStockable = [];
-      this.IsStockable.push({label:'Da', value:'Da'});
-      this.IsStockable.push({label:'Nu', value:'Nu'});
+     
       this.ItemMeasuringUnit = [];
       this.ItemMeasuringUnit.push({label:'---', value:''});
       this.ItemMeasuringUnit.push({label:'Bucata', value:'Bucata'});
@@ -207,7 +219,6 @@ export class ItemsDetailsComponent implements OnInit {
     ItemCode: this.userform.value.ItemCode,  
     ItemDescription: this.userform.value.ItemDescription,  
     ItemType: this.userform.value.ItemType, 
-    IsValid: this.userform.value.IsValid,
     IsStockable: this.userform.value.IsStockable,  
     ItemMeasuringUnit: this.userform.value.ItemMeasuringUnit,  
     ItemPrice: this.userform.value.ItemPrice, 
