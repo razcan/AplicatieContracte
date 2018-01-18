@@ -1,0 +1,28 @@
+/* .ui-datatable .ui-datatable-thead>tr>th, .ui-datatable , .ui-datatable .ui-datatable-data>tr>td {
+    border-color: inherit;
+    box-sizing: border-box;
+    padding: .25em .5em;
+    border-width: 5px;
+    border-style: solid;
+}
+
+.ui-datatable-even {
+    font-size:60px !important;
+}
+
+.ui-widget-content  {
+    font-size:60px !important;
+}
+
+td.MarimeTabele {
+    font-size:60px !important;
+}
+
+span.ui-cell-data {
+    font-size:3em !important;
+} */
+
+/* .MarimeTabele {
+    color: red;
+    background-color: aqua;
+} */
