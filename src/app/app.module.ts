@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { Component } from '@angular/core';
 import { HttpModule } from '@angular/http';
 import { ViewChild } from '@angular/core';
@@ -82,6 +82,7 @@ import {TooltipModule} from 'primeng/primeng';
 import {TreeTableModule} from 'primeng/primeng';
 import {TreeModule} from 'primeng/primeng';
 import {TreeNode} from 'primeng/primeng';
+
 
 import {
   MatAutocompleteModule,
@@ -271,7 +272,7 @@ export const appRoutes: Routes = [
         ToolbarModule,
         TooltipModule,
         TreeModule,
-        TreeTableModule,
+        TreeTableModule,       
     BrowserModule,
     FormsModule,
     HttpModule,
@@ -341,6 +342,7 @@ export const appRoutes: Routes = [
   MatStepperModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 })
 export class AppModule { }
