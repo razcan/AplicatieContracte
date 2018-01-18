@@ -120,7 +120,6 @@
               <div class="ui-g-6 ui-md-3 ui-lg-1">
                   <p-dropdown [options]="ItemCurrencyNew" [(ngModel)]="ItemCurrency" [autoWidth]="false"></p-dropdown>
               </div>
-              {{ItemCurrency}}
               <div class="ui-g-6 ui-md-3 ui-lg-2">
                   <div class="ui-message ui-messages-error ui-corner-all" *ngIf="ItemCurrency?.length == 0">
                       <i class="fa fa-close"></i>
@@ -168,6 +167,6 @@
 </div>
 <div class="ui-g" style="margin: 20px 5px">
     <button type="button" style="margin-left: 1px" class="btn btn-success" (click)="ItemSave()">Salveaza</button>
-    <button type="text" style="margin-left: 1px" (click)="onClick($event, partners)" class="btn btn-danger" label="Sterge">Sterge</button>
+    <button type="text" style="margin-left: 1px" (click)="ItemDelete()" class="btn btn-danger" label="Sterge">Sterge</button>
     <button type="button" style="margin-left: 1px" class="btn btn-primary" routerLink="/nomenclature/items">Lista</button>
   </div>

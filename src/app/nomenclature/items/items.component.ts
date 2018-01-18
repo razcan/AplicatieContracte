@@ -56,7 +56,6 @@ export class ItemsComponent implements OnInit {
       this.http.get('http://localhost:3001/LoadItems').subscribe((res) => {
         const ItemsList = res.json();
         this.ItemsListResult=ItemsList;
-        console.log(this.ItemsListResult);
       }
     );
     

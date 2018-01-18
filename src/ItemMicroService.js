@@ -100,7 +100,7 @@ app.post('/SaveItem', (req, res) => {
 
     app.post('/DeleteItem/:ItemId', (req, res) => {
         var item_id = req.param('ItemId');
-        
+        console.log(item_id);
         var mysql = require('mysql');
         var conDelete = mysql.createConnection({
             host: "localhost",
