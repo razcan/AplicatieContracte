@@ -24,26 +24,22 @@ export class PropertiesComponent implements OnInit {
   cols: any[];
   dialogVisible: boolean;
   row: any[];
-  PropertyType;
   property;
   PropertyTypeNew : SelectItem[];
-  constructor() { }
+  PropertyList;
+  PropertyListResult;
+  DenumireProprietate;
+  CodProprietate;
+  TipProprietate;
 
+  constructor (private http: Http,private router: Router) {}
   ngOnInit() {
-    this.cols = [
-      {field: 'DenumireProprietate', header: 'DenumireProprietate'},
-      {field: 'CodProprietate', header: 'CodProprietate'},
-      {field: 'TipProprietate', header: 'TipProprietate'}
-  ];
 
-
-
-this.property = [
-      {DenumireProprietate: 'Suparafata', CodProprietate: '1', TipProprietate :"Numeric"},
-      {DenumireProprietate: 'Agent', CodProprietate: '2', TipProprietate :"Text"},
-      {DenumireProprietate: 'Data Reziliere', CodProprietate: '3', TipProprietate :"Date"},
-
-  ];
+    this.http.get('http://localhost:3001/LoadProperty').subscribe((res) => {
+      const PropertyList = res.json();
+      this.PropertyListResult=PropertyList;
+    }
+  );
   
   }
   display: boolean = false;
@@ -51,13 +47,42 @@ this.property = [
   showDialog() {
       this.display = true;
   }
-SalveazaProprieatte(DenumireProprietate,CodProprietate,TipProprietate){
-  console.log(DenumireProprietate,CodProprietate,TipProprietate);
-  DenumireProprietate='';
-  CodProprietate='';
-  TipProprietate='';
-  this.display=false;
 
+SalveazaProprietatea(){
+  this.http.post('http://localhost:3001/SaveProperty', {
+    PropertyName: this.DenumireProprietate,  
+    PropertyCode: this.CodProprietate,  
+    PropertyType: this.TipProprietate
+  }).subscribe((res) => {
+    const result = res.json();
+  });
+
+this.DenumireProprietate ='';
+this.CodProprietate = '';
+this.TipProprietate ='';
+window.location.reload(true);
+this.display=false;
+}
+
+EditeazaProprietatea(PropertyId,PropertyName,PropertyCode,PropertyType){
+  this.http.post('http://localhost:3001/SaveProperty', {
+    PropertyId: PropertyId,
+    PropertyName: PropertyName,  
+    PropertyCode: PropertyCode,  
+    PropertyType: PropertyType
+  }).subscribe((res) => {
+    const result = res.json();
+  });
+   window.location.reload(true);
+}
+
+StergeProprietatea(PropertyId){
+  this.http.post('http://localhost:3001/DeleteProperty', {
+    PropertyId: PropertyId
+  }).subscribe((res) => {
+    const result = res.json();
+  });
+   window.location.reload(true);
 }
 
 }

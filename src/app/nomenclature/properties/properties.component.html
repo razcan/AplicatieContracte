@@ -1,11 +1,16 @@
 <div class="card">
     <div class="card-body">
+            <div class="ui-widget-header" style="padding:4px 10px;border-bottom: 0 none">
+                    <i class="fa fa-search" style="margin:4px 4px 0 0"></i>
+                    <input #gb type="text" pInputText size="50" placeholder="Global Filter">
+                </div> 
 
-<p-dataTable [value]="property" expandableRows="true" >
+<p-dataTable [globalFilter]="gb" [value]="PropertyListResult" expandableRows="true" [rows]="15" [paginator]="true" 
+[pageLinks]="3" [rowsPerPageOptions]="[15,30,45]" >
     <p-column expander="true" styleClass="col-icon" ></p-column>
-    <p-column field="DenumireProprietate" header="DenumireProprietate"  styleClass="MarimeTabele"></p-column>
-    <p-column field="CodProprietate" header="CodProprietate"></p-column>
-    <p-column field="TipProprietate" header="TipProprietate"></p-column>
+    <p-column field="PropertyName" header="PropertyName"></p-column>
+    <p-column field="PropertyCode" header="PropertyCode"></p-column>
+    <p-column field="PropertyType" header="PropertyType"></p-column>
     <ng-template  let-prop pTemplate="rowexpansion">
         <div style="font-size:10px;padding:14px" class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid">
 
@@ -14,10 +19,10 @@
                                 Denumire *:
                         </div>
                         <div class="ui-g-6 ui-md-3 ui-lg-2">
-                            <input pInputText type="text" [(ngModel)]="prop.DenumireProprietate"/>
+                            <input pInputText type="text" [(ngModel)]="prop.PropertyName"/>
                         </div>
                         <div class="ui-g-6 ui-md-3 ui-lg-2">
-                            <div class="ui-message ui-messages-error ui-corner-all" *ngIf="prop.DenumireProprietate?.length == 0">
+                            <div class="ui-message ui-messages-error ui-corner-all" *ngIf="prop.PropertyName?.length == 0">
                                 <i class="fa fa-close"></i>
                                 Denumire este obligatoriu
                             </div>
@@ -28,10 +33,10 @@
                                     Cod *:
                             </div>
                             <div class="ui-g-6 ui-md-3 ui-lg-2">
-                                <input pInputText type="text" [(ngModel)]="prop.CodProprietate"/>
+                                <input pInputText type="text" [(ngModel)]="prop.PropertyCode"/>
                             </div>
                             <div class="ui-g-6 ui-md-3 ui-lg-2">
-                                <div class="ui-message ui-messages-error ui-corner-all" *ngIf="prop.CodProprietate?.length == 0">
+                                <div class="ui-message ui-messages-error ui-corner-all" *ngIf="prop.PropertyCode?.length == 0">
                                     <i class="fa fa-close"></i>
                                     Cod este obligatoriu
                                 </div>
@@ -42,8 +47,8 @@
                                         Tip *:
                                 </div>
                                 <div class="ui-g-6 ui-md-3 ui-lg-2">
-                                    <select id="float-input" class="form-control"  [(ngModel)]="prop.TipProprietate">
-                                            <option selected="selected">{{prop.TipProprietate}} </option>
+                                    <select id="float-input" class="form-control"  [(ngModel)]="prop.PropertyType"  pTooltip="Exemplu: Text: 400mp, Numeric: 340, Date: 12.11.2040">
+                                            <option selected="selected">{{prop.PropertyType}} </option>
                                             <option disabled>---</option>
                                             <option>Numeric</option>
                                             <option>Text</option>
@@ -51,16 +56,16 @@
                                           </select>
                                 </div>
                                 <div class="ui-g-6 ui-md-3 ui-lg-2">
-                                    <div class="ui-message ui-messages-error ui-corner-all" *ngIf="prop.TipProprietate?.length == 0">
+                                    <div class="ui-message ui-messages-error ui-corner-all" *ngIf="prop.PropertyType?.length == 0">
                                         <i class="fa fa-close"></i>
                                         Tip este obligatoriu
                                     </div>
                                 </div>
                             </div>
         <div class="ui-g" style="margin: 20px 5px">
-                <button type="button" style="margin-left: 1px" class="btn btn-success">Salveaza</button>
-                <button  type="button" style="margin-left: 1px" class="btn btn-danger">Sterge</button>
-         
+                <button type="button" style="margin-left: 1px" class="btn btn-success" (click)="EditeazaProprietatea(prop.PropertyId,prop.PropertyName,prop.PropertyCode,prop.PropertyType)">Salveaza</button>
+                <button  type="button" style="margin-left: 1px" class="btn btn-danger" (click)="StergeProprietatea(prop.PropertyId)">Sterge</button>
+            
         </div>
             
         </div>
@@ -70,17 +75,17 @@
        
         
            <p>Denumire:   </p>  
-           <input pInputText type="text" [(ngModel)]="property.DenumireProprietate"/>
+           <input pInputText type="text" [(ngModel)]="DenumireProprietate"/>
        
         <br>
 
             <p>Cod:   </p>  
-            <input pInputText type="text" [(ngModel)]="property.CodProprietate"/>
+            <input pInputText type="text" [(ngModel)]="CodProprietate"/>
         
         <br>
              <p>Tip:   </p>  
-               <select id="float-input" class="form-control"  [(ngModel)]="property.TipProprietate">
-                        <option selected="selected">{{property.TipProprietate}} </option>
+               <select id="float-input" class="form-control"  [(ngModel)]="TipProprietate">
+                        <option selected="selected">{{TipProprietate}} </option>
                         <option disabled>---</option>
                         <option>Numeric</option>
                         <option>Text</option>
@@ -89,14 +94,14 @@
            
 
             <p-footer>
-                <button type="button" pButton icon="fa-check" (click)="SalveazaProprieatte(property.DenumireProprietate,
-                property.CodProprietate, property.TipProprietate)" label="Yes"></button>
-                <button type="button" pButton icon="fa-close" (click)="display=false" label="No"></button>
+                
+                <button type="button" pButton icon="fa-check" (click)="SalveazaProprietatea(DenumireProprietate,
+                CodProprietate, TipProprietate)" label="Salveaza"></button>
+                <button type="button" pButton icon="fa-close" (click)="display=false" label="Renunta"></button>
             </p-footer>
     </p-dialog>
     
     <button type="button" (click)="showDialog()" pButton icon="fa-external-link-square" label="Adauga"></button>
-
 
 </div>
 
