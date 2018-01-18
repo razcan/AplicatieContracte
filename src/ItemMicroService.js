@@ -80,7 +80,7 @@ app.post('/SaveItem', (req, res) => {
         BarCode: `${content.BarCode}`,ItemIerarchy: `${content.ItemIerarchy}`
 };
     
-    // PartnerId: `${content.PartnerId}`,
+
     if (`${content.ItemId}`>0) {
         // console.log('trebuie Update');
         var query = con.query('UPDATE Item SET ? where ItemId= ?',[post,`${content.ItemId}`], function (error, results, fields) {
@@ -122,5 +122,90 @@ app.post('/SaveItem', (req, res) => {
     });
     })
     
+// proprietati
+app.get('/LoadProperty', (req, res) => {
+     var mysql = require('mysql');
+     var con = mysql.createConnection({
+      host: "localhost",
+      user: "root",
+      password: "root",
+      database: "SHB"
+    });
+
+    con.connect(function(err) {
+        if (err) throw err;
+        con.query('SELECT * FROM Property where PropertyId', function (err, row, fields) {
+        if (err) throw err;
+     //   console.log(row);	
+        return res.json(row);
+        res.send(row);
+
+    })
+});
+})
+
+app.post('/SaveProperty', (req, res) => {
+
+    let content = req.body;
+    console.log(content);
+    var mysql = require('mysql');
+
+    var con = mysql.createConnection({
+      host: "localhost",
+      user: "root",
+      password: "root",
+      database: "SHB"
+    });
+    // ItemId, ItemName, ItemCode, ItemDescription,ItemType,IsValid,IsStockable,
+// ItemMeasuringUnit,ItemPrice,ItemCurrency,VatCode, BarCode, ItemIerarchy
+    var post  = {  
+        PropertyName: `${content.PropertyName}`, PropertyCode: `${content.PropertyCode}`,
+        PropertyType: `${content.PropertyType}`
+};
+    
+
+    if (`${content.PropertyId}`>0) {
+        // console.log('trebuie Update');
+        var query = con.query('UPDATE Property SET ? where PropertyId= ?',[post,`${content.PropertyId}`], function (error, results, fields) {
+            if (error) throw error;
+            });
+       
+    } 
+    else {
+        //console.log('trebuie Insert');
+    var query = con.query('INSERT INTO Property SET ?', post, function (error, results, fields) {
+        if (error) throw error;
+        });
+    }
+        //console.log(query.sql);
+    });
+
+
+    app.post('/DeleteProperty', (req, res) => {
+        let content = req.body;
+        let PropertyId = content.PropertyId;
+      
+        var mysql = require('mysql');
+        var conDelete = mysql.createConnection({
+            host: "localhost",
+            user: "root",
+            password: "root",
+            database: "SHB"
+        });
+
+        conDelete.connect(function(err) {
+            if (err) throw err ;
+            conDelete.query('delete FROM Property where PropertyId=?',PropertyId, function (err, row, fields) {
+            if (err) return Observable.throw(err);
+           // console.log(row);	
+            return res.json(row);
+            res.send(row);
+
+        })
+        //conDelete.destroy();
+    });
+    })
+
+// proprietati
 
 app.listen(3001, () => console.log('Example app listening on port 3001!'))

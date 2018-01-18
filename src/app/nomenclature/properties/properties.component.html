@@ -1,44 +1,109 @@
 <div class="card">
     <div class="card-body">
+            <div class="ui-widget-header" style="padding:4px 10px;border-bottom: 0 none">
+                    <i class="fa fa-search" style="margin:4px 4px 0 0"></i>
+                    <input #gb type="text" pInputText size="50" placeholder="Global Filter">
+                </div> 
 
-<p-dataTable [value]="cars" expandableRows="true">
-    <p-column expander="true" styleClass="col-icon"></p-column>
-    <p-column field="vin" header="Vin"></p-column>
-    <p-column field="year" header="Year"></p-column>
-    <p-column field="brand" header="Brand"></p-column>
-    <p-column field="color" header="Color"></p-column>
-    <ng-template let-car pTemplate="rowexpansion">
-        <div class="ui-grid ui-grid-responsive ui-fluid" style="font-size:16px;padding:20px">
-            <div class="ui-grid-row">
-                <div class="ui-grid-col-3" style="text-align:center">
-                    <i class="fa fa-search" (click)="showCar(car)" style="cursor:pointer;float:left;margin-top:40px"></i>
-                  
-                </div>
-                <div class="ui-grid-col-9">
-                    <div class="ui-grid ui-grid-responsive ui-grid-pad">
-                        <div class="ui-grid-row">
-                            <div class="ui-grid-col-2 label">Vin: </div>
-                            <div class="ui-grid-col-10">{{cars.vin}}</div>
-                            <button>Test</button>
-                            <input type="text">
+<p-dataTable [globalFilter]="gb" [value]="PropertyListResult" expandableRows="true" [rows]="15" [paginator]="true" 
+[pageLinks]="3" [rowsPerPageOptions]="[15,30,45]" >
+    <p-column expander="true" styleClass="col-icon" ></p-column>
+    <p-column field="PropertyName" header="PropertyName"></p-column>
+    <p-column field="PropertyCode" header="PropertyCode"></p-column>
+    <p-column field="PropertyType" header="PropertyType"></p-column>
+    <ng-template  let-prop pTemplate="rowexpansion">
+        <div style="font-size:10px;padding:14px" class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid">
+
+                <div class="ui-g">
+                        <div class="ui-g-6 ui-md-3 ui-lg-1">
+                                Denumire *:
                         </div>
-                        <div class="ui-grid-row">
-                            <div class="ui-grid-col-2 label">Year: </div>
-                            <div class="ui-grid-col-10">{{cars.year}}</div>
+                        <div class="ui-g-6 ui-md-3 ui-lg-2">
+                            <input pInputText type="text" [(ngModel)]="prop.PropertyName"/>
                         </div>
-                        <div class="ui-grid-row">
-                            <div class="ui-grid-col-2 label">Brand: </div>
-                            <div class="ui-grid-col-10">{{cars.brand}}</div>
-                        </div>
-                        <div class="ui-grid-row">
-                            <div class="ui-grid-col-2 label">Color: </div>
-                            <div class="ui-grid-col-10">{{cars.color}}</div>
+                        <div class="ui-g-6 ui-md-3 ui-lg-2">
+                            <div class="ui-message ui-messages-error ui-corner-all" *ngIf="prop.PropertyName?.length == 0">
+                                <i class="fa fa-close"></i>
+                                Denumire este obligatoriu
+                            </div>
                         </div>
                     </div>
-                </div>
-            </div>
+                    <div class="ui-g">
+                            <div class="ui-g-6 ui-md-3 ui-lg-1">
+                                    Cod *:
+                            </div>
+                            <div class="ui-g-6 ui-md-3 ui-lg-2">
+                                <input pInputText type="text" [(ngModel)]="prop.PropertyCode"/>
+                            </div>
+                            <div class="ui-g-6 ui-md-3 ui-lg-2">
+                                <div class="ui-message ui-messages-error ui-corner-all" *ngIf="prop.PropertyCode?.length == 0">
+                                    <i class="fa fa-close"></i>
+                                    Cod este obligatoriu
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ui-g">
+                                <div class="ui-g-6 ui-md-3 ui-lg-1">
+                                        Tip *:
+                                </div>
+                                <div class="ui-g-6 ui-md-3 ui-lg-2">
+                                    <select id="float-input" class="form-control"  [(ngModel)]="prop.PropertyType"  pTooltip="Exemplu: Text: 400mp, Numeric: 340, Date: 12.11.2040">
+                                            <option selected="selected">{{prop.PropertyType}} </option>
+                                            <option disabled>---</option>
+                                            <option>Numeric</option>
+                                            <option>Text</option>
+                                            <option>Data</option>
+                                          </select>
+                                </div>
+                                <div class="ui-g-6 ui-md-3 ui-lg-2">
+                                    <div class="ui-message ui-messages-error ui-corner-all" *ngIf="prop.PropertyType?.length == 0">
+                                        <i class="fa fa-close"></i>
+                                        Tip este obligatoriu
+                                    </div>
+                                </div>
+                            </div>
+        <div class="ui-g" style="margin: 20px 5px">
+                <button type="button" style="margin-left: 1px" class="btn btn-success" (click)="EditeazaProprietatea(prop.PropertyId,prop.PropertyName,prop.PropertyCode,prop.PropertyType)">Salveaza</button>
+                <button  type="button" style="margin-left: 1px" class="btn btn-danger" (click)="StergeProprietatea(prop.PropertyId)">Sterge</button>
+            
+        </div>
+            
         </div>
     </ng-template>
 </p-dataTable>
+<p-dialog header="Adauga Proprietate" [(visible)]="display" modal="modal" width="300" [responsive]="true">
+       
+        
+           <p>Denumire:   </p>  
+           <input pInputText type="text" [(ngModel)]="DenumireProprietate"/>
+       
+        <br>
+
+            <p>Cod:   </p>  
+            <input pInputText type="text" [(ngModel)]="CodProprietate"/>
+        
+        <br>
+             <p>Tip:   </p>  
+               <select id="float-input" class="form-control"  [(ngModel)]="TipProprietate">
+                        <option selected="selected">{{TipProprietate}} </option>
+                        <option disabled>---</option>
+                        <option>Numeric</option>
+                        <option>Text</option>
+                        <option>Data</option>
+                      </select>
+           
+
+            <p-footer>
+                
+                <button type="button" pButton icon="fa-check" (click)="SalveazaProprietatea(DenumireProprietate,
+                CodProprietate, TipProprietate)" label="Salveaza"></button>
+                <button type="button" pButton icon="fa-close" (click)="display=false" label="Renunta"></button>
+            </p-footer>
+    </p-dialog>
+    
+    <button type="button" (click)="showDialog()" pButton icon="fa-external-link-square" label="Adauga"></button>
+
 </div>
+
 </div>
+
