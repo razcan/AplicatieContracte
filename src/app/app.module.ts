@@ -151,6 +151,7 @@ import { DepartmentsComponent } from './nomenclature/departments/departments.com
 import { DepartmentDetailsComponent } from './nomenclature/departments/department-details/department-details.component';
 import { GestiuniComponent } from './nomenclature/gestiuni/gestiuni.component';
 import { PropertiesComponent } from './nomenclature/properties/properties.component';
+import { ItemscategoriesComponent } from './nomenclature/itemscategories/itemscategories.component';
 
 
 export const appRoutes: Routes = [
@@ -170,6 +171,7 @@ export const appRoutes: Routes = [
   { path: 'nomenclature/items',         component: ItemsComponent,data: {breadcrumb: 'Nomenclatoare/Articole'}   },
   { path: 'nomenclature/items/items-details',         component: ItemsDetailsComponent,data: {breadcrumb: 'Nomenclatoare/Articole/Detalii'}   },
   { path: 'nomenclature/items/items-details/:ItemId',         component: ItemsDetailsComponent,data: {breadcrumb: 'Nomenclatoare/Articole/Detalii'}   },
+  { path: 'nomenclature/itemscategories',         component: ItemscategoriesComponent,data: {breadcrumb: 'Nomenclatoare/CategoriiArticole'}   },
   { path: 'nomenclature/partners/partners-details',         component: PartnersDetailsComponent,data: {breadcrumb: 'Nomenclatoare/Parteneri/Detalii'}   },
   { path: 'nomenclature/partners/partners-details/:PartnerId',         component: PartnersDetailsComponent,data: {breadcrumb: 'Nomenclatoare/Parteneri/Detalii'}   },
   { path: 'invoice-module/list/purchase-invoice',component: PurchaseInvoiceComponent },
@@ -203,6 +205,7 @@ export const appRoutes: Routes = [
     GestiuniComponent,
     ItemsDetailsComponent,
     PropertiesComponent,
+    ItemscategoriesComponent,
 
   ],
   imports: [
