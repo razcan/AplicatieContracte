@@ -58,3 +58,13 @@ body {
     border-style: solid;
    border-color: #f1f1f1;
   }
+
+  span.ui-fileupload-choose.ui-button.ui-widget.ui-state-default.ui-corner-all.ui-button-text-icon-left {
+    background: #5cb85c;
+    border:  #f1f1f1;
+    color: #ab2323;
+  }
+  .ui-button-text.ui-clickable{
+    background: #5cb85c;
+    border:  #f1f1f1;
+  }

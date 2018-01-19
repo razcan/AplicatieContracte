@@ -174,6 +174,7 @@ export const appRoutes: Routes = [
   { path: 'nomenclature/items',         component: ItemsComponent,data: {breadcrumb: 'Nomenclatoare/Articole'}   },
   { path: 'nomenclature/items/items-details',         component: ItemsDetailsComponent,data: {breadcrumb: 'Nomenclatoare/Articole/Detalii'}   },
   { path: 'nomenclature/items/items-details/:ItemId',         component: ItemsDetailsComponent,data: {breadcrumb: 'Nomenclatoare/Articole/Detalii'}   },
+  { path: 'nomenclature/itemscategories',         component: ItemscategoriesComponent,data: {breadcrumb: 'Nomenclatoare/CategoriiArticole'}   },
   { path: 'nomenclature/partners/partners-details',         component: PartnersDetailsComponent,data: {breadcrumb: 'Nomenclatoare/Parteneri/Detalii'}   },
   { path: 'nomenclature/partners/partners-details/:PartnerId',         component: PartnersDetailsComponent,data: {breadcrumb: 'Nomenclatoare/Parteneri/Detalii'}   },
   { path: 'invoice-module/list/purchase-invoice',component: PurchaseInvoiceComponent },
