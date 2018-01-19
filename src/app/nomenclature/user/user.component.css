@@ -1,0 +1,16 @@
+.card {
+    border: 0px;
+  }
+  .card-title {
+    background: #f1f1f1;  
+  }
+
+  .hr {
+    background: #5cb85c;   
+    height: 2px;
+  }
+  
+  .general-page {
+    border-style: solid;
+   border-color: #f1f1f1;
+  }

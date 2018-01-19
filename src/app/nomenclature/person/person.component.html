@@ -1,0 +1,112 @@
+<div class="container-fluid general-page">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title">Configurare Persoane</h4>
+          <hr class="hr">
+          <div class="ui-widget-header" style="padding:4px 10px;border-bottom: 0 none">
+            <i class="fa fa-search" style="margin:4px 4px 0 0"></i>
+            <input #gb type="text" pInputText size="50" placeholder="Global Filter">
+          </div>
+          <p-dataTable [value]="persons" [paginator]="true" [rows]="10" [pageLinks]="3" [rowsPerPageOptions]="[5,10,20]" expandableRows="true"
+            [globalFilter]="gb">
+            <p-column expander="true" styleClass="col-icon"></p-column>
+            <p-column field="pName" header="Prenume"></p-column>
+            <p-column field="pSurname" header="Nume"></p-column>
+            <p-column field="pCNP" header="CNP"></p-column>
+            <p-column field="pFunction" header="Functie"></p-column>
+            <p-column field="pEmail" header="Email"></p-column>
+            <p-column field="pTelephone" header="Telefon"></p-column>
+
+            <ng-template let-p pTemplate="rowexpansion">
+              <div class="ui-grid ui-grid-responsive ui-fluid" style="font-size:10px;padding:20px">
+                <div class="ui-grid-row">
+
+                  <div class="ui-grid-col-9">
+                    <div class="ui-grid ui-grid-responsive ui-grid-pad">
+                      <div class="ui-grid-row">
+                        <div class="ui-grid-col-3">Prenume: </div>
+                        <div class="ui-grid-col-3">
+                          <input id="inputpName" type="text" size="30" pInputText [(ngModel)]="p.pName">
+                        </div>
+                      </div>
+                      <div class="ui-grid-row">
+                        <div class="ui-grid-col-3">Nume: </div>
+                        <div class="ui-grid-col-3">
+                          <input id="inputpSurname" type="text" size="30" pInputText [(ngModel)]="p.pSurname">
+                        </div>
+                      </div>
+                      <div class="ui-grid-row">
+                        <div class="ui-grid-col-3">CNP: </div>
+                        <div class="ui-grid-col-3">
+                          <input id="inputpCNP" type="text" size="30" pInputText [(ngModel)]="p.pCNP">
+                        </div>
+                      </div>
+                      <div class="ui-grid-row">
+                        <div class="ui-grid-col-3">Functie: </div>
+                        <div class="ui-grid-col-3">
+                          <input id="inputpFunction" type="text" size="30" pInputText [(ngModel)]="p.pFunction">
+                        </div>
+                      </div>
+                      <div class="ui-grid-row">
+                        <div class="ui-grid-col-3">Email: </div>
+                        <div class="ui-grid-col-3">
+                          <input id="inputpEmail" type="text" size="30" pInputText [(ngModel)]="p.pEmail">
+                        </div>
+                      </div>
+                      <div class="ui-grid-row">
+                        <div class="ui-grid-col-3">Telefon: </div>
+                        <div class="ui-grid-col-3">
+                          <input id="inputpTelephone" type="text" size="30" pInputText [(ngModel)]="p.pTelephone">
+                        </div>
+                      </div>
+                      <div class="ui-grid-row">
+                        <div class="ui-grid-col-2">
+                          <button pButton type="button" label="Salveaza" class="ui-button-success"></button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </ng-template>
+          </p-dataTable>
+          <div>
+            <p-dialog header="Detalii Departament" [(visible)]="display" modal="modal" [responsive]="true" [width]="300" [minWidth]="200">
+              <span>
+                <p>Prenume</p>
+                <input id="inputnewName" type="text" size="30" pInputText [(ngModel)]="newName">
+                <p>Nume</p>
+                <input id="inputnewSurname" type="text" size="30" pInputText [(ngModel)]="newSurname">
+                <p>CNP</p>
+                <input id="inputnewCNP" type="text" size="30" pInputText [(ngModel)]="newCNP">
+                <p>Functie</p>
+                <input id="inputnewFunction" type="text" size="30" pInputText [(ngModel)]="newFunction">
+                <p>Email</p>
+                <input id="inputnewEmail" type="text" size="30" pInputText [(ngModel)]="newEmail">
+                <p>Telefon</p>
+                <input id="inputnewTelephone" type="text" size="30" pInputText [(ngModel)]="newTelephone">
+              </span>
+              <p-footer>
+                <button type="button" pButton icon="fa-check" (click)="savePerson(newName, newSurname, newCNP, newFunction, newEmail, newTelephone)" label="Salveaza"></button>
+                <button type="button" pButton icon="fa-close" (click)="display=false" label="Renunta"></button>
+              </p-footer>
+            </p-dialog>
+
+            <div class="ui-grid-row">
+
+              <div class="ui-grid-col-2">
+
+                <button pButton type="button" (click)="showDialog()" pButton icon="fa-external-link-square" label="Adauga"></button>
+              </div>
+
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
