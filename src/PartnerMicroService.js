@@ -24,6 +24,7 @@ app.get('/LoadPartners', (req, res) => {
                                 if (err) throw err;
                                 con.query("SELECT * FROM Partner order by PartnerId DESC ", function (err, row, fields) {
                                 if (err) throw err;
+                                con.end();
                             //    console.log(row);	
                                 return res.json(row);
                                 res.send(row);
@@ -49,6 +50,7 @@ app.get('/LoadPartner/:PartnerId', (req, res) => {
         if (err) throw err;
         con.query('SELECT * FROM Partner where PartnerId=?',partner_id, function (err, row, fields) {
         if (err) throw err;
+        con.end();
      //   console.log(row);	
         return res.json(row);
         res.send(row);
@@ -85,6 +87,7 @@ app.post('/SavePartner', (req, res) => {
         // console.log('trebuie Update');
         var query = con.query('UPDATE Partner SET ? where PartnerId= ?',[post,`${content.PartnerId}`], function (error, results, fields) {
             if (error) throw error;
+            con.end();
             });
        
     } 
@@ -92,6 +95,7 @@ app.post('/SavePartner', (req, res) => {
         //console.log('trebuie Insert');
     var query = con.query('INSERT INTO Partner SET ?', post, function (error, results, fields) {
         if (error) throw error;
+        con.end();
         });
     }
         //console.log(query.sql);
@@ -113,6 +117,7 @@ app.post('/SavePartner', (req, res) => {
             if (err) throw err ;
             conDelete.query('delete FROM Partner where PartnerId=?',partner_id, function (err, row, fields) {
             if (err) return Observable.throw(err);
+            conDelete.end();
            // console.log(row);	
             return res.json(row);
             res.send(row);
