@@ -151,7 +151,8 @@ import { DepartmentsComponent } from './nomenclature/departments/departments.com
 import { DepartmentDetailsComponent } from './nomenclature/departments/department-details/department-details.component';
 import { GestiuniComponent } from './nomenclature/gestiuni/gestiuni.component';
 import { PropertiesComponent } from './nomenclature/properties/properties.component';
-import { ItemscategoriesComponent } from './nomenclature/itemscategories/itemscategories.component';
+import { PersonComponent } from './nomenclature/person/person.component';
+import { UserComponent } from './nomenclature/user/user.component';
 
 
 export const appRoutes: Routes = [
@@ -168,6 +169,8 @@ export const appRoutes: Routes = [
   { path: 'nomenclature/departments',         component: DepartmentsComponent,data: {breadcrumb: 'Nomenclatoare/Departamente'}   },
   { path: 'nomenclature/departments/department-details',         component: DepartmentDetailsComponent,data: {breadcrumb: 'Nomenclatoare/Departamente/Detalii'}   },
   { path: 'nomenclature/partners',         component: PartnersComponent,data: {breadcrumb: 'Nomenclatoare/Parteneri'}   },
+  { path: 'nomenclature/person',         component: PersonComponent,data: {breadcrumb: 'Nomenclatoare/Persoane'}   },
+  { path: 'nomenclature/user',         component: UserComponent,data: {breadcrumb: 'Nomenclatoare/Utilizatori'}   },
   { path: 'nomenclature/items',         component: ItemsComponent,data: {breadcrumb: 'Nomenclatoare/Articole'}   },
   { path: 'nomenclature/items/items-details',         component: ItemsDetailsComponent,data: {breadcrumb: 'Nomenclatoare/Articole/Detalii'}   },
   { path: 'nomenclature/items/items-details/:ItemId',         component: ItemsDetailsComponent,data: {breadcrumb: 'Nomenclatoare/Articole/Detalii'}   },
@@ -205,7 +208,8 @@ export const appRoutes: Routes = [
     GestiuniComponent,
     ItemsDetailsComponent,
     PropertiesComponent,
-    ItemscategoriesComponent,
+    PersonComponent,
+    UserComponent,
 
   ],
   imports: [

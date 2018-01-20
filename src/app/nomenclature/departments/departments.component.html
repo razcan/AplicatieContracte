@@ -55,14 +55,14 @@
             <p-dialog header="Detalii Departament" [(visible)]="display" modal="modal" [responsive]="true" [width]="300" [minWidth]="200">
               <span>
                 <p>Cod Departament</p>
-                <input id="input" type="text" size="30" pInputText [(ngModel)]="departments.codDepartament">
+                <input id="input" type="text" size="30" pInputText [(ngModel)]="newCodeDepartament">
                 <p>Denumire Departament</p>
-                <input id="input" type="text" size="30" pInputText [(ngModel)]="departments.denumireDepartament">
+                <input id="input" type="text" size="30" pInputText [(ngModel)]="newDenumireDepartament">
                 <p>Responsabil Departament</p>
-                <input id="input" type="text" size="30" pInputText [(ngModel)]="departments.responsabilDepartament">
+                <input id="input" type="text" size="30" pInputText [(ngModel)]="newResponsabilDepartament">
               </span>
               <p-footer>
-                <button type="button" pButton icon="fa-check" (click)="saveDepartment(cdep, ddep, rdep)" label="Salveaza"></button>
+                <button type="button" pButton icon="fa-check" (click)="saveDepartment(newCodeDepartament, newDenumireDepartament, newResponsabilDepartament)" label="Salveaza"></button>
                 <button type="button" pButton icon="fa-close" (click)="display=false" label="Renunta"></button>
               </p-footer>
             </p-dialog>

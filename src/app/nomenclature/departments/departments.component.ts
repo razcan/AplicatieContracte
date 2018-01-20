@@ -12,7 +12,9 @@ export class DepartmentsComponent implements OnInit {
   departments: any[];
   display: boolean = false;
 
-
+  newCodeDepartament;
+  newDenumireDepartament;
+  newResponsabilDepartament;
 
   constructor() { }
 
@@ -37,9 +39,11 @@ export class DepartmentsComponent implements OnInit {
     this.display = true;
 }
 
-  saveDepartment(codDepartament, denumireDepartament, responsabilDepartament) {
-    console.log(codDepartament, denumireDepartament, responsabilDepartament);
-    
+  saveDepartment(newCodeDepartament, newDenumireDepartament, newResponsabilDepartament) {
+    console.log(newCodeDepartament, newDenumireDepartament, newResponsabilDepartament);
+    this.newCodeDepartament = '';
+    this.newDenumireDepartament = '';
+    this.newResponsabilDepartament = '';
     this.display = false;
   }
 
