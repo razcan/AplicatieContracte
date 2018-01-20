@@ -22,13 +22,12 @@ con.connect(function(err) {
         if (err) throw err;
         con.query('SELECT * FROM Categories', function (err, row, fields) {
 
-      
-            var arr = Object.keys(row); 
-            var varr = Object.values(row); 
-            var varr22 = Object.entries(row); 
+            // var arr = Object.keys(row); 
+            // var varr = Object.values(row); 
+            // var varr22 = Object.entries(row); 
 
-          var matrice = [] ;
-           var  par1 = [] ;
+        var matrice = [] ;
+        var  par1 = [] ;
 // mie imi trebuie label si children si eventual data care poate sa fie CategoryCode
             for (let value of Object.values(row)){
                 if (value.ParentId==0) {
@@ -39,19 +38,16 @@ con.connect(function(err) {
                    
                 }
                 if (value.ParentId==1)
-                {
-                        
+                {   
                  par1.push({CategoryId: value.CategoryId,CategoryName: value.CategoryName,
                     CategoryCode: value.CategoryCode,ParentId: value.ParentId,Child: value.Child});
-             
                 }
             }
 
             matrice[0].Child=par1;
             console.log(JSON.stringify(matrice));
-
             res.send(matrice);
-            
+
             con.end();
         if (err) throw err;
     

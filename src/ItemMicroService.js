@@ -24,6 +24,7 @@ app.get('/LoadItems', (req, res) => {
                                 if (err) throw err;
                                 con.query("SELECT * FROM Item order by ItemId DESC ", function (err, row, fields) {
                                 if (err) throw err;
+                                con.end();
                             //    console.log(row);	
                                 return res.json(row);
                                 res.send(row);
@@ -35,8 +36,8 @@ app.get('/LoadItems', (req, res) => {
 })
 
 app.get('/LoadItems/:ItemId', (req, res) => {
-    var item_id = req.param('ItemId');
-    
+    // var item_id = req.param('ItemId');
+    var item_id = req.params.ItemId;
     var mysql = require('mysql');
     var con = mysql.createConnection({
       host: "localhost",
@@ -49,6 +50,7 @@ app.get('/LoadItems/:ItemId', (req, res) => {
         if (err) throw err;
         con.query('SELECT * FROM Item where ItemId=?',item_id, function (err, row, fields) {
         if (err) throw err;
+        con.end();
      //   console.log(row);	
         return res.json(row);
         res.send(row);
@@ -60,7 +62,7 @@ app.get('/LoadItems/:ItemId', (req, res) => {
 app.post('/SaveItem', (req, res) => {
 
     let content = req.body;
-    console.log(content);
+    //console.log(content);
     var mysql = require('mysql');
 
     var con = mysql.createConnection({
@@ -85,6 +87,7 @@ app.post('/SaveItem', (req, res) => {
         // console.log('trebuie Update');
         var query = con.query('UPDATE Item SET ? where ItemId= ?',[post,`${content.ItemId}`], function (error, results, fields) {
             if (error) throw error;
+            con.end();
             });
        
     } 
@@ -92,6 +95,7 @@ app.post('/SaveItem', (req, res) => {
         //console.log('trebuie Insert');
     var query = con.query('INSERT INTO Item SET ?', post, function (error, results, fields) {
         if (error) throw error;
+        con.end();
         });
     }
         //console.log(query.sql);
@@ -99,7 +103,7 @@ app.post('/SaveItem', (req, res) => {
 
 
     app.post('/DeleteItem/:ItemId', (req, res) => {
-        var item_id = req.param('ItemId');
+        var item_id = req.params.ItemId;
         console.log(item_id);
         var mysql = require('mysql');
         var conDelete = mysql.createConnection({
@@ -113,6 +117,7 @@ app.post('/SaveItem', (req, res) => {
             if (err) throw err ;
             conDelete.query('delete FROM Item where ItemId=?',item_id, function (err, row, fields) {
             if (err) return Observable.throw(err);
+            conDelete.end();
            // console.log(row);	
             return res.json(row);
             res.send(row);
@@ -136,6 +141,7 @@ app.get('/LoadProperty', (req, res) => {
         if (err) throw err;
         con.query('SELECT * FROM Property where PropertyId', function (err, row, fields) {
         if (err) throw err;
+        con.end();
      //   console.log(row);	
         return res.json(row);
         res.send(row);
@@ -147,7 +153,7 @@ app.get('/LoadProperty', (req, res) => {
 app.post('/SaveProperty', (req, res) => {
 
     let content = req.body;
-    console.log(content);
+    //console.log(content);
     var mysql = require('mysql');
 
     var con = mysql.createConnection({
