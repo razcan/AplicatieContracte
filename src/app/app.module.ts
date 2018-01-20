@@ -153,7 +153,7 @@ import { GestiuniComponent } from './nomenclature/gestiuni/gestiuni.component';
 import { PropertiesComponent } from './nomenclature/properties/properties.component';
 import { PersonComponent } from './nomenclature/person/person.component';
 import { UserComponent } from './nomenclature/user/user.component';
-
+import { ItemscategoriesComponent } from './nomenclature/Itemscategories/Itemscategories.component';
 
 export const appRoutes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full'},
@@ -210,7 +210,7 @@ export const appRoutes: Routes = [
     PropertiesComponent,
     PersonComponent,
     UserComponent,
-
+    ItemscategoriesComponent,
   ],
   imports: [
         BrowserModule, 
