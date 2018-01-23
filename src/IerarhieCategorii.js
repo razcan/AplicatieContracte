@@ -21,38 +21,38 @@ con.connect(function(err) {
         if (err) throw err;
         con.query('SELECT * FROM Categories', function (err, row, fields) {
 
-        var matrice = Object.values(row);
-        var Level0 = [] ;
- 
-        var Level1 = [] ;
-        var Level1Parent = [] ;
-
-          for (let value of Object.values(row)){
-            if (value.ParentId=='0') {
-                rezultat ={CategoryId: value.CategoryId,CategoryName: value.CategoryName,
-                CategoryCode: value.CategoryCode,ParentId: value.ParentId,Child: value.Child};
-                Level0.push(rezultat);
-                Level1Parent.push(value.CategoryId);
+            result = [] ;
+            for (let value of Object.values(row)){
                 
-            }
-        }  
-      //  console.log(Level1Parent);
-
-        for (let value of Object.values(row)){
-            for (i=0; i<=(Level1Parent.length);  i++) 
-            {
-                if (value.ParentId==Level1Parent[i]) 
-                {
-                    rezultat ={CategoryId: value.CategoryId,CategoryName: value.CategoryName,
-                    CategoryCode: value.CategoryCode,ParentId: value.ParentId,Child: value.Child};
-                    Level1.push(rezultat);
-                    Level0[i].Child=rezultat;
+                    rezultat ={id: value.CategoryId,parentid: value.ParentId,name: value.CategoryName};
+                    result.push(rezultat);                    
+                
+            }  
+     
+                var _makeTree = function(options) {
+                var children, e, id, o, pid, temp, _i, _len, _ref;
+                id = options.id || "id";
+                pid = options.parentid || "parentid";
+                children = options.children || "children";
+                temp = {};
+                o = [];
+                _ref = options.q;
+                for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+                e = _ref[_i];
+                e[children] = [];
+                temp[e[id]] = e;
+                if (temp[e[pid]] != null) {
+                temp[e[pid]][children].push(e);
+                } else {
+                o.push(e);
                 }
-            }
-        }
-        //console.log(JSON.stringify(Level0));
-        console.log(Level0);
-
+                }
+                return o;
+                };
+                
+                var tree = _makeTree({q: result});
+                
+                console.log(JSON.stringify(tree));
 
         con.end();
         if (err) throw err;
@@ -66,3 +66,5 @@ con.connect(function(err) {
 
 
 app.listen(3001, () => console.log('Ierarhie Articole on port 3001!'))
+
+
