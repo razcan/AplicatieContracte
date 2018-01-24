@@ -127,3 +127,16 @@ con.connect(function(err) {
 
 app.listen(3001, () => console.log('Ierarhie Articole on port 3001!'))
 
+// [{"id":1,"parentid":"0","name":"Marfa",
+// "Child":
+//     [{"CategoryId":3,"CategoryName":"Alimentare","CategoryCode":"A01","ParentId":"1",
+//         "Child":[{"CategoryId":5,"CategoryName":"Salamuri","CategoryCode":"S01","ParentId":"3","Child":[]},
+//                  {"CategoryId":6,"CategoryName":"Branzeturi","CategoryCode":"B01","ParentId":"3","Child":[]}]},
+// {"CategoryId":4,"CategoryName":"Cosmetice","CategoryCode":"C01","ParentId":"1","Child":[]},
+// {"CategoryId":9,"CategoryName":"Parfumuri","CategoryCode":"X01","ParentId":"1","Child":[]}]},
+
+// {"id":2,"parentid":"0","name":"Servicii",
+// "Child":
+//     [
+//     {"CategoryId":7,"CategoryName":"Consultante","CategoryCode":"X01","ParentId":"2","Child":[]},
+//     {"CategoryId":8,"CategoryName":"Curatanie","CategoryCode":"X01","ParentId":"2","Child":[]}]}]
