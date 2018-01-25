@@ -26,3 +26,24 @@ span.ui-cell-data {
     color: red;
     background-color: aqua;
 } */
+
+
+/* tr.ng-star-inserted.ui-datatable-even.ui-expanded-row.ui-widget-content {
+    color: red ;
+} */
+
+ /* tr.ui-datatable-odd.ui-widget-content.ng-star-inserted {
+    color: red ;
+    display: none;
+}
+tr.ui-datatable-even.ui-widget-content.ng-star-inserted {
+    color: red ;
+}  */
+
+/* 
+tbody.ui-datatable-data.ui-widget-content {
+    color: red ;
+} 
+
+
+*/

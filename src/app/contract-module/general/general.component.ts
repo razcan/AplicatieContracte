@@ -22,18 +22,20 @@ import {TooltipModule} from 'primeng/primeng';
 import {CalendarModule} from 'primeng/primeng';
 import {InputTextareaModule} from 'primeng/primeng';
 import {InputSwitchModule} from 'primeng/primeng';
+import "rxjs/add/operator/filter";
+import {Injectable} from '@angular/core';
+import { NomenclatoareService } from './../../nomenclatoare.service';
 
 // declare var Quill: any;
-
-
 
 @Component({
   selector: 'app-general',
   templateUrl: './general.component.html',
-  styleUrls: ['./general.component.css']
+  styleUrls: ['./general.component.css'],
+  providers: [ NomenclatoareService ]
 })
 
-export class GeneralComponent {
+export class GeneralComponent implements OnInit{
   ContractParent;
   Version;
   breadcrumb;
@@ -70,25 +72,14 @@ export class GeneralComponent {
   ExtensionNotificationDate;
   Notes;
   
-
+  ListaParteneri ;
 
   constructor(private activatedRoute: ActivatedRoute,
-    private router: Router) {
+    private router: Router, private _Nomenclatoare: NomenclatoareService) {
     router.events.subscribe();
     this.breadcrumb = router.url;
 
-    this.partner = [
-      { label: 'Select Partner', value: null },
-      { label: 'cmd', value: 'BMW' },
-      { label: 'Fiat', value: 'Fiat' },
-      { label: 'Ford', value: 'Ford' },
-      { label: 'Honda', value: 'Honda' },
-      { label: 'Jaguar', value: 'Jaguar' },
-      { label: 'Mercedes', value: 'Mercedes' },
-      { label: 'Renault', value: 'Renault' },
-      { label: 'VW', value: 'VW' },
-      { label: 'Volvo', value: 'Volvo' }
-    ];
+    
 
     this.contract = [
       { name: '---'},
@@ -100,13 +91,6 @@ export class GeneralComponent {
       { name: '---'},
       { name: 'Activ'},
       { name: 'Closed'},      
-    ];
-
-    this.classContract = [
-      { label: 'Select contractClass', value: null },
-      { label: 'Utilities', value: 'Utilities' },
-      { label: 'Services', value: 'Services' },
-      { label: 'Rent', value: 'Rent' },  
     ];
 
     this.department = [
@@ -139,4 +123,23 @@ export class GeneralComponent {
       { label: 'Trading', value: 'Trading' },      
     ];
   }
+  PartnersListResult = [];
+  LL = [{label: '', value: ''}]; 
+  ngOnInit () {
+    this._Nomenclatoare.getPartners().subscribe(resPartnerList => {
+      this.ListaParteneri = resPartnerList;
+      //console.log(JSON.stringify(this.ListaParteneri))
+      this.PartnersListResult = this.ListaParteneri;
+      // this.PartnersListResult = this.ListaParteneri ;
+      // console.log(this.PartnersListResult);
+      for (let i=1; i<this.PartnersListResult.length; i++) {
+        // console.log(this.PartnersListResult[i].PartnerName);
+        // this.LL[i].label=this.PartnersListResult[i].PartnerName
+        // this.LL[i].value=this.PartnersListResult[i].PartnerCode
+       this.LL.push({label: this.PartnersListResult[i].PartnerName, value: this.PartnersListResult[i].PartnerCode});
+      }
+  // console.log(this.LL);
+    }); 
+  }
+         
 }

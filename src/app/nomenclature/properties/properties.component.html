@@ -6,17 +6,19 @@
                 </div> 
 
 <p-dataTable [globalFilter]="gb" [value]="PropertyListResult" expandableRows="true" [rows]="15" [paginator]="true" 
-[pageLinks]="3" [rowsPerPageOptions]="[15,30,45]" >
+[pageLinks]="3" [rowsPerPageOptions]="[15,30,45]" [editable]="true" sortMode="multiple">
     <p-column expander="true" styleClass="col-icon" ></p-column>
-    <p-column field="PropertyName" header="PropertyName"></p-column>
-    <p-column field="PropertyCode" header="PropertyCode"></p-column>
-    <p-column field="PropertyType" header="PropertyType"></p-column>
-    <ng-template  let-prop pTemplate="rowexpansion">
-        <div style="font-size:10px;padding:14px" class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid">
-
+    <p-column field="PropertyName" header="PropertyName" [editable]="true" [sortable]="true"></p-column>
+    <p-column field="PropertyCode" header="PropertyCode" [editable]="true" [sortable]="true"></p-column>
+    <p-column field="PropertyType" header="PropertyType" [editable]="true" [sortable]="true"></p-column>
+    <p-column field="deleted" header="deleted" ></p-column>
+    
+    <ng-template  let-prop   pTemplate="rowexpansion" *ngIf="DDelete" class="Test" >
+        <div style="font-size:10px;padding:14px" class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid"  *ngIf="prop.deleted == 0">
+            <div>
                 <div class="ui-g">
-                        <div class="ui-g-6 ui-md-3 ui-lg-1">
-                                Denumire *:
+                        <div class="ui-g-6 ui-md-3 ui-lg-1" >
+                                Denumire *: 
                         </div>
                         <div class="ui-g-6 ui-md-3 ui-lg-2">
                             <input pInputText type="text" [(ngModel)]="prop.PropertyName"/>
@@ -67,9 +69,11 @@
                 <button  type="button" style="margin-left: 1px" class="btn btn-danger" (click)="StergeProprietatea(prop.PropertyId)">Sterge</button>
             
         </div>
-            
+    </div>
         </div>
+
     </ng-template>
+
 </p-dataTable>
 <p-dialog header="Adauga Proprietate" [(visible)]="display" modal="modal" width="300" [responsive]="true">
        
@@ -100,8 +104,9 @@
     </p-dialog>
     
     <button type="button" (click)="showDialog()" pButton icon="fa-external-link-square" label="Adauga"></button>
-
+    
 </div>
 
 </div>
+
 

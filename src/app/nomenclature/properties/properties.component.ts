@@ -37,11 +37,18 @@ export class PropertiesComponent implements OnInit {
 
     this.http.get('http://localhost:3001/LoadProperty').subscribe((res) => {
       const PropertyList = res.json();
+      for (let i in PropertyList)
+      {
+        PropertyList[i].deleted='0'
+        PropertyList[0].deleted='1'
+    }  
       this.PropertyListResult=PropertyList;
+     
     }
   );
   
   }
+DDelete: boolean = true;
   display: boolean = false;
 
   showDialog() {

@@ -48,12 +48,12 @@
     <input #gb type="text" pInputText size="50" placeholder="Global Filter">
 </div> 
           <div class="content-section implementation">
-              <p-dataTable [value]="PartnersListResult" [rows]="15" [paginator]="true" 
+              <p-dataTable [value]="ListaParteneri" [rows]="15" [paginator]="true" 
               [pageLinks]="3" [rowsPerPageOptions]="[15,30,45]" [sortOrder]="sortO" (onSort)="changeSort($event)" 
               [globalFilter]="gb" #dt exportFilename="PartnersList"
-              selectionMode="single" [(selection)]="PartnersListResult.PartnerId" (onRowSelect)="onRowSelect($event)"
+              selectionMode="single" (onRowSelect)="onRowSelect($event)"
               (onRowUnselect)="onRowUnselect($event)" dataKey="PartnerId">
-                  <p-header>List of Partners
+                  <p-header>List of Partners 1 BTC = {{ price }} {{ currency }} 
                       <div class="ui-helper-clearfix">
                           <button type="button" pButton icon="fa-file-o" iconPos="left" label="Export" (click)="dt.exportCSV()" style="float:left"></button>
           

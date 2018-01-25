@@ -11,11 +11,13 @@ import { ActivatedRoute, NavigationEnd, Params, PRIMARY_OUTLET } from "@angular/
 import "rxjs/add/operator/filter";
 import {DataTableModule,SharedModule} from 'primeng/primeng';
 import {Injectable} from '@angular/core';
+import { NomenclatoareService } from './../../nomenclatoare.service';
 
 @Component({
   selector: 'app-partners',
   templateUrl: './partners.component.html',
-  styleUrls: ['./partners.component.css']
+  styleUrls: ['./partners.component.css'],
+  providers: [ NomenclatoareService ]
 })
 export class PartnersComponent   {
 
@@ -42,22 +44,31 @@ onClick(event, partners){
 // pentru incarcarea datelor partenerului in modal
 
 public PartnerList : Observable<any>  ;
-public PartnersListResult =[];
-constructor (private http: Http,private router: Router) {}
-  
+public PartnersListResult : any;
 
-ngOnInit() {
-  this.PartnerList =this.http.get('http://localhost:3001/LoadPartners').map(it => it.json());    
+currency = 'EUR';
+price: number; 
+ListaParteneri = [] ;
 
-  this.http.get('http://localhost:3001/LoadPartners').subscribe((res) => {
-    const FilesList = res.json();
-    this.PartnersListResult=FilesList;
-  }
-);
-
-
+constructor (private http: Http,private router: Router, private _Nomenclatoare: NomenclatoareService) {
+  _Nomenclatoare.getPrice(this.currency)
+      .then(price => this.price = price);
+    
 }
 
+
+ngOnInit() {
+  
+ // this.PartnerList =this.http.get('http://localhost:3001/LoadPartners').map(it => it.json());    
+
+  // this.http.get('http://localhost:3001/LoadPartners').subscribe((res) => {
+  //   const FilesList = res.json();
+  //   this.PartnersListResult=FilesList;
+  // });
+
+  this._Nomenclatoare.getPartners().subscribe(resPartnerList => this.ListaParteneri = resPartnerList);
+  console.log(this.ListaParteneri);
+}
 onRowSelect(event) {
   this.router.navigate(['nomenclature/partners/partners-details/'+event.data.PartnerId])
   // console.log(event.data.PartnerId);

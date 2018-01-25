@@ -88,9 +88,15 @@
                           </p>
                         </div>
                         <div class="ui-g-12 ui-md-8">
-                          <p-dropdown [options]="partner" [(ngModel)]="PartnerName" [style]="{'width':'150px'}" filter="true">
+                            <p-dropdown [options]="" [(ngModel)]="PartnerName" [style]="{'width':'150px'}" filter="true">
+                            </p-dropdown>
+                              <select class="form-control">
+                                    <option *ngFor="let partner of ListaParteneri ">Name: {{partner.PartnerName}} Code: {{partner.PartnerCode}}</option>
+                                </select>
+                                <p-dropdown [options]="LL" [(ngModel)]="PartnerName" [style]="{'width':'150px'}" filter="true">
+                                   
+                                </p-dropdown>
 
-                          </p-dropdown>
                         </div>
                       </div>
                       <div class="ui-g">
