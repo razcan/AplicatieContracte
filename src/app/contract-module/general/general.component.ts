@@ -76,7 +76,8 @@ export class GeneralComponent implements OnInit{
   ListaParteneri ;
 
   constructor(private activatedRoute: ActivatedRoute,
-    private router: Router, private _Nomenclatoare: NomenclatoareService) {
+    private router: Router, private _Nomenclatoare: NomenclatoareService, _getPersonResponsible:NomenclatoareService,
+    private http: Http) {
     router.events.subscribe();
     this.breadcrumb = router.url;
 
@@ -126,6 +127,8 @@ export class GeneralComponent implements OnInit{
   }
   PartnersListResult = [];
   LL = [{label: '', value: ''}]; 
+  ListaPersoane = [] ;
+  LP = [{label: '', value: ''}]; 
   ngOnInit () {
     this._Nomenclatoare.getPartners().subscribe(resPartnerList => {
       this.ListaParteneri = resPartnerList;
@@ -133,7 +136,7 @@ export class GeneralComponent implements OnInit{
       this.PartnersListResult = this.ListaParteneri;
       // this.PartnersListResult = this.ListaParteneri ;
       // console.log(this.PartnersListResult);
-      for (let i=1; i<this.PartnersListResult.length; i++) {
+      for (let i=0; i<this.PartnersListResult.length; i++) {
         // console.log(this.PartnersListResult[i].PartnerName);
         // this.LL[i].label=this.PartnersListResult[i].PartnerName
         // this.LL[i].value=this.PartnersListResult[i].PartnerCode
@@ -141,6 +144,14 @@ export class GeneralComponent implements OnInit{
       }
   // console.log(this.LL);
     }); 
+   
+    this._Nomenclatoare.getPersonResponsible().subscribe(resPersonResponsible => {
+      this.ListaPersoane = resPersonResponsible;
+      for (let i=0; i<this.ListaPersoane.length; i++) {
+       this.LP.push({label: this.ListaPersoane[i].Name +' '+ this.ListaPersoane[i].Surname, value: this.ListaPersoane[i].PersonId});
+      }
+    }
+    )
   }
 
 ContractSave() {
@@ -152,14 +163,48 @@ Name;
 Surname;
 CNP;
 EmplFunction;
-EmpEmail;
+EmplEmail;
 Telephone;
 
 displayPerson: boolean = false;
 showDialogPerson() {
   this.displayPerson = true;
 }
- 
+
+PersonId ;
+
+SavePerson(PersonId, Name, Surname, CNP, EmplFunction, EmplEmail, Telephone) {
+  this.http.post('http://localhost:3001/SavePersonResponsible', {
+    PersonId: PersonId,  
+    Name: Name,
+    Surname: Surname,
+    CNP: CNP,
+    EmplFunction: EmplFunction, 
+    EmplEmail: EmplEmail,
+    Telephone: Telephone,
+  }).subscribe((res) => {
+    const result = res.json();
+    console.log(result);
+  });
+  }
+  
+  results = [] ;
+
+showDialogForPerson(ResponsiblePerson) {
+  this.displayPerson = true;
+  this.http.get('http://localhost:3001/LoadPersonResponsible/' + this.ResponsiblePerson).subscribe((res) => {
+      const results = res.json();
+      this.PersonId=results[0].PersonId
+      this.Name=results[0].Name
+      this.Surname=results[0].Surname
+      this.CNP=results[0].CNP
+      this.EmplFunction=results[0].EmplFunction
+      this.EmplEmail=results[0].EmplEmail
+      this.Telephone=results[0].Telephone
+}
+
+  )}
+
 newCodeDepartament;
 newDenumireDepartament;
 newResponsabilDepartament;

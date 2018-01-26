@@ -283,12 +283,15 @@
                               </p>
                             </div>
                             <div class="ui-g-12 ui-md-8">
-                              <p-dropdown [options]="responsible" [(ngModel)]="ResponsiblePerson" [style]="{'width':'150px'}" filter="true">
+                              <p-dropdown [options]="LP" [(ngModel)]="ResponsiblePerson" [style]="{'width':'150px'}" filter="true">
     
                               </p-dropdown>
                               <a class="btn icon-btn btn-success" (click)="showDialogPerson()">
                                   <span class="glyphicon btn-glyphicon glyphicon-plus img-circle text-success"></span>
-                                  Add
+                                  
+                              </a>
+                              <a class="btn icon-btn btn-warning" (click)="showDialogForPerson(ResponsiblePerson)">
+                                  <span class="glyphicon btn-glyphicon glyphicon-minus img-circle text-warning"></span> 
                               </a>
                             </div>
                           </div>
@@ -410,15 +413,15 @@
       <p>CNP</p>
       <input id="inputnewCNP" type="text" size="30" pInputText [(ngModel)]="CNP">
       <p>Functie</p>
-      <input id="inputnewFunction" type="text" size="30" pInputText [(ngModel)]="EmpFunction">
+      <input id="inputnewFunction" type="text" size="30" pInputText [(ngModel)]="EmplFunction">
       <p>Email</p>
-      <input id="inputnewEmail" type="text" size="30" pInputText [(ngModel)]="EmpEmail">
+      <input id="inputnewEmail" type="text" size="30" pInputText [(ngModel)]="EmplEmail">
       <p>Telefon</p>
       <input id="inputnewTelephone" type="text" size="30" pInputText [(ngModel)]="Telephone">
     </span>
     <p-footer>
-      <button type="button" pButton icon="fa-check" (click)="savePerson(newName, newSurname, newCNP, newFunction, newEmail, newTelephone)" label="Salveaza"></button>
-      <button type="button" pButton icon="fa-close" (click)="display=false" label="Renunta"></button>
+      <button type="button" pButton icon="fa-check" (click)="SavePerson(PersonId, Name, Surname, CNP, EmplFunction, EmplEmail, Telephone)" label="Salveaza"></button>
+      <button type="button" pButton icon="fa-close" (click)="displayPerson=false" label="Renunta"></button>
     </p-footer>
   </p-dialog>
 
