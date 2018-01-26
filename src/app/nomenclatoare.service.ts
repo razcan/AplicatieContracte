@@ -20,5 +20,8 @@ export class NomenclatoareService {
     return this.http.get('http://localhost:3001/LoadPartners').map(res => res.json())
     
   }
+  getPersonResponsible() {
+    return this.http.get('http://localhost:3001/LoadPersonResponsible').map(res => res.json())
+  }
 
 }

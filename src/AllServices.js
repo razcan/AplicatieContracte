@@ -509,4 +509,96 @@ app.post('/saveTemplate', (req, res) => {
 //Serviciu documente
 
 
+//Responsabil Contract
+
+app.post('/SavePersonResponsible', (req, res) => {
+
+    let content = req.body;
+    var mysql = require('mysql');
+
+    var con = mysql.createConnection({
+      host: "localhost",
+      user: "root",
+      password: "root",
+      database: "SHB"
+    });
+
+    var post  = { PersonId:  `${content.PersonId}`,
+        Name: `${content.Name}`, Surname: `${content.Surname}`,
+        CNP: `${content.CNP}`,EmplFunction: `${content.EmplFunction}`,
+        EmplEmail: `${content.EmplEmail}`, Telephone: `${content.Telephone}`
+    };    
+    var post_insert  = { 
+        Name: `${content.Name}`, Surname: `${content.Surname}`,
+        CNP: `${content.CNP}`,EmplFunction: `${content.EmplFunction}`,
+        EmplEmail: `${content.EmplEmail}`, Telephone: `${content.Telephone}`
+    };
+    if (content.PersonId > 0) {
+
+        var query = con.query('UPDATE Person SET ? where PersonId= ?',[post,`${content.PersonId}`], function (error, results, fields) {
+            con.end();
+            if (error) throw error;
+    });
+       
+    } 
+    else {
+
+        var query = con.query('INSERT INTO Person SET ?', post_insert, function (error, results, fields) {
+            con.end();
+            if (error) throw error;
+            });            
+
+}
+});
+
+
+
+
+app.get('/LoadPersonResponsible', (req, res) => {
+    var mysql = require('mysql');
+    var con = mysql.createConnection({
+      host: "localhost",
+      user: "root",
+      password: "root",
+      database: "SHB"
+    });
+
+    con.connect(function(err) {
+        if (err) throw err;
+        con.query('SELECT * FROM Person ', function (err, row, fields) {
+        if (err) throw err;
+        con.end();
+        return res.json(row);
+        res.send(row);
+
+    })
+});
+})
+
+app.get('/LoadPersonResponsible/:PersonId', (req, res) => {
+    var PersonId = req.params.PersonId;
+    var mysql = require('mysql');
+    var con = mysql.createConnection({
+      host: "localhost",
+      user: "root",
+      password: "root",
+      database: "SHB"
+    });
+
+    con.connect(function(err) {
+        if (err) throw err;
+        con.query('SELECT * FROM Person where PersonId=?',PersonId, function (err, row, fields) {
+        if (err) throw err;
+        con.end();
+     //   console.log(row);	
+        return res.json(row);
+        res.send(row);
+
+    })
+});
+})
+//Responsabil Contract
+
+
+
 app.listen(3001, () => console.log('Example app listening on port 3001!'))
