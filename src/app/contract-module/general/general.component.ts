@@ -25,7 +25,9 @@ import {InputSwitchModule} from 'primeng/primeng';
 import "rxjs/add/operator/filter";
 import {Injectable} from '@angular/core';
 import { NomenclatoareService } from './../../nomenclatoare.service';
-
+import { Renderer2,OnDestroy,OnChanges,ChangeDetectionStrategy,Input } from '@angular/core';
+import { BootstrapSwitchModule } from 'angular2-bootstrap-switch';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 // declare var Quill: any;
 
 @Component({
@@ -36,6 +38,8 @@ import { NomenclatoareService } from './../../nomenclatoare.service';
 })
 
 export class GeneralComponent implements OnInit{
+
+  @ViewChild('someInput') someInput: ElementRef;
   ContractParent;
   Version;
   breadcrumb;
@@ -76,7 +80,8 @@ export class GeneralComponent implements OnInit{
   ListaParteneri ;
 
   constructor(private activatedRoute: ActivatedRoute,
-    private router: Router, private _Nomenclatoare: NomenclatoareService, private http: Http) {
+    private router: Router, private _Nomenclatoare: NomenclatoareService, private http: Http, 
+    private renderer: Renderer2, private el: ElementRef) {
     router.events.subscribe();
     this.breadcrumb = router.url;
 
@@ -169,6 +174,40 @@ displayPerson: boolean = false;
 showDialogPerson() {
   this.displayPerson = true;
 }
+PersonId ;
+
+SavePerson(PersonId, Name, Surname, CNP, EmplFunction, EmplEmail, Telephone) {
+  this.http.post('http://localhost:3001/SavePersonResponsible', {
+    PersonId: PersonId,  
+    Name: Name,
+    Surname: Surname,
+    CNP: CNP,
+    EmplFunction: EmplFunction, 
+    EmplEmail: EmplEmail,
+    Telephone: Telephone,
+  }).subscribe((res) => {
+    const result = res.json();
+    console.log(result);
+  });
+  }
+  
+  results = [] ;
+
+showDialogForPerson(ResponsiblePerson) {
+  this.displayPerson = true;
+  this.http.get('http://localhost:3001/LoadPersonResponsible/' + this.ResponsiblePerson).subscribe((res) => {
+      const results = res.json();
+      this.PersonId=results[0].PersonId
+      this.Name=results[0].Name
+      this.Surname=results[0].Surname
+      this.CNP=results[0].CNP
+      this.EmplFunction=results[0].EmplFunction
+      this.EmplEmail=results[0].EmplEmail
+      this.Telephone=results[0].Telephone
+}
+
+  )}
+
  
 CodeDepartament;
 DenumireDepartament;
@@ -273,6 +312,21 @@ saveEditCashFlowLine(CashFlowLine) {
   this.display = false;
 }
 
+
+itemObjectsLeft: any[] = [
+  { id: 1, name: 'Suprafata', tip: '1', value: 'Text' },
+  { id: 2, name: 'Agent', tip: '1', value: 'Text'   },
+  { id: 3, name: 'DataEfectivaPlata', tip: '2', value: 'Date'  },
+  { id: 4, name: 'ValoareEfectivaPlata', tip: '3', value: 'Numeric'  }
+];
+
+itemObjectsRight: any[] = [];
+
+IsShow =false;
+Afiseaza() {
+  this.IsShow =!this.IsShow;
+  
+}
 
 
 }
