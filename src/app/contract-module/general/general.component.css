@@ -40,3 +40,51 @@
   .hr1 {
     height: 3px;
   }
+
+/* butoane frumoase */
+  .btn-glyphicon {
+    padding:2px;
+    background:#ffffff;
+    margin-right:4px;
+}
+.icon-btn {
+    padding: 1px 6px 3px 2px;
+    border-radius:50px;
+  
+}
+
+/* <a class="btn icon-btn btn-default" href="#">
+<span class="glyphicon btn-glyphicon glyphicon-save img-circle text-muted"></span> <!-- defining icon -->
+Download <!-- defining text -->
+</a>
+
+<a class="btn icon-btn btn-muted" href="#">
+<span class="glyphicon btn-glyphicon glyphicon-remove-circle img-circle text-muted"></span>
+Unavailable
+</a>
+
+<a class="btn icon-btn btn-primary" href="#">
+<span class="glyphicon btn-glyphicon glyphicon-thumbs-up img-circle text-primary"></span>
+Like
+</a>
+
+<a class="btn icon-btn btn-success" href="#">
+<span class="glyphicon btn-glyphicon glyphicon-plus img-circle text-success"></span>
+Add
+</a>
+
+<a class="btn icon-btn btn-info" href="#">
+<span class="glyphicon btn-glyphicon glyphicon-share img-circle text-info"></span>
+Share
+</a>
+
+<a class="btn icon-btn btn-warning" href="#">
+<span class="glyphicon btn-glyphicon glyphicon-minus img-circle text-warning"></span>
+Remove
+</a>
+
+<a class="btn icon-btn btn-danger" href="#">
+<span class="glyphicon btn-glyphicon glyphicon-trash img-circle text-danger"></span>
+Delete
+</a> */
+/* butoane frumoase */

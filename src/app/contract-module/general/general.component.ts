@@ -41,6 +41,7 @@ export class GeneralComponent implements OnInit{
   breadcrumb;
   partner: SelectItem[];
   PartnerName: string;
+  PartnerId;
   ContractType;
   contract; 
   ContractNumber;
@@ -82,13 +83,13 @@ export class GeneralComponent implements OnInit{
     
 
     this.contract = [
-      { name: '---'},
+      { name: 'Select Contract Type' },
       { name: 'Sales'},
       { name: 'Acquisitions'},      
     ];
 
     this.statusContract = [
-      { name: '---'},
+      { name: 'Select Contract Status' },
       { name: 'Activ'},
       { name: 'Closed'},      
     ];
@@ -136,10 +137,28 @@ export class GeneralComponent implements OnInit{
         // console.log(this.PartnersListResult[i].PartnerName);
         // this.LL[i].label=this.PartnersListResult[i].PartnerName
         // this.LL[i].value=this.PartnersListResult[i].PartnerCode
-       this.LL.push({label: this.PartnersListResult[i].PartnerName, value: this.PartnersListResult[i].PartnerCode});
+       this.LL.push({label: this.PartnersListResult[i].PartnerName, value: this.PartnersListResult[i].PartnerId});
       }
   // console.log(this.LL);
     }); 
   }
-         
+
+ContractSave() {
+  console.log(this.PartnerId, this.ContractType.name,this.ContractNumber, this.ContractCode, this.SigningDate,
+    this.StartDate, this.EndDate, this.ContractStatus.name, this.ContractDescription)
+}
+
+displayPerson: boolean = false;
+showDialogPerson() {
+  this.displayPerson = true;
+}
+ 
+newCodeDepartament;
+newDenumireDepartament;
+newResponsabilDepartament;
+
+displayDepartament: boolean = false;
+showDialogDepartament() {
+  this.displayDepartament = true;
+}
 }
