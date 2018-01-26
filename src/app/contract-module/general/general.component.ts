@@ -76,8 +76,7 @@ export class GeneralComponent implements OnInit{
   ListaParteneri ;
 
   constructor(private activatedRoute: ActivatedRoute,
-    private router: Router, private _Nomenclatoare: NomenclatoareService, _getPersonResponsible:NomenclatoareService,
-    private http: Http) {
+    private router: Router, private _Nomenclatoare: NomenclatoareService, private http: Http) {
     router.events.subscribe();
     this.breadcrumb = router.url;
 
