@@ -148,6 +148,13 @@ ContractSave() {
     this.StartDate, this.EndDate, this.ContractStatus.name, this.ContractDescription)
 }
 
+Name;
+Surname;
+CNP;
+EmplFunction;
+EmpEmail;
+Telephone;
+
 displayPerson: boolean = false;
 showDialogPerson() {
   this.displayPerson = true;

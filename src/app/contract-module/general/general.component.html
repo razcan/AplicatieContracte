@@ -303,9 +303,7 @@
       
                                 </p-dropdown>
                               </div>
-                            </div>             
-                                             
-                            
+                            </div>                                               
                                 <div class="ui-g">
                                     <div class="ui-g-12 ui-md-4">
                                         <p>
@@ -406,17 +404,17 @@
 <p-dialog header="Adauga Responsabil Contract" [(visible)]="displayPerson" modal="modal" [responsive]="true" [width]="300" [minWidth]="200">
     <span>
       <p>Prenume</p>
-      <input id="inputnewName" type="text" size="30" pInputText [(ngModel)]="newName">
+      <input id="inputnewName" type="text" size="30" pInputText [(ngModel)]="Name">
       <p>Nume</p>
-      <input id="inputnewSurname" type="text" size="30" pInputText [(ngModel)]="newSurname">
+      <input id="inputnewSurname" type="text" size="30" pInputText [(ngModel)]="Surname">
       <p>CNP</p>
-      <input id="inputnewCNP" type="text" size="30" pInputText [(ngModel)]="newCNP">
+      <input id="inputnewCNP" type="text" size="30" pInputText [(ngModel)]="CNP">
       <p>Functie</p>
-      <input id="inputnewFunction" type="text" size="30" pInputText [(ngModel)]="newFunction">
+      <input id="inputnewFunction" type="text" size="30" pInputText [(ngModel)]="EmpFunction">
       <p>Email</p>
-      <input id="inputnewEmail" type="text" size="30" pInputText [(ngModel)]="newEmail">
+      <input id="inputnewEmail" type="text" size="30" pInputText [(ngModel)]="EmpEmail">
       <p>Telefon</p>
-      <input id="inputnewTelephone" type="text" size="30" pInputText [(ngModel)]="newTelephone">
+      <input id="inputnewTelephone" type="text" size="30" pInputText [(ngModel)]="Telephone">
     </span>
     <p-footer>
       <button type="button" pButton icon="fa-check" (click)="savePerson(newName, newSurname, newCNP, newFunction, newEmail, newTelephone)" label="Salveaza"></button>
