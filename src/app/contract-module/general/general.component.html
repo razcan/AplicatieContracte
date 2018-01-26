@@ -260,7 +260,12 @@
                           <p-dropdown [options]="classContract" [(ngModel)]="ContractCategory" [style]="{'width':'150px'}" filter="true">
 
                           </p-dropdown>
-                         
+                          <button type="button" class="btn btn-circle-micro btn-success" (click)="showDialogAddContractCategory()">
+                            <i class="glyphicon glyphicon-plus"></i>
+                          </button>
+                          <button type="button" class="btn btn-circle-micro btn-primary" (click)="showDialogEditContractCategory()">
+                            <i class="glyphicon glyphicon-edit"></i>
+                          </button>
                         </div>
                       </div>
                       <div class="ui-g">
@@ -273,7 +278,12 @@
                             <p-dropdown [options]="department" [(ngModel)]="ResponsibleDepartment" [style]="{'width':'150px'}" filter="true">
   
                             </p-dropdown>
-
+                            <button type="button" class="btn btn-circle-micro btn-success" (click)="showDialogAddDepartament()">
+                              <i class="glyphicon glyphicon-plus"></i>
+                            </button>
+                            <button type="button" class="btn btn-circle-micro btn-primary" (click)="showDialogEditDepartament()">
+                              <i class="glyphicon glyphicon-edit"></i>
+                            </button>
                           </div>
                         </div>
                         <div class="ui-g">
@@ -312,6 +322,12 @@
                                         <p-dropdown [options]="center" [(ngModel)]="CostCenter" [style]="{'width':'150px'}" filter="true">
                   
                                           </p-dropdown>
+                                          <button type="button" class="btn btn-circle-micro btn-success" (click)="showDialogAddCostCenter()">
+                                            <i class="glyphicon glyphicon-plus"></i>
+                                          </button>
+                                          <button type="button" class="btn btn-circle-micro btn-primary" (click)="showDialogEditCostCenter()">
+                                            <i class="glyphicon glyphicon-edit"></i>
+                                          </button>
                                       </div>
                                   <div class="ui-g-12 ui-md-4">
                                     <p>
@@ -320,6 +336,12 @@
                                     <p-dropdown [options]="cfLine" [(ngModel)]="CashFlowLine" [style]="{'width':'150px'}" filter="true">
               
                                       </p-dropdown>
+                                      <button type="button" class="btn btn-circle-micro btn-success" (click)="showDialogAddCashFlowLine()">
+                                        <i class="glyphicon glyphicon-plus"></i>
+                                      </button>
+                                      <button type="button" class="btn btn-circle-micro btn-primary" (click)="showDialogEditCashFlowLine()">
+                                        <i class="glyphicon glyphicon-edit"></i>
+                                      </button>
                                   </div>
       
                                 </div>
@@ -422,17 +444,94 @@
     </p-footer>
   </p-dialog>
 
-  <p-dialog header="Detalii Departament" [(visible)]="display" modal="modal" [responsive]="true" [width]="300" [minWidth]="200">
+  <p-dialog header="Adauga Departament" [(visible)]="displayAddDepartment" modal="modal" [responsive]="true" [width]="300" [minWidth]="200">
       <span>
         <p>Cod Departament</p>
-        <input id="input" type="text" size="30" pInputText [(ngModel)]="newCodeDepartament">
+        <input id="input" type="text" size="30" pInputText [(ngModel)]="CodeDepartament">
         <p>Denumire Departament</p>
-        <input id="input" type="text" size="30" pInputText [(ngModel)]="newDenumireDepartament">
+        <input id="input" type="text" size="30" pInputText [(ngModel)]="DenumireDepartament">
         <p>Responsabil Departament</p>
-        <input id="input" type="text" size="30" pInputText [(ngModel)]="newResponsabilDepartament">
+        <input id="input" type="text" size="30" pInputText [(ngModel)]="ResponsabilDepartament">
       </span>
       <p-footer>
-        <button type="button" pButton icon="fa-check" (click)="saveDepartment(newCodeDepartament, newDenumireDepartament, newResponsabilDepartament)" label="Salveaza"></button>
+        <button type="button" pButton icon="fa-check" (click)="saveAddDepartment(CodeDepartament, DenumireDepartament, ResponsabilDepartament)" label="Salveaza"></button>
+        <button type="button" pButton icon="fa-close" (click)="display=false" label="Renunta"></button>
+      </p-footer>
+    </p-dialog>
+    <p-dialog header="Editeaza Departament" [(visible)]="displayEditDepartment" modal="modal" [responsive]="true" [width]="300" [minWidth]="200">
+      <span>
+        <p>Cod Departament</p>
+        <input id="input" type="text" size="30" pInputText [(ngModel)]="CodeDepartament">
+        <p>Denumire Departament</p>
+        <input id="input" type="text" size="30" pInputText [(ngModel)]="DenumireDepartament">
+        <p>Responsabil Departament</p>
+        <input id="input" type="text" size="30" pInputText [(ngModel)]="ResponsabilDepartament">
+      </span>
+      <p-footer>
+        <button type="button" pButton icon="fa-check" (click)="saveEditDepartment(CodeDepartament, DenumireDepartament, ResponsabilDepartament)" label="Salveaza"></button>
+        <button type="button" pButton icon="fa-close" (click)="display=false" label="Renunta"></button>
+      </p-footer>
+    </p-dialog>
+
+    <p-dialog header="Adauga Categorie" [(visible)]="displayAddContractCategory" modal="modal" [responsive]="true" [width]="300" [minWidth]="200">
+      <span>
+        <p>Categorie Contract</p>
+        <input id="input" type="text" size="30" pInputText [(ngModel)]="ContractCategory">   
+      </span>
+      <p-footer>
+        <button type="button" pButton icon="fa-check" (click)="saveAddContractCategory(ContractCategory)" label="Salveaza"></button>
+        <button type="button" pButton icon="fa-close" (click)="display=false" label="Renunta"></button>
+      </p-footer>
+    </p-dialog>
+    <p-dialog header="Editeaza Categorie" [(visible)]="displayEditContractCategory" modal="modal" [responsive]="true" [width]="300" [minWidth]="200">
+      <span>
+        <p>Categorie Contract</p>
+        <input id="input" type="text" size="30" pInputText [(ngModel)]="ContractCategory">           
+      </span>
+      <p-footer>
+        <button type="button" pButton icon="fa-check" (click)="saveEditContractCategory(ContractCategory)" label="Salveaza"></button>
+        <button type="button" pButton icon="fa-close" (click)="display=false" label="Renunta"></button>
+      </p-footer>
+    </p-dialog>
+
+    <p-dialog header="Adauga Centru de Cost" [(visible)]="displayAddCostCenter" modal="modal" [responsive]="true" [width]="300" [minWidth]="200">
+      <span>
+        <p>Centru de Cost</p>
+        <input id="input" type="text" size="30" pInputText [(ngModel)]="CostCenter">   
+      </span>
+      <p-footer>
+        <button type="button" pButton icon="fa-check" (click)="saveAddCostCenter(CostCenter)" label="Salveaza"></button>
+        <button type="button" pButton icon="fa-close" (click)="display=false" label="Renunta"></button>
+      </p-footer>
+    </p-dialog>
+    <p-dialog header="Editeaza Centru de Cost" [(visible)]="displayEditCostCenter" modal="modal" [responsive]="true" [width]="300" [minWidth]="200">
+      <span>
+        <p>Centru de Cost</p>
+        <input id="input" type="text" size="30" pInputText [(ngModel)]="CostCenter">           
+      </span>
+      <p-footer>
+        <button type="button" pButton icon="fa-check" (click)="saveEditCostCenter(CostCenter)" label="Salveaza"></button>
+        <button type="button" pButton icon="fa-close" (click)="display=false" label="Renunta"></button>
+      </p-footer>
+    </p-dialog>
+
+    <p-dialog header="Adauga Linie de CashFlow" [(visible)]="displayAddCashFlowLine" modal="modal" [responsive]="true" [width]="300" [minWidth]="200">
+      <span>
+        <p>Linie de CashFlow</p>
+        <input id="input" type="text" size="30" pInputText [(ngModel)]="CashFlowLine">   
+      </span>
+      <p-footer>
+        <button type="button" pButton icon="fa-check" (click)="saveAddCashFlowLine(CashFlowLine)" label="Salveaza"></button>
+        <button type="button" pButton icon="fa-close" (click)="display=false" label="Renunta"></button>
+      </p-footer>
+    </p-dialog>
+    <p-dialog header="Editeaza Linie de CashFlow" [(visible)]="displayEditCashFlowLine" modal="modal" [responsive]="true" [width]="300" [minWidth]="200">
+      <span>
+        <p>Linie de CashFlow</p>
+        <input id="input" type="text" size="30" pInputText [(ngModel)]="CashFlowLine">           
+      </span>
+      <p-footer>
+        <button type="button" pButton icon="fa-check" (click)="saveEditCashFlowLine(CashFlowLine)" label="Salveaza"></button>
         <button type="button" pButton icon="fa-close" (click)="display=false" label="Renunta"></button>
       </p-footer>
     </p-dialog>

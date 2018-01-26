@@ -53,6 +53,26 @@
   
 }
 
+.btn-circle {
+  width: 20px;
+  height: 20px;
+  text-align: center;
+  padding: 0px 6px;
+  font-size: 9px;
+
+  border-radius: 15px;
+}
+
+.btn-circle-micro {
+  width: 19px;
+  height: 19px;
+  text-align: center;
+  padding: 1px 0;
+  font-size: 9px;
+  line-height: 0.1;
+  border-radius: 30px;
+}
+
 /* <a class="btn icon-btn btn-default" href="#">
 <span class="glyphicon btn-glyphicon glyphicon-save img-circle text-muted"></span> <!-- defining icon -->
 Download <!-- defining text -->

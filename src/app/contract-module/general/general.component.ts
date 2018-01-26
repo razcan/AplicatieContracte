@@ -57,7 +57,7 @@ export class GeneralComponent implements OnInit{
   Email;
   AddressedTo;
   classContract;
-  ContractCategory;
+  
   department;
   ResponsibleDepartment;
   responsible;
@@ -65,9 +65,9 @@ export class GeneralComponent implements OnInit{
   expense_incomeClass;
   ExpenseandIncomeClass;
   center;
-  CostCenter;
+ 
   cfLine;
-  CashFlowLine;
+  
   SelfExtension: boolean = true;
   ExtensionNotification;
   ExtensionNotificationDate;
@@ -160,12 +160,109 @@ showDialogPerson() {
   this.displayPerson = true;
 }
  
-newCodeDepartament;
-newDenumireDepartament;
-newResponsabilDepartament;
+CodeDepartament;
+DenumireDepartament;
+ResponsabilDepartament;
 
-displayDepartament: boolean = false;
-showDialogDepartament() {
-  this.displayDepartament = true;
+displayAddDepartment: boolean = false;
+showDialogAddDepartament() {
+  this.displayAddDepartment = true;
 }
+
+display: boolean = false;
+
+saveAddDepartment(CodeDepartament, DenumireDepartament, ResponsabilDepartament) {
+  console.log(CodeDepartament, DenumireDepartament, ResponsabilDepartament);
+  this.CodeDepartament = '';
+  this.DenumireDepartament = '';
+  this.ResponsabilDepartament = '';
+  this.display = false;
+}
+
+displayEditDepartment: boolean = false;
+showDialogEditDepartament() {
+  this.displayEditDepartment = true;
+}
+saveEditDepartment(CodeDepartament, DenumireDepartament, ResponsabilDepartament) {
+  console.log(CodeDepartament, DenumireDepartament, ResponsabilDepartament);
+  this.CodeDepartament = '';
+  this.DenumireDepartament = '';
+  this.ResponsabilDepartament = '';
+  this.display = false;
+}
+
+ContractCategory;
+
+displayAddContractCategory: boolean = false;
+showDialogAddContractCategory() {
+  this.displayAddContractCategory = true;
+}
+
+saveAddContractCategory(ContractCategory) {
+  console.log(ContractCategory);
+  this.ContractCategory = ''; 
+  this.display = false;
+}
+
+displayEditContractCategory: boolean = false;
+showDialogEditContractCategory() {
+  this.displayEditContractCategory = true;
+}
+
+saveEditContractCategory(ContractCategory) {
+  console.log(ContractCategory);
+  this.ContractCategory = ''; 
+  this.display = false;
+}
+
+CostCenter;
+
+displayAddCostCenter: boolean = false;
+showDialogAddCostCenter() {
+  this.displayAddCostCenter = true;
+}
+
+saveAddCostCenter(CostCenter) {
+  console.log(CostCenter);
+  this.CostCenter = ''; 
+  this.display = false;
+}
+
+displayEditCostCenter: boolean = false;
+showDialogEditCostCenter() {
+  this.displayEditCostCenter = true;
+}
+
+saveEditCostCenter(CostCenter) {
+  console.log(CostCenter);
+  this.CostCenter = ''; 
+  this.display = false;
+}
+
+CashFlowLine;
+
+displayAddCashFlowLine: boolean = false;
+showDialogAddCashFlowLine() {
+  this.displayAddCashFlowLine = true;
+}
+
+saveAddCashFlowLine(CashFlowLine) {
+  console.log(CashFlowLine);
+  this.CashFlowLine = ''; 
+  this.display = false;
+}
+
+displayEditCashFlowLine: boolean = false;
+showDialogEditCashFlowLine() {
+  this.displayEditCashFlowLine = true;
+}
+
+saveEditCashFlowLine(CashFlowLine) {
+  console.log(CashFlowLine);
+  this.CashFlowLine = ''; 
+  this.display = false;
+}
+
+
+
 }
