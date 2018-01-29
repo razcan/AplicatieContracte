@@ -77,14 +77,14 @@
                   <div class="card">
                     <div class="card-body">
 
-                      <h4 class="card-title">Informatii Generale</h4>
+                      <h4 class="card-title">Informatii Generale </h4>
 
                       <!-- <p class="card-text">Informatii Generale</p> -->
                       <hr class="hr">
                       <div class="ui-g">
                         <div class="ui-g-12 ui-md-3">
                           <p>
-                            <strong>Partner Name</strong>
+                            <strong>Partner Name* </strong>
                           </p>
                         </div>
                         <div class="ui-g-12 ui-md-8">
@@ -92,18 +92,26 @@
                                 <p-dropdown [options]="LL" [(ngModel)]="PartnerId" [style]="{'width':'180px'}" filter="true">
                                    
                                 </p-dropdown>
-
+                                <div class="ui-message ui-messages-error ui-corner-all" *ngIf="FormValidationErrPartener == 1">
+                                    <i class="fa fa-close"></i>
+                                    Campul este obligatoriu
+                                </div>
                         </div>
+                    
                       </div>
                       <div class="ui-g">
                         <div class="ui-g-12 ui-md-3">
                           <p>
-                            <strong>Contract Type</strong>
+                            <strong>Contract Type*</strong>
                           </p>
                         </div>
                         <div class="ui-g-12 ui-md-8">
                           <p-dropdown [options]="contract" [style]="{'width':'150px'}" optionLabel='name' [(ngModel)]="ContractType">
                           </p-dropdown>
+                          <div class="ui-message ui-messages-error ui-corner-all" *ngIf="FormValidationErrType == 1">
+                              <i class="fa fa-close"></i>
+                              Campul este obligatoriu
+                          </div>
                         </div>
                       </div>
                       <div class="ui-g">
@@ -174,13 +182,18 @@
                       <div class="ui-g">
                         <div class="ui-g-12 ui-md-3">
                           <p>
-                            <strong>Contract Status</strong>
+                            <strong>Contract Status*</strong>
                           </p>
                         </div>
                         <div class="ui-g-12 ui-md-8">
                           <p-dropdown [options]="statusContract" [style]="{'width':'150px'}" optionLabel='name' [(ngModel)]="ContractStatus">
                           </p-dropdown>
+                          <div class="ui-message ui-messages-error ui-corner-all" *ngIf="FormValidationErrStatus == 1">
+                              <i class="fa fa-close"></i>
+                              Campul este obligatoriu
+                          </div>
                         </div>
+                        
                       </div>
                       <div class="ui-g-12">
                         <p>

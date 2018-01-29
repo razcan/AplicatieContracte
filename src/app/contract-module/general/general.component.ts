@@ -88,13 +88,13 @@ export class GeneralComponent implements OnInit{
     
 
     this.contract = [
-      { name: 'Select Contract Type' },
+      { name: '---' },
       { name: 'Sales'},
       { name: 'Acquisitions'},      
     ];
 
     this.statusContract = [
-      { name: 'Select Contract Status' },
+      { name: '---' },
       { name: 'Activ'},
       { name: 'Closed'},      
     ];
@@ -130,20 +130,14 @@ export class GeneralComponent implements OnInit{
     ];
   }
   PartnersListResult = [];
-  LL = [{label: '', value: ''}]; 
+  LL = [{label: '---', value: ''}]; 
   ListaPersoane = [] ;
   LP = [{label: '', value: ''}]; 
   ngOnInit () {
     this._Nomenclatoare.getPartners().subscribe(resPartnerList => {
       this.ListaParteneri = resPartnerList;
-      //console.log(JSON.stringify(this.ListaParteneri))
       this.PartnersListResult = this.ListaParteneri;
-      // this.PartnersListResult = this.ListaParteneri ;
-      // console.log(this.PartnersListResult);
       for (let i=0; i<this.PartnersListResult.length; i++) {
-        // console.log(this.PartnersListResult[i].PartnerName);
-        // this.LL[i].label=this.PartnersListResult[i].PartnerName
-        // this.LL[i].value=this.PartnersListResult[i].PartnerCode
        this.LL.push({label: this.PartnersListResult[i].PartnerName, value: this.PartnersListResult[i].PartnerId});
       }
   // console.log(this.LL);
@@ -158,10 +152,7 @@ export class GeneralComponent implements OnInit{
     )
   }
 
-ContractSave() {
-  console.log(this.PartnerId, this.ContractType.name,this.ContractNumber, this.ContractCode, this.SigningDate,
-    this.StartDate, this.EndDate, this.ContractStatus.name, this.ContractDescription)
-}
+
 
 Name;
 Surname;
@@ -348,6 +339,42 @@ saveEditCashFlowLine(CashFlowLine) {
   this.display = false;
 }
 
+FormValidationErrPartener = 0;
+FormValidationErrType = 0;
+FormValidationErrStatus= 0;
+ContractSave() {
 
+  if(this.PartnerId) {
+//    console.log("I have something");
+    this.FormValidationErrPartener = 0;
+
+  } else {
+ //   console.log("Nothing here...");
+    this.FormValidationErrPartener = 1;
+
+  }
+
+  if(this.ContractType) {
+        this.FormValidationErrType = 0;
+    
+      } else {
+        this.FormValidationErrType = 1;
+    
+      }
+
+      if(this.ContractStatus) {
+        this.FormValidationErrStatus = 0;
+    
+      } else {
+        this.FormValidationErrStatus = 1;
+    
+      }
+      
+
+  
+
+  // console.log(this.PartnerId, this.ContractType.name,this.ContractNumber, this.ContractCode, this.SigningDate,
+  //   this.StartDate, this.EndDate, this.ContractStatus.name, this.ContractDescription)
+}
 
 }
