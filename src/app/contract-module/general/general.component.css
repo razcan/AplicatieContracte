@@ -73,26 +73,8 @@
   border-radius: 30px;
 }
 
-#Drag {
-  height:120px;
-  width:220px;
-  border:1px solid #ccc;
-  font-family: verdana;
-  font-size: 14px;
-  font-weight: 100;
-  overflow:auto;
-}
-#DragRezult {
-  height:320px;
-  width:880px;
-  border:1px solid #ccc;
-  font-family: verdana;
-  font-size: 14px;
-  font-weight: 100;
-  overflow:auto;
-}
 
-
+/*  */
 /* <a class="btn icon-btn btn-default" href="#">
 <span class="glyphicon btn-glyphicon glyphicon-save img-circle text-muted"></span> <!-- defining icon -->
 Download <!-- defining text -->

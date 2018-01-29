@@ -34,6 +34,7 @@ import {ContextMenuModule} from 'primeng/primeng';
 import {DataGridModule} from 'primeng/primeng';
 import {DataListModule} from 'primeng/primeng';
 import {DataScrollerModule} from 'primeng/primeng';
+import {ScrollPanelModule} from 'primeng/scrollpanel';
 import {DataTableModule} from 'primeng/primeng';
 import {DialogModule} from 'primeng/primeng';
 import {DragDropModule} from 'primeng/primeng';
@@ -84,39 +85,6 @@ import {TreeModule} from 'primeng/primeng';
 import {TreeNode} from 'primeng/primeng';
 
 
-import {
-  MatAutocompleteModule,
-  MatButtonModule,
-  MatButtonToggleModule,
-  MatCardModule,
-  MatCheckboxModule,
-  MatChipsModule,
-  MatDatepickerModule,
-  MatDialogModule,
-  MatExpansionModule,
-  MatGridListModule,
-  MatIconModule,
-  MatInputModule,
-  MatListModule,
-  MatMenuModule,
-  MatNativeDateModule,
-  MatPaginatorModule,
-  MatProgressBarModule,
-  MatProgressSpinnerModule,
-  MatRadioModule,
-  MatRippleModule,
-  MatSelectModule,
-  MatSidenavModule,
-  MatSliderModule,
-  MatSlideToggleModule,
-  MatSnackBarModule,
-  MatSortModule,
-  MatTableModule,
-  MatTabsModule,
-  MatToolbarModule,
-  MatTooltipModule,
-  MatStepperModule,
-} from '@angular/material';
 import {CdkTableModule} from '@angular/cdk/table';
 
 
@@ -306,7 +274,6 @@ export const appRoutes: Routes = [
     SliderModule,
     DropdownModule,
     MultiSelectModule,
-    MatAutocompleteModule,
     PanelModule,
     InputTextModule,
     ButtonModule,
@@ -317,36 +284,7 @@ export const appRoutes: Routes = [
     BreadcrumbsModule,
     BreadcrumbModule,
     GrowlModule,
-  MatButtonModule,
-  MatButtonToggleModule,
-  MatCardModule,
-  MatCheckboxModule,
-  MatChipsModule,
-  MatDatepickerModule,
-  MatDialogModule,
-  MatExpansionModule,
-  MatGridListModule,
-  MatIconModule,
-  MatInputModule,
-  MatListModule,
-  MatMenuModule,
-  MatNativeDateModule,
-  MatPaginatorModule,
-  MatProgressBarModule,
-  MatProgressSpinnerModule,
-  MatRadioModule,
-  MatRippleModule,
-  MatSelectModule,
-  MatSidenavModule,
-  MatSliderModule,
-  MatSlideToggleModule,
-  MatSnackBarModule,
-  MatSortModule,
-  MatTableModule,
-  MatTabsModule,
-  MatToolbarModule,
-  MatTooltipModule,
-  MatStepperModule,
+    ScrollPanelModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

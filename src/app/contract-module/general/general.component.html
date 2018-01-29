@@ -379,22 +379,26 @@
   
                     <br>
                     <h4 class="card-title">Proprietati Specifice Contract</h4>
-                    
-
-                    
                     <hr class="hr">
+                    <p-pickList [source]="itemObjectsLeft" [target]="itemObjectsRight" sourceHeader="Disponibile" targetHeader="Selectate" dragdrop="true" dragdropScope="cars"
+                    [responsive]="true" [sourceStyle]="{'height':'100px'}" [targetStyle]="{'height':'100px'}" filterBy="name" 
+                    sourceFilterPlaceholder="Search by name" targetFilterPlaceholder="Search by name">
+                    <ng-template let-car pTemplate="item">
+                        <div class="ui-helper-clearfix">
+                          
+                            <div style="font-size:10px;float:right;margin:1px 1px 0 0">{{car.name}} </div>
+                        </div>
+                    </ng-template>
+                </p-pickList>
               
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <br><br>
-                    <br>
+               <div *ngFor="let prop of itemObjectsRight">
+                 {{prop.name}} {{prop.value}}
+               </div> 
+               <p-scrollPanel [style]="{width: '100%', height: '40px'}">
+                  Content /xjs/_/js/k=xjs.ntp.en_US.KJIRadu8W60.O/m=spch/am=AAEIDA/exm=sx,jsa,ntp,d,csi/rt=j/d=1/ed=1/t=zcms/rs=ACT90oGPj_4CVSJnEUBHH9mrsBJm2UgOrw?xjs=s1
+                  /xjs/_/js/k=xjs.ntp.en_US.KJIRadu8W60.O/m=spch/am=AAEIDA/exm=sx,jsa,ntp,d,csi/rt=j/d=1/ed=1/t=zcms/rs=ACT90oGPj_4CVSJnEUBHH9mrsBJm2UgOrw?xjs=s1
+                  /xjs/_/js/k=xjs.ntp.en_US.KJIRadu8W60.O/m=spch/am=AAEIDA/exm=sx,jsa,ntp,d,csi/rt=j/d=1/ed=1/t=zcms/rs=ACT90oGPj_4CVSJnEUBHH9mrsBJm2UgOrw?xjs=s1
+              </p-scrollPanel>
                     <br>
                     <br>
                     <div class="row">
