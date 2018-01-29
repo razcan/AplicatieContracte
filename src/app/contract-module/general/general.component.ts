@@ -204,10 +204,46 @@ showDialogForPerson(ResponsiblePerson) {
       this.EmplFunction=results[0].EmplFunction
       this.EmplEmail=results[0].EmplEmail
       this.Telephone=results[0].Telephone
+  }
+)}
+
+
+
+itemObjectsRight: any[] = [];
+itemObjectsLeft: any = [{PropertyId: '', PropertyName: '', PropertyType: ''}]
+
+  TableIsShow: boolean  =false;
+  displayProperties: boolean = false;
+  PropertyListResult = [];
+  TextProprietate = [];
+  DataProprieate = [];
+
+  TabelVisible: boolean  =false;
+  showDialogProperties() {
+    this.TableIsShow =true;
+    this.displayProperties = true;
+    this.http.get('http://localhost:3001/LoadProperty').subscribe((res) => {
+    const PropertyList = res.json();
+    this.PropertyListResult=PropertyList;
+    for (let i=0; i<this.PropertyListResult.length; i++){
+      this.itemObjectsLeft.push({
+        PropertyId: this.PropertyListResult[i].PropertyId,
+        PropertyName: this.PropertyListResult[i].PropertyName,
+        PropertyType: this.PropertyListResult[i].PropertyType
+      })
+    }
+  }
+)}
+displaycloseProperties() {
+  this.TableIsShow =! this.TableIsShow;
+  this.displayProperties =! this.displayProperties;
+  this.itemObjectsRight= [];
+  this.itemObjectsLeft = [];
 }
-
-  )}
-
+SaveProperties() {
+  this.TabelVisible  = true;
+  this.displayProperties = false;
+}
  
 CodeDepartament;
 DenumireDepartament;
@@ -312,21 +348,6 @@ saveEditCashFlowLine(CashFlowLine) {
   this.display = false;
 }
 
-
-itemObjectsLeft: any[] = [
-  { id: 1, name: 'Suprafata', tip: '1', value: 'Text' },
-  { id: 2, name: 'Agent', tip: '1', value: 'Text'   },
-  { id: 3, name: 'DataEfectivaPlata', tip: '2', value: 'Date'  },
-  { id: 4, name: 'ValoareEfectivaPlata', tip: '3', value: 'Numeric'  }
-];
-
-itemObjectsRight: any[] = [];
-
-IsShow =false;
-Afiseaza() {
-  this.IsShow =!this.IsShow;
-  
-}
 
 
 }
