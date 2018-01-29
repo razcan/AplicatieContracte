@@ -100,31 +100,31 @@ export class GeneralComponent implements OnInit{
     ];
 
     this.department = [
-      { label: 'Select Department', value: null },
+      { label: '---', value: null },
       { label: 'Trading', value: 'Trading' },
       { label: 'Accounting', value: 'Accounting' },      
     ];
 
     this.responsible = [
-      { label: 'Select Person', value: null },
+      { label: '---', value: null },
       { label: 'Vasilica', value: 'Vasilica' },
       { label: 'Vetuta', value: 'Vetuta' },      
     ];
 
     this.expense_incomeClass = [
-      { label: 'Select Expense/Income Class', value: null },
+      { label: '---', value: null },
       { label: '706', value: '706' },
       { label: '606', value: '606' },      
     ];
 
     this.center = [
-      { label: 'Select CostCenter', value: null },
+      { label: '---', value: null },
       { label: 'Financial', value: 'Financial' },
       { label: 'Trading', value: 'Trading' },      
     ];
 
     this.cfLine = [
-      { label: 'Select CashFlowLine', value: null },
+      { label: '---', value: null },
       { label: 'Financial', value: 'Financial' },
       { label: 'Trading', value: 'Trading' },      
     ];
@@ -140,7 +140,6 @@ export class GeneralComponent implements OnInit{
       for (let i=0; i<this.PartnersListResult.length; i++) {
        this.LL.push({label: this.PartnersListResult[i].PartnerName, value: this.PartnersListResult[i].PartnerId});
       }
-  // console.log(this.LL);
     }); 
    
     this._Nomenclatoare.getPersonResponsible().subscribe(resPersonResponsible => {
@@ -357,18 +356,18 @@ ContractSave() {
   if(this.ContractType) {
         this.FormValidationErrType = 0;
     
-      } else {
-        this.FormValidationErrType = 1;
-    
-      }
+    } else {
+      this.FormValidationErrType = 1;
+  
+    }
 
-      if(this.ContractStatus) {
+  if(this.ContractStatus) {
         this.FormValidationErrStatus = 0;
     
-      } else {
-        this.FormValidationErrStatus = 1;
-    
-      }
+    } else {
+      this.FormValidationErrStatus = 1;
+  
+    }
       
 
   
