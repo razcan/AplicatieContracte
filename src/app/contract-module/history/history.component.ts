@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
+import {TerminalService} from 'primeng/components/terminal/terminalservice';
+import {Subscription} from 'rxjs/Subscription';
 
 @Component({
   selector: 'app-history',

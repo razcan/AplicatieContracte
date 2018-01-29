@@ -591,6 +591,410 @@ app.get('/LoadPersonResponsible/:PersonId', (req, res) => {
 })
 //Responsabil Contract
 
+// Departament Responsabil
+app.post('/SaveDepartment', (req, res) => {
+
+    let content = req.body;
+    var mysql = require('mysql');
+
+    var con = mysql.createConnection({
+      host: "localhost",
+      user: "root",
+      password: "root",
+      database: "shb"
+    });
+
+    var post  = { DepartmentId:  `${content.DepartmentId}`,
+        DepartmentName: `${content.DepartmentName}`
+    };    
+    var post_insert  = { 
+        DepartmentName: `${content.DepartmentName}`
+    };
+    if (content.DepartmentId > 0) {
+
+        var query = con.query('UPDATE department SET ? where DepartmentId= ?',[post,`${content.DepartmentId}`], function (error, results, fields) {
+            con.end();
+            if (error) throw error;
+    });
+       
+    } 
+    else {
+
+        var query = con.query('INSERT INTO department SET ?', post_insert, function (error, results, fields) {
+            con.end();
+            if (error) throw error;
+            });            
+
+}
+});
+
+app.get('/LoadDepartment', (req, res) => {
+    var mysql = require('mysql');
+    var con = mysql.createConnection({
+      host: "localhost",
+      user: "root",
+      password: "root",
+      database: "shb"
+    });
+
+    con.connect(function(err) {
+        if (err) throw err;
+        con.query('SELECT * FROM department ', function (err, row, fields) {
+        if (err) throw err;
+        con.end();
+        return res.json(row);
+        res.send(row);
+
+    })
+});
+})
+
+app.get('/LoadDepartment/:DepartmentId', (req, res) => {
+    var DepartmentId = req.params.DepartmentId;
+    var mysql = require('mysql');
+    var con = mysql.createConnection({
+      host: "localhost",
+      user: "root",
+      password: "root",
+      database: "shb"
+    });
+
+    con.connect(function(err) {
+        if (err) throw err;
+        con.query('SELECT * FROM department where DepartmentId=?',DepartmentId, function (err, row, fields) {
+        if (err) throw err;
+        con.end();
+     //   console.log(row);	
+        return res.json(row);
+        res.send(row);
+
+    })
+});
+})
+
+// Categorie Contract
+app.post('/SaveContractCategory', (req, res) => {
+
+    let content = req.body;
+    var mysql = require('mysql');
+
+    var con = mysql.createConnection({
+      host: "localhost",
+      user: "root",
+      password: "root",
+      database: "shb"
+    });
+
+    var post  = { ContractCategoryId:  `${content.ContractCategoryId}`,
+    ContractCategoryName: `${content.ContractCategoryName}`
+    };    
+    var post_insert  = { 
+        ContractCategoryName: `${content.ContractCategoryName}`
+    };
+    if (content.ContractCategoryId > 0) {
+
+        var query = con.query('UPDATE contractcategory SET ? where ContractCategoryId= ?',[post,`${content.ContractCategoryId}`], function (error, results, fields) {
+            con.end();
+            if (error) throw error;
+    });
+       
+    } 
+    else {
+
+        var query = con.query('INSERT INTO contractcategory SET ?', post_insert, function (error, results, fields) {
+            con.end();
+            if (error) throw error;
+            });            
+
+}
+});
+
+app.get('/LoadContractCategory', (req, res) => {
+    var mysql = require('mysql');
+    var con = mysql.createConnection({
+      host: "localhost",
+      user: "root",
+      password: "root",
+      database: "shb"
+    });
+
+    con.connect(function(err) {
+        if (err) throw err;
+        con.query('SELECT * FROM contractcategory ', function (err, row, fields) {
+        if (err) throw err;
+        con.end();
+        return res.json(row);
+        res.send(row);
+
+    })
+});
+})
+
+app.get('/LoadContractCategory/:ContractCategoryId', (req, res) => {
+    var ContractCategoryId = req.params.ContractCategoryId;
+    var mysql = require('mysql');
+    var con = mysql.createConnection({
+      host: "localhost",
+      user: "root",
+      password: "root",
+      database: "shb"
+    });
+
+    con.connect(function(err) {
+        if (err) throw err;
+        con.query('SELECT * FROM contractcategory where ContractCategoryId=?',ContractCategoryId, function (err, row, fields) {
+        if (err) throw err;
+        con.end();
+     //   console.log(row);	
+        return res.json(row);
+        res.send(row);
+
+    })
+});
+})
+
+// Cost Center
+app.post('/SaveCostCenter', (req, res) => {
+
+    let content = req.body;
+    var mysql = require('mysql');
+
+    var con = mysql.createConnection({
+      host: "localhost",
+      user: "root",
+      password: "root",
+      database: "shb"
+    });
+
+    var post  = { CostCenterId:  `${content.CostCenterId}`,
+    CostCenterName: `${content.CostCenterName}`
+    };    
+    var post_insert  = { 
+        CostCenterName: `${content.CostCenterName}`
+    };
+    if (content.CostCenterId > 0) {
+
+        var query = con.query('UPDATE costcenter SET ? where CostCenterId= ?',[post,`${content.CostCenterId}`], function (error, results, fields) {
+            con.end();
+            if (error) throw error;
+    });
+       
+    } 
+    else {
+
+        var query = con.query('INSERT INTO costcenter SET ?', post_insert, function (error, results, fields) {
+            con.end();
+            if (error) throw error;
+            });            
+
+}
+});
+
+app.get('/LoadCostCenter', (req, res) => {
+    var mysql = require('mysql');
+    var con = mysql.createConnection({
+      host: "localhost",
+      user: "root",
+      password: "root",
+      database: "shb"
+    });
+
+    con.connect(function(err) {
+        if (err) throw err;
+        con.query('SELECT * FROM costcenter ', function (err, row, fields) {
+        if (err) throw err;
+        con.end();
+        return res.json(row);
+        res.send(row);
+
+    })
+});
+})
+
+app.get('/LoadCostCenter/:CostCenterId', (req, res) => {
+    var CostCenterId = req.params.CostCenterId;
+    var mysql = require('mysql');
+    var con = mysql.createConnection({
+      host: "localhost",
+      user: "root",
+      password: "root",
+      database: "shb"
+    });
+
+    con.connect(function(err) {
+        if (err) throw err;
+        con.query('SELECT * FROM costcenter where CostCenterId=?',CostCenterId, function (err, row, fields) {
+        if (err) throw err;
+        con.end();
+     //   console.log(row);	
+        return res.json(row);
+        res.send(row);
+
+    })
+});
+})
+
+// CashFlowLine
+app.post('/SaveCashFlowLine', (req, res) => {
+
+    let content = req.body;
+    var mysql = require('mysql');
+
+    var con = mysql.createConnection({
+      host: "localhost",
+      user: "root",
+      password: "root",
+      database: "shb"
+    });
+
+    var post  = { CashFlowLineId:  `${content.CashFlowLineId}`,
+    CashFlowLineName: `${content.CashFlowLineName}`
+    };    
+    var post_insert  = { 
+        CashFlowLineName: `${content.CashFlowLineName}`
+    };
+    if (content.CashFlowLineId > 0) {
+
+        var query = con.query('UPDATE cashflowline SET ? where CashFlowLineId= ?',[post,`${content.CashFlowLineId}`], function (error, results, fields) {
+            con.end();
+            if (error) throw error;
+    });
+       
+    } 
+    else {
+
+        var query = con.query('INSERT INTO cashflowline SET ?', post_insert, function (error, results, fields) {
+            con.end();
+            if (error) throw error;
+            });            
+
+}
+});
+
+app.get('/LoadCashFlowLine', (req, res) => {
+    var mysql = require('mysql');
+    var con = mysql.createConnection({
+      host: "localhost",
+      user: "root",
+      password: "root",
+      database: "shb"
+    });
+
+    con.connect(function(err) {
+        if (err) throw err;
+        con.query('SELECT * FROM cashflowline ', function (err, row, fields) {
+        if (err) throw err;
+        con.end();
+        return res.json(row);
+        res.send(row);
+
+    })
+});
+})
+
+app.get('/LoadCashFlowLine/:CashFlowLineId', (req, res) => {
+    var CashFlowLineId = req.params.CashFlowLineId;
+    var mysql = require('mysql');
+    var con = mysql.createConnection({
+      host: "localhost",
+      user: "root",
+      password: "root",
+      database: "shb"
+    });
+
+    con.connect(function(err) {
+        if (err) throw err;
+        con.query('SELECT * FROM cashflowline where CashFlowLineId=?',CashFlowLineId, function (err, row, fields) {
+        if (err) throw err;
+        con.end();
+     //   console.log(row);	
+        return res.json(row);
+        res.send(row);
+
+    })
+});
+})
+
+// Clasa Income & Expenses
+app.post('/SaveClassIE', (req, res) => {
+
+    let content = req.body;
+    var mysql = require('mysql');
+
+    var con = mysql.createConnection({
+      host: "localhost",
+      user: "root",
+      password: "root",
+      database: "shb"
+    });
+
+    var post  = { ClassIEId:  `${content.ClassIEId}`,
+    ClassIEName: `${content.ClassIEName}`
+    };    
+    var post_insert  = { 
+        ClassIEName: `${content.ClassIEName}`
+    };
+    if (content.ClassIEId > 0) {
+
+        var query = con.query('UPDATE income_expense_class SET ? where ClassIEId= ?',[post,`${content.ClassIEId}`], function (error, results, fields) {
+            con.end();
+            if (error) throw error;
+    });
+       
+    } 
+    else {
+
+        var query = con.query('INSERT INTO income_expense_class SET ?', post_insert, function (error, results, fields) {
+            con.end();
+            if (error) throw error;
+            });            
+
+}
+});
+
+app.get('/LoadClassIE', (req, res) => {
+    var mysql = require('mysql');
+    var con = mysql.createConnection({
+      host: "localhost",
+      user: "root",
+      password: "root",
+      database: "shb"
+    });
+
+    con.connect(function(err) {
+        if (err) throw err;
+        con.query('SELECT * FROM income_expense_class ', function (err, row, fields) {
+        if (err) throw err;
+        con.end();
+        return res.json(row);
+        res.send(row);
+
+    })
+});
+})
+
+app.get('/LoadClass/:ClassIEId', (req, res) => {
+    var ClassIEId = req.params.ClassIEId;
+    var mysql = require('mysql');
+    var con = mysql.createConnection({
+      host: "localhost",
+      user: "root",
+      password: "root",
+      database: "shb"
+    });
+
+    con.connect(function(err) {
+        if (err) throw err;
+        con.query('SELECT * FROM income_expense_class where ClassIEId=?',ClassIEId, function (err, row, fields) {
+        if (err) throw err;
+        con.end();
+     //   console.log(row);	
+        return res.json(row);
+        res.send(row);
+
+    })
+});
+})
 
 
 app.listen(3001, () => console.log('Example app listening on port 3001!'))
