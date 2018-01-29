@@ -260,12 +260,9 @@
                           <p-dropdown [options]="classContract" [(ngModel)]="ContractCategory" [style]="{'width':'150px'}" filter="true">
 
                           </p-dropdown>
-                          <button type="button" class="btn btn-circle-micro btn-success" (click)="showDialogAddContractCategory()">
-                            <i class="glyphicon glyphicon-plus"></i>
-                          </button>
-                          <button type="button" class="btn btn-circle-micro btn-primary" (click)="showDialogEditContractCategory()">
-                            <i class="glyphicon glyphicon-edit"></i>
-                          </button>
+                          <span class="glyphicon glyphicon-plus" aria-hidden="true" (click)="showDialogAddContractCategory()"></span>
+                            <span class="glyphicon glyphicon-tag" aria-hidden="true" (click)="showDialogEditContractCategory()"></span>
+                          
                         </div>
                       </div>
                       <div class="ui-g">
@@ -278,12 +275,11 @@
                             <p-dropdown [options]="department" [(ngModel)]="ResponsibleDepartment" [style]="{'width':'150px'}" filter="true">
   
                             </p-dropdown>
-                            <button type="button" class="btn btn-circle-micro btn-success" (click)="showDialogAddDepartament()">
-                              <i class="glyphicon glyphicon-plus"></i>
-                            </button>
-                            <button type="button" class="btn btn-circle-micro btn-primary" (click)="showDialogEditDepartament()">
-                              <i class="glyphicon glyphicon-edit"></i>
-                            </button>
+                          
+                            <span class="glyphicon glyphicon-plus" aria-hidden="true" (click)="showDialogAddDepartament()"></span>
+                            <span class="glyphicon glyphicon-pencil" aria-hidden="true" (click)="showDialogEditDepartament()"></span>
+                         
+                         
                           </div>
                         </div>
                         <div class="ui-g">
