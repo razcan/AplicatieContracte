@@ -13,8 +13,8 @@
     <p-column field="PropertyType" header="PropertyType" [editable]="true" [sortable]="true"></p-column>
     <p-column field="deleted" header="deleted" ></p-column>
     
-    <ng-template  let-prop   pTemplate="rowexpansion" *ngIf="DDelete" class="Test" >
-        <div style="font-size:10px;padding:14px" class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid"  *ngIf="prop.deleted == 0">
+    <ng-template  let-prop   pTemplate="rowexpansion"  class="Test" >
+        <div style="font-size:10px;padding:14px" class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid" >
             <div>
                 <div class="ui-g">
                         <div class="ui-g-6 ui-md-3 ui-lg-1" >

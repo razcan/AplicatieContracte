@@ -44,8 +44,6 @@ export class GeneralComponent implements OnInit{
   Version;
   breadcrumb;
   partner: SelectItem[];
-  PartnerName: string;
-  PartnerId;
   ContractType;
   contract; 
   ContractNumber;
@@ -133,6 +131,17 @@ export class GeneralComponent implements OnInit{
   LL = [{label: '---', value: ''}]; 
   ListaPersoane = [] ;
   LP = [{label: '', value: ''}]; 
+  ListaDepartamente = [];
+  LD = [{label: '', value: ''}]; //options
+  ListaCategoriiContracte = [];
+  LCC = [{label: '', value: ''}]; //options
+  ListaCentruCost = [];
+  LCCost = [{label: '', value: ''}]; //options
+  ListaCashFlowLine = [];
+  LCF = [{label: '', value: ''}]; //options
+  ListaClassIE = [];
+  LCIE = [{label: '', value: ''}]; //options
+
   ngOnInit () {
     this._Nomenclatoare.getPartners().subscribe(resPartnerList => {
       this.ListaParteneri = resPartnerList;
@@ -148,11 +157,126 @@ export class GeneralComponent implements OnInit{
        this.LP.push({label: this.ListaPersoane[i].Name +' '+ this.ListaPersoane[i].Surname, value: this.ListaPersoane[i].PersonId});
       }
     }
+    );
+    this._Nomenclatoare.getDepartment().subscribe(resDepartment => {
+      this.ListaDepartamente = resDepartment;
+      for (let i=0; i<this.ListaDepartamente.length; i++) {
+       this.LD.push({label: this.ListaDepartamente[i].DepartmentName, value: this.ListaDepartamente[i].DepartmentId});
+      }
+    }
+    )
+    console.log(this.ListaDepartamente);
+
+    this._Nomenclatoare.getContractCategory().subscribe(resContractCategory => {
+      this.ListaCategoriiContracte = resContractCategory;
+      for (let i=0; i<this.ListaCategoriiContracte.length; i++) {
+       this.LCC.push({label: this.ListaCategoriiContracte[i].ContractCategoryName, value: this.ListaCategoriiContracte[i].ContractCategoryId});
+      }
+    }
+    )
+    console.log(this.ListaCategoriiContracte);
+
+    this._Nomenclatoare.getCostCenter().subscribe(resCostCenter => {
+      this.ListaCentruCost = resCostCenter;
+      for (let i=0; i<this.ListaCentruCost.length; i++) {
+       this.LCCost.push({label: this.ListaCentruCost[i].CostCenterName, value: this.ListaCentruCost[i].CostCenterId});
+      }
+    }
+    )
+    console.log(this.ListaCentruCost);
+
+    this._Nomenclatoare.getCashFlowLine().subscribe(resCashFlowLine => {
+      this.ListaCashFlowLine = resCashFlowLine;
+      for (let i=0; i<this.ListaCashFlowLine.length; i++) {
+       this.LCF.push({label: this.ListaCashFlowLine[i].CashFlowLineName, value: this.ListaCashFlowLine[i].CashFlowLineId});
+      }
+    }
+    )
+    console.log(this.ListaCashFlowLine);
+
+    this._Nomenclatoare.getClassIE().subscribe(resClassIE => {
+      this.ListaClassIE = resClassIE;
+      for (let i=0; i<this.ListaClassIE.length; i++) {
+       this.LCIE.push({label: this.ListaClassIE[i].ClassIEName, value: this.ListaClassIE[i].ClassIEId});
+      }
+    }
     )
   }
 
 
-
+  PartnerId;
+  PartnerStatus;
+  PartnerName: string;
+  PartnerCode;
+  PartnerInternalCode;
+  PartnerType;
+  ShortPartnerName;
+  ComercialRegistration;
+  FiscalRegistration;
+  PartnerAddress;
+  LegalForm;
+  VATPayer;
+  BankAccount;
+  Delegate;
+  Agent;
+  BaseCurrency;
+  Phone;
+  WEB;
+  
+  displayPartner : boolean = false;
+  
+  showDialogPartner() {
+    this.displayPartner = true;
+  }
+  SavePartner(PartnerId, PartnerStatus, PartnerName, PartnerCode, PartnerInternalCode, PartnerType, ShortPartnerName, ComercialRegistration, 
+    FiscalRegistration, PartnerAddress, LegalForm, Notes, VATPayer, BankAccount, Delegate, Agent, BaseCurrency, Phone, Email, WEB) {
+    this.http.post('http://localhost:3001/SavePartner', {
+    PartnerId: this.PartnerId,  
+    PartnerStatus: this.PartnerStatus , 
+    PartnerName: this.PartnerName, PartnerCode: this.PartnerCode, PartnerInternalCode: this.PartnerInternalCode,
+    PartnerType: this.PartnerType, ShortPartnerName: this.ShortPartnerName,
+    ComercialRegistration: this.ComercialRegistration, FiscalRegistration: this.FiscalRegistration, 
+    PartnerAddress: this.PartnerAddress,
+    LegalForm: this.LegalForm, Notes: this.Notes, VATPayer: this.VATPayer,
+    BankAccount: this.BankAccount, Delegate: this.Delegate, Agent: this.Agent,
+    BaseCurrency: this.BaseCurrency, Phone: this.Phone, Email: this.Email, WEB: this.WEB,
+  }).subscribe((res) => {
+    const result = res.json();
+    //console.log(result);
+  });
+  }
+  
+  partnerResults = [];
+  Partner;
+  
+  showDialogForPartner(PartnerId) {
+    this.displayPartner = true;
+    this.http.get('http://localhost:3001/LoadPartner/' + this.PartnerId).subscribe((res) => {
+        const partnerResults = res.json();
+        this.PartnerId=partnerResults[0].PartnerId
+        this.PartnerStatus=partnerResults[0].PartnerStatus
+        this.PartnerName=partnerResults[0].PartnerName
+        this.PartnerCode=partnerResults[0].PartnerCode
+        this.PartnerInternalCode=partnerResults[0].PartnerInternalCode
+        this.PartnerType=partnerResults[0].PartnerType
+        this.ShortPartnerName=partnerResults[0].ShortPartnerName
+        this.ComercialRegistration=partnerResults[0].ComercialRegistration
+        this.FiscalRegistration=partnerResults[0].FiscalRegistration
+        this.PartnerAddress=partnerResults[0].PartnerAddress
+        this.LegalForm=partnerResults[0].LegalForm
+        this.Notes=partnerResults[0].Notes
+        this.VATPayer=partnerResults[0].VATPayer
+        this.BankAccount=partnerResults[0].BankAccount
+        this.Delegate=partnerResults[0].Delegate
+        this.Agent=partnerResults[0].Agent
+        this.BaseCurrency=partnerResults[0].BaseCurrency
+        this.Phone=partnerResults[0].Phone
+        this.Email=partnerResults[0].Email
+        this.WEB=partnerResults[0].WEB
+  }
+  
+    )}
+  
 Name;
 Surname;
 CNP;
@@ -235,108 +359,170 @@ SaveProperties() {
   this.displayProperties = false;
 }
  
-CodeDepartament;
-DenumireDepartament;
-ResponsabilDepartament;
+DepartmentId; // ngModel - p-dropdown
+DepartmentName;  // ngModel - input p-dialog
+Department; 
 
 displayAddDepartment: boolean = false;
+
 showDialogAddDepartament() {
   this.displayAddDepartment = true;
 }
 
-display: boolean = false;
-
-saveAddDepartment(CodeDepartament, DenumireDepartament, ResponsabilDepartament) {
-  console.log(CodeDepartament, DenumireDepartament, ResponsabilDepartament);
-  this.CodeDepartament = '';
-  this.DenumireDepartament = '';
-  this.ResponsabilDepartament = '';
-  this.display = false;
+saveDepartment(DepartmentId, DepartmentName) {
+  this.http.post('http://localhost:3001/SaveDepartment', {
+    DepartmentId: DepartmentId,  
+    DepartmentName: DepartmentName, 
+  }).subscribe((res) => {
+    const result = res.json();
+    console.log(result);
+  });
 }
 
-displayEditDepartment: boolean = false;
-showDialogEditDepartament() {
-  this.displayEditDepartment = true;
-}
-saveEditDepartment(CodeDepartament, DenumireDepartament, ResponsabilDepartament) {
-  console.log(CodeDepartament, DenumireDepartament, ResponsabilDepartament);
-  this.CodeDepartament = '';
-  this.DenumireDepartament = '';
-  this.ResponsabilDepartament = '';
-  this.display = false;
+departmentResults = [] ;
+
+showDialogForDepartment(Department) {
+  this.displayAddDepartment = true;
+  this.http.get('http://localhost:3001/LoadDepartment/' + this.Department).subscribe((res) => {
+      const departmentResults = res.json();
+      this.DepartmentId=departmentResults[0].DepartmentId
+      this.DepartmentName=departmentResults[0].DepartmentName    
 }
 
-ContractCategory;
+  )}
+
+
+ContractCategoryId; // ngModel p-dropdown
+ContractCategoryName; // ngModel input p-dialog
+ContractCategory; 
 
 displayAddContractCategory: boolean = false;
+
 showDialogAddContractCategory() {
   this.displayAddContractCategory = true;
 }
 
-saveAddContractCategory(ContractCategory) {
-  console.log(ContractCategory);
-  this.ContractCategory = ''; 
-  this.display = false;
+saveContractCategory(ContractCategoryId, ContractCategoryName) {
+  this.http.post('http://localhost:3001/SaveContractCategory', {
+    ContractCategoryId: ContractCategoryId,  
+    ContractCategoryName: ContractCategoryName, 
+  }).subscribe((res) => {
+    const result = res.json();
+    console.log(result);
+  });
 }
 
-displayEditContractCategory: boolean = false;
-showDialogEditContractCategory() {
-  this.displayEditContractCategory = true;
+contractCategoryResults = [] ;
+
+showDialogForContractCategory(ContractCategory) {
+  this.displayAddContractCategory = true;
+  this.http.get('http://localhost:3001/LoadContractCategory/' + this.ContractCategory).subscribe((res) => {
+      const contractCategoryResults = res.json();
+      this.ContractCategoryId=contractCategoryResults[0].ContractCategoryId
+      this.ContractCategoryName=contractCategoryResults[0].ContractCategoryName    
 }
 
-saveEditContractCategory(ContractCategory) {
-  console.log(ContractCategory);
-  this.ContractCategory = ''; 
-  this.display = false;
-}
+  )}
 
-CostCenter;
+  CostCenterId; // ngModel p-dropdown
+  CostCenterName; // ngModel input p-dialog
+  CostCenter; 
 
 displayAddCostCenter: boolean = false;
+
 showDialogAddCostCenter() {
   this.displayAddCostCenter = true;
 }
 
-saveAddCostCenter(CostCenter) {
-  console.log(CostCenter);
-  this.CostCenter = ''; 
-  this.display = false;
+saveCostCenter(CostCenterId, CostCenterName) {
+  this.http.post('http://localhost:3001/SaveCostCenter', {
+    CostCenterId: CostCenterId,  
+    CostCenterName: CostCenterName, 
+  }).subscribe((res) => {
+    const result = res.json();
+    console.log(result);
+  });
+  console.log(this.CostCenterName);
 }
 
-displayEditCostCenter: boolean = false;
-showDialogEditCostCenter() {
-  this.displayEditCostCenter = true;
+costCenterResults = [] ;
+
+showDialogForCostCenter(CostCenter) {
+  this.displayAddCostCenter = true;
+  this.http.get('http://localhost:3001/LoadCostCenter/' + this.CostCenter).subscribe((res) => {
+      const costCenterResults = res.json();
+      this.CostCenterId=costCenterResults[0].CostCenterId
+      this.CostCenterName=costCenterResults[0].CostCenterName    
 }
 
-saveEditCostCenter(CostCenter) {
-  console.log(CostCenter);
-  this.CostCenter = ''; 
-  this.display = false;
-}
+  )}
 
-CashFlowLine;
+
+CashFlowLineId; // ngModel p-dropdown
+CashFlowLineName; // ngModel input p-dialog
+CashFlowLine; 
 
 displayAddCashFlowLine: boolean = false;
+
 showDialogAddCashFlowLine() {
   this.displayAddCashFlowLine = true;
 }
 
-saveAddCashFlowLine(CashFlowLine) {
-  console.log(CashFlowLine);
-  this.CashFlowLine = ''; 
-  this.display = false;
+saveCashFlowLine(CashFlowLineId, CashFlowLineName) {
+  this.http.post('http://localhost:3001/SaveCashFlowLine', {
+    CashFlowLineId: CashFlowLineId,  
+    CashFlowLineName: CashFlowLineName, 
+  }).subscribe((res) => {
+    const result = res.json();
+    console.log(result);
+  });
+  console.log(this.CashFlowLineName);
 }
 
-displayEditCashFlowLine: boolean = false;
-showDialogEditCashFlowLine() {
-  this.displayEditCashFlowLine = true;
+cashFlowLineResults = [] ;
+
+showDialogForCashFlowLine(CashFlowLine) {
+  this.displayAddCashFlowLine = true;
+  this.http.get('http://localhost:3001/LoadCashFlowLine/' + this.CashFlowLine).subscribe((res) => {
+      const cashFlowLineResults = res.json();
+      this.CashFlowLineId=cashFlowLineResults[0].CashFlowLineId
+      this.CashFlowLineName=cashFlowLineResults[0].CashFlowLineName    
 }
 
-saveEditCashFlowLine(CashFlowLine) {
-  console.log(CashFlowLine);
-  this.CashFlowLine = ''; 
-  this.display = false;
+  )}
+
+ClassIEId; // ngModel - p-dropdown
+ClassIEName;  // ngModel - input p-dialog
+ClassIE; 
+
+displayAddClassIE: boolean = false;
+
+showDialogAddCalssIE() {
+  this.displayAddClassIE = true;
 }
+
+saveClassIE(ClassIEId, ClassIEName) {
+  this.http.post('http://localhost:3001/SaveClassIE', {
+    ClassIEId: ClassIEId,  
+    ClassIEName: ClassIEName, 
+  }).subscribe((res) => {
+    const result = res.json();
+    console.log(result);
+  });
+}
+
+classIEResults = [] ;
+
+showDialogForClassIE(ClassIE) {
+  this.displayAddClassIE = true;
+  this.http.get('http://localhost:3001/LoadClass/' + this.ClassIE).subscribe((res) => {
+      const classIEResults = res.json();
+      this.ClassIEId=classIEResults[0].ClassIEId
+      this.ClassIEName=classIEResults[0].ClassIEName    
+}
+
+  )}
+
 
 FormValidationErrPartener = 0;
 FormValidationErrType = 0;

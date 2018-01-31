@@ -23,5 +23,23 @@ export class NomenclatoareService {
   getPersonResponsible() {
     return this.http.get('http://localhost:3001/LoadPersonResponsible').map(res => res.json())
   }
+  getDepartment() {
+    return this.http.get('http://localhost:3001/LoadDepartment').map(res => res.json())
+  }
 
+  getContractCategory() {
+    return this.http.get('http://localhost:3001/LoadContractCategory').map(res => res.json())
+  }
+
+  getCostCenter() {
+    return this.http.get('http://localhost:3001/LoadCostCenter').map(res => res.json())
+  }
+
+  getCashFlowLine() {
+    return this.http.get('http://localhost:3001/LoadCashFlowLine').map(res => res.json())
+  }
+
+  getClassIE() {
+    return this.http.get('http://localhost:3001/LoadClassIE').map(res => res.json())
+  }
 }
