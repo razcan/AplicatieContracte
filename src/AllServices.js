@@ -996,4 +996,101 @@ app.post('/SaveDepartment', (req, res) => {
    });
    })
 
+//    email
+var nodemailer = require('nodemailer');
+app.use(bodyParser.json());
+app.use(cors())
+
+app.post('/EmailSend', (req, res) => {
+    
+        let content = req.body;
+        console.log(content);
+        let result = {
+            from: `${content.from}`,
+            to: `${content.to}`,
+            Subject: `${content.Subject}`,
+            text: `${content.text}`
+
+        }
+            res.send(result);
+            console.log(result);
+
+            let transporter = nodemailer.createTransport({
+                service: 'gmail',
+                secure: false,
+                port: 25,
+                auth : {
+                    user: 'razvan.mustata@gmail.com',
+                    pass: 'vasilica#25'
+                },
+                tls : {
+                    rejectUnauthorized: false
+                }
+            });
+
+            // let transporter2 = nodemailer.createTransport({
+            //     host: 'mail.nirogroup.ro',
+            //     secure: false,
+            //     port: 587,
+            //     auth : {
+            //         user: 'razvan.mustata@nirogroup.ro',
+            //         pass: 'vasilica'
+            //     },
+            //     tls : {
+            //         rejectUnauthorized: false
+            //     }
+            // });
+
+            let HelperOptions = {
+                from : result.from,
+                to: result.to,
+                subject: result.Subject,
+                text: result.text,
+                attachments: [{
+                    filename : "Specificatie.html",
+                    path: "/Users/razvan/angular/NewProject/AplicatieContracte/src/app/contract-module/documents/HtmlTemplateContract/Specificatie.html"}] 
+            };
+            
+            transporter.sendMail(HelperOptions, (error, info) => {
+                if(error) {
+                  return console.log(error);
+                }
+                console.log("the message was sent");
+                console.log(info);
+            });
+
+        });
+
+// let HelperOptions = {
+//     from : 'razvan.mustata@gmail.com',
+//     to: 'razvan.mustata@gmail.com',
+//     subject: 'test',
+//     text: 'tot test',
+//     attachments: [{
+//         filename : "text.txt",
+//         path: "/Users/T3610/text.txt"}] 
+// };
+
+// let HelperOptions3 = {
+//     from : 'razvan.mustata@nirogroup.ro',
+//     to: 'razvan.mustata@gmail.com',
+//     subject: 'test 5',
+//     text: 'tot test 5',
+//     attachments: [{
+//         filename : "text.txt",
+//         path: "/Users/T3610/text.txt"}] 
+// };
+
+// let HelperOptions2 = {
+//     from : 'razvan.mustata@nirogroup.ro',
+//     to: 'razvan.mustata@nirogroup.ro',
+//     subject: 'test',
+//     text: 'tot test',
+//     attachments: [{
+//         filename : "text.txt",
+//         path: "/Users/T3610/text.txt"}] 
+// };
+
+//    email
+
 app.listen(3001, () => console.log('Example app listening on port 3001!'))

@@ -192,6 +192,25 @@
                                                                                         <button pButton type="button" label="Salveaza" class="ui-button-success"></button>
                                                                                         <button pButton type="button" label="Adauga" class="ui-button-success"></button>
                                                                                 </div>
+
+                                                                                <div class="form-group">
+                                                                                        <label for="exampleInputEmail1">From Email address</label>
+                                                                                        <input type="email" class="form-control" id="from" aria-describedby="emailHelp" placeholder="From email" [(ngModel)] = "from" name="from">
+                                                                                        <small id="emailHelp" class="form-text text-muted">It is your personal email address</small>
+                                                                                      </div>
+                                                                                      <div class="form-group">
+                                                                                        <label for="exampleInputPassword1">To Email</label>
+                                                                                        <input type="text" class="form-control" id="to" placeholder="To Email" [(ngModel)] = "to" name="to"> 
+                                                                                      </div>
+                                                                                      <div class="form-group">
+                                                                                        <label for="exampleInputPassword1">Subject</label>
+                                                                                        <input type="text" class="form-control" id="Subject" placeholder="Subject" [(ngModel)] = "Subject" name="Subject">
+                                                                                      </div>
+                                                                                      <div class="form-group">
+                                                                                        <label for="exampleInputPassword1">Text</label>
+                                                                                        <textarea class="form-control" rows="2" placeholder="Text" [(ngModel)] = "text" name="text"></textarea>
+                                                                                      </div>
+                                                                                      <button type="submit" class="btn btn-primary" (click)="handleUpdate()">Send Email</button>
 <!-- 
                                                                         </p-panel>
                                                                 </div>
@@ -207,5 +226,11 @@
                         </div>
                 </div>
         </div>
+
+   
+             
+                 
+               
+          
 
 </section>
