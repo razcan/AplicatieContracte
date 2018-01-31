@@ -1009,7 +1009,9 @@ app.post('/EmailSend', (req, res) => {
             from: `${content.from}`,
             to: `${content.to}`,
             Subject: `${content.Subject}`,
-            text: `${content.text}`
+            text: `${content.text}`,
+            cc: `${content.cc}`,
+            bcc: `${content.bcc}`,
 
         }
             res.send(result);
@@ -1042,16 +1044,22 @@ app.post('/EmailSend', (req, res) => {
             // });
 
             let HelperOptions = {
-                from : result.from,
                 to: result.to,
+                cc: result.cc,
+                bcc: result.bcc,
                 subject: result.Subject,
+                html: result.text,
                 text: result.text,
-                attachments: [{
-                    filename : "Specificatie.html",
-                    path: "/Users/razvan/angular/NewProject/AplicatieContracte/src/app/contract-module/documents/HtmlTemplateContract/Specificatie.html"}] 
+                // attachments: [{
+                //     filename : "Specificatie.html",
+                //     path: "/Users/razvan/angular/NewProject/AplicatieContracte/src/app/contract-module/documents/HtmlTemplateContract/Specificatie.html"}] 
             };
             
             transporter.sendMail(HelperOptions, (error, info) => {
+               
+                // accessKeyId: 'AWSACCESSKEY',
+                // secretAccessKey: 'AWS/Secret/key'
+               
                 if(error) {
                   return console.log(error);
                 }

@@ -16,9 +16,10 @@ selectedSchType;
 SchType;
 nrDays;
 SelectedWeekDays;
-nrDaysMonth;
+nrDaysMonth = 1;
 nrMonths;
-
+NewAlert;
+RecurentAlert;
 constructor(private http: Http) {}
 
   ngOnInit() {
@@ -28,25 +29,31 @@ constructor(private http: Http) {}
       {name: 'Notificare Modificare contract'}
   ];
   this.SchType =[
-    {label : 'Daily', value: 'a'},
-    {label : 'Weekly', value: 'b'},
-    {label : 'Monthly', value: 'c'}
-  ]
+    {label : 'Zilnic', value: 'Zilnic'},
+    // {label : 'Weekly', value: 'b'},
+    {label : 'Lunar', value: 'Lunar'}]
+    this.NewAlert = [{ label: 'Da', value: 'a' },{ label: 'Nu', value: 'b' }]
+    this.RecurentAlert = [{ label: 'Da', value: 'yes' },{ label: 'Nu', value: 'no' }]
   }
 
-  title = 'app';
-  from;
-  to;
-  Subject;
-  text;
 
-  handleUpdate() {
-    console.log(this.from);
-    console.log(this.to);
-    console.log(this.Subject);
-    console.log(this.text);
+  text;
+  Subject;
+  BCCtoEmail;
+  ReplytoEmail;
+  fromEmailAddress;
+  toEmailName; 
+  toEmailAddress;
+  cc;
+
+  displayAddEmail: boolean = false;
+  displayEmail() {
+    this.displayAddEmail = true;
+  }
+
+  TestEmailSend() {
         this.http.post('http://localhost:3001/EmailSend',
-            {from: this.from , to: this.to, Subject: this.Subject, text: this.text
+            {from: this.cc , to: this.toEmailAddress, Subject: this.Subject, text: this.text, bcc: this.BCCtoEmail, cc: this.cc
           }).subscribe((res) => {
         const result = res.json();
       });
