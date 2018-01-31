@@ -11,28 +11,25 @@ import 'rxjs/add/operator/map';
 })
 export class AlertsComponent implements OnInit {
 alerts;
-checked: boolean = false;
 selectedSchType;
 SchType;
 nrDays;
 SelectedWeekDays;
 nrDaysMonth = 1;
 nrMonths;
-NewAlert;
 RecurentAlert;
+NewAlert;
+RecurentAlertSelect;
 constructor(private http: Http) {}
 
   ngOnInit() {
     this.alerts = [
       {name: 'Notificare Expirare contract'},
       {name: 'Notificare Prelungire contract'},
-      {name: 'Notificare Modificare contract'}
-  ];
-  this.SchType =[
-    {label : 'Zilnic', value: 'Zilnic'},
-    // {label : 'Weekly', value: 'b'},
-    {label : 'Lunar', value: 'Lunar'}]
-    this.NewAlert = [{ label: 'Da', value: 'a' },{ label: 'Nu', value: 'b' }]
+      {name: 'Notificare Modificare contract'}];
+    
+    this.NewAlert = [{ label: 'Da', value: 'a' },{ label: 'Nu', value: 'b' }]  
+    this.SchType =[{label : 'Zilnic', value: 'Zilnic'},{label : 'Lunar', value: 'Lunar'}]
     this.RecurentAlert = [{ label: 'Da', value: 'yes' },{ label: 'Nu', value: 'no' }]
   }
 
@@ -58,5 +55,9 @@ constructor(private http: Http) {}
         const result = res.json();
       });
       }
+  SaveAlert() {
+   console.log(this.cc ,this.toEmailAddress,this.Subject, this.text,this.BCCtoEmail,this.cc, 
+    this.toEmailName,this.ReplytoEmail, this.RecurentAlertSelect, this.selectedSchType, this.nrDaysMonth);
+  }
 
 }
