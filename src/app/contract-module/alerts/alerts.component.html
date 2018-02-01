@@ -40,30 +40,39 @@
                                 </div>
 
 
-
 <p-dialog header="Adauga Alerta" [(visible)]="displayAddEmail" modal="modal" [responsive]="true" [width]="800" [minWidth]="200">
   <p-scrollPanel [style]="{width: '100%', height: '600px'}" >
   <span>
-                
 
-                <div>Alerta Existenta?</div>
+                <div>Alerta predefinita?</div>
                 <div>
-                        <p-selectButton [options]="NewAlert" [(ngModel)]="selectedType"></p-selectButton>            
+                     
+                                        <input class="form-check-input" type="checkbox" value="" [(ngModel)]="AlertExist">
+                                        <!-- <p-triStateCheckbox [(ngModel)]="AlertExist" ></p-triStateCheckbox> -->
+                                        <label class="form-check-label" for="defaultCheck1">
+                                    
+     
+                                        </label>
+                                  
                 </div>
-               
-                <div *ngIf="selectedType=='a'; then a">
-                        </div>
-                <div *ngIf="selectedType=='b'; then b">
-                        </div>
 
-                <ng-template #b>
-                <div><p><strong>Denumire Alerta </strong></p></div>
-                        <input type="text" size="60" pInputText/>
-                </ng-template>     
-                <ng-template #a>
-                        <div><p><strong>Selecteaza Alerta</strong></p></div>
-                        <p-dropdown [options]="alerts" [style]="{'width':'160px'}" placeholder="Select an Alert" optionLabel="name"></p-dropdown>
-                </ng-template>          
+<div *ngIf="AlertExist then Da else Nu"> </div>
+
+<ng-template #Nu>
+        
+                <div><p><strong>Denumire alerta:</strong></p></div>
+                <div>
+                                <input type="text" size="60" pInputText [(ngModel)] = "SelectedAlerts" placeholder="Expirare Contract"/>
+                </div>
+</ng-template>
+
+<ng-template #Da>
+       
+                <div><p><strong>Selecteaza Alerte:</strong></p></div>
+                <p-multiSelect [options]="alerts" [(ngModel)]="SelectedAlerts" [panelStyle]="{minWidth:'24em'}"></p-multiSelect>
+</ng-template>
+                
+                               
                        
                                 <div><p><strong>Catre:</strong></p></div>
                                 <div>
@@ -98,21 +107,28 @@
                                 <div>
                                         <input type="text" size="60" pInputText [(ngModel)] = "Subject" placeholder="Alerta"/>
                                 </div>
-                       
                                 
+                                <!-- <input type="checkbox" id="1" [ngModel]="filter" (ngModelChange)="onFilterChange($event)"> Checkbox
+                                <button (click)="onFilterChange($event)">Change Status</button>   -->
+
+
                                 <div>Alerta recurenta?</div>
                                         <div>
-                                                <p-selectButton [options]="RecurentAlert" [(ngModel)]="RecurentAlertSelect"></p-selectButton>            
+                                             
+                                                                <input class="form-check-input" type="checkbox" value="" [(ngModel)]="RecurentAlertSelect">
+                                                                <label class="form-check-label" for="defaultCheck1">
+                                                                     
+                                                                </label>
+                                                          
                                         </div>
 
-                        <div *ngIf="RecurentAlertSelect=='yes' then thenTemplateName"> </div>
-                        <div *ngIf="RecurentAlertSelect=='no' then elseTemplateName"> </div>
+                        <div *ngIf="RecurentAlertSelect then thenTemplateName else elseTemplateName"> </div>
 
                         <ng-template #elseTemplateName>
                                 
                                         <div>Data:</div>
                                         <div>
-                                                <p-calendar [showIcon]="true"></p-calendar>
+                                                <p-calendar [showIcon]="true" [(ngModel)]="DataAlerta"></p-calendar>
                                                 <span style="margin-left:35px"></span>
                                         
                                 </div>
@@ -132,10 +148,32 @@
                                 </div>
 
                                 <ng-template #Lunar>
-                                       
+                                                <div>Data Start</div>
+                                                <div>
+                                                
+                                                                <p-calendar [(ngModel)]="dateStart" [showIcon]="true"></p-calendar>
+                                                </div>
                                                 <div>In ziua:</div>
                                                 <div >
                                                         <p-spinner size="30" [(ngModel)]="nrDaysMonth"  [min]="1" [max]="31"></p-spinner>
+                                                </div>
+                                                <div>Data Final</div>
+                                                <div>
+                                                
+                                                                <p-calendar [(ngModel)]="dateFinal" [showIcon]="true"></p-calendar>
+                                                </div>
+                                              
+                                </ng-template>
+                                <ng-template #Zilnic>
+                                                <div>Data Start</div>
+                                                <div>
+                                                
+                                                                <p-calendar [(ngModel)]="dateStart" [showIcon]="true"></p-calendar>
+                                                </div>
+                                                <div>Data Final</div>
+                                                <div>
+                                                
+                                                                <p-calendar [(ngModel)]="dateFinal" [showIcon]="true"></p-calendar>
                                                 </div>
                                               
                                 </ng-template>

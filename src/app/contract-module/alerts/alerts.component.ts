@@ -3,13 +3,17 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { Http, HttpModule } from '@angular/http';
 import { HttpParams, HttpClient } from '@angular/common/http';
 import 'rxjs/add/operator/map';
+import { ChangeDetectorRef, Input, ChangeDetectionStrategy} from '@angular/core';
+import { AfterViewInit } from '@angular/core';
+import {SelectItem} from 'primeng/primeng';
 
 @Component({
   selector: 'app-alerts',
   templateUrl: './alerts.component.html',
   styleUrls: ['./alerts.component.css']
 })
-export class AlertsComponent implements OnInit {
+
+export class AlertsComponent implements AfterViewInit {
 alerts;
 selectedSchType;
 SchType;
@@ -20,17 +24,42 @@ nrMonths;
 RecurentAlert;
 NewAlert;
 RecurentAlertSelect;
-constructor(private http: Http) {}
+dateStart;
+dateFinal;
+DataAlerta;
+selectedTypes = [];
+types: SelectItem[];
+raspuns;
+SelectedAlerts;
+AlertExist;
+
+constructor(private http: Http) {
+ 
+}
+
+ngAfterViewInit() {
+  
+}
+
+loading: boolean;
 
   ngOnInit() {
-    this.alerts = [
-      {name: 'Notificare Expirare contract'},
-      {name: 'Notificare Prelungire contract'},
-      {name: 'Notificare Modificare contract'}];
-    
-    this.NewAlert = [{ label: 'Da', value: 'a' },{ label: 'Nu', value: 'b' }]  
+
+    this.loading = true;
+    setTimeout(() => {
+      this.types= [{ label: 'Da', value: 'yes' },{ label: 'Nu', value: 'no' }]
+      this.alerts =[{label : 'Expirare contract', value: '1'},
+      {label : 'Prelungire contract', value: '2'},
+      {label : 'Modificare contract', value: '3'},
+    ]
     this.SchType =[{label : 'Zilnic', value: 'Zilnic'},{label : 'Lunar', value: 'Lunar'}]
     this.RecurentAlert = [{ label: 'Da', value: 'yes' },{ label: 'Nu', value: 'no' }]
+
+    this.loading = false;
+ 
+    }, 1000);
+
+     
   }
 
 
@@ -57,7 +86,14 @@ constructor(private http: Http) {}
       }
   SaveAlert() {
    console.log(this.cc ,this.toEmailAddress,this.Subject, this.text,this.BCCtoEmail,this.cc, 
-    this.toEmailName,this.ReplytoEmail, this.RecurentAlertSelect, this.selectedSchType, this.nrDaysMonth);
+    this.toEmailName,this.ReplytoEmail, this.RecurentAlertSelect, this.selectedSchType, this.nrDaysMonth, this.SelectedAlerts,
+    this.dateStart,this.dateFinal,this.DataAlerta);
+  }
+   
+  filter = false;
+
+  onFilterChange(eve: any) {
+    this.filter = !this.filter;
   }
 
 }
