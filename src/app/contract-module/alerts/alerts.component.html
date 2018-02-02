@@ -205,11 +205,24 @@
                                         <div class="col-md-12">
                                                 <div class="card">
                                                 <div class="card-body">
-                                                <h4 class="card-title">Configurare Alerte</h4>
+                                                <h4 class="card-title">Configurare Alerte </h4>
                                                 <hr class="hr">
 
              <button pButton type="button" (click)="displayEmail()" pButton icon="fa-external-link-square" label="Adauga"></button>
-                                                                </div>
+        <br>
+        <br>
+
+              <p-dataTable [value]="TabelAlerte">
+                        <p-column field="Denumire" header="Denumire"></p-column>
+                        <p-column field="Catre" header="Catre"></p-column>
+                        <p-column field="Subiect" header="Subiect"></p-column>
+                        <p-column field="Recurenta" header="Recurenta"></p-column>
+              </p-dataTable>
+
+        <br>
+       
+       
+        </div>
                                                                 </div>
                                                         </div>
                                         </div>
@@ -219,11 +232,4 @@
 </div>
                 </div>
         </div>
-
-   
-             
-                 
-               
-          
-
 </section>

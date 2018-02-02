@@ -32,6 +32,16 @@ types: SelectItem[];
 raspuns;
 SelectedAlerts;
 AlertExist;
+TabelAlerte=[];
+cols = [
+  {field: 'Denumire', header: 'Denumire'},
+  {field: 'Catre', header: 'Catre'},
+  {field: 'Subiect', header: 'Subiect'},
+  {field: 'Recurenta', header: 'Recurenta'}
+];
+
+//this.TabelAlerte.push({Denumire: '1', Catre: '2',Subiect: '3',Recurenta: '4'});
+//TabelAlerte=[{Denumire: '1', Catre: '2',Subiect: '3',Recurenta: '4'}]     
 
 constructor(private http: Http) {
  
@@ -84,12 +94,22 @@ loading: boolean;
         const result = res.json();
       });
       }
+
   SaveAlert() {
-   console.log(this.cc ,this.toEmailAddress,this.Subject, this.text,this.BCCtoEmail,this.cc, 
-    this.toEmailName,this.ReplytoEmail, this.RecurentAlertSelect, this.selectedSchType, this.nrDaysMonth, this.SelectedAlerts,
-    this.dateStart,this.dateFinal,this.DataAlerta);
-  }
-   
+  //  console.log(this.cc ,this.toEmailAddress,this.Subject, this.text,this.BCCtoEmail,this.cc, 
+  //   this.toEmailName,this.ReplytoEmail, this.RecurentAlertSelect, this.selectedSchType, this.nrDaysMonth, this.SelectedAlerts,
+  //   this.dateStart,this.dateFinal,this.DataAlerta);
+       
+
+this.TabelAlerte = [...this.TabelAlerte,{Denumire: this.SelectedAlerts, Catre: this.toEmailAddress,
+    Subiect: this.Subject, Recurenta: this.RecurentAlertSelect}]
+      
+    console.log(this.TabelAlerte);
+    this.displayAddEmail=false;
+
+  //  window.location.reload(true);
+  
+}
   filter = false;
 
   onFilterChange(eve: any) {
