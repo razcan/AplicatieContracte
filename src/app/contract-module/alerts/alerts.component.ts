@@ -39,7 +39,7 @@ cols = [
   {field: 'Subiect', header: 'Subiect'},
   {field: 'Recurenta', header: 'Recurenta'}
 ];
-ora;
+ora = '07:00';
 
 //this.TabelAlerte.push({Denumire: '1', Catre: '2',Subiect: '3',Recurenta: '4'});
 //TabelAlerte=[{Denumire: '1', Catre: '2',Subiect: '3',Recurenta: '4'}]     
@@ -96,6 +96,7 @@ loading: boolean;
       });
       }
 
+  NrZileDiferenta;
   SaveAlert() {
   //  console.log(this.cc ,this.toEmailAddress,this.Subject, this.text,this.BCCtoEmail,this.cc, 
   //   this.toEmailName,this.ReplytoEmail, this.RecurentAlertSelect, this.selectedSchType, this.nrDaysMonth, this.SelectedAlerts,
@@ -107,6 +108,20 @@ this.TabelAlerte = [...this.TabelAlerte,{Denumire: this.SelectedAlerts, Catre: t
       
     console.log(this.TabelAlerte);
     this.displayAddEmail=false;
+
+    this.NrZileDiferenta=this.dateFinal.valueOf()-this.dateStart.valueOf();
+    var diffDays1 = (this.NrZileDiferenta / (1000 * 3600 * 24))+1; 
+
+    console.log('zile1:',diffDays1);
+  let matriceZile=[];
+for (let i=0;i<diffDays1;i++) {
+  // var theyear = this.dateStart.getFullYear();
+  // var themonth = this.dateStart.getMonth()+1 ;
+  // var thetoday = this.dateStart.getDate();
+ // console.log(theyear,themonth,thetoday);
+  matriceZile.push(this.dateStart.getFullYear()+'/'+(this.dateStart.getMonth()+1)+'/'+(this.dateStart.getDate()+(i)));
+}
+console.log(matriceZile);
 
   //  window.location.reload(true);
   
