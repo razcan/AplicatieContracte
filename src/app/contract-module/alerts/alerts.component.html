@@ -46,15 +46,10 @@
 
                 <div>Alerta predefinita?</div>
                 <div>
-                     
-                                        <input class="form-check-input" type="checkbox" value="" [(ngModel)]="AlertExist">
-                                        <!-- <p-triStateCheckbox [(ngModel)]="AlertExist" ></p-triStateCheckbox> -->
-                                        <label class="form-check-label" for="defaultCheck1">
-                                    
-     
-                                        </label>
-                                  
+                        <p-toggleButton [(ngModel)]="AlertExist" onLabel="Da" offLabel="Nu" onIcon="fa-check-square" offIcon="fa-square" [style]="{'width':'60px','background-color': '#186ba0', 'color':'white'}"></p-toggleButton>
+                        <!-- [style]="{'width':'60px','background-color': '#2399e5'}"-->
                 </div>
+          
 
 <div *ngIf="AlertExist then Da else Nu"> </div>
 
@@ -69,21 +64,20 @@
 <ng-template #Da>
        
                 <div><p><strong>Selecteaza Alerte:</strong></p></div>
-                <p-multiSelect [options]="alerts" [(ngModel)]="SelectedAlerts" [panelStyle]="{minWidth:'24em'}"></p-multiSelect>
-</ng-template>
+                <p-multiSelect [options]="alerts" defaultLabel="Lista Alerte" [(ngModel)]="SelectedAlerts" [panelStyle]="{minWidth:'24em'}"></p-multiSelect>
                 
-                               
+        </ng-template>
+                
+                        <div ><strong>De la:</strong></div>
+                        <div>
+                                <input type="text" size="60" pInputText  [(ngModel)] = "toEmailName" placeholder="Popescu Ion"/>
+                        </div>  
                        
                                 <div><p><strong>Catre:</strong></p></div>
                                 <div>
                                         <input type="text" size="60" pInputText [(ngModel)] = "toEmailAddress" placeholder="example@abc.ro"/>
                                 </div>
-                        
-                                <div ><strong>De la:</strong></div>
-                                <div>
-                                        <input type="text" size="60" pInputText  [(ngModel)] = "toEmailName" placeholder="Popescu Ion"/>
-                                </div>
-                  
+                                 
                        
                                 <div>CC:</div>
                                 <div>
@@ -114,22 +108,23 @@
 
                                 <div>Alerta recurenta?</div>
                                         <div>
-                                             
-                                                                <input class="form-check-input" type="checkbox" value="" [(ngModel)]="RecurentAlertSelect">
-                                                                <label class="form-check-label" for="defaultCheck1">
-                                                                     
-                                                                </label>
-                                                          
+                                                <p-toggleButton [(ngModel)]="RecurentAlertSelect" onLabel="Da" offLabel="Nu" onIcon="fa-check-square" offIcon="fa-square" [style]="{'width':'60px','background-color': '#186ba0', 'color':'white'}"></p-toggleButton>                       
                                         </div>
 
                         <div *ngIf="RecurentAlertSelect then thenTemplateName else elseTemplateName"> </div>
 
                         <ng-template #elseTemplateName>
                                 
+                                        <div>Ora</div>
+                                        <div>
+                                        <p-calendar [(ngModel)]="ora" [timeOnly]="true"></p-calendar>
+                                        </div>
+
                                         <div>Data:</div>
                                         <div>
-                                                <p-calendar [showIcon]="true" [(ngModel)]="DataAlerta"></p-calendar>
+                                                <p-calendar  [(ngModel)]="DataAlerta" [style]="{'background-color': '#186ba0'}"></p-calendar>
                                                 <span style="margin-left:35px"></span>
+                                                
                                         
                                 </div>
                         </ng-template>
@@ -148,10 +143,15 @@
                                 </div>
 
                                 <ng-template #Lunar>
+                                                <div>Ora</div>
+                                                <div>
+                                                <p-calendar [(ngModel)]="ora" [timeOnly]="true"></p-calendar>
+                                                </div>
+
                                                 <div>Data Start</div>
                                                 <div>
                                                 
-                                                                <p-calendar [(ngModel)]="dateStart" [showIcon]="true"></p-calendar>
+                                                                <p-calendar [(ngModel)]="dateStart"></p-calendar>
                                                 </div>
                                                 <div>In ziua:</div>
                                                 <div >
@@ -160,20 +160,24 @@
                                                 <div>Data Final</div>
                                                 <div>
                                                 
-                                                                <p-calendar [(ngModel)]="dateFinal" [showIcon]="true"></p-calendar>
+                                                                <p-calendar [(ngModel)]="dateFinal"></p-calendar>
                                                 </div>
                                               
                                 </ng-template>
                                 <ng-template #Zilnic>
+                                                <div>Ora</div>
+                                                <div>
+                                                <p-calendar [(ngModel)]="ora" [timeOnly]="true"></p-calendar>
+                                                </div>
                                                 <div>Data Start</div>
                                                 <div>
                                                 
-                                                                <p-calendar [(ngModel)]="dateStart" [showIcon]="true"></p-calendar>
+                                                                <p-calendar [(ngModel)]="dateStart"></p-calendar>
                                                 </div>
                                                 <div>Data Final</div>
                                                 <div>
                                                 
-                                                                <p-calendar [(ngModel)]="dateFinal" [showIcon]="true"></p-calendar>
+                                                                <p-calendar [(ngModel)]="dateFinal"></p-calendar>
                                                 </div>
                                               
                                 </ng-template>
@@ -187,11 +191,14 @@
                                 </div>
                                 <br>
 
+                                
+
   </span>
 </p-scrollPanel>
 
   <p-footer>
-    <button style="float: left;" pButton type="button" label="Send Test Email" (click)="TestEmailSend()" class="ui-button-success"></button>
+    <button style="float: left;" pButton type="button" label="Trimite Email Test" (click)="TestEmailSend()" class="ui-button-success"></button>
+    <button style="float: left;" pButton type="button" label="Sterge" icon="fa-close" (click)="text=null" class="ui-button-danger"></button>
     <button type="button" pButton icon="fa-check" (click)="SaveAlert()" label="Salveaza"></button>
     <button type="button" pButton icon="fa-close" (click)="displayAddEmail=false" label="Renunta"></button>
   </p-footer>

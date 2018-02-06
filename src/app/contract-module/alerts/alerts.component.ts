@@ -15,7 +15,7 @@ import {SelectItem} from 'primeng/primeng';
 
 export class AlertsComponent implements AfterViewInit {
 alerts;
-selectedSchType;
+selectedSchType: boolean=false;
 SchType;
 nrDays;
 SelectedWeekDays;
@@ -23,15 +23,15 @@ nrDaysMonth = 1;
 nrMonths;
 RecurentAlert;
 NewAlert;
-RecurentAlertSelect;
 dateStart;
 dateFinal;
 DataAlerta;
-selectedTypes = [];
+selectedTypes;
 types: SelectItem[];
 raspuns;
 SelectedAlerts;
 AlertExist;
+RecurentAlertSelect;
 TabelAlerte=[];
 cols = [
   {field: 'Denumire', header: 'Denumire'},
@@ -39,6 +39,7 @@ cols = [
   {field: 'Subiect', header: 'Subiect'},
   {field: 'Recurenta', header: 'Recurenta'}
 ];
+ora;
 
 //this.TabelAlerte.push({Denumire: '1', Catre: '2',Subiect: '3',Recurenta: '4'});
 //TabelAlerte=[{Denumire: '1', Catre: '2',Subiect: '3',Recurenta: '4'}]     
@@ -54,22 +55,6 @@ ngAfterViewInit() {
 loading: boolean;
 
   ngOnInit() {
-
-    this.loading = true;
-    setTimeout(() => {
-      this.types= [{ label: 'Da', value: 'yes' },{ label: 'Nu', value: 'no' }]
-      this.alerts =[{label : 'Expirare contract', value: '1'},
-      {label : 'Prelungire contract', value: '2'},
-      {label : 'Modificare contract', value: '3'},
-    ]
-    this.SchType =[{label : 'Zilnic', value: 'Zilnic'},{label : 'Lunar', value: 'Lunar'}]
-    this.RecurentAlert = [{ label: 'Da', value: 'yes' },{ label: 'Nu', value: 'no' }]
-
-    this.loading = false;
- 
-    }, 1000);
-
-     
   }
 
 
@@ -84,7 +69,23 @@ loading: boolean;
 
   displayAddEmail: boolean = false;
   displayEmail() {
+
+  
     this.displayAddEmail = true;
+
+    setTimeout(() => {
+    console.log(this.AlertExist, this.RecurentAlertSelect )
+
+      this.types= [{ label: 'Da', value: 'yes' },{ label: 'Nu', value: 'no' }]
+      this.alerts =[{label : 'Expirare contract', value: '1'},
+      {label : 'Prelungire contract', value: '2'},
+      {label : 'Modificare contract', value: '3'}]
+    this.SchType =[{label : 'Zilnic', value: 'Zilnic'},{label : 'Lunar', value: 'Lunar'}]
+    this.RecurentAlert = [{ label: 'Da', value: 'yes' },{ label: 'Nu', value: 'no' }]
+
+    this.loading = false;
+ 
+    }, 1000);
   }
 
   TestEmailSend() {
@@ -112,8 +113,8 @@ this.TabelAlerte = [...this.TabelAlerte,{Denumire: this.SelectedAlerts, Catre: t
 }
   filter = false;
 
-  onFilterChange(eve: any) {
-    this.filter = !this.filter;
-  }
+  // onFilterChange(eve: any) {
+  //   this.filter = !this.filter;
+  // }
 
 }
