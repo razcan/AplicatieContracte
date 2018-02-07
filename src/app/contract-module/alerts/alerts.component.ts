@@ -15,12 +15,11 @@ import {SelectItem} from 'primeng/primeng';
 
 export class AlertsComponent implements AfterViewInit {
 alerts;
-selectedSchType: boolean=false;
+selectedSchType;
 SchType;
 nrDays;
 SelectedWeekDays;
 nrDaysMonth = 1;
-nrMonths;
 RecurentAlert;
 NewAlert;
 dateStart;
@@ -29,7 +28,7 @@ DataAlerta;
 selectedTypes;
 types: SelectItem[];
 raspuns;
-SelectedAlerts;
+SelectedAlertId;
 AlertExist;
 RecurentAlertSelect;
 TabelAlerte=[];
@@ -40,19 +39,17 @@ cols = [
   {field: 'Recurenta', header: 'Recurenta'}
 ];
 ora = '07:00';
+matriceZile=[]; 
+loading: boolean;
 
-//this.TabelAlerte.push({Denumire: '1', Catre: '2',Subiect: '3',Recurenta: '4'});
-//TabelAlerte=[{Denumire: '1', Catre: '2',Subiect: '3',Recurenta: '4'}]     
 
 constructor(private http: Http) {
  
 }
 
 ngAfterViewInit() {
-  
-}
+  }
 
-loading: boolean;
 
   ngOnInit() {
   }
@@ -74,12 +71,12 @@ loading: boolean;
     this.displayAddEmail = true;
 
     setTimeout(() => {
-    console.log(this.AlertExist, this.RecurentAlertSelect )
-
-      this.types= [{ label: 'Da', value: 'yes' },{ label: 'Nu', value: 'no' }]
+    //console.log(this.AlertExist, this.RecurentAlertSelect )
+      
       this.alerts =[{label : 'Expirare contract', value: '1'},
       {label : 'Prelungire contract', value: '2'},
       {label : 'Modificare contract', value: '3'}]
+
     this.SchType =[{label : 'Zilnic', value: 'Zilnic'},{label : 'Lunar', value: 'Lunar'}]
     this.RecurentAlert = [{ label: 'Da', value: 'yes' },{ label: 'Nu', value: 'no' }]
 
@@ -101,35 +98,41 @@ loading: boolean;
   //  console.log(this.cc ,this.toEmailAddress,this.Subject, this.text,this.BCCtoEmail,this.cc, 
   //   this.toEmailName,this.ReplytoEmail, this.RecurentAlertSelect, this.selectedSchType, this.nrDaysMonth, this.SelectedAlerts,
   //   this.dateStart,this.dateFinal,this.DataAlerta);
-       
+     console.log(this.SelectedAlertId);  
 
-this.TabelAlerte = [...this.TabelAlerte,{Denumire: this.SelectedAlerts, Catre: this.toEmailAddress,
+this.TabelAlerte = [...this.TabelAlerte,{Denumire: this.SelectedAlertId, Catre: this.toEmailAddress,
     Subiect: this.Subject, Recurenta: this.RecurentAlertSelect}]
       
-    console.log(this.TabelAlerte);
+   // console.log(this.TabelAlerte);
     this.displayAddEmail=false;
 
     this.NrZileDiferenta=this.dateFinal.valueOf()-this.dateStart.valueOf();
     var diffDays1 = (this.NrZileDiferenta / (1000 * 3600 * 24))+1; 
 
-    console.log('zile1:',diffDays1);
-  let matriceZile=[];
-for (let i=0;i<diffDays1;i++) {
-  // var theyear = this.dateStart.getFullYear();
-  // var themonth = this.dateStart.getMonth()+1 ;
-  // var thetoday = this.dateStart.getDate();
- // console.log(theyear,themonth,thetoday);
-  matriceZile.push(this.dateStart.getFullYear()+'/'+(this.dateStart.getMonth()+1)+'/'+(this.dateStart.getDate()+(i)));
-}
-console.log(matriceZile);
+    var months;
+    months = (this.dateFinal.getFullYear() - this.dateStart.getFullYear()) * 12;
+    months -= this.dateStart.getMonth() + 1;
+    months += this.dateFinal.getMonth();
+    months <= 0 ? 0 : months;
+    months = months+2;
+
+
+   if (this.selectedSchType=='Zilnic') {
+   for (let i=0;i<diffDays1;i++) {
+
+  this.matriceZile = [...this.matriceZile,{ContractId: '0',AlertId:'0', Data: this.dateStart.getFullYear()+'-'+(this.dateStart.getMonth()+1)+'-'+(this.dateStart.getDate()+(i)), Ora:this.ora, Tip: this.selectedSchType, Day: 0}];
+   }
+  }
+  else {
+    for (let i=0;i<months;i++) {
+      this.matriceZile = [...this.matriceZile,{ContractId: '0',AlertId:'0', Data: this.dateStart.getFullYear()+'-'+(this.dateStart.getMonth()+1+i)+'-'+(this.dateStart.getDate()), Ora:this.ora, Tip: this.selectedSchType, Day: this.nrDaysMonth}];  
+    }
+  }
+
+console.log(this.matriceZile);
 
   //  window.location.reload(true);
   
 }
-  filter = false;
-
-  // onFilterChange(eve: any) {
-  //   this.filter = !this.filter;
-  // }
 
 }

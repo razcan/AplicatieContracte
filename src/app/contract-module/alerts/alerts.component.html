@@ -57,15 +57,18 @@
         
                 <div><p><strong>Denumire alerta:</strong></p></div>
                 <div>
-                                <input type="text" size="60" pInputText [(ngModel)] = "SelectedAlerts" placeholder="Expirare Contract"/>
+                                <input type="text" size="60" pInputText [(ngModel)] = "SelectedAlertId" placeholder="Expirare Contract"/>
+
+                               
                 </div>
 </ng-template>
 
 <ng-template #Da>
        
-                <div><p><strong>Selecteaza Alerte:</strong></p></div>
-                <p-multiSelect [options]="alerts" defaultLabel="Lista Alerte" [(ngModel)]="SelectedAlerts" [panelStyle]="{minWidth:'24em'}"></p-multiSelect>
-                
+                <div><p><strong>Selecteaza Alerta:</strong></p></div>
+                <!-- <p-multiSelect [options]="alerts" defaultLabel="Lista Alerte" [(ngModel)]="SelectedAlertId" [panelStyle]="{minWidth:'24em'}"></p-multiSelect> -->
+                <p-dropdown [options]="alerts" [(ngModel)]="SelectedAlertId" [style]="{'width':'140px'}" ></p-dropdown>
+
         </ng-template>
                 
                         <div ><strong>De la:</strong></div>
@@ -80,7 +83,7 @@
                                  
                        
                                 <div>CC:</div>
-                                <div>
+                                <div>c
                                         <input type="text" size="60" pInputText [(ngModel)] = "cc" placeholder="example@abc.ro"/>
                             
                         </div>
