@@ -43,17 +43,9 @@ matriceZile=[];
 loading: boolean;
 
 
-constructor(private http: Http) {
- 
-}
-
-ngAfterViewInit() {
-  }
-
-
-  ngOnInit() {
-  }
-
+constructor(private http: Http) {}
+ngAfterViewInit() {}
+ngOnInit() {}
 
   text;
   Subject;
@@ -67,7 +59,6 @@ ngAfterViewInit() {
   displayAddEmail: boolean = false;
   displayEmail() {
 
-  
     this.displayAddEmail = true;
 
     setTimeout(() => {
@@ -95,10 +86,7 @@ ngAfterViewInit() {
 
   NrZileDiferenta;
   SaveAlert() {
-  //  console.log(this.cc ,this.toEmailAddress,this.Subject, this.text,this.BCCtoEmail,this.cc, 
-  //   this.toEmailName,this.ReplytoEmail, this.RecurentAlertSelect, this.selectedSchType, this.nrDaysMonth, this.SelectedAlerts,
-  //   this.dateStart,this.dateFinal,this.DataAlerta);
-     console.log(this.SelectedAlertId);  
+
 
 this.TabelAlerte = [...this.TabelAlerte,{Denumire: this.SelectedAlertId, Catre: this.toEmailAddress,
     Subiect: this.Subject, Recurenta: this.RecurentAlertSelect}]
@@ -116,19 +104,42 @@ this.TabelAlerte = [...this.TabelAlerte,{Denumire: this.SelectedAlertId, Catre: 
     months <= 0 ? 0 : months;
     months = months+2;
 
+console.log('Datejs:  ',this.dateStart.toLocaleDateString());
+
+var dateobj = new Date();
+function pad(n) {return n < 10 ? "0"+n : n;}
+var result = pad(dateobj.getDate())+"/"+pad(dateobj.getMonth()+1)+"/"+dateobj.getFullYear();
+console.log('result ',result);
+
+function addDays(date, days) {
+  var result = new Date(date);
+  result.setDate(result.getDate() + days);
+  return result;
+}
+
+function addMonth(date, months) {
+  var result = new Date(date);
+  result.setDate(result.getMonth() + months);
+  return result;
+}
 
    if (this.selectedSchType=='Zilnic') {
    for (let i=0;i<diffDays1;i++) {
-
-  this.matriceZile = [...this.matriceZile,{ContractId: '0',AlertId:'0', Data: this.dateStart.getFullYear()+'-'+(this.dateStart.getMonth()+1)+'-'+(this.dateStart.getDate()+(i)), Ora:this.ora, Tip: this.selectedSchType, Day: 0}];
+  
+this.matriceZile = [...this.matriceZile,
+    {ContractId: '0',AlertId:'0', Data: this.dateStart.getFullYear()+ '-'+ pad(addDays(this.dateStart,i).getMonth()+1) + '-'
+    + pad(addDays(this.dateStart,i).getDate()), Ora:this.ora, Tip: this.selectedSchType, Day: 0}];
    }
   }
   else {
     for (let i=0;i<months;i++) {
-      this.matriceZile = [...this.matriceZile,{ContractId: '0',AlertId:'0', Data: this.dateStart.getFullYear()+'-'+(this.dateStart.getMonth()+1+i)+'-'+(this.dateStart.getDate()), Ora:this.ora, Tip: this.selectedSchType, Day: this.nrDaysMonth}];  
+      this.matriceZile = [...this.matriceZile,{ContractId: '0',AlertId:'0', Data: this.dateStart.getFullYear()+'-'
+      + pad(addMonth(this.dateStart,i).getMonth()+1+i) +'-' + pad(this.dateStart.getDate()), Ora:this.ora, Tip: this.selectedSchType, Day: this.nrDaysMonth}];  
     }
   }
 
+console.log(this.AlertExist,this.SelectedAlertId,this.toEmailAddress,this.cc ,this.ReplytoEmail,this.BCCtoEmail,this.Subject, this.text,
+    this.RecurentAlertSelect, this.selectedSchType,this.ora,this.DataAlerta,this.dateStart,this.dateFinal,this.nrDaysMonth);
 console.log(this.matriceZile);
 
   //  window.location.reload(true);
