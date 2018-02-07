@@ -1,44 +1,43 @@
-
 <section id=main>
   <div class="container-fluid">
     <div class="row">
       <div class="col-md-12">
-          <div class="row">
-              <div class="col-md-6">
-      <ul class="nav nav-tabs">
-            <li class="nav-item">
-                            <a routerLink="/list/contract-general" >General</a>
-            </li>
+        <div class="row">
+          <div class="col-md-8">
+            <ul class="nav nav-tabs">
+              <li class="nav-item">
+                <a routerLink="/list/contract-general">General</a>
+              </li>
 
-            <li class="nav-item">
-                            <a routerLink="/list/contract-financial" class="nav-link active"> Financiar</a>
-            </li>
-    
-            <li class="nav-item">
-                            <a routerLink="/list/contract-documents" >Documente</a>
-            </li>
-            <li class="nav-item">
-                            <a routerLink="/list/contract-tasks" >Scadentar & Facturi</a>
-            </li>
-            <li class="nav-item">
-                            <a routerLink="/list/contract-history" >Istoric</a>
-            </li>
-            <li class="nav-item">
-                            <a routerLink="/list/contract-alerts" > Alerte</a>
-            </li>
-          </ul>
-              </div>
-          <div class="col-md-6">
-              <ul class="nav justify-content-end">
-                <li class="nav-item">
-                  <button type="button" class="btn btn-success">Salveaza</button>
-                </li>
-                <li class="nav-item">
-                  <button type="button" class="btn btn-warning">Renunta</button>
-                </li>
-              </ul>
-            </div>
+              <li class="nav-item">
+                <a routerLink="/list/contract-financial" class="nav-link active"> Financiar</a>
+              </li>
+
+              <li class="nav-item">
+                <a routerLink="/list/contract-documents">Documente</a>
+              </li>
+              <li class="nav-item">
+                <a routerLink="/list/contract-tasks">Scadentar & Facturi</a>
+              </li>
+              <li class="nav-item">
+                <a routerLink="/list/contract-history">Istoric</a>
+              </li>
+              <li class="nav-item">
+                <a routerLink="/list/contract-alerts"> Alerte</a>
+              </li>
+            </ul>
           </div>
+          <div class="col-md-4">
+            <ul class="nav justify-content-end">
+              <li class="nav-item">
+                <button type="button" class="btn btn-success">Salveaza</button>
+              </li>
+              <li class="nav-item">
+                <button type="button" class="btn btn-warning">Renunta</button>
+              </li>
+            </ul>
+          </div>
+        </div>
 
         <div class="tab-content" id="nav-tabContent">
           <div class="tab-pane fade show active" id="nav-financial" role="tabpanel" aria-labelledby="nav-financial-tab">
@@ -51,113 +50,165 @@
                       <h4 class="card-title">Definire Obiect Contract</h4>
                       <hr class="hr">
 
-                    
-                   
-                      <div class="col-md-6"> 
-                          <div class="ui-g">
-                              <div class="ui-g-12 ui-md-3">
-                                <p>
-                                  <strong>Contract Object</strong>
-                                </p>
-                              </div>
-                              <div class="ui-g-12 ui-md-8 ui-md-offset-1">
-                                <input type="text" pInputText placeholder="Rent" pTooltip="Enter Contract Object" [(ngModel)]="ContractObject">
-                              </div>
-                            </div>                        
-                            <div class="ui-g">
-                                <div class="ui-g-12 ui-md-4">
-                                    <p>
-                                      <strong>Currency</strong>
-                                    </p>
-                                    <p-dropdown [options]="currency" [style]="{'width':'150px'}" optionLabel='name' [(ngModel)]="Currency"></p-dropdown>
-                                  </div>   
-                                <div class="ui-g-12 ui-md-4">
-                                  <p>
-                                    <strong>VAT Rate</strong>
-                                  </p>
-                                  <p-dropdown [options]="rateVAT"  [style]="{'width':'150px'}" optionLabel='name' [(ngModel)]="VATRate">
-            
-                                    </p-dropdown>
-                                </div>    
-                              </div>
-                           
-                              <div class="ui-g">
-                                  <div class="ui-g-12 ui-md-4">
-                                    <p>
-                                      <strong>Value w/o VAT</strong>
-                                    </p>
-                                    <input type="text" pInputText placeholder="123456" pTooltip="Enter Value w/o VAT" [(ngModel)]="ValuewoVAT">
-                                  </div>
-                                  <div class="ui-g-12 ui-md-4">
-                                    <p>
-                                      <strong>Value with VAT</strong>
-                                    </p>
-                                    <input type="text" pInputText placeholder="123456" pTooltip="Enter Value with VAT" [(ngModel)]="ValuewithVAT">
-                                  </div>
-      
-                                </div>
-                                <div class="ui-g">
-                                    <div class="ui-g-12 ui-md-4">
-                                        <p>
-                                          <strong>Invoicing Interval</strong>
-                                        </p>
-                                        <p-dropdown [options]="invoicingInterval" [style]="{'width':'150px'}" optionLabel='name' [(ngModel)]="InvoicingInterval">
-                                          </p-dropdown>
-                                      </div>   
-                                    <div class="ui-g-12 ui-md-4">
-                                      <p>
-                                        <strong>Invoicing Frequency</strong>
-                                      </p>
-                                      <p-dropdown [options]="invoicingFrequency" [style]="{'width':'150px'}" optionLabel='name' [(ngModel)]="InvoicingFrequency">
-                                        </p-dropdown>
-                                    </div>    
-                                  </div>
-                   
-                                  <div class="ui-g">
-                                      <div class="ui-g-12 ui-md-4">
-                                          <p>
-                                            <strong>Zi Facturare</strong>
-                                          </p>
-                                          <p-calendar [showIcon]="true" pTooltip="Enter the First day of Invoicing" tooltipPosition="top" [(ngModel)]="InvoicingDay"></p-calendar>
-                                        </div>
-                                        
-                                      <div class="ui-g-12 ui-md-4">
-                                        <p>
-                                          <strong>Zile Scadenta</strong>
-                                        </p>
-                                        <input type="text" pInputText placeholder="15" pTooltip="Enter Nr. Zile Scadente" [(ngModel)]="DueDays">
-                                      </div>          
-                                    </div>
-                                    <div class="ui-g">
-                                        <div class="ui-g-12 ui-md-4">
-                                            <p>
-                                              <strong>Modalitate Plata/Incasare</strong>
-                                            </p>
-                                            <p-dropdown [options]="paymentInstrument" [style]="{'width':'150px'}" optionLabel='name' [(ngModel)]="PayInstrument">
-                                              </p-dropdown>
-                                          </div>   
-                                          <div class="ui-g-12 ui-md-4">
-                                              <p>
-                                                <strong>Procent penalitati/zi</strong>
-                                              </p>
-                                              <input type="text" pInputText placeholder="1%" pTooltip="Enter penalties" [(ngModel)]="PenaltyRate">
-                                            </div>  
-                                      </div>                     
 
-                <br>
-                       
-                            <button type="button" class="btn btn-success">Adauga Obiect Creat</button>
-                         
-                        
+
+                      <div class="col-md-6">
+                        <div class="ui-g">
+                          <div class="ui-g-12 ui-md-3">
+                            <p>
+                              Obiect Contract
+                            </p>
+                          </div>
+                          <div class="ui-g-12 ui-md-8">
+                            <!-- <p-dropdown [options]="LObiecte" [(ngModel)]="Obiect" [style]="{'width':'180px'}" filter="true">
+                                    </p-dropdown> -->
+                            <button type="button" class="btn btn-link">
+                              <span class="glyphicon glyphicon-plus text-success" aria-hidden="true" (click)="showDialogItem()"></span>
+                            </button>
+                            <!-- <button type="button" class="btn btn-link">
+                                      <span class="glyphicon glyphicon-pencil text-primary" aria-hidden="true" (click)="showDialogForPartner(PartnerId)"></span>
+                                    </button> -->
+                            <!-- <input type="text" pInputText placeholder="Rent" pTooltip="Enter Contract Object" [(ngModel)]="ContractObject"> -->
+                          </div>
+
+                          <!-- MODAL ITEM -->
+                          <p-dialog header="Adauga Obiect Contract" [(visible)]="displayItem" modal="modal" [responsive]="true" [width]="300"
+                            [minWidth]="200">
+                            <span>
+                              <p>Denumire Obiect Contract</p>
+                              <!-- <input id="input" type="text" size="30" pInputText [(ngModel)]="ItemName"> -->                             
+                              <p-dropdown [options]="LItemName" [(ngModel)]="ItemName" [style]="{'width':'150px'}" filter="true">
+                              </p-dropdown>                            
+                              <button type="button" class="btn btn-link">
+                                <span class="glyphicon glyphicon-plus text-success" aria-hidden="true" (click)="showDialogAddItemName()"></span>
+                              </button>
+                              <p>Categorie Obiect</p>
+                              <p-dropdown [options]="LItemCategory" [(ngModel)]="ItemCategoryName" [style]="{'width':'150px'}" filter="true">
+                              </p-dropdown>                            
+                              <button type="button" class="btn btn-link">
+                                <span class="glyphicon glyphicon-plus text-success" aria-hidden="true" (click)="showDialogAddItemCategoryName()"></span>
+                              </button>
+                              <p>Valoare fara TVA</p>
+                              <input type="text" pInputText placeholder="---" pTooltip="Enter Value w/o VAT" [(ngModel)]="ValuewoVAT">
+                              <p>Valoare cu TVA</p>
+                              <input type="text" pInputText placeholder="---" pTooltip="Enter Value with VAT" [(ngModel)]="ValuewithVAT">
+                              <p>Cota TVA</p>
+                              <p-dropdown [options]="rateVAT" [style]="{'width':'150px'}" optionLabel='name' [(ngModel)]="VATRate"></p-dropdown>
+                              <p>Valuta</p>
+                              <p-dropdown [options]="currency" [style]="{'width':'150px'}" optionLabel='name' [(ngModel)]="Currency"></p-dropdown>
+                              <p>Interval Facturare</p>
+                              <p-dropdown [options]="invoicingInterval" [style]="{'width':'150px'}" optionLabel='name' [(ngModel)]="InvoicingInterval">
+                              </p-dropdown>
+                              <p>Zi Facturare</p>
+                              <p-calendar [showIcon]="true" pTooltip="Enter the First day of Invoicing" tooltipPosition="top" [(ngModel)]="InvoicingDay"></p-calendar>
+                              <p>Zile Scadenta</p>
+                              <input type="text" pInputText placeholder="---" pTooltip="Enter Nr. Zile Scadente" [(ngModel)]="DueDays">
+                              <p>Modalitate Plata/Incasare</p>
+                              <p-dropdown [options]="paymentInstrument" [style]="{'width':'150px'}" optionLabel='name' [(ngModel)]="PayInstrument"></p-dropdown>
+                              <p>Procent penalizari/zi</p>
+                              <input type="text" pInputText placeholder="---" pTooltip="Enter penalties" [(ngModel)]="PenaltyRate">
+                            </span>
+                            <p-footer>
+                              <button type="button" pButton icon="fa-check" (click)="saveItem(ItemId, ItemName)" label="Salveaza"></button>
+                              <button type="button" pButton icon="fa-close" (click)="displayItem=false" label="Renunta"></button>
+                            </p-footer>
+                          </p-dialog>
+
+                        </div>
+                        <!-- <div class="ui-g">
+                          <div class="ui-g-12 ui-md-4">
+                            <p>
+                              Valuta
+                            </p>
+                            <p-dropdown [options]="currency" [style]="{'width':'150px'}" optionLabel='name' [(ngModel)]="Currency"></p-dropdown>
+                          </div>
+                          <div class="ui-g-12 ui-md-4">
+                            <p>
+                              Rata TVA
+                            </p>
+                            <p-dropdown [options]="rateVAT" [style]="{'width':'150px'}" optionLabel='name' [(ngModel)]="VATRate">
+
+                            </p-dropdown>
+                          </div>
+                        </div>
+
+                        <div class="ui-g">
+                          <div class="ui-g-12 ui-md-4">
+                            <p>
+                              Valoare fara TVA
+                            </p>
+                            <input type="text" pInputText placeholder="123456" pTooltip="Enter Value w/o VAT" [(ngModel)]="ValuewoVAT">
+                          </div>
+                          <div class="ui-g-12 ui-md-4">
+                            <p>
+                              Valoare cu TVA
+                            </p>
+                            <input type="text" pInputText placeholder="123456" pTooltip="Enter Value with VAT" [(ngModel)]="ValuewithVAT">
+                          </div>
+
+                        </div>
+                        <div class="ui-g">
+                          <div class="ui-g-12 ui-md-4">
+                            <p>
+                              Interval Facturare
+                            </p>
+                            <p-dropdown [options]="invoicingInterval" [style]="{'width':'150px'}" optionLabel='name' [(ngModel)]="InvoicingInterval">
+                            </p-dropdown>
+                          </div>
+                          <div class="ui-g-12 ui-md-4">
+                            <p>
+                              Frecventa Facturare????
+                            </p>
+                            <p-dropdown [options]="invoicingFrequency" [style]="{'width':'150px'}" optionLabel='name' [(ngModel)]="InvoicingFrequency">
+                            </p-dropdown>
+                          </div>
+                        </div>
+
+                        <div class="ui-g">
+                          <div class="ui-g-12 ui-md-4">
+                            <p>
+                              Zi Facturare
+                            </p>
+                            <p-calendar [showIcon]="true" pTooltip="Enter the First day of Invoicing" tooltipPosition="top" [(ngModel)]="InvoicingDay"></p-calendar>
+                          </div>
+
+                          <div class="ui-g-12 ui-md-4">
+                            <p>
+                              Zile Scadenta
+                            </p>
+                            <input type="text" pInputText placeholder="15" pTooltip="Enter Nr. Zile Scadente" [(ngModel)]="DueDays">
+                          </div>
+                        </div>
+                        <div class="ui-g">
+                          <div class="ui-g-12 ui-md-4">
+                            <p>
+                              Modalitate Plata/Incasare
+                            </p>
+                            <p-dropdown [options]="paymentInstrument" [style]="{'width':'150px'}" optionLabel='name' [(ngModel)]="PayInstrument">
+                            </p-dropdown>
+                          </div>
+                          <div class="ui-g-12 ui-md-4">
+                            <p>
+                              Procent penalitati/zi
+                            </p>
+                            <input type="text" pInputText placeholder="1%" pTooltip="Enter penalties" [(ngModel)]="PenaltyRate">
+                          </div>
+                        </div> -->
+
+                        <br>
+
+                        <button type="button" class="btn btn-success">Adauga Obiect Creat</button>
+
+
                       </div>
                       <div class="col-md-6">
-                        
-                              <div class="row">
-                                  <div class="col-md-8">
-                                    <label>Proprietati Specifice Obiect Contract</label>
-                                  </div>
-                                </div>
-                            <!-- <div class="scrollable">
+
+                        <div class="row">
+                          <div class="col-md-8">
+                            <label>Proprietati Specifice Obiect Contract</label>
+                          </div>
+                        </div>
+                        <!-- <div class="scrollable">
                               <table class="table table-striped">
                                 <thead>
                                   <tr>
@@ -212,8 +263,8 @@
                                 </tbody>
                               </table>
                             </div> -->
-                  
-                       
+
+
                       </div>
 
 
@@ -241,16 +292,66 @@
                       <h4 class="card-title">Lista Obiecte Contract</h4>
                       <hr class="hr">
 
-                     
+                      <p-dataTable [value]="cars" scrollable="true" scrollHeight="200px" frozenWidth="200px" unfrozenWidth="600px" [style]="{'margin-top':'30px'}">
+                        <p-header>Frozen Columns</p-header>
+                        <p-column field="obiect" header="Obiect Contract" [style]="{'width':'250px'}" frozen="true"></p-column>
+                        <p-column field="categorie" header="Categorie Obiect" [style]="{'width':'250px'}"></p-column>
+                        <p-column field="valuenoVAT" header="Valoare fara TVA" [style]="{'width':'250px'}"></p-column>
+                        <p-column field="valuewithVAT" header="Valoare cu TVA" [style]="{'width':'250px'}"></p-column>
+                        <p-column field="vatRate" header="Cota TVA" [style]="{'width':'250px'}"></p-column>
+                        <p-column field="currency" header="Valuta" [style]="{'width':'250px'}"></p-column>
+                        <p-column field="invoicing" header="Interval Facturare" [style]="{'width':'250px'}"></p-column>
+                        <p-column field="invoicingDay" header="Zi Facturare" [style]="{'width':'250px'}"></p-column>
+                        <p-column field="dueDays" header="Zile Scadenta" [style]="{'width':'250px'}"></p-column>
+                        <p-column field="payInstrument" header="Modalitate Plata/Incasare" [style]="{'width':'250px'}"></p-column>
+                        <p-column field="ratePenalties" header="% penalizari/zi" [style]="{'width':'250px'}"></p-column>
+                      </p-dataTable>
+
+                      <p-dataTable [value]="cars" selectionMode="single" [(selection)]="selectedCar" (onRowSelect)="onRowSelect($event)" [paginator]="true" rows="15" [responsive]="true">
+                        <p-header>CRUD for Cars</p-header>
+                        <p-column field="vin" header="Vin" [sortable]="true"></p-column>
+                        <p-column field="year" header="Year" [sortable]="true"></p-column>
+                        <p-column field="brand" header="Brand" [sortable]="true"></p-column>
+                        <p-column field="color" header="Color" [sortable]="true"></p-column>
+                        <p-footer><div class="ui-helper-clearfix" style="width:100%"><button type="button" pButton icon="fa-plus" style="float:left" (click)="showDialogToAdd()" label="Add"></button></div></p-footer>
+                    </p-dataTable>
+                    
+                    <p-dialog header="Car Details" [(visible)]="displayDialog" [responsive]="true" showEffect="fade" [modal]="true">
+                        <div class="ui-grid ui-grid-responsive ui-fluid" *ngIf="car">
+                            <div class="ui-grid-row">
+                                <div class="ui-grid-col-4"><label for="vin">Vin</label></div>
+                                <div class="ui-grid-col-8"><input pInputText id="vin" [(ngModel)]="car.vin" /></div>
+                            </div>
+                            <div class="ui-grid-row">
+                                <div class="ui-grid-col-4"><label for="year">Year</label></div>
+                                <div class="ui-grid-col-8"><input pInputText id="year" [(ngModel)]="car.year" /></div>
+                            </div>
+                            <div class="ui-grid-row">
+                                <div class="ui-grid-col-4"><label for="brand">Brand</label></div>
+                                <div class="ui-grid-col-8"><input pInputText id="brand" [(ngModel)]="car.brand" /></div>
+                            </div>
+                            <div class="ui-grid-row">
+                                <div class="ui-grid-col-4"><label for="color">Color</label></div>
+                                <div class="ui-grid-col-8"><input pInputText id="color" [(ngModel)]="car.color" /></div>
+                            </div>
+                        </div>
+                        <p-footer>
+                            <div class="ui-dialog-buttonpane ui-helper-clearfix">
+                                <button type="button" pButton icon="fa-close" (click)="delete()" label="Delete"></button>
+                                <button type="button" pButton icon="fa-check" (click)="save()" label="Save"></button>
+                            </div>
+                        </p-footer>
+                    </p-dialog>
+
                       <!-- <button type="button" class="btn btn-success">Genereaza scadentar</button>
                       <button type="button" class="btn btn-success">Importa scadentar</button> -->
-                    
 
-                     
-                      <div class="scrollable">
+
+
+                      <!-- <div class="scrollable">
                         <table class="table table-striped table-fixed">
                           <thead>
-                            <tr>
+                            <tr> -->
                               <!-- <th scope="col">Data Factura</th>
                               <th scope="col">Obiect Contract</th>
                               <th scope="col">Start Data</th>
@@ -261,7 +362,7 @@
                               <th scope="col">Valoare incl. VAT</th>
                               <th scope="col">Factura emisa/primita</th>
                               <th scope="col">Incasata/Platita</th> -->
-                              <th scope="col">Obiect Contract</th>
+                              <!-- <th scope="col">Obiect Contract</th>
                               <th scope="col">Valoare w/o VAT</th>
                               <th scope="col">Valoare with VAT</th>
                               <th scope="col">Cota TVA</th>
@@ -271,7 +372,7 @@
                               <th scope="col">Zi Facturare</th>
                               <th scope="col">Nr. Zile Scadenta</th>
                               <th scope="col"></th>
-                             
+
                             </tr>
                           </thead>
                           <tbody>
@@ -286,10 +387,10 @@
                               <td>@mdo</td>
                               <td>@mdo</td>
                               <td>
-                                  <button type="button" class="btn btn-success">Edit</button>
-                                  <button type="button" class="btn btn-warning">Edit</button>
-                                </td>
-                                
+                                <button type="button" class="btn btn-success">Edit</button>
+                                <button type="button" class="btn btn-warning">Edit</button>
+                              </td>
+
 
                             </tr>
                             <tr>
@@ -303,9 +404,9 @@
                               <td>@fat</td>
                               <td>@fat</td>
                               <td>
-                                  <button type="button" class="btn btn-success">Edit</button>
-                                  <button type="button" class="btn btn-warning">Edit</button>
-                                </td>
+                                <button type="button" class="btn btn-success">Edit</button>
+                                <button type="button" class="btn btn-warning">Edit</button>
+                              </td>
 
                             </tr>
                             <tr>
@@ -319,9 +420,9 @@
                               <td>@twitter</td>
                               <td>@twitter</td>
                               <td>
-                                  <button type="button" class="btn btn-success">Edit</button>
-                                  <button type="button" class="btn btn-warning">Edit</button>
-                                </td>
+                                <button type="button" class="btn btn-success">Edit</button>
+                                <button type="button" class="btn btn-warning">Edit</button>
+                              </td>
 
                             </tr>
                             <tr>
@@ -335,9 +436,9 @@
                               <td>@twitter</td>
                               <td>@twitter</td>
                               <td>
-                                  <button type="button" class="btn btn-success">Edit</button>
-                                  <button type="button" class="btn btn-warning">Edit</button>
-                                </td>
+                                <button type="button" class="btn btn-success">Edit</button>
+                                <button type="button" class="btn btn-warning">Edit</button>
+                              </td>
 
                             </tr>
                             <tr>
@@ -351,9 +452,9 @@
                               <td>@twitter</td>
                               <td>@twitter</td>
                               <td>
-                                  <button type="button" class="btn btn-success">Edit</button>
-                                  <button type="button" class="btn btn-warning">Edit</button>
-                                </td>
+                                <button type="button" class="btn btn-success">Edit</button>
+                                <button type="button" class="btn btn-warning">Edit</button>
+                              </td>
 
                             </tr>
                             <tr>
@@ -367,15 +468,15 @@
                               <td>@twitter</td>
                               <td>@twitter</td>
                               <td>
-                                  <button type="button" class="btn btn-success">Edit</button>
-                                  <button type="button" class="btn btn-warning">Edit</button>
-                                </td>
+                                <button type="button" class="btn btn-success">Edit</button>
+                                <button type="button" class="btn btn-warning">Edit</button>
+                              </td>
 
                             </tr>
                           </tbody>
-                        </table>
-                      </div>
-                  
+                        </table> -->
+                      <!-- </div> -->
+
 
                       <!-- <br>
                       <button type="button" class="btn btn-success">Adauga</button>

@@ -142,6 +142,7 @@ export class GeneralComponent implements OnInit{
   ListaClassIE = [];
   LCIE = [{label: '', value: ''}]; //options
 
+
   ngOnInit () {
     this._Nomenclatoare.getPartners().subscribe(resPartnerList => {
       this.ListaParteneri = resPartnerList;
@@ -201,6 +202,8 @@ export class GeneralComponent implements OnInit{
       }
     }
     )
+
+ 
   }
 
 
@@ -558,8 +561,10 @@ ContractSave() {
 
   
 
-  // console.log(this.PartnerId, this.ContractType.name,this.ContractNumber, this.ContractCode, this.SigningDate,
-  //   this.StartDate, this.EndDate, this.ContractStatus.name, this.ContractDescription)
+  console.log(this.PartnerId, this.ContractType.name,this.ContractNumber, this.ContractCode, this.SigningDate,
+    this.StartDate, this.EndDate, this.ContractStatus.name, this.ContractDescription, this.CorrespondenceAddress, this.AddressedTo, this.TelephoneFax,
+  this.Email, this.ContractCategory, this.Department, this.ResponsiblePerson, this.ClassIE, this.CostCenter, this.CashFlowLine, 
+  this.SelfExtension, this.Notes, this.itemObjectsRight, this.TextProprietate)
 }
 
 }

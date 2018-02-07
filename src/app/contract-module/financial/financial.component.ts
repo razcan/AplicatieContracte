@@ -28,17 +28,17 @@ export class FinancialComponent implements OnInit {
   DueDays;
   PayInstrument;
   PenaltyRate;
-
+  BaseCurrency;
 
   
   constructor() { 
     this.currency = [
-      { name: 'Select Currency'},
+      { name: '---'},
       { name: 'EUR'},
       { name: 'RON'},      
     ];
     this.rateVAT = [
-      { name: 'Select VATRate'},
+      { name: '---'},
       { name: '19'},
       { name: '9'},      
     ];
@@ -56,13 +56,22 @@ export class FinancialComponent implements OnInit {
     ];
 
     this.paymentInstrument = [
-      { name: 'Select PaymentInstrument'},
+      { name: '---'},
       { name: 'BO'},
       { name: 'OP'},      
     ];
   }
 
   ngOnInit() {
+    
   }
+
+  displayItem: boolean = false;
+
+showDialogItem() {
+  this.displayItem = true;
+}
+
+  
 
 }

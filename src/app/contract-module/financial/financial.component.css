@@ -7,12 +7,14 @@
 
 
 .nav-item > a {
-  font-size: 13px;
+  font-size: 15px;
+  font-weight: 500; 
   
 }
 
 .card {
   border: 0px;
+  font-size: 13px;
 }
 .card-title {
   background: #f1f1f1;  
@@ -37,4 +39,16 @@
 .general-page {
   border-style: solid;
  border-color: #f1f1f1;
+}
+
+.textarea {
+  width: 100%;
+}
+
+.glyphicon {
+  font-size: 10px;
+}
+
+.btn-link {
+  padding: 0;
 }

@@ -1,13 +1,15 @@
 
  
   .nav-item > a {
-    font-size: 13px;
-    
+    font-size: 15px;    
+    font-weight: 500; 
   }
 
   .card {
     border: 0px;
+    font-size: 13px;
   }
+
   .card-title {
     background: #f1f1f1;  
   }
@@ -109,3 +111,15 @@ Remove
 Delete
 </a> */
 /* butoane frumoase */
+
+.textarea {
+  width: 100%;
+}
+
+.glyphicon {
+  font-size: 10px;
+}
+
+.btn-link {
+  padding: 0;
+}
