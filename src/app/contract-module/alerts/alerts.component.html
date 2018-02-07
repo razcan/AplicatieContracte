@@ -44,32 +44,30 @@
   <p-scrollPanel [style]="{width: '100%', height: '600px'}" >
   <span>
 
+                <div><p><strong>Denumire alerta:</strong></p></div>
+                <div>
+                                <input type="text" size="60" pInputText [(ngModel)] = "AlertName" placeholder="Expirare Contract"/>
+                </div>
+<!-- 
                 <div>Alerta predefinita?</div>
                 <div>
                         <p-toggleButton [(ngModel)]="AlertExist" onLabel="Da" offLabel="Nu" onIcon="fa-check-square" offIcon="fa-square" [style]="{'width':'60px','background-color': '#186ba0', 'color':'white'}"></p-toggleButton>
-                        <!-- [style]="{'width':'60px','background-color': '#2399e5'}"-->
                 </div>
-          
 
 <div *ngIf="AlertExist then Da else Nu"> </div>
 
 <ng-template #Nu>
-        
                 <div><p><strong>Denumire alerta:</strong></p></div>
                 <div>
                                 <input type="text" size="60" pInputText [(ngModel)] = "SelectedAlertId" placeholder="Expirare Contract"/>
-
-                               
                 </div>
 </ng-template>
-
 <ng-template #Da>
        
                 <div><p><strong>Selecteaza Alerta:</strong></p></div>
-                <!-- <p-multiSelect [options]="alerts" defaultLabel="Lista Alerte" [(ngModel)]="SelectedAlertId" [panelStyle]="{minWidth:'24em'}"></p-multiSelect> -->
                 <p-dropdown [options]="alerts" [(ngModel)]="SelectedAlertId" [style]="{'width':'140px'}" ></p-dropdown>
 
-        </ng-template>
+</ng-template> -->
                 
                         <div ><strong>De la:</strong></div>
                         <div>
@@ -222,11 +220,11 @@
         <br>
         <br>
 
-              <p-dataTable [value]="TabelAlerte">
-                        <p-column field="Denumire" header="Denumire"></p-column>
-                        <p-column field="Catre" header="Catre"></p-column>
-                        <p-column field="Subiect" header="Subiect"></p-column>
-                        <p-column field="Recurenta" header="Recurenta"></p-column>
+              <p-dataTable [value]="ListaAlerte">
+                        <p-column field="AlertName" header="Denumire"></p-column>
+                        <p-column field="toEmailAddress" header="Catre"></p-column>
+                        <p-column field="Subject" header="Subiect"></p-column>
+                        <p-column field="RecurentAlertSelect" header="Recurenta"></p-column>
               </p-dataTable>
 
         <br>

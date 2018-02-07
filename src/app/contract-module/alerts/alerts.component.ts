@@ -28,7 +28,7 @@ DataAlerta;
 selectedTypes;
 types: SelectItem[];
 raspuns;
-SelectedAlertId;
+AlertName;
 AlertExist;
 RecurentAlertSelect;
 TabelAlerte=[];
@@ -45,7 +45,14 @@ loading: boolean;
 
 constructor(private http: Http) {}
 ngAfterViewInit() {}
-ngOnInit() {}
+ListaAlerte = [];
+ngOnInit() {
+  this.http.get('http://localhost:3001/LoadAlert').subscribe((res) => {
+    this.ListaAlerte  = res.json();
+    console.log(this.ListaAlerte);
+  }
+);
+}
 
   text;
   Subject;
@@ -85,10 +92,12 @@ ngOnInit() {}
       }
 
   NrZileDiferenta;
-  SaveAlert() {
 
 
-this.TabelAlerte = [...this.TabelAlerte,{Denumire: this.SelectedAlertId, Catre: this.toEmailAddress,
+SaveAlert() {
+
+
+  this.TabelAlerte = [...this.TabelAlerte,{Denumire: this.AlertName, Catre: this.toEmailAddress,
     Subiect: this.Subject, Recurenta: this.RecurentAlertSelect}]
       
    // console.log(this.TabelAlerte);
@@ -104,12 +113,12 @@ this.TabelAlerte = [...this.TabelAlerte,{Denumire: this.SelectedAlertId, Catre: 
     months <= 0 ? 0 : months;
     months = months+2;
 
-console.log('Datejs:  ',this.dateStart.toLocaleDateString());
+//console.log('Datejs:  ',this.dateStart.toLocaleDateString());
 
 var dateobj = new Date();
 function pad(n) {return n < 10 ? "0"+n : n;}
 var result = pad(dateobj.getDate())+"/"+pad(dateobj.getMonth()+1)+"/"+dateobj.getFullYear();
-console.log('result ',result);
+
 
 function addDays(date, days) {
   var result = new Date(date);
@@ -138,11 +147,48 @@ this.matriceZile = [...this.matriceZile,
     }
   }
 
-console.log(this.AlertExist,this.SelectedAlertId,this.toEmailAddress,this.cc ,this.ReplytoEmail,this.BCCtoEmail,this.Subject, this.text,
-    this.RecurentAlertSelect, this.selectedSchType,this.ora,this.DataAlerta,this.dateStart,this.dateFinal,this.nrDaysMonth);
-console.log(this.matriceZile);
+// console.log(this.AlertName,this.toEmailAddress,this.cc ,this.ReplytoEmail,this.BCCtoEmail,this.Subject, this.text,
+//     this.RecurentAlertSelect, this.selectedSchType,this.ora,this.DataAlerta,this.dateStart,this.dateFinal,this.nrDaysMonth);
 
-  //  window.location.reload(true);
+// console.log(this.matriceZile);
+console.log( this.toEmailAddress,
+  this.cc,
+  this.ReplytoEmail,
+  this.BCCtoEmail,
+  this.Subject,
+ this.text,
+ this.RecurentAlertSelect,
+ this.selectedSchType,
+  this.ora,
+   this.dateStart.toLocaleDateString(),
+  this.dateStart.toLocaleDateString(),
+  this.dateFinal.toLocaleDateString(),
+  this.nrDaysMonth,
+this.AlertName)
+
+this.http.post('http://localhost:3001/SaveAlert2',{
+    toEmailAddress: this.toEmailAddress,
+    cc: this.cc,
+    ReplytoEmail: this.ReplytoEmail,
+    BCCtoEmail: this.BCCtoEmail,
+    Subject: this.Subject,
+    text: this.text,
+    RecurentAlertSelect: this.RecurentAlertSelect,
+    selectedSchType: this.selectedSchType,
+    ora: this.ora,
+    DataAlerta: this.DataAlerta.toLocaleDateString(),
+    dateStart: this.dateStart.toLocaleDateString(),
+    dateFinal: this.dateFinal.toLocaleDateString(),
+    nrDaysMonth: this.nrDaysMonth,
+    ContractId: 5,
+    AlertName: this.AlertName
+  }).subscribe((res) => {
+    const result = res.json();
+    console.log(result);
+  });
+
+
+  //  window.location.reload(true); /Users/razvan/angular/NewProject/AplicatieContracte/src/assets
   
 }
 

@@ -1101,4 +1101,88 @@ app.post('/EmailSend', (req, res) => {
 
 //    email
 
+
+app.post('/SaveAlert', (req, res) => {
+
+    let content = req.body;
+    //console.log(content);
+    var mysql = require('mysql');
+
+    var con = mysql.createConnection({
+      host: "localhost",
+      user: "root",
+      password: "root",
+      database: "SHB"
+    });
+
+    var post  = {  
+        ContractId: `${content.ContractId}`, Data: `${content.Data}`,
+        Ora: `${content.Ora}`,Tip: `${content.Tip}`, Zi: `${content.Zi}`,
+};
+    var query = con.query('INSERT INTO AlertSchedule SET ?',post, function (error, results, fields) {
+            if (error) throw error;
+            });
+});
+// Alerte
+app.get('/LoadAlert', (req, res) => {
+  
+    var mysql = require('mysql');
+    var con = mysql.createConnection({
+    host: "localhost",
+    user: "root",
+    password: "root",
+    database: "shb"
+    });
+   
+    con.connect(function(err) {
+    if (err) throw err;
+    con.query('SELECT * FROM Alert ', function (err, row, fields) {
+    if (err) throw err;
+    con.end();
+    return res.json(row);
+    res.send(row);
+   
+    })
+   });
+   })
+
+   app.post('/SaveAlert2', (req, res) => {
+   
+    let content = req.body;
+    var mysql = require('mysql');
+   
+    var con = mysql.createConnection({
+    host: "localhost",
+    user: "root",
+    password: "root",
+    database: "shb"
+    });
+   
+    var post_insert = { 
+        toEmailAddress: `${content.toEmailAddress}`,
+        cc: `${content.cc}`,
+        ReplytoEmail: `${content.ReplytoEmail}`,
+        BCCtoEmail: `${content.BCCtoEmail}`,
+        Subject: `${content.Subject}`,
+        text: `${content.text}`,
+        RecurentAlertSelect: `${content.RecurentAlertSelect}`,
+        selectedSchType: `${content.selectedSchType}`,
+        ora: `${content.ora}`,
+        DataAlerta: `${content.dateStart}`,
+        dateStart: `${content.dateStart}`,
+        dateFinal: `${content.dateFinal}`,
+        nrDaysMonth: `${content.nrDaysMonth}`,
+        ContractId: 55
+    };
+
+  
+   console.log(post_insert);
+    var query = con.query('INSERT INTO Alert SET ?', post_insert, function (error, results, fields) {
+    con.end();
+    if (error) throw error;
+    }); 
+});
+   
+// Alerte
+
 app.listen(3001, () => console.log('Example app listening on port 3001!'))
