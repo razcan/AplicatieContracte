@@ -1110,12 +1110,43 @@ app.get('/LoadAlert', (req, res) => {
     host: "localhost",
     user: "root",
     password: "root",
+    database: "shb",
+    // pentru mai multe query-uri
+    multipleStatements: true
+    });
+   
+    con.connect(function(err) {
+    if (err) throw err;
+    // START TRANSACTION;
+    // delete FROM SHB.AlertSchedule where AlertScheduleId >131;
+    // rollback;
+    con.query(`
+  
+    SELECT * FROM Alert;
+
+               `, function (err, row, fields) {
+    if (err) throw err;
+    con.end();
+    return res.json(row);
+    res.send(row);
+    
+    })
+   });
+   })
+
+   app.get('/MaxAlertId', (req, res) => {
+  
+    var mysql = require('mysql');
+    var con = mysql.createConnection({
+    host: "localhost",
+    user: "root",
+    password: "root",
     database: "shb"
     });
    
     con.connect(function(err) {
     if (err) throw err;
-    con.query('SELECT * FROM Alert ', function (err, row, fields) {
+    con.query('SELECT (max(AlertId) + 1)AlertId FROM Alert', function (err, row, fields) {
     if (err) throw err;
     con.end();
     return res.json(row);
@@ -1138,11 +1169,12 @@ app.get('/LoadAlert', (req, res) => {
     database: "shb"
     });
    
-    var post_schedule  = {  
+    var post_schedule  = { AlertId:  `${content.AlertId}`,
         ContractId: `${content.ContractId}`, Data: `${content.Data}`,
         Ora: `${content.Ora}`,Tip: `${content.Tip}`, Zi: `${content.Zi}`};
  
     var post_insert = { 
+        AlertId:  `${content.AlertId}`,
         toEmailAddress: `${content.toEmailAddress}`,
         cc: `${content.cc}`,
         ReplytoEmail: `${content.ReplytoEmail}`,
@@ -1166,16 +1198,13 @@ app.get('/LoadAlert', (req, res) => {
     con.end();
     if (error) throw error;
     }); 
-    // var query = con.query('INSERT INTO AlertSchedule SET ?',post_schedule, function (error, results, fields) {
-    // if (error) throw error;
-    // });
 
 });
 
 app.post('/SaveAlertSchedule', (req, res) => {
    
     let content = req.body;
-  // console.log(content.matriceZile[0].Data);
+    console.log('Marime: ',content.matriceZile.length);
   
    //console.log(content.matriceZile[0]);
     var mysql = require('mysql');  
@@ -1186,10 +1215,10 @@ app.post('/SaveAlertSchedule', (req, res) => {
     database: "shb"
     });
   
-    for (i=0;i<20;i++) {
+    for (i=0;i<content.matriceZile.length;i++) {
         var post_schedule  = {  
             ContractId: i, 
-            // AlertId: `${content.AlertId}`,
+            AlertId: `${content.matriceZile[i].AlertId}`,
             Data: `${content.matriceZile[i].Data}`,
             Ora: `${content.matriceZile[i].Ora}`,
             Tip: `${content.matriceZile[i].Tip}`, 
@@ -1199,8 +1228,6 @@ app.post('/SaveAlertSchedule', (req, res) => {
         if (error) throw error;
         });
     }
-    
-
 });
    
 // Alerte

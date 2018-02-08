@@ -41,16 +41,29 @@ cols = [
 ora = '07:00';
 matriceZile=[]; 
 loading: boolean;
+AlertId;
 
-
-constructor(private http: Http) {}
+constructor(public http: Http) {}
 ngAfterViewInit() {}
 ListaAlerte = [];
 ngOnInit() {
+
   this.http.get('http://localhost:3001/LoadAlert').subscribe((res) => {
     this.ListaAlerte  = res.json();
   }
 );
+
+this.http.get('http://localhost:3001/MaxAlertId').subscribe((res) => {
+    this.MaxAlertId  = res.json();
+    this.AlertId=this.MaxAlertId[0].AlertId
+    //console.log(this.MaxAlertId[0].AlertId);
+  //  function MaxId() {return this.MaxAlertId1[0].AlertId};
+   // var VAlertId = MaxId()
+  //  console.log('Idul maxim : ',this.MaxAlertId[0].AlertId);
+  }
+);
+
+
 }
 
   text;
@@ -79,7 +92,7 @@ ngOnInit() {
 
     this.loading = false;
  
-    }, 1000);
+    }, 10);
   }
 
   TestEmailSend() {
@@ -91,11 +104,21 @@ ngOnInit() {
       }
 
   NrZileDiferenta;
+  MaxAlertId = [];
 
 
+//  Varza;
 SaveAlert() {
 
+//   this.http.get('http://localhost:3001/MaxAlertId').subscribe((res) => {
+//     this.MaxAlertId  = res.json();
+//     this.Varza=this.MaxAlertId[0].AlertId
+//   }
+// );
 
+// console.log(this.Varza);
+
+  //console.log(this.AlertId);
   this.TabelAlerte = [...this.TabelAlerte,{Denumire: this.AlertName, Catre: this.toEmailAddress,
     Subiect: this.Subject, Recurenta: this.RecurentAlertSelect}]
       
@@ -136,16 +159,18 @@ function addMonth(date, months) {
    for (let i=0;i<diffDays1;i++) {
   
 this.matriceZile = [...this.matriceZile,
-    {ContractId: '0',AlertId:'0', Data: this.dateStart.getFullYear()+ '-'+ pad(addDays(this.dateStart,i).getMonth()+1) + '-'
+    {ContractId: '0',AlertId: this.AlertId, Data: this.dateStart.getFullYear()+ '-'+ pad(addDays(this.dateStart,i).getMonth()+1) + '-'
     + pad(addDays(this.dateStart,i).getDate()), Ora:this.ora, Tip: this.selectedSchType, Day: 0}];
    }
   }
   else {
     for (let i=0;i<months;i++) {
-      this.matriceZile = [...this.matriceZile,{ContractId: '0',AlertId:'0', Data: this.dateStart.getFullYear()+'-'
+      this.matriceZile = [...this.matriceZile,{ContractId: '0',AlertId: this.AlertId, Data: this.dateStart.getFullYear()+'-'
       + pad(addMonth(this.dateStart,i).getMonth()+1+i) +'-' + pad(this.dateStart.getDate()), Ora:this.ora, Tip: this.selectedSchType, Day: this.nrDaysMonth}];  
     }
   }
+
+  console.log(this.matriceZile);
 
 // console.log(this.AlertName,this.toEmailAddress,this.cc ,this.ReplytoEmail,this.BCCtoEmail,this.Subject, this.text,
 //     this.RecurentAlertSelect, this.selectedSchType,this.ora,this.DataAlerta,this.dateStart,this.dateFinal,this.nrDaysMonth);
@@ -166,36 +191,31 @@ this.matriceZile = [...this.matriceZile,
 //   this.nrDaysMonth,
 // this.AlertName)
 
-// this.http.post('http://localhost:3001/SaveAlert',{
-//     toEmailAddress: this.toEmailAddress,
-//     cc: this.cc,
-//     ReplytoEmail: this.ReplytoEmail,
-//     BCCtoEmail: this.BCCtoEmail,
-//     Subject: this.Subject,
-//     text: this.text,
-//     RecurentAlertSelect: this.RecurentAlertSelect,
-//     selectedSchType: this.selectedSchType,
-//     ora: this.ora,
-//     DataAlerta: dateModify(this.DataAlerta),
-//     dateStart: dateModify(this.dateStart),
-//     dateFinal: dateModify(this.dateFinal),
-//     nrDaysMonth: this.nrDaysMonth,
-//     ContractId: '5',
-//     AlertName: this.AlertName,
-//     matriceZile: this.matriceZile
-//   }).subscribe((res) => {
-//     const result = res.json();
-//     console.log(result);
-//   });
-//  this.text,
+this.http.post('http://localhost:3001/SaveAlert',{
+    AlertId: this.AlertId,
+    toEmailAddress: this.toEmailAddress,
+    cc: this.cc,
+    ReplytoEmail: this.ReplytoEmail,
+    BCCtoEmail: this.BCCtoEmail,
+    Subject: this.Subject,
+    text: this.text,
+    RecurentAlertSelect: this.RecurentAlertSelect,
+    selectedSchType: this.selectedSchType,
+    ora: this.ora,
+    DataAlerta: dateModify(this.DataAlerta),
+    dateStart: dateModify(this.dateStart),
+    dateFinal: dateModify(this.dateFinal),
+    nrDaysMonth: this.nrDaysMonth,
+    ContractId: '5',
+    AlertName: this.AlertName,
+    matriceZile: this.matriceZile
+  }).subscribe((res) => {
+    const result = res.json();
+    console.log(result);
+  });
 
-// for (let i=0;i<this.matriceZile.length;i++) {
-//   console.log(this.matriceZile[i].Data)
-//  }
- 
 this.http.post('http://localhost:3001/SaveAlertSchedule',{
     matriceZile: this.matriceZile
-    
   }).subscribe((res) => {
     const result = res.json();
     console.log(result);
