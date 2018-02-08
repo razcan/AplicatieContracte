@@ -1102,27 +1102,6 @@ app.post('/EmailSend', (req, res) => {
 //    email
 
 
-app.post('/SaveAlert', (req, res) => {
-
-    let content = req.body;
-    //console.log(content);
-    var mysql = require('mysql');
-
-    var con = mysql.createConnection({
-      host: "localhost",
-      user: "root",
-      password: "root",
-      database: "SHB"
-    });
-
-    var post  = {  
-        ContractId: `${content.ContractId}`, Data: `${content.Data}`,
-        Ora: `${content.Ora}`,Tip: `${content.Tip}`, Zi: `${content.Zi}`,
-};
-    var query = con.query('INSERT INTO AlertSchedule SET ?',post, function (error, results, fields) {
-            if (error) throw error;
-            });
-});
 // Alerte
 app.get('/LoadAlert', (req, res) => {
   
@@ -1146,11 +1125,12 @@ app.get('/LoadAlert', (req, res) => {
    });
    })
 
-   app.post('/SaveAlert2', (req, res) => {
+   app.post('/SaveAlert', (req, res) => {
    
     let content = req.body;
-    var mysql = require('mysql');
-   
+    console.log(content);
+    
+    var mysql = require('mysql');  
     var con = mysql.createConnection({
     host: "localhost",
     user: "root",
@@ -1158,6 +1138,10 @@ app.get('/LoadAlert', (req, res) => {
     database: "shb"
     });
    
+    var post_schedule  = {  
+        ContractId: `${content.ContractId}`, Data: `${content.Data}`,
+        Ora: `${content.Ora}`,Tip: `${content.Tip}`, Zi: `${content.Zi}`};
+ 
     var post_insert = { 
         toEmailAddress: `${content.toEmailAddress}`,
         cc: `${content.cc}`,
@@ -1168,19 +1152,55 @@ app.get('/LoadAlert', (req, res) => {
         RecurentAlertSelect: `${content.RecurentAlertSelect}`,
         selectedSchType: `${content.selectedSchType}`,
         ora: `${content.ora}`,
-        DataAlerta: `${content.dateStart}`,
+        DataAlerta: `${content.DataAlerta}`,
         dateStart: `${content.dateStart}`,
         dateFinal: `${content.dateFinal}`,
         nrDaysMonth: `${content.nrDaysMonth}`,
-        ContractId: 55
+        ContractId: 55,
+        AlertName: `${content.AlertName}`
     };
 
   
-   console.log(post_insert);
+  // console.log(post_insert);
     var query = con.query('INSERT INTO Alert SET ?', post_insert, function (error, results, fields) {
     con.end();
     if (error) throw error;
     }); 
+    // var query = con.query('INSERT INTO AlertSchedule SET ?',post_schedule, function (error, results, fields) {
+    // if (error) throw error;
+    // });
+
+});
+
+app.post('/SaveAlertSchedule', (req, res) => {
+   
+    let content = req.body;
+  // console.log(content.matriceZile[0].Data);
+  
+   //console.log(content.matriceZile[0]);
+    var mysql = require('mysql');  
+    var con = mysql.createConnection({
+    host: "localhost",
+    user: "root",
+    password: "root",
+    database: "shb"
+    });
+  
+    for (i=0;i<20;i++) {
+        var post_schedule  = {  
+            ContractId: i, 
+            // AlertId: `${content.AlertId}`,
+            Data: `${content.matriceZile[i].Data}`,
+            Ora: `${content.matriceZile[i].Ora}`,
+            Tip: `${content.matriceZile[i].Tip}`, 
+            Zi: `${content.matriceZile[i].Day}`};
+    
+        var query = con.query('INSERT INTO AlertSchedule SET ?',post_schedule, function (error, results, fields) {
+        if (error) throw error;
+        });
+    }
+    
+
 });
    
 // Alerte
