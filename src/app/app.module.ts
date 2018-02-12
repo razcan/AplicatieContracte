@@ -14,16 +14,18 @@ import {QuillModule} from 'ngx-quill';
 import {CommonModule} from '@angular/common';
 import {BreadcrumbsModule} from "ng2-breadcrumbs";
 import {Validators,FormControl,FormGroup,FormBuilder} from '@angular/forms';
-
+import {LocationStrategy, HashLocationStrategy} from '@angular/common';
 
 
 // Import PrimeNG modules
+
 import {AccordionModule} from 'primeng/primeng';
 import {AutoCompleteModule} from 'primeng/primeng';
 import {BreadcrumbModule} from 'primeng/primeng';
 import {ButtonModule} from 'primeng/primeng';
 import {CalendarModule} from 'primeng/primeng';
 import {CarouselModule} from 'primeng/primeng';
+import {ColorPickerModule} from 'primeng/primeng';
 import {ChartModule} from 'primeng/primeng';
 import {CheckboxModule} from 'primeng/primeng';
 import {ChipsModule} from 'primeng/primeng';
@@ -34,7 +36,6 @@ import {ContextMenuModule} from 'primeng/primeng';
 import {DataGridModule} from 'primeng/primeng';
 import {DataListModule} from 'primeng/primeng';
 import {DataScrollerModule} from 'primeng/primeng';
-import {ScrollPanelModule} from 'primeng/scrollpanel';
 import {DataTableModule} from 'primeng/primeng';
 import {DialogModule} from 'primeng/primeng';
 import {DragDropModule} from 'primeng/primeng';
@@ -57,6 +58,7 @@ import {MenubarModule} from 'primeng/primeng';
 import {MessagesModule} from 'primeng/primeng';
 import {MultiSelectModule} from 'primeng/primeng';
 import {OrderListModule} from 'primeng/primeng';
+import {OrganizationChartModule} from 'primeng/primeng';
 import {OverlayPanelModule} from 'primeng/primeng';
 import {PaginatorModule} from 'primeng/primeng';
 import {PanelModule} from 'primeng/primeng';
@@ -67,12 +69,14 @@ import {ProgressBarModule} from 'primeng/primeng';
 import {RadioButtonModule} from 'primeng/primeng';
 import {RatingModule} from 'primeng/primeng';
 import {ScheduleModule} from 'primeng/primeng';
+import {ScrollPanelModule} from 'primeng/scrollpanel';
 import {SelectButtonModule} from 'primeng/primeng';
 import {SlideMenuModule} from 'primeng/primeng';
 import {SliderModule} from 'primeng/primeng';
 import {SpinnerModule} from 'primeng/primeng';
 import {SplitButtonModule} from 'primeng/primeng';
 import {StepsModule} from 'primeng/primeng';
+import {TableModule} from 'primeng/table';
 import {TabMenuModule} from 'primeng/primeng';
 import {TabViewModule} from 'primeng/primeng';
 import {TerminalModule} from 'primeng/primeng';
@@ -80,12 +84,9 @@ import {TieredMenuModule} from 'primeng/primeng';
 import {ToggleButtonModule} from 'primeng/primeng';
 import {ToolbarModule} from 'primeng/primeng';
 import {TooltipModule} from 'primeng/primeng';
-import {TreeTableModule} from 'primeng/primeng';
 import {TreeModule} from 'primeng/primeng';
+import {TreeTableModule} from 'primeng/primeng';
 import {TreeNode} from 'primeng/primeng';
-
-
-
 import {CdkTableModule} from '@angular/cdk/table';
 
 
@@ -93,9 +94,17 @@ import * as $ from 'jquery';
 import 'rxjs/add/observable/of';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/switchMap';
+import 'rxjs/add/operator/toPromise';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {MenuItem} from 'primeng/primeng';
 
+
+import {AppMenuComponent, AppSubMenuComponent} from './app.menu.component';
+import {AppTopbarComponent} from './app.topbar.component';
+import {AppFooterComponent} from './app.footer.component';
+import {AppBreadcrumbComponent } from './app.breadcrumb.component';
+import {AppRightpanelComponent} from './app.rightpanel.component';
+import {AppInlineProfileComponent} from './app.profile.component';
 
 import { ContractModuleComponent } from './contract-module/contract-module.component';
 import { GeneralComponent } from './contract-module/general/general.component';
@@ -154,6 +163,13 @@ export const appRoutes: Routes = [
 @NgModule({
   declarations: [
     AppComponent,
+    AppMenuComponent,
+    AppSubMenuComponent,
+    AppTopbarComponent,
+    AppFooterComponent,
+    AppBreadcrumbComponent,
+    AppRightpanelComponent,
+    AppInlineProfileComponent,
     ContractModuleComponent,
     GeneralComponent,
     FinancialComponent,

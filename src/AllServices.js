@@ -1168,6 +1168,8 @@ app.get('/LoadAlert', (req, res) => {
     password: "root",
     database: "shb"
     });
+
+    
    
     var post_schedule  = { AlertId:  `${content.AlertId}`,
         ContractId: `${content.ContractId}`, Data: `${content.Data}`,
@@ -1192,8 +1194,28 @@ app.get('/LoadAlert', (req, res) => {
         AlertName: `${content.AlertName}`
     };
 
-  
-  // console.log(post_insert);
+
+
+
+    var cueri = con.query('SELECT (max(AlertId) + 1)AlertId FROM Alert', function (error, results, fields) {
+      if (error) throw error;
+      var result = results;  
+      console.log('Valoarea maxima a AlertId din NodeJs este :',result[0].AlertId); 
+      res.send(result);
+        // var maxid=(results[0].AlertId);
+        // console.log(query);
+        // return maxid;
+        }); 
+
+
+        function doCall() {
+              finalData = 55;
+              return finalData;
+          }
+        
+        var response5 =  doCall(); 
+        console.log(response5); 
+    
     var query = con.query('INSERT INTO Alert SET ?', post_insert, function (error, results, fields) {
     con.end();
     if (error) throw error;
